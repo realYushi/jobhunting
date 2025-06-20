@@ -1,0 +1,41 @@
+---
+description: work flow
+globs: 
+alwaysApply: false
+---
+# Job Application Management System - AI Agent Rules
+
+## Project Context
+This is a comprehensive job application management system that helps organize, tailor, and track job applications throughout the job hunting process.
+
+## Directory Structure
+- templates/ - Contains reusable templates and content libraries
+- applications/ - Stores active, completed and archived job applications
+- output/ - Contains generated PDF documents
+- tools/ - Houses automation scripts and configuration
+
+## Workflow Knowledge
+1. New applications start by creating a folder in applications/active/
+2. Each application requires company research, job details analysis, and tailored documents
+3. Documents are generated as PDFs in the output/ directory
+4. Applications progress from active → completed → archived
+
+## Content Guidelines
+- Resume tailoring should emphasize skills that match job requirements
+- Cover letters should follow one of the established templates (achievement, innovation, leadership, problem-solving, or standard)
+- Company research should include culture, key people, and company profile
+- Job analysis should identify required skills, experience, and education
+
+## File Naming Conventions
+- Use kebab-case for all file and directory names
+- Company names should be lowercase in directory paths
+- Template files use descriptive names indicating their purpose
+
+## Task Assistance
+- For creating new applications: Suggest using create-application.sh
+- For analyzing job descriptions: Recommend analyze-job-description.py
+- For document generation: Direct to generate-pdfs.sh
+- For application tracking: Reference application-tracker.json
+
+## Response Format
+When answering questions about this system, provide specific file paths and commands when applicable.

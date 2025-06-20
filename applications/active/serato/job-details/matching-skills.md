@@ -1,46 +1,37 @@
-# Skills Matching Analysis
+# Soft Skills Library
 
-## Technical Skills Match
+## Leadership & Management
 
-| Job Requirement | My Skill Level | Evidence/Example   |
-| --------------- | -------------- | ------------------ |
-| [Requirement 1] | [Your level]   | [Specific example] |
-| [Requirement 2] | [Your level]   | [Specific example] |
-| [Requirement 3] | [Your level]   | [Specific example] |
+-   Skill 1: [Brief description with example]
+-   Skill 2: [Brief description with example]
+-   Skill 3: [Brief description with example]
 
-## Soft Skills Match
+## Communication
 
-| Job Requirement | My Skill Level | Evidence/Example   |
-| --------------- | -------------- | ------------------ |
-| [Requirement 1] | [Your level]   | [Specific example] |
-| [Requirement 2] | [Your level]   | [Specific example] |
-| [Requirement 3] | [Your level]   | [Specific example] |
+-   Skill 1: [Brief description with example]
+-   Skill 2: [Brief description with example]
+-   Skill 3: [Brief description with example]
 
-## Experience Match
+## Collaboration & Teamwork
 
-| Job Requirement | My Experience     | Gap Analysis                 |
-| --------------- | ----------------- | ---------------------------- |
-| [Requirement 1] | [Your experience] | [Any gap and how to address] |
-| [Requirement 2] | [Your experience] | [Any gap and how to address] |
-| [Requirement 3] | [Your experience] | [Any gap and how to address] |
+-   Skill 1: [Brief description with example]
+-   Skill 2: [Brief description with example]
+-   Skill 3: [Brief description with example]
 
-## Keywords for Resume/Cover Letter
+## Problem Solving & Critical Thinking
 
--   [Keyword 1]
--   [Keyword 2]
--   [Keyword 3]
--   [Keyword 4]
--   [Keyword 5]
+-   Skill 1: [Brief description with example]
+-   Skill 2: [Brief description with example]
+-   Skill 3: [Brief description with example]
 
-## Overall Match Assessment
+## Project Management
 
--   **Technical Skills**: [Percentage match]
--   **Soft Skills**: [Percentage match]
--   **Experience**: [Percentage match]
--   **Overall**: [Percentage match]
+-   Skill 1: [Brief description with example]
+-   Skill 2: [Brief description with example]
+-   Skill 3: [Brief description with example]
 
-## Action Items
+## Adaptability & Learning
 
--   [Action 1 to improve application]
--   [Action 2 to improve application]
--   [Action 3 to improve application]
+-   Skill 1: [Brief description with example]
+-   Skill 2: [Brief description with example]
+-   Skill 3: [Brief description with example]

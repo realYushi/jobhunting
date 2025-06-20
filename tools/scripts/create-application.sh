@@ -10,7 +10,8 @@ if [ -z "$1" ]; then
 fi
 
 COMPANY_NAME=$1
-COMPANY_DIR="applications/active/$COMPANY_NAME"
+COMPANY_DIR="../../applications/active/$COMPANY_NAME"
+TEMPLATE_DIR="../../templates"
 
 # Check if company directory already exists
 if [ -d "$COMPANY_DIR" ]; then
@@ -27,8 +28,9 @@ mkdir -p "output/$COMPANY_NAME"
 
 # Copy templates
 echo "Copying templates..."
-cp templates/resumes/base-resume.md "$COMPANY_DIR/documents/resume.md"
-cp templates/formatting/markdown-templates/cover-letter.md "$COMPANY_DIR/documents/cover-letter.md"
+
+cp $TEMPLATE_DIR/resumes/base-resume.md "$COMPANY_DIR/documents/resume.md"
+cp $TEMPLATE_DIR/formatting/markdown-templates/cover-letter.md "$COMPANY_DIR/documents/cover-letter.md"
 
 # Create company research files
 touch "$COMPANY_DIR/company-research/company-profile.md"
@@ -37,8 +39,8 @@ touch "$COMPANY_DIR/company-research/key-people.md"
 
 # Create job details files
 touch "$COMPANY_DIR/job-details/job-description.md"
-cp templates/resumes/skills-library/technical-skills.md "$COMPANY_DIR/job-details/requirements-analysis.md"
-cp templates/resumes/skills-library/soft-skills.md "$COMPANY_DIR/job-details/matching-skills.md"
+cp $TEMPLATE_DIR/resumes/skills-library/technical-skills.md "$COMPANY_DIR/job-details/requirements-analysis.md"
+cp $TEMPLATE_DIR/resumes/skills-library/soft-skills.md "$COMPANY_DIR/job-details/matching-skills.md"
 
 echo "Application structure for $COMPANY_NAME created successfully!"
 echo "Next steps:"

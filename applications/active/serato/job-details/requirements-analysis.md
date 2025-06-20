@@ -1,36 +1,36 @@
-# Job Requirements Analysis
+# Technical Skills Library
 
-## Required Skills
+## Programming Languages
 
--   [Skill 1]: [Your level of proficiency, experience]
--   [Skill 2]: [Your level of proficiency, experience]
--   [Skill 3]: [Your level of proficiency, experience]
+-   Language 1: [Brief description of proficiency and experience]
+-   Language 2: [Brief description of proficiency and experience]
+-   Language 3: [Brief description of proficiency and experience]
 
-## Preferred Skills
+## Frameworks & Libraries
 
--   [Skill 1]: [Your level of proficiency, experience]
--   [Skill 2]: [Your level of proficiency, experience]
--   [Skill 3]: [Your level of proficiency, experience]
+-   Framework 1: [Brief description of proficiency and experience]
+-   Framework 2: [Brief description of proficiency and experience]
+-   Framework 3: [Brief description of proficiency and experience]
 
-## Experience Requirements
+## Tools & Technologies
 
--   [Experience 1]: [How you meet this requirement]
--   [Experience 2]: [How you meet this requirement]
--   [Experience 3]: [How you meet this requirement]
+-   Tool 1: [Brief description of proficiency and experience]
+-   Tool 2: [Brief description of proficiency and experience]
+-   Tool 3: [Brief description of proficiency and experience]
 
-## Education Requirements
+## Database & Data Management
 
--   [Education 1]: [How you meet this requirement]
--   [Education 2]: [How you meet this requirement]
+-   Database 1: [Brief description of proficiency and experience]
+-   Database 2: [Brief description of proficiency and experience]
+-   Data Tool: [Brief description of proficiency and experience]
 
-## Key Responsibilities
+## DevOps & Infrastructure
 
--   [Responsibility 1]: [Relevant experience]
--   [Responsibility 2]: [Relevant experience]
--   [Responsibility 3]: [Relevant experience]
+-   DevOps Tool 1: [Brief description of proficiency and experience]
+-   Cloud Platform: [Brief description of proficiency and experience]
+-   Infrastructure Tool: [Brief description of proficiency and experience]
 
-## Company Values Alignment
+## Certifications
 
--   [Value 1]: [How you demonstrate this value]
--   [Value 2]: [How you demonstrate this value]
--   [Value 3]: [How you demonstrate this value]
+-   Certification 1: [Date obtained, issuing organization]
+-   Certification 2: [Date obtained, issuing organization]

@@ -1,0 +1,131 @@
+---
+description: Job Description Analyzer Rules
+globs: 
+alwaysApply: false
+---
+## Purpose
+This document outlines how to analyze job descriptions and generate tailored application materials
+## Input and Output Files
+- **Input**: `applications/active/{company-name}/job-details/job-description.md`
+- **Output**: 
+  - `applications/active/{company-name}/job-details/requirements-analysis.md`
+  - `applications/active/{company-name}/job-details/matching-skills.md`
+
+## Analysis Process
+
+### 1. Job Description Analysis
+When analyzing a job description, the AI should:
+- Extract all technical skills mentioned (not limited to a predefined list)
+- Identify soft skills and interpersonal qualities
+- Determine years of experience requirements
+- Extract education requirements
+- Identify key responsibilities and duties
+- Recognize company values and culture indicators
+- Extract industry-specific terminology and keywords
+
+### 2. Requirements Analysis Document
+Generate a requirements-analysis.md file with these sections:
+```markdown
+# Job Requirements Analysis
+
+## Technical Skills
+- [Technical Skill 1]: [Your level of proficiency, experience]
+- [Technical Skill 2]: [Your level of proficiency, experience]
+...
+
+## Soft Skills
+- [Soft Skill 1]: [Your level of proficiency, experience]
+- [Soft Skill 2]: [Your level of proficiency, experience]
+...
+
+## Experience Requirements
+- Years of Experience: [Required years]
+- [Other experience requirements]: [How you meet this requirement]
+
+## Education Requirements
+- [Education Requirement]: [How you meet this requirement]
+
+## Key Responsibilities
+- [Responsibility 1]: [Relevant experience]
+- [Responsibility 2]: [Relevant experience]
+- [Responsibility 3]: [Relevant experience]
+
+## Company Values Alignment
+- [Value 1]: [How you demonstrate this value]
+- [Value 2]: [How you demonstrate this value]
+- [Value 3]: [How you demonstrate this value]
+```
+
+### 3. Skills Matching Analysis Document
+Generate a matching-skills.md file with these sections:
+```markdown
+# Skills Matching Analysis
+
+## Technical Skills Match
+| Job Requirement | My Skill Level | Evidence/Example |
+|----------------|---------------|------------------|
+| [Skill 1] | [Your level] | [Specific example] |
+| [Skill 2] | [Your level] | [Specific example] |
+...
+
+## Soft Skills Match
+| Job Requirement | My Skill Level | Evidence/Example |
+|----------------|---------------|------------------|
+| [Skill 1] | [Your level] | [Specific example] |
+| [Skill 2] | [Your level] | [Specific example] |
+...
+
+## Experience Match
+| Job Requirement | My Experience | Gap Analysis |
+|----------------|---------------|-------------|
+| [Requirement] | [Your experience] | [Any gap and how to address] |
+
+## Keywords for Resume/Cover Letter
+- [keyword 1] (frequency)
+- [keyword 2] (frequency)
+...
+
+## Overall Match Assessment
+- **Technical Skills**: [Percentage match]
+- **Soft Skills**: [Percentage match]
+- **Experience**: [Percentage match]
+- **Overall**: [Percentage match]
+
+## Action Items
+- [Action 1 to improve application]
+- [Action 2 to improve application]
+- [Action 3 to improve application]
+```
+
+## Usage Instructions
+
+1. Create application structure:
+   ```
+   ./tools/scripts/create-application.sh company-name
+   ```
+
+2. Add job description to:
+   ```
+   applications/active/company-name/job-details/job-description.md
+   ```
+
+3. Use AI to analyze the job description by:
+   - Copying the job description text
+   - Asking the AI to "Analyze this job description and generate requirements-analysis.md and matching-skills.md files"
+   - Providing your skills and experience information when prompted
+
+4. Save the AI outputs to:
+   ```
+   applications/active/company-name/job-details/requirements-analysis.md
+   applications/active/company-name/job-details/matching-skills.md
+   ```
+
+5. Use these analyses to tailor your resume and cover letter
+
+## Advantages Over Script
+- No limitation to predefined skill lists
+- Better semantic understanding of requirements
+- More accurate extraction of implicit requirements
+- Personalized gap analysis and recommendations
+- Ability to understand industry-specific terminology
+- Improved keyword extraction with contextual understanding
