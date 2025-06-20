@@ -1,0 +1,195 @@
+---
+description: This document outlines how to analyze company profiles and culture notes to prepare for job applications and interviews.
+globs: 
+alwaysApply: false
+---
+## Purpose
+
+This document outlines how to analyze company profiles and culture notes to prepare for job applications and interviews.
+
+## Input and Output Files
+
+-   **Input**:
+    -   `applications/active/{company-name}/company-research/company-profile.md`
+    -   `applications/active/{company-name}/company-research/culture-notes.md`
+    -   `applications/active/{company-name}/company-research/key-people.md`
+-   **Output**:
+    -   `applications/active/{company-name}/company-research/interview-preparation.md`
+    -   `applications/active/{company-name}/company-research/application-strategy.md`
+
+## Analysis Process
+
+### 1. Company Profile Analysis
+
+When analyzing a company profile, the AI should:
+
+-   Extract company mission, vision, and values
+-   Identify industry position and main competitors
+-   Determine company size, growth trajectory, and funding status
+-   Analyze products/services and their target markets
+-   Identify recent news, achievements, or challenges
+-   Extract technology stack and methodologies used
+-   Recognize company structure and organizational culture
+
+### 2. Culture Notes Analysis
+
+When analyzing culture notes, the AI should:
+
+-   Identify core company values and how they're practiced
+-   Determine work environment (remote, hybrid, in-office)
+-   Analyze team dynamics and collaboration styles
+-   Extract information about work-life balance
+-   Identify professional development opportunities
+-   Recognize diversity and inclusion initiatives
+-   Analyze leadership style and management approach
+
+### 3. Key People Analysis
+
+When analyzing key people information, the AI should:
+
+-   Identify leadership team and their backgrounds
+-   Determine potential interviewers and their roles
+-   Analyze communication styles and professional interests
+-   Extract common career paths within the company
+-   Identify alumni networks and connections
+
+### 4. Interview Preparation Document
+
+Generate an interview-preparation.md file with these sections:
+
+```markdown
+# Interview Preparation for {Company Name}
+
+## Company Overview
+
+-   Mission: [Company mission]
+-   Vision: [Company vision]
+-   Core Values: [List of values]
+-   Industry Position: [Market position and competitors]
+-   Recent Developments: [Recent news or achievements]
+
+## Technical Environment
+
+-   Technology Stack: [List of technologies]
+-   Development Methodology: [Agile, Waterfall, etc.]
+-   Product Focus: [Description of main products/services]
+
+## Cultural Insights
+
+-   Work Environment: [Remote/hybrid/in-office, atmosphere]
+-   Team Structure: [How teams are organized]
+-   Collaboration Style: [How teams work together]
+-   Work-Life Balance: [Company approach]
+-   Professional Development: [Growth opportunities]
+
+## Key People
+
+-   Leadership: [Key leaders you might meet]
+-   Potential Interviewers: [People in the department]
+-   Common Backgrounds: [Educational/professional patterns]
+
+## Potential Questions to Expect
+
+-   Technical Questions: [Based on company tech stack]
+-   Cultural Fit Questions: [Based on company values]
+-   Experience Questions: [Based on job requirements]
+
+## Questions to Ask
+
+-   About the Role: [Specific questions about responsibilities]
+-   About the Team: [Questions about team dynamics]
+-   About Growth: [Questions about career development]
+-   About Company: [Questions about company direction]
+
+## Connection Points
+
+-   Shared Values: [Your values that align with company]
+-   Relevant Experience: [Your experience that directly relates]
+-   Interest Areas: [Your genuine interest in their work]
+```
+
+### 5. Application Strategy Document
+
+Generate an application-strategy.md file with these sections:
+
+```markdown
+# Application Strategy for {Company Name}
+
+## Resume Tailoring
+
+-   Key Technologies to Highlight: [Based on company tech stack]
+-   Relevant Projects to Feature: [Projects that align with company work]
+-   Experience to Emphasize: [Experience most relevant to company]
+-   Skills to Prioritize: [Skills valued by the company]
+
+## Cover Letter Strategy
+
+-   Opening Hook: [Company-specific opening to grab attention]
+-   Value Alignment: [How to demonstrate alignment with company values]
+-   Key Achievements: [Achievements that would impress this company]
+-   Specific Knowledge: [How to demonstrate company knowledge]
+-   Call to Action: [Appropriate closing for this company]
+
+## Portfolio Customization
+
+-   Projects to Highlight: [Projects relevant to company]
+-   Technologies to Showcase: [Technologies company uses]
+-   Documentation Style: [Based on company's communication style]
+
+## Interview Approach
+
+-   Technical Preparation: [Areas to focus technical preparation]
+-   Cultural Preparation: [How to demonstrate cultural fit]
+-   Communication Style: [How to match company communication style]
+-   Follow-up Strategy: [Appropriate follow-up based on company culture]
+
+## Networking Strategy
+
+-   Key Connections: [People to connect with before application]
+-   Events/Communities: [Relevant events or communities]
+-   Conversation Starters: [Topics relevant to company]
+
+## Timeline
+
+-   Application Submission: [Optimal timing]
+-   Follow-up Points: [When to check in]
+-   Preparation Milestones: [Key preparation activities]
+```
+
+## Usage Instructions
+
+1. Ensure company research files are populated:
+
+    ```
+    applications/active/company-name/company-research/company-profile.md
+    applications/active/company-name/company-research/culture-notes.md
+    applications/active/company-name/company-research/key-people.md
+    ```
+
+2. Use AI to analyze the company information by:
+
+    - Asking the AI to "Analyze this company's profile and culture notes to generate interview-preparation.md and application-strategy.md files"
+    - Providing additional context about your specific interest in the company when prompted
+
+3. Save the AI outputs to:
+
+    ```
+    applications/active/company-name/company-research/interview-preparation.md
+    applications/active/company-name/company-research/application-strategy.md
+    ```
+
+4. Use these analyses to:
+    - Prepare for interviews
+    - Tailor your application materials
+    - Develop a networking strategy
+    - Create a personalized approach to the application process
+
+## Benefits
+
+-   Structured approach to company research
+-   Consistent preparation across different applications
+-   Strategic alignment of your background with company needs
+-   Identification of key talking points for interviews
+-   Better cultural fit assessment
+-   More personalized and targeted application materials
+-   Improved confidence in interviews through thorough preparation

@@ -1,0 +1,58 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+jobhunting/
+  ├── applications/                # All job applications
+  │   ├── active/                  # Current applications in progress
+  │   │   └── {company-name}/      # Folder for each company
+  │   │       ├── company-research/    # Company information
+  │   │       │   ├── company-profile.md
+  │   │       │   ├── culture-notes.md
+  │   │       │   └── key-people.md
+  │   │       ├── documents/           # Application documents
+  │   │       │   ├── cover-letter.md
+  │   │       │   └── resume.md
+  │   │       ├── job-details/         # Job information
+  │   │       │   ├── job-description.md
+  │   │       │   ├── matching-skills.md
+  │   │       │   └── requirements-analysis.md
+  │   │       └── interview/           # Interview preparation
+  │   │           ├── preparation-notes.md
+  │   │           └── questions-to-ask.md
+  │   ├── archived/               # Past applications (rejected)
+  │   └── completed/              # Completed application cycles
+  ├── output/                     # Generated PDFs and final documents
+  │   └── {company-name}/
+  ├── templates/                  # Reusable templates
+  │   ├── cover-letters/
+  │   │   ├── tailoring-rules.md
+  │   │   └── templates/
+  │   │       ├── achievement-focused.md
+  │   │       ├── innovation-focused.md
+  │   │       ├── leadership-focused.md
+  │   │       ├── problem-solving-focused.md
+  │   │       └── standard.md
+  │   ├── formatting/
+  │   │   ├── cover-letter.tex
+  │   │   ├── markdown-templates/
+  │   │   │   ├── cover-letter.md
+  │   │   │   └── resume.md
+  │   │   └── resume.tex
+  │   └── resumes/
+  │       ├── achievements-library.md
+  │       ├── base-resume.md
+  │       └── skills-library/
+  │           ├── soft-skills.md
+  │           └── technical-skills.md
+  └── tools/                      # Scripts and utilities
+      ├── config/
+      │   ├── ai-rules/
+      │   │   ├── company-profile-analyzer.md
+      │   │   ├── job-description-analyzer.md
+      │   │   └── workflow-rules.md
+      │   └── application-tracker.json
+      └── scripts/
+          ├── create-application.sh
+          └── generate-pdfs.sh
