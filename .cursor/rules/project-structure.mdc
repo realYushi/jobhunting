@@ -10,7 +10,9 @@ jobhunting/
   │   │       ├── company-research/    # Company information
   │   │       │   ├── company-profile.md
   │   │       │   ├── culture-notes.md
-  │   │       │   └── key-people.md
+  │   │       │   ├── key-people.md
+  │   │       │   ├── application-strategy.md
+  │   │       │   └── interview-preparation.md
   │   │       ├── documents/           # Application documents
   │   │       │   ├── cover-letter.md
   │   │       │   └── resume.md
@@ -26,6 +28,9 @@ jobhunting/
   ├── output/                     # Generated PDFs and final documents
   │   └── {company-name}/
   ├── templates/                  # Reusable templates
+  │   ├── analysis/               # Job analysis templates
+  │   │   ├── requirements-analysis-template.md
+  │   │   └── matching-skills-template.md
   │   ├── cover-letters/
   │   │   ├── tailoring-rules.md
   │   │   └── templates/
@@ -35,23 +40,16 @@ jobhunting/
   │   │       ├── problem-solving-focused.md
   │   │       └── standard.md
   │   ├── formatting/
+  │   │   ├── awesome-cv.cls       # LaTeX class file for resume styling
   │   │   ├── cover-letter.tex
-  │   │   ├── markdown-templates/
-  │   │   │   ├── cover-letter.md
-  │   │   │   └── resume.md
   │   │   └── resume.tex
   │   └── resumes/
-  │       ├── achievements-library.md
   │       ├── base-resume.md
   │       └── skills-library/
   │           ├── soft-skills.md
   │           └── technical-skills.md
   └── tools/                      # Scripts and utilities
       ├── config/
-      │   ├── ai-rules/
-      │   │   ├── company-profile-analyzer.md
-      │   │   ├── job-description-analyzer.md
-      │   │   └── workflow-rules.md
       │   └── application-tracker.json
       └── scripts/
           ├── create-application.sh

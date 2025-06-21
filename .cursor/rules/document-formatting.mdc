@@ -1,0 +1,114 @@
+---
+description: Convert markdown documents to professional LaTeX format for use in Overleaf. No local PDF compilation required.
+globs: 
+alwaysApply: false
+---
+# Document Formatting Rules
+
+## Purpose
+Convert markdown documents to professional LaTeX format for use in Overleaf. No local PDF compilation required.
+
+## Input Files
+- `applications/active/{company-name}/documents/resume.md`
+- `applications/active/{company-name}/documents/cover-letter.md`
+- `templates/formatting/resume.tex`
+- `templates/formatting/cover-letter.tex`
+- `templates/formatting/awesome-cv.cls`
+
+## LaTeX Templates
+
+### Resume Template (`resume.tex`)
+- Uses awesome-cv.cls for professional styling
+- Supports multiple sections: summary, experience, skills, education, projects
+- Automatic formatting for dates, locations, and job titles
+- Consistent typography and spacing
+
+### Cover Letter Template (`cover-letter.tex`)
+- Matches resume styling for brand consistency
+- Professional letterhead with contact information
+- Proper business letter formatting
+- Signature space for printed versions
+
+## Conversion Process
+
+### Markdown to LaTeX Conversion
+1. **Header Information**: Extract name, contact details, role
+2. **Section Mapping**: Convert markdown sections to LaTeX commands
+3. **Content Formatting**: Apply proper LaTeX formatting to text
+4. **Special Characters**: Escape LaTeX special characters properly
+5. **Styling Application**: Apply consistent fonts, colors, and spacing
+
+### Resume Conversion Rules
+- **Contact Info**: `\name{First Last}`, `\email{email}`, `\phone{number}`
+- **Professional Summary**: `\quote{summary text}`
+- **Experience**: `\cventry{dates}{title}{company}{location}{description}`
+- **Skills**: `\cvitemwithcomment{category}{skills}{proficiency}`
+- **Education**: `\cventry{dates}{degree}{institution}{location}{details}`
+- **Projects**: `\cventry{dates}{project name}{technology}{}{description}`
+
+### Cover Letter Conversion Rules
+- **Header**: Automatic letterhead with contact information
+- **Date**: Current date formatting
+- **Recipient**: Company name and hiring manager if available
+- **Body**: Paragraph formatting with proper spacing
+- **Signature**: Professional closing with name
+
+## Output Generation
+- `output/{company-name}/resume.tex` (ready for Overleaf)
+- `output/{company-name}/cover-letter.tex` (ready for Overleaf)
+- Copy `templates/formatting/awesome-cv.cls` to output folder for Overleaf upload
+
+## Overleaf Preparation
+
+### Required Files for Overleaf Upload
+1. **Main LaTeX files**: `resume.tex` and/or `cover-letter.tex`
+2. **Class file**: `awesome-cv.cls` (must be in same directory)
+3. **Fonts**: Overleaf includes required fonts automatically
+
+### Overleaf Project Setup
+1. Create new project in Overleaf
+2. Upload generated `.tex` files
+3. Upload `awesome-cv.cls` file
+4. Set main document (resume.tex or cover-letter.tex)
+5. Compile using pdfLaTeX
+
+## Quality Assurance
+
+### Pre-Upload Checks
+- [ ] All special characters properly escaped
+- [ ] Contact information correctly formatted
+- [ ] Section commands properly structured
+- [ ] No missing closing braces or commands
+- [ ] awesome-cv.cls file included in output
+
+### Overleaf Compatibility Checks
+- [ ] No local file path references
+- [ ] All required packages available in Overleaf
+- [ ] Font commands compatible with Overleaf
+- [ ] No system-specific dependencies
+- [ ] UTF-8 encoding properly handled
+
+## Formatting Commands
+- "Generate LaTeX documents for [company-name]"
+- "Prepare documents for Overleaf upload for [company-name]"
+- "Convert markdown to LaTeX for [company-name]"
+
+## LaTeX Special Characters Reference
+Common characters that need escaping:
+- `%` → `\%`
+- `$` → `\$`
+- `&` → `\&`
+- `#` → `\#`
+- `_` → `\_`
+- `^` → `\^{}`
+- `~` → `\~{}`
+- `\` → `\textbackslash{}`
+
+## Best Practices for Overleaf
+- Use relative paths only (no absolute paths)
+- Keep file names simple (no spaces or special characters)
+- Test template compatibility before bulk conversion
+- Maintain consistent naming conventions
+- Include all necessary class files in output
+- Use standard LaTeX packages available in Overleaf
+- Ensure text content is properly formatted for ATS compatibility

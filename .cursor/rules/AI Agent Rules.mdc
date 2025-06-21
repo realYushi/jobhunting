@@ -1,201 +1,43 @@
 ---
-description: Job Application Workflow
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # AI Agent Rules: Job Application Workflow
 
 ## Purpose
+AI-assisted workflow for job applications: company research → job analysis → document creation → formatting.
 
-This document outlines the comprehensive AI-assisted workflow for job applications, integrating both job description analysis and company research processes.
+## High-Level Workflow
 
-## Overall Workflow
+### 1. Company Research Analysis
+- Analyze company profile, culture, and key people
+- Extract mission, values, work environment insights
+- Identify company positioning and recent achievements
 
-```mermaid
-graph TD
-    A[Create Application Folder] --> B[Research Company]
-    B --> C[Analyze Job Description]
-    C --> D[Create Application Strategy]
-    D --> E[Tailor Resume]
-    D --> F[Write Cover Letter]
-    D --> G[Prepare for Interview]
-    E --> H[Generate Final Documents]
-    F --> H
-    H --> I[Submit Application]
-    I --> J[Follow Up]
-    J --> G
-```
+### 2. Job Description Analysis  
+- Extract technical and soft skills requirements
+- Compare requirements to candidate skills library
+- Identify matching skills and potential gaps
 
-## Step 1: Company Research Process
+### 3. Document Creation
+- Create tailored cover letter using appropriate template
+- Customize resume highlighting relevant experience
+- Incorporate company-specific language and keywords
 
-### Input Files
+### 4. Document Formatting
+- Convert markdown documents to professional LaTeX format
+- Apply consistent styling and layout
+- Generate final PDF documents
 
--   `applications/active/{company-name}/company-research/company-profile.md`
--   `applications/active/{company-name}/company-research/culture-notes.md`
--   `applications/active/{company-name}/company-research/key-people.md`
+## Key Principles
+- Use company research to inform application strategy
+- Match candidate skills to job requirements
+- Incorporate company-specific language and culture
+- Maintain professional formatting consistency
+- Follow established templates and guidelines
 
-### Analysis Tasks
-
-1. **Company Profile Analysis**
-
-    - Extract mission, vision, values
-    - Identify industry position and competitors
-    - Determine company size and growth trajectory
-    - Analyze products/services and target markets
-    - Identify recent news and achievements
-    - Extract technology stack and methodologies
-
-2. **Culture Analysis**
-
-    - Identify core values and practices
-    - Determine work environment
-    - Analyze team dynamics
-    - Extract work-life balance information
-    - Identify professional development opportunities
-    - Analyze leadership style
-
-3. **Key People Analysis**
-    - Identify leadership team backgrounds
-    - Determine potential interviewers
-    - Analyze communication styles
-    - Extract common career paths
-
-### Output Files
-
--   `applications/active/{company-name}/company-research/interview-preparation.md`
--   `applications/active/{company-name}/company-research/application-strategy.md`
-
-## Step 2: Job Description Analysis Process
-
-### Input File
-
--   `applications/active/{company-name}/job-details/job-description.md`
-
-### Analysis Tasks
-
-1. **Requirements Extraction**
-
-    - Extract technical skills
-    - Identify soft skills
-    - Determine experience requirements
-    - Extract education requirements
-    - Identify key responsibilities
-    - Recognize company values indicators
-
-2. **Skills Matching**
-    - Compare required skills to your skills library
-    - Identify skill gaps
-    - Prioritize matching skills
-    - Extract keywords for resume optimization
-
-### Output Files
-
--   `applications/active/{company-name}/job-details/requirements-analysis.md`
--   `applications/active/{company-name}/job-details/matching-skills.md`
-
-## Step 3: Application Materials Creation
-
-### Input Files
-
--   `applications/active/{company-name}/company-research/application-strategy.md`
--   `applications/active/{company-name}/job-details/matching-skills.md`
--   `templates/resumes/base-resume.md`
--   `templates/resumes/skills-library/*.md`
--   `templates/cover-letters/templates/*.md`
-
-### Tasks
-
-1. **Resume Tailoring**
-
-    - Select relevant skills from skills library
-    - Prioritize matching experiences
-    - Incorporate company-specific keywords
-    - Format according to company culture
-
-2. **Cover Letter Creation**
-    - Select appropriate template based on company values
-    - Incorporate company research insights
-    - Highlight matching skills and experiences
-    - Demonstrate company knowledge
-    - Craft compelling opening and closing
-
-### Output Files
-
--   `applications/active/{company-name}/documents/resume.md`
--   `applications/active/{company-name}/documents/cover-letter.md`
-
-## Step 4: Interview Preparation
-
-### Input Files
-
--   `applications/active/{company-name}/company-research/interview-preparation.md`
--   `applications/active/{company-name}/job-details/requirements-analysis.md`
-
-### Tasks
-
-1. **Technical Preparation**
-
-    - Prepare for technical questions based on required skills
-    - Review projects relevant to company needs
-    - Practice explaining technical concepts
-
-2. **Cultural Preparation**
-
-    - Prepare stories demonstrating cultural fit
-    - Research recent company developments for discussion
-    - Prepare questions that demonstrate company knowledge
-
-3. **Logistics Preparation**
-    - Plan interview outfit based on company culture
-    - Prepare portfolio materials
-    - Plan follow-up strategy
-
-### Output Files
-
--   `applications/active/{company-name}/interview/preparation-notes.md`
--   `applications/active/{company-name}/interview/questions-to-ask.md`
-
-## Usage Instructions
-
-1. **Initial Setup**
-
-    ```bash
-    ./tools/scripts/create-application.sh company-name
-    ```
-
-2. **Company Research**
-
-    - Populate company research files with information from company website, news articles, and social media
-    - Ask AI to "Analyze this company's profile and culture notes"
-
-3. **Job Description Analysis**
-
-    - Add job description to appropriate file
-    - Ask AI to "Analyze this job description"
-
-4. **Application Strategy**
-
-    - Ask AI to "Create an application strategy based on company research and job requirements"
-
-5. **Resume and Cover Letter**
-
-    - Ask AI to "Tailor my resume for this position"
-    - Ask AI to "Write a cover letter for this position"
-
-6. **Interview Preparation**
-
-    - Ask AI to "Help me prepare for an interview with [company]"
-
-7. **Document Generation**
-    ```bash
-    ./tools/scripts/generate-pdfs.sh company-name
-    ```
-
-## Integration Benefits
-
--   Comprehensive approach to job applications
--   Consistent strategy across all application materials
--   Strategic alignment between company research and application materials
--   Efficient reuse of base materials with targeted customization
--   Data-driven approach to skills matching and gap analysis
--   Structured preparation process for all stages of application
+## Available Specialized Rules
+- **company-research-analyzer**: For analyzing company profiles and culture
+- **document-creation**: For creating cover letters and resumes
+- **document-formatting**: For LaTeX formatting and PDF generation

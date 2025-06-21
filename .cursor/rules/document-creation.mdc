@@ -1,0 +1,95 @@
+---
+description: Create tailored cover letters and resumes based on job requirements and company research.
+globs: 
+alwaysApply: false
+---
+# Document Creation Rules
+
+## Purpose
+Create tailored cover letters and resumes based on job requirements and company research.
+
+## Cover Letter Creation
+
+### Input Files
+- `applications/active/{company-name}/job-details/matching-skills.md`
+- `applications/active/{company-name}/company-research/application-strategy.md`
+- `templates/cover-letters/templates/*.md`
+- `templates/cover-letters/tailoring-rules.md`
+
+### Template Selection Strategy
+Choose template based on company culture and role requirements:
+- **Standard**: Traditional companies, formal environments
+- **Achievement-focused**: Results-driven companies, sales/metrics roles
+- **Innovation-focused**: Tech startups, creative roles, R&D positions
+- **Leadership-focused**: Management roles, team lead positions
+- **Problem-solving-focused**: Consulting, engineering, analytical roles
+
+### Cover Letter Structure
+1. **Opening Hook**: Company-specific connection or recent news reference
+2. **Value Proposition**: 2-3 key skills/experiences that match requirements
+3. **Company Alignment**: Why you want to work for this specific company
+4. **Call to Action**: Professional closing with next steps
+
+### Customization Rules
+- Incorporate company-specific language from application strategy
+- Use keywords from job description naturally
+- Reference specific company initiatives or recent news
+- Match tone to company culture (formal vs casual)
+- Keep to 3-4 paragraphs maximum
+
+## Resume Creation
+
+### Input Files
+- `applications/active/{company-name}/job-details/matching-skills.md`
+- `templates/resumes/base-resume.md`
+- `templates/resumes/skills-library/*.md`
+
+### Tailoring Strategy
+1. **Skills Prioritization**: Reorder skills to match job requirements
+2. **Experience Highlighting**: Emphasize relevant projects and achievements
+3. **Keyword Integration**: Naturally incorporate job description keywords
+4. **Quantifiable Results**: Include metrics and measurable outcomes
+5. **Relevance Filtering**: Remove or de-emphasize less relevant experience
+
+### Resume Sections Order (by importance)
+1. **Contact Information**: Current and professional
+2. **Professional Summary**: 2-3 sentences highlighting key qualifications
+3. **Technical Skills**: Prioritized by job requirements
+4. **Professional Experience**: Most relevant roles first
+5. **Education**: Include relevant certifications and courses
+6. **Projects**: Highlight relevant personal/professional projects
+
+## Output Files
+- `applications/active/{company-name}/documents/cover-letter.md`
+- `applications/active/{company-name}/documents/resume.md`
+
+## Quality Assurance
+
+### Cover Letter Checks
+- [ ] Company name spelled correctly throughout
+- [ ] Specific role title mentioned
+- [ ] 2-3 concrete examples of relevant experience
+- [ ] Company-specific insights included
+- [ ] Professional tone appropriate for company culture
+- [ ] No generic phrases or template language remaining
+
+### Resume Checks
+- [ ] Skills section matches job requirements priority
+- [ ] Quantifiable achievements included where possible
+- [ ] Consistent formatting and tense usage
+- [ ] No spelling or grammatical errors
+- [ ] Contact information is current
+- [ ] File size appropriate for ATS systems
+
+## Creation Commands
+- "Create cover letter for [company-name] [role-title]"
+- "Tailor resume for [company-name] [role-title]"
+- "Review and optimize documents for [company-name]"
+
+## Best Practices
+- Always start with the most relevant template
+- Use active voice and strong action verbs
+- Maintain consistency between cover letter and resume messaging
+- Keep cover letter under 400 words
+- Ensure resume fits on 1-2 pages maximum
+- Use industry-standard terminology and acronyms appropriately

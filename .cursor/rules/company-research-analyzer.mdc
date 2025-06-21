@@ -1,0 +1,70 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Company Research Analyzer Rules
+
+## Purpose
+Analyze company profiles, culture, and organizational information to inform job application strategy.
+
+## Input Files
+- `applications/active/{company-name}/company-research/company-profile.md`
+- `applications/active/{company-name}/company-research/culture-notes.md`
+- `applications/active/{company-name}/company-research/key-people.md`
+
+## Analysis Tasks
+
+### Company Profile Analysis
+- **Mission & Values**: Extract core mission statement and company values
+- **Business Model**: Understand how the company generates revenue
+- **Market Position**: Identify competitive advantages and market positioning
+- **Recent News**: Analyze recent achievements, funding, product launches
+- **Technology Stack**: Identify key technologies and technical approaches
+
+### Culture Analysis
+- **Work Environment**: Remote/hybrid/office policies and work-life balance
+- **Team Structure**: Organizational hierarchy and team dynamics
+- **Communication Style**: Formal vs informal, collaboration approaches
+- **Growth Opportunities**: Career development and learning culture
+- **Diversity & Inclusion**: Company commitment to diversity initiatives
+
+### Key People Analysis
+- **Leadership Team**: Background and experience of executives
+- **Hiring Managers**: Research potential interviewers and decision makers
+- **Team Members**: Understand team composition and expertise
+- **Company Alumni**: Former employees and their career paths
+
+## Output Generation
+
+### Application Strategy Document
+Create `applications/active/{company-name}/company-research/application-strategy.md` containing:
+
+1. **Company Fit Analysis**
+   - Why this company aligns with candidate goals
+   - Specific aspects that resonate with candidate values
+
+2. **Key Messaging Points**
+   - Company-specific language to incorporate
+   - Values and mission alignment statements
+   - Cultural fit indicators
+
+3. **Conversation Starters**
+   - Recent company news to reference
+   - Industry trends relevant to the company
+   - Thoughtful questions about company direction
+
+4. **Red Flags & Considerations**
+   - Potential concerns or challenges
+   - Areas requiring clarification during interviews
+
+## Analysis Commands
+- "Analyze company profile and culture for [company-name]"
+- "Generate application strategy for [company-name]"
+- "Research key people at [company-name]"
+
+## Quality Checks
+- Verify information is current (within 6 months)
+- Cross-reference multiple sources for accuracy
+- Identify any conflicting information that needs clarification
+- Ensure cultural insights are specific, not generic
