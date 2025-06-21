@@ -1,0 +1,55 @@
+{
+    "applications": {
+        "active": [
+            {
+                "company": "Serato",
+                "position": "Software Engineer Internship",
+                "date_applied": "2025-06-21",
+                "application_url": "https://serato.com/careers",
+                "contact_person": "HR Team",
+                "contact_email": "careers@serato.com",
+                "status": "Applied",
+                "next_steps": "Follow up in one week",
+                "priority": "High",
+                "notes": "Great company culture, perfect match for skills"
+            },
+            {
+                "company": "Eroad",
+                "position": "2025-2026 Summer Internship Programme (Software Engineer)",
+                "date_applied": "2025-06-21",
+                "application_url": "https://eroad.com/careers",
+                "contact_person": "HR Team",
+                "contact_email": "careers@eroad.com",
+                "status": "Applied",
+                "next_steps": "Wait for Assessment Centre Day invitation (August 6, 2025)",
+                "priority": "High",
+                "notes": "Transportation technology leader, world-first GNSS/cellular road charging, deadline June 27, 2025"
+            }
+        ],
+        "interviews": [],
+        "offers": [],
+        "rejected": [],
+        "withdrawn": []
+    },
+    "settings": {
+        "follow_up_days": 7,
+        "resume_template": "standard",
+        "cover_letter_template": "standard",
+        "default_output_format": "pdf"
+    },
+    "statistics": {
+        "applications_sent": 2,
+        "response_rate": 0,
+        "interview_rate": 0,
+        "offer_rate": 0
+    },
+    "tags": [
+        "remote",
+        "on-site",
+        "hybrid",
+        "startup",
+        "enterprise",
+        "high-priority",
+        "dream-job"
+    ]
+}

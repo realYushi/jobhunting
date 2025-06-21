@@ -27,3 +27,10 @@ Rule 6: Be Authentic & Specific
 Rule 7: Optimize for Humans & ATS
 ◦ Include keywords naturally
 ◦ Keep to one page with clear headings
+
+Rule 8: Follow Clean Formatting Guidelines
+◦ Avoid bold formatting (**text**) - let content speak for itself
+◦ Use blockquotes (>) for job requirement quotes only
+◦ Maintain professional, clean text without emphasis formatting
+◦ Templates favor substance over stylistic formatting
+◦ Exception: Company names and job titles may use quotation marks for clarity

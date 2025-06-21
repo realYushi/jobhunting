@@ -1,0 +1,37 @@
+Yushi Cui
+Auckland, New Zealand
+realYushi@gmail.com
+https://linkedin.com/in/yushi-cui-6043aa285
+https://github.com/realYushi
+
+[Current Date]
+
+Hiring Manager
+EROAD
+Albany, Auckland
+New Zealand
+
+Dear Hiring Manager,
+
+I am writing to express my enthusiastic interest in the 2025-2026 Summer Internship Programme (Software Engineer) at EROAD. As a second-year Computer Science student with professional full-stack development internship experience and a passion for technology that creates positive societal impact, I am excited about the opportunity to contribute to your mission of "delivering intelligence you can trust, for a better world tomorrow."
+
+EROAD's pioneering work as the first company in the world to implement a GNSS/cellular-based road charging solution across an entire country deeply impresses me. Your commitment to improving safety, efficiency, and environmental sustainability in transportation technology aligns perfectly with my values and career aspirations. I am particularly drawn to your culture of "We learn & grow" and the collaborative environment where innovation is embraced.
+
+> "Strong analytical and problem-solving skills" and "Love learning and solving difficult problems within a team environment"
+
+My recent Software Engineer Intern role at HALO Systems demonstrates these core requirements. I engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, tackling complex real-time data visualization challenges. When faced with performance issues, I implemented client-side data filtering optimization that improved dashboard performance by 40% - showcasing my analytical approach to problem-solving. Additionally, I architected Python backend services for efficient real-time sensor data processing, demonstrating my ability to learn new technologies quickly and solve complex technical challenges.
+
+> "Enthusiastic and collaborative" with "Good interpersonal skills; both verbal and written"
+
+My collaborative spirit shines through both academic and professional experiences. During my internship, I worked closely with cross-functional teams to deliver solutions that directly impact agricultural efficiency - similar to EROAD's mission of creating meaningful technological impact. My Full-Stack Todo List Application project exemplifies my commitment to continuous learning, where I independently mastered React, .NET Core, and Azure deployment, achieving 99.9% API uptime and reducing deployment time by 70% through CI/CD implementation.
+
+> "Garage project or portfolio you can share with us"
+
+I'm excited to share my My Recipe Book project (github.com/realYushi/my-recipe-book), which demonstrates my passion for full-stack development and problem-solving. This comprehensive application showcases my ability to integrate diverse technologies - React Router, Node.js, MongoDB, Docker - while implementing creative solutions like web scraping with Puppeteer and rich text editing. This project reflects the innovative thinking and hands-on approach that EROAD values in its internship programme.
+
+My academic foundation at AUT (GPA 8.08/9.0) in Computer and Information Sciences, combined with my proven ability to learn and apply new technologies (Java, JavaScript, Python, cloud platforms), positions me well for your fast-paced tech environment. Having already gained experience with Agile methodologies and team collaboration, I'm prepared to participate meaningfully in stand-ups, sprint planning, and retrospectives from day one.
+
+I am confident that my blend of technical problem-solving skills, collaborative mindset, and genuine passion for impactful technology aligns perfectly with EROAD's internship programme. I am fully available for the November 2025 - February 2026 programme duration and eager to participate in the Assessment Centre Day on August 6th. I have attached my CV and academic transcript for your review and welcome the opportunity to discuss how I can contribute to making roads safer and more efficient.
+
+Kind regards,
+Yushi Cui

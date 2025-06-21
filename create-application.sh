@@ -24,7 +24,6 @@ echo "Creating application structure for $COMPANY_NAME..."
 mkdir -p "$COMPANY_DIR/company-research"
 mkdir -p "$COMPANY_DIR/job-details"
 mkdir -p "$COMPANY_DIR/documents"
-mkdir -p "$COMPANY_DIR/interview"
 mkdir -p "output/$COMPANY_NAME"
 
 # Copy templates
@@ -33,40 +32,8 @@ echo "Copying templates..."
 # Copy base resume
 cp "$TEMPLATE_DIR/resumes/base-resume.md" "$COMPANY_DIR/documents/resume.md"
 
-# Create a basic cover letter template
-cat > "$COMPANY_DIR/documents/cover-letter.md" << 'EOF'
-# Cover Letter for [Company Name] - [Position]
-
-## Header
-Yushi Cui  
-Auckland, New Zealand  
-realYushi@gmail.com  
-https://linkedin.com/in/yushi-cui-6043aa285  
-https://github.com/realYushi  
-
-[Date]
-
-[Hiring Manager Name]  
-[Company Name]  
-[Company Address]  
-
-## Letter Content
-
-Dear [Hiring Manager/Team],
-
-[Opening paragraph - mention the position and how you found it]
-
-[Body paragraph 1 - why you're interested in the company]
-
-[Body paragraph 2 - your relevant experience and skills]
-
-[Body paragraph 3 - what you can contribute]
-
-[Closing paragraph - next steps]
-
-Kind regards,  
-Yushi Cui
-EOF
+# Copy standard cover letter template
+cp "$TEMPLATE_DIR/cover-letters/templates/standard.md" "$COMPANY_DIR/documents/cover-letter.md"
 
 # Create company research files with basic templates
 cat > "$COMPANY_DIR/company-research/company-profile.md" << 'EOF'
@@ -153,24 +120,6 @@ cat > "$COMPANY_DIR/company-research/application-strategy.md" << 'EOF'
 
 EOF
 
-cat > "$COMPANY_DIR/company-research/interview-preparation.md" << 'EOF'
-# Interview Preparation: [Company Name]
-
-## Company Research Summary
-
-
-## Technical Topics to Review
-
-
-## Behavioral Questions Preparation
-
-
-## Questions to Ask Them
-
-
-## Project Examples to Discuss
-
-EOF
 
 # Create job details files
 cat > "$COMPANY_DIR/job-details/job-description.md" << 'EOF'
@@ -196,44 +145,9 @@ cat > "$COMPANY_DIR/job-details/job-description.md" << 'EOF'
 
 EOF
 
+# Copy analysis templates
 cp "$TEMPLATE_DIR/analysis/requirements-analysis-template.md" "$COMPANY_DIR/job-details/requirements-analysis.md"
 cp "$TEMPLATE_DIR/analysis/matching-skills-template.md" "$COMPANY_DIR/job-details/matching-skills.md"
-
-# Create interview preparation files
-cat > "$COMPANY_DIR/interview/preparation-notes.md" << 'EOF'
-# Interview Preparation Notes: [Company Name]
-
-## Research Summary
-
-
-## Technical Preparation
-
-
-## Behavioral Questions
-
-
-## Project Discussions
-
-
-## Questions for Them
-
-EOF
-
-cat > "$COMPANY_DIR/interview/questions-to-ask.md" << 'EOF'
-# Questions to Ask: [Company Name]
-
-## About the Role
-
-
-## About the Team
-
-
-## About the Company
-
-
-## About Growth & Development
-
-EOF
 
 echo "Application structure for $COMPANY_NAME created successfully!"
 echo "Directory structure:"
@@ -243,21 +157,20 @@ echo "  │   ├── company-profile.md"
 echo "  │   ├── culture-notes.md"
 echo "  │   ├── key-people.md"
 echo "  │   ├── application-strategy.md"
-echo "  │   └── interview-preparation.md"
 echo "  ├── documents/"
-echo "  │   ├── cover-letter.md"
-echo "  │   └── resume.md"
+echo "  │   ├── cover-letter.md (using standard template)"
+echo "  │   └── resume.md (using base template)"
 echo "  ├── job-details/"
 echo "  │   ├── job-description.md"
 echo "  │   ├── requirements-analysis.md"
 echo "  │   └── matching-skills.md"
-echo "  └── interview/"
-echo "      ├── preparation-notes.md"
-echo "      └── questions-to-ask.md"
+echo ""
+echo "Output directory created: output/$COMPANY_NAME/"
 echo ""
 echo "Next steps:"
 echo "1. Add the job description to $COMPANY_DIR/job-details/job-description.md"
 echo "2. Research the company and update the company profile and culture notes"
-echo "3. Analyze job requirements and update your resume and cover letter"
+echo "3. Analyze job requirements using the templates in job-details/"
+echo "4. Customize the cover letter and resume in documents/"
 echo ""
 echo "Good luck with your application!" 
