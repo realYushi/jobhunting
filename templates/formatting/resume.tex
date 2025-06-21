@@ -7,15 +7,7 @@
 %-------------------------------------------------------------------------------
 \documentclass[11pt, a4paper]{awesome-cv}
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
-% Comment out or remove the fontdir line
-% \fontdir[fonts/]
-
-% Override font settings to use system fonts
-\setmainfont{Arial}  % or any system font you prefer
-% Alternative options:
-% \setmainfont{Helvetica}
-% \setmainfont{Calibri}
-% \setmainfont{Times New Roman}
+\setmainfont{Arial}
 
 \colorlet{awesome}{awesome-red}
 \setbool{acvSectionColorHighlight}{true}
@@ -25,15 +17,14 @@
 % PERSONAL INFORMATION
 %-------------------------------------------------------------------------------
 \name{Yushi}{Cui}
-\position{Software Engineer Intern}
+\position{Software Engineer Intern{\enskip\cdotp\enskip}Full Stack Developer}
 \address{Auckland, New Zealand}
+
+\mobile{0220712250}
 \email{realYushi@gmail.com}
 \github{realYushi}
 \linkedin{yushi-cui-6043aa285}
-\homepage{https://github.com/realYushi}
-% \mobile{}
-% \photo[rectangle,edge,right]{profile.png} % Uncomment if you upload your photo
-\quote{"Permanent Resident - No visa sponsorship required"}
+\extrainfo{Permanent Resident Visa}
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -45,9 +36,9 @@
 % SUMMARY
 %-------------------------------------------------------------------------------
 \cvsection{Summary}
-\begin{cvparagraph}
+\begin{cventries}
 A second-year Computer Science student with professional internship experience in full-stack development. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.
-\end{cvparagraph}
+\end{cventries}
 
 %-------------------------------------------------------------------------------
 % EXPERIENCE
@@ -90,8 +81,8 @@ A second-year Computer Science student with professional internship experience i
   \cventry
     {Personal Project} % Role
     {Full-Stack Todo List Application} % Project
-    {github.com/realYushi/todo-list} % Link
-    {2023} % Date(s)
+    {Github Repo: \href{https://github.com/realYushi/todo-list}{View} } %Link
+    {2024} % Date(s)
     {
       \begin{cvitems}
         \item {Independently designed and developed a comprehensive task management system with modern, responsive UI using React and TypeScript with Tailwind CSS.}
@@ -103,8 +94,8 @@ A second-year Computer Science student with professional internship experience i
   \cventry
     {Personal Project} % Role
     {My Recipe Book: Full Stack Web App} % Project
-    {github.com/realYushi/my-recipe-book} % Link
-    {2023} % Date(s)
+    {Github Repo: \href{https://github.com/realYushi/my-recipe-book}{View} } %Link
+    {2025} % Date(s)
     {
       \begin{cvitems}
         \item {Developed a full-stack recipe management application using React Router, Node.js (Express.js), and MongoDB.}
