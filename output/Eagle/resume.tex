@@ -1,0 +1,195 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for CV/Resume
+% Eagle Technology GIS Summer Intern Programme Application
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+\documentclass[11pt, a4paper]{awesome-cv}
+
+% Page geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Font configuration
+\setmainfont{Arial}
+
+% Color scheme
+\colorlet{awesome}{awesome-red}
+\setbool{acvSectionColorHighlight}{true}
+
+% Header separator
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+%-------------------------------------------------------------------------------
+% PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+\name{Yushi}{Cui}
+\position{GIS Summer Intern Programme Candidate{\enskip\cdotp\enskip}Computer Science Student}
+\address{Auckland, New Zealand}
+
+\email{realYushi@gmail.com}
+\github{realYushi}
+\linkedin{yushi-cui-6043aa285}
+\extrainfo{New Zealand Permanent Resident}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Header and footer
+\makecvheader[C]
+\makecvfooter{\today}{Yushi Cui~~~\textperiodcentered~~~Résumé}{\thepage}
+
+%-------------------------------------------------------------------------------
+% PERSONAL STATEMENT
+%-------------------------------------------------------------------------------
+\cvsection{Personal Statement}
+\begin{cvparagraph}
+I am a dedicated second-year Computer Science student with hands-on experience in geospatial data visualization and a genuine passion for spatial technologies. My career goal is to become a skilled GIS professional who leverages location intelligence to solve real-world challenges in conservation, emergency management, and community development. I am applying for the GIS Summer Intern Programme because I am eager to deepen my understanding of ArcGIS systems while contributing to Eagle Technology's mission of bringing excellence in GIS solutions to New Zealand. My strong analytical foundation, proven learning agility, and commitment to continuous professional development make me well-suited for this intensive programme.
+\end{cvparagraph}
+
+%-------------------------------------------------------------------------------
+% EDUCATION
+%-------------------------------------------------------------------------------
+\cvsection{Education}
+\begin{cventries}
+  \cventry
+    {Bachelor of Computer and Information Sciences} % Degree
+    {Auckland University of Technology} % Institution
+    {Auckland, New Zealand} % Location
+    {Jul. 2023 -- Jul. 2026 (Expected)} % Date(s)
+    {
+      \begin{cvitems}
+        \item {\textbf{GPA: 8.08/9.0} (Top 10\% of cohort)}
+        \item {\textbf{Relevant Coursework:} Data Structures and Algorithms, Database Design and Implementation, Software Engineering Principles, System Analysis and Design, Mathematics for Computing}
+        \item {\textbf{Academic Achievements:} Consistent Dean's List recognition for academic excellence, strong foundation in analytical thinking and problem-solving methodologies}
+      \end{cvitems}
+    }
+\end{cventries}
+
+%-------------------------------------------------------------------------------
+% TECHNICAL SKILLS
+%-------------------------------------------------------------------------------
+\cvsection{Technical Skills}
+\begin{cvskills}
+  \cvskill{Programming Languages}{Python, JavaScript/TypeScript, C\#, SQL}
+  \cvskill{GIS \& Mapping}{GeoJSON, Mapbox, Spatial data processing, Real-time monitoring}
+  \cvskill{Web Technologies}{Vue.js, React, .NET Core, Node.js, Entity Framework}
+  \cvskill{Tools \& Platforms}{Git, Azure, Docker, GitHub Actions, SQL Server, MongoDB}
+\end{cvskills}
+
+%-------------------------------------------------------------------------------
+% WORK EXPERIENCE
+%-------------------------------------------------------------------------------
+\cvsection{Work Experience}
+\begin{cventries}
+  \cventry
+    {Software Engineer Intern} % Job title
+    {HALO Systems by Tag IT} % Organization
+    {Auckland, New Zealand} % Location
+    {Dec. 2024 -- Feb. 2025} % Date(s)
+    {
+      \begin{cvitems}
+        \item {Engineered production-grade HMI Dashboard with geospatial visualization using Mapbox and GeoJSON for agricultural effluent management across multiple farm locations}
+        \item {Implemented intuitive map-based monitoring system providing farmers with real-time spatial data visualization and analysis capabilities}
+        \item {Architected Python backend services for efficient real-time spatial data processing and analysis from geographically distributed monitoring points}
+        \item {Improved dashboard performance by 40\% through optimization of client-side data filtering and visualization techniques}
+        \item {Developed reusable SVG-based component library, reducing development time for similar projects by 60\%}
+        \item {Collaborated with cross-functional team to deliver solutions supporting sustainable farming practices through spatial technology}
+      \end{cvitems}
+    }
+
+  \cventry
+    {Chef De Partie} % Job title
+    {Costas Taverna Greek Restaurant} % Organization
+    {Christchurch, New Zealand} % Location
+    {Jun. 2019 -- Nov. 2022} % Date(s)
+    {
+      \begin{cvitems}
+        \item {Led team of 5 kitchen staff in high-pressure, fast-paced environment demonstrating strong analytical thinking and quality control under tight deadlines}
+        \item {Improved operational efficiency by 25\% through implementation of new workflow processes and systematic problem-solving approaches}
+        \item {Developed excellent communication and teamwork skills in collaborative environment requiring precise coordination and attention to detail}
+      \end{cvitems}
+    }
+\end{cventries}
+
+%-------------------------------------------------------------------------------
+% PROJECTS
+%-------------------------------------------------------------------------------
+\cvsection{Projects}
+\begin{cventries}
+  \cventry
+    {HALO Systems Internship Project} % Role
+    {Agricultural Monitoring Dashboard with Geospatial Visualization} % Project
+    {} % Link
+    {2024-2025} % Date(s)
+    {
+      \begin{cvitems}
+        \item {Designed and implemented production-grade monitoring system using Vue.js, TypeScript, and Python for real-time agricultural data visualization}
+        \item {Integrated Mapbox and GeoJSON for real-time spatial data visualization across multiple farm locations, enabling farmers to visualize spatial patterns in agricultural data}
+        \item {Developed backend services for processing sensor data from geographically distributed monitoring points with efficient real-time data handling capabilities}
+        \item {Created intuitive map-based interface enabling farmers to visualize spatial patterns and make data-driven decisions for agricultural management}
+        \item {Achieved 40\% performance improvement through optimized data filtering and visualization techniques for large-scale geospatial datasets}
+      \end{cvitems}
+    }
+
+  \cventry
+    {Personal Project} % Role
+    {Full-Stack Todo List Application} % Project
+    {\href{https://github.com/realYushi/todo-list}{github.com/realYushi/todo-list}} % Link
+    {2024} % Date(s)
+    {
+      \begin{cvitems}
+        \item {Independently designed comprehensive task management system with modern, responsive UI using React and TypeScript with Tailwind CSS}
+        \item {Built robust backend using .NET Core and Entity Framework with SQL Server integration demonstrating database design and management skills}
+        \item {Implemented automated deployment pipeline using GitHub Actions and Azure services achieving 99.9\% API uptime}
+        \item {Reduced deployment time by 70\% through CI/CD implementation showcasing DevOps and cloud platform expertise}
+      \end{cvitems}
+    }
+
+  \cventry
+    {Personal Project} % Role
+    {Recipe Management Web Application} % Project
+    {\href{https://github.com/realYushi/my-recipe-book}{github.com/realYushi/my-recipe-book}} % Link
+    {2024} % Date(s)
+    {
+      \begin{cvitems}
+        \item {Developed full-stack application using React, Node.js (Express.js), and MongoDB with comprehensive data processing functionality}
+        \item {Implemented data processing functionality with web scraping capabilities demonstrating data analysis and automation skills}
+        \item {Designed responsive UI using modern frameworks (Tailwind CSS, Radix UI) with focus on user experience and accessibility}
+        \item {Containerized application using Docker for streamlined development and deployment, established robust authentication using Firebase}
+      \end{cvitems}
+    }
+\end{cventries}
+
+%-------------------------------------------------------------------------------
+% CERTIFICATIONS
+%-------------------------------------------------------------------------------
+\cvsection{Certifications}
+\begin{cvhonors}
+  \cvhonor{Microsoft Azure AI Fundamentals (AI-900)}{Demonstrates commitment to continuous learning and cloud technology expertise}{2024}{}
+\end{cvhonors}
+
+%-------------------------------------------------------------------------------
+% EXTRA-CURRICULAR ACTIVITIES
+%-------------------------------------------------------------------------------
+\cvsection{Extra-Curricular Activities}
+\begin{cvitems}
+  \item {\textbf{Technology \& Professional Development:} Active participant in software development communities and coding challenges, regular contributor to open-source projects on GitHub (Arctic Code Vault Contributor), continuous learning through online courses and technical workshops, building professional network of 200+ connections in technology sector}
+  \item {\textbf{Problem-Solving \& Continuous Learning:} Regular participant in LeetCode algorithmic challenges to enhance analytical thinking and problem-solving methodologies, pursuing additional certifications in cloud computing and software architecture, active engagement with emerging technologies and industry best practices}
+  \item {\textbf{Community Involvement:} Interest in conservation and environmental sustainability projects, appreciation for community-focused initiatives and volunteer opportunities, commitment to using technology for positive social and environmental impact, aligning with Eagle Technology's community engagement values}
+\end{cvitems}
+
+%-------------------------------------------------------------------------------
+% ADDITIONAL INFORMATION
+%-------------------------------------------------------------------------------
+\cvsection{Additional Information}
+\begin{cvitems}
+  \item {\textbf{Work Authorization:} New Zealand Permanent Resident - authorized to work full-time without restrictions}
+  \item {\textbf{Availability:} Fully available for 10-week programme duration (mid-November to mid-February)}
+  \item {\textbf{Location Preference:} Flexible across Auckland, Wellington, or Christchurch offices}
+  \item {\textbf{Professional Interests:} GIS applications in conservation, emergency management, and community development; spatial data analysis; location intelligence for decision-making}
+  \item {\textbf{Personal Qualities:} Strong analytical mindset, excellent learning agility, collaborative team player, detail-oriented, adaptable to fast-paced environments}
+\end{cvitems}
+
+\end{document} 

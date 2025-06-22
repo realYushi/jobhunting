@@ -2,6 +2,18 @@
     "applications": {
         "active": [
             {
+                "company": "Eagle Technology",
+                "position": "GIS Summer Intern Programme",
+                "date_applied": "2025-06-22",
+                "application_url": "https://eagle.co.nz/careers",
+                "contact_person": "HR Team",
+                "contact_email": "careers@eagle.co.nz",
+                "status": "Applied",
+                "next_steps": "Wait for response",
+                "priority": "High",
+                "notes": "Leading GIS solutions provider in New Zealand, 10-week intensive programme, flexible locations (Auckland/Wellington/Christchurch)"
+            },
+            {
                 "company": "Serato",
                 "position": "Software Engineer Internship",
                 "date_applied": "2025-06-21",
@@ -38,7 +50,7 @@
         "default_output_format": "pdf"
     },
     "statistics": {
-        "applications_sent": 2,
+        "applications_sent": 3,
         "response_rate": 0,
         "interview_rate": 0,
         "offer_rate": 0
