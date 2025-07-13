@@ -12,16 +12,20 @@
                 "next_steps": "Wait for response",
                 "priority": "High",
                 "notes": "Leading GIS solutions provider in New Zealand, 10-week intensive programme, flexible locations (Auckland/Wellington/Christchurch)"
-            },
+            }
+        ],
+        "interviews": [],
+        "offers": [],
+        "rejected": [
             {
                 "company": "Serato",
                 "position": "Software Engineer Internship",
                 "date_applied": "2025-06-21",
+                "date_rejected": "2025-07-13",
                 "application_url": "https://serato.com/careers",
                 "contact_person": "HR Team",
                 "contact_email": "careers@serato.com",
-                "status": "Applied",
-                "next_steps": "Follow up in one week",
+                "status": "Rejected",
                 "priority": "High",
                 "notes": "Great company culture, perfect match for skills"
             },
@@ -29,18 +33,15 @@
                 "company": "Eroad",
                 "position": "2025-2026 Summer Internship Programme (Software Engineer)",
                 "date_applied": "2025-06-21",
+                "date_rejected": "2025-07-13",
                 "application_url": "https://eroad.com/careers",
                 "contact_person": "HR Team",
                 "contact_email": "careers@eroad.com",
-                "status": "Applied",
-                "next_steps": "Wait for Assessment Centre Day invitation (August 6, 2025)",
+                "status": "Rejected",
                 "priority": "High",
                 "notes": "Transportation technology leader, world-first GNSS/cellular road charging, deadline June 27, 2025"
             }
         ],
-        "interviews": [],
-        "offers": [],
-        "rejected": [],
         "withdrawn": []
     },
     "settings": {
@@ -51,9 +52,10 @@
     },
     "statistics": {
         "applications_sent": 3,
-        "response_rate": 0,
+        "response_rate": 66.7,
         "interview_rate": 0,
-        "offer_rate": 0
+        "offer_rate": 0,
+        "rejection_rate": 66.7
     },
     "tags": [
         "remote",
