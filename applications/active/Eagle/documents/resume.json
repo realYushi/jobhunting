@@ -11,7 +11,7 @@
     },
     "customFields": [
       {
-        "id": "0ee4lludojq6q52z9bl2ae9c",
+        "id": "uu3em2rrfxczwprkn8j7rrgt",
         "icon": "envelope",
         "name": "Visa Status",
         "value": "Permanent Resident - No visa sponsorship required"
@@ -35,18 +35,18 @@
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "yjzlpvbboumxii7g4ax27wsr",
-      "content": "<p>A third-year Computer Science student with professional internship experience in frontend development with expertise in modern JavaScript frameworks. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>"
+      "id": "summary",
+      "content": "<p>A third-year Computer Science student with professional internship experience in full-stack development. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>"
     },
     "experience": {
       "name": "Experience",
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "yei3hb37dmye1db44hs2t2nm",
+      "id": "experience",
       "items": [
         {
-          "id": "289ox84qico7rah28sz2shhz",
+          "id": "3i5z4i8ruxptz7mz57upi5s3",
           "visible": true,
           "company": "HALO Systems by Tag IT",
           "position": "Software Engineer Intern",
@@ -59,7 +59,7 @@
           }
         },
         {
-          "id": "cv85ssmx7mtzddjlt40t6l5z",
+          "id": "93fl9d1wgi2wa793x5x09ob1",
           "visible": true,
           "company": "Costas Taverna Greek Restaurant",
           "position": "Chef De Partie",
@@ -78,10 +78,10 @@
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "b8da2tsxodinevam4klco1a6",
+      "id": "education",
       "items": [
         {
-          "id": "yc9ogrtink1q4abgberway1c",
+          "id": "ixrf37auffwiusw25u6tcjef",
           "visible": true,
           "institution": "Auckland University of Technology",
           "studyType": "Bachelor of Computer and Information Sciences",
@@ -101,10 +101,10 @@
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "iwd4c4cjxbdikt3rpnquts6v",
+      "id": "projects",
       "items": [
         {
-          "id": "4c86rg0u53l965y1736nk3ia",
+          "id": "e49npeg7to54j5w7qbpf0bty",
           "visible": true,
           "name": "Full-Stack Todo List Application",
           "description": "Comprehensive task management system with modern UI and automated deployment",
@@ -126,7 +126,7 @@
           }
         },
         {
-          "id": "he9c8vi7018sp2qft09u6od5",
+          "id": "36y25j2m24v1b1af1zrh33nm",
           "visible": true,
           "name": "My Recipe Book: Full Stack Web App",
           "description": "Full-stack recipe management application with web scraping and rich text editing",
@@ -156,14 +156,14 @@
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "2p3vk1w8kp6iz8ptxlo2pgcz",
+      "id": "skills",
       "items": [
         {
-          "id": "t55obp1c6hmlbcsqca525ouh",
+          "id": "bmh6yz3du8a639zp0efnc25g",
           "visible": true,
           "name": "Languages & Frameworks",
           "description": "Python, JavaScript/TypeScript, C#, Vue.js, React, Node.js, .NET Core",
-          "level": 5,
+          "level": 4,
           "keywords": [
             "Python",
             "JavaScript",
@@ -176,7 +176,7 @@
           ]
         },
         {
-          "id": "ctwn0vtr4aepngw0jq5hatak",
+          "id": "a4uui3u077p38rau3e3eo08r",
           "visible": true,
           "name": "Database & Cloud",
           "description": "MongoDB, SQL Server, Azure, Firebase",
@@ -189,7 +189,7 @@
           ]
         },
         {
-          "id": "qyurolwr6hywqd5rapdi2qk4",
+          "id": "ydwum14tnep69acsddl2t67n",
           "visible": true,
           "name": "Tools & DevOps",
           "description": "Git, Docker, GitHub Actions, Tailwind CSS, Vitest",
@@ -203,7 +203,7 @@
           ]
         },
         {
-          "id": "6wz1ip4p0jd81si61duhjp2l",
+          "id": "kwa64b9tkotgoxd8l2gtsvk2",
           "visible": true,
           "name": "Professional",
           "description": "Agile methodologies, System design, Team collaboration",
@@ -221,10 +221,10 @@
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "szq3uinmls7hdr3y7ydqg78t",
+      "id": "certifications",
       "items": [
         {
-          "id": "d67lot5ydl3a4gg5lssnq5ce",
+          "id": "3g13z3ebby80c9yotmevrbvw",
           "visible": true,
           "name": "Microsoft Azure AI Fundamentals (AI-900)",
           "issuer": "Microsoft",
@@ -242,10 +242,10 @@
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "pp5sq70knzlxs46l6l585n62",
+      "id": "interests",
       "items": [
         {
-          "id": "j25641u3tfh2uq8knxq80iau",
+          "id": "ootjgbdr68eao3w7f76f7cnm",
           "visible": true,
           "name": "Technology & Professional Development",
           "keywords": [
@@ -255,7 +255,7 @@
           ]
         },
         {
-          "id": "2u84sw86555zup46npa9erzs",
+          "id": "hkq8owep2qsnr61etepla7pk",
           "visible": true,
           "name": "Culinary Arts",
           "keywords": [
@@ -265,7 +265,7 @@
           ]
         },
         {
-          "id": "sqvg7az4nqpl03toh6rvuu72",
+          "id": "czyqnv7jndjijx5ujr4gj16u",
           "visible": true,
           "name": "Problem Solving",
           "keywords": [
@@ -275,7 +275,7 @@
           ]
         },
         {
-          "id": "l0y0ttsvfzinpaj1u25s9v25",
+          "id": "sk354b0fp3dt51gx7wyvqxsh",
           "visible": true,
           "name": "Continuous Learning",
           "keywords": [
@@ -291,17 +291,17 @@
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "hzmrv0s0sw2cneypgwmfszwq",
+      "id": "languages",
       "items": [
         {
-          "id": "2k28oqojfo2a6e1h6gz3ykzy",
+          "id": "s8z4vjeh3j0saoxhcb045uez",
           "visible": true,
           "name": "English",
           "description": "Professional working proficiency",
           "level": 4
         },
         {
-          "id": "x4xw38dfkctjq4vy2wil8bw7",
+          "id": "8098d4u1g2rs0zgh9rc5w1v0",
           "visible": true,
           "name": "Chinese (Mandarin)",
           "description": "Native speaker",
@@ -314,10 +314,10 @@
       "columns": 1,
       "separateLinks": true,
       "visible": true,
-      "id": "03f924f3zh7oz1zaogqiy4mo",
+      "id": "profiles",
       "items": [
         {
-          "id": "ucu013qawbip9ck24k5a9gg3",
+          "id": "mkbv45xz4ipm2xb17ke61lp0",
           "visible": true,
           "network": "GitHub",
           "username": "realYushi",
@@ -328,7 +328,7 @@
           }
         },
         {
-          "id": "zl8ozntvjifwgna74cpkxz5n",
+          "id": "rsxske8bj2oh5pkjvgrnzwse",
           "visible": true,
           "network": "LinkedIn",
           "username": "yushi-cui-6043aa285",
@@ -345,7 +345,7 @@
       "columns": 1,
       "separateLinks": true,
       "visible": false,
-      "id": "p1oeo2pbh1o83nutav9z1ing",
+      "id": "awards",
       "items": []
     },
     "publications": {
@@ -353,7 +353,7 @@
       "columns": 1,
       "separateLinks": true,
       "visible": false,
-      "id": "fgfo9m8udkpi0o52ml33ov4m",
+      "id": "publications",
       "items": []
     },
     "references": {
@@ -361,7 +361,7 @@
       "columns": 1,
       "separateLinks": true,
       "visible": false,
-      "id": "4xbga3imxrlc8uiki04dhdca",
+      "id": "references",
       "items": []
     },
     "volunteer": {
@@ -369,7 +369,7 @@
       "columns": 1,
       "separateLinks": true,
       "visible": false,
-      "id": "gy85v10b5no2oqcfguchpy68",
+      "id": "volunteer",
       "items": []
     },
     "custom": {}
@@ -382,12 +382,13 @@
           "profiles",
           "summary",
           "experience",
-          "projects"
+          "education",
+          "projects",
+          "certifications",
+          "interests"
         ],
         [
           "skills",
-          "education",
-          "certifications",
           "languages"
         ]
       ]
@@ -422,6 +423,6 @@
       "hideIcons": false,
       "underlineLinks": true
     },
-    "notes": "Customized for TestCompany"
+    "notes": "Customized for Eagle"
   }
 }

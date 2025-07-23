@@ -1,14 +1,11 @@
 ---
-description: Systematically analyze job descriptions to extract requirements, identify skill matches, and generate strategic insights for tailored applications.
-globs:
+description: job description analysis or requirements extraction
 alwaysApply: false
 ---
 
-# Job Description Analyzer Rules
+# Job Description Analysis Expert
 
-## Purpose
-
-Systematically analyze job descriptions to extract requirements, identify skill matches, and generate strategic insights for tailored applications.
+You analyze job descriptions to extract requirements, assess skills alignment, and generate strategic application insights.
 
 ## Input/Output Files
 
@@ -16,97 +13,116 @@ Systematically analyze job descriptions to extract requirements, identify skill 
 -   **Outputs**:
     -   `applications/active/{company-name}/job-details/requirements-analysis.md`
     -   `applications/active/{company-name}/job-details/matching-skills.md`
--   **Templates**:
-    -   `templates/analysis/requirements-analysis-template.md`
-    -   `templates/analysis/matching-skills-template.md`
+-   **Templates**: `templates/analysis/*.md`
 
 ## Analysis Framework
 
-### 1. Requirements Extraction
+### 1. Requirement Extraction (20 min)
 
--   **Technical Skills**: Programming languages, frameworks, tools, certifications
--   **Soft Skills**: Leadership, communication, problem-solving, adaptability
--   **Experience Levels**: Junior/Mid/Senior indicators, years of experience
--   **Hidden Requirements**: Skills implied by role context but not explicitly stated
+-   **Technical Skills**: Languages, frameworks, tools, certifications
+-   **Soft Skills**: Leadership, communication, problem-solving
+-   **Experience**: Level indicators, years required, industry context
+-   **Hidden Requirements**: Implied skills from responsibilities
 
 ### 2. Prioritization Matrix
 
--   **Must-Have**: Deal-breaker requirements, explicitly required
--   **Strongly Preferred**: Mentioned multiple times or emphasized
--   **Nice-to-Have**: Listed but not emphasized
--   **Bonus**: Additional differentiating skills
+-   **Critical (Must-Have)**: Deal-breaker requirements, explicitly emphasized
+-   **High Priority**: Important for success, mentioned prominently
+-   **Medium Priority**: Preferred but not essential
+-   **Low Priority**: Bonus skills, future growth areas
 
-### 3. Skills Matching Analysis
+### 3. Skills Scoring (25 min)
 
--   **Technical Alignment**: Score against candidate skills (90-100%, 70-89%, 50-69%, 0-49%)
--   **Soft Skills Evaluation**: Match behavioral requirements against experience
--   **Overall Match Score**: Weighted percentage based on requirements priority
--   **Gap Analysis**: Identify missing skills and preparation recommendations
+-   **Expert (90-100%)**: Deep expertise, mentoring capability
+-   **Proficient (70-89%)**: Strong working knowledge
+-   **Competent (50-69%)**: Basic knowledge, needs some support
+-   **Novice (0-49%)**: Limited experience, requires learning
 
-## Analysis Process
+### 4. Strategic Analysis (20 min)
 
-### Step 1: Requirements Extraction
+-   Calculate weighted match percentage
+-   Identify competitive advantages
+-   Develop gap mitigation strategies
+-   Extract ATS keywords with frequency analysis
 
-1. Parse job description for all technical and soft skill requirements
-2. Categorize by priority using the prioritization matrix
-3. Identify context and usage patterns for each skill
-4. Extract culture indicators and work style preferences
-5. Note implicit requirements from role responsibilities
+## Key Commands
 
-### Step 2: Generate Requirements Analysis
+-   **"Analyze job description for [Company] [Role]"**
+-   **"Generate requirements analysis for [Company]"**
+-   **"Create skills matching report for [Company] [Role]"**
+-   **"Extract keywords for ATS optimization from [Company] job"**
 
-1. Use `templates/analysis/requirements-analysis-template.md`
-2. Document role overview: level, department, reporting structure, location
-3. Categorize technical requirements by priority
-4. Extract soft skills with specific context
-5. Analyze responsibilities and time allocation
-6. Identify potential red flags or unclear requirements
+## Quality Checklist
 
-### Step 3: Generate Skills Matching Analysis
+-   [ ] All requirements extracted and prioritized
+-   [ ] Skills scored with realistic assessments
+-   [ ] Hidden requirements identified
+-   [ ] Keywords extracted with frequency data
+-   [ ] Gap mitigation strategies provided
+-   [ ] Application recommendations specific and actionable
 
-1. Use `templates/analysis/matching-skills-template.md`
-2. Score technical and soft skills alignment
-3. Calculate weighted overall match percentage
-4. Extract high and medium priority keywords
-5. Provide application optimization recommendations
-6. Create timeline-based preparation action plan
-7. Assess application timing and success probability
+## Output Integration
 
-## Commands
+Feed analysis directly into document-creation and document-formatting processes for strategic resume and cover letter development.
 
--   "Analyze job description for [company-name] [role-title]"
--   "Generate requirements analysis for [company-name]"
--   "Create skills matching report for [company-name] [role-title]"
--   "Assess application readiness for [company-name] position"
+# Job Description Analysis Expert
 
-## Quality Assurance
+You analyze job descriptions to extract requirements, assess skills alignment, and generate strategic application insights.
 
--   [ ] All requirements extracted and categorized by priority
--   [ ] Soft skills identified with specific context
--   [ ] Hidden requirements detected through role analysis
--   [ ] Realistic skill gap assessment completed
--   [ ] Actionable recommendations provided
--   [ ] Strategic keywords identified with frequency analysis
--   [ ] Application timeline established
--   [ ] Risk factors and mitigation strategies identified
--   [ ] Templates filled with specific, relevant content
--   [ ] No generic placeholder text remaining
+## Input/Output Files
 
-## Integration
+-   **Input**: `applications/active/{company-name}/job-details/job-description.md`
+-   **Outputs**:
+    -   `applications/active/{company-name}/job-details/requirements-analysis.md`
+    -   `applications/active/{company-name}/job-details/matching-skills.md`
+-   **Templates**: `templates/analysis/*.md`
 
--   **Next Step**: Use analyses for document creation (cover letter & resume)
--   **Reference**: Company research and application strategy documents
--   **Output Usage**: Feed into document-creation and document-formatting processes
+## Analysis Framework
 
-## Best Practices
+### 1. Requirement Extraction (20 min)
 
--   Use latest template versions
--   Customize analysis depth based on role complexity
--   Cross-reference with company research for cultural alignment
--   Maintain consistency in scoring across analyses
--   Update templates based on feedback and experience
--   Always use the latest template versions
--   Customize analysis depth based on role complexity
--   Cross-reference with company research for cultural alignment
--   Update templates based on analysis experience and feedback
--   Maintain consistency in scoring and categorization across analyses
+-   **Technical Skills**: Languages, frameworks, tools, certifications
+-   **Soft Skills**: Leadership, communication, problem-solving
+-   **Experience**: Level indicators, years required, industry context
+-   **Hidden Requirements**: Implied skills from responsibilities
+
+### 2. Prioritization Matrix
+
+-   **Critical (Must-Have)**: Deal-breaker requirements, explicitly emphasized
+-   **High Priority**: Important for success, mentioned prominently
+-   **Medium Priority**: Preferred but not essential
+-   **Low Priority**: Bonus skills, future growth areas
+
+### 3. Skills Scoring (25 min)
+
+-   **Expert (90-100%)**: Deep expertise, mentoring capability
+-   **Proficient (70-89%)**: Strong working knowledge
+-   **Competent (50-69%)**: Basic knowledge, needs some support
+-   **Novice (0-49%)**: Limited experience, requires learning
+
+### 4. Strategic Analysis (20 min)
+
+-   Calculate weighted match percentage
+-   Identify competitive advantages
+-   Develop gap mitigation strategies
+-   Extract ATS keywords with frequency analysis
+
+## Key Commands
+
+-   **"Analyze job description for [Company] [Role]"**
+-   **"Generate requirements analysis for [Company]"**
+-   **"Create skills matching report for [Company] [Role]"**
+-   **"Extract keywords for ATS optimization from [Company] job"**
+
+## Quality Checklist
+
+-   [ ] All requirements extracted and prioritized
+-   [ ] Skills scored with realistic assessments
+-   [ ] Hidden requirements identified
+-   [ ] Keywords extracted with frequency data
+-   [ ] Gap mitigation strategies provided
+-   [ ] Application recommendations specific and actionable
+
+## Output Integration
+
+Feed analysis directly into document-creation and document-formatting processes for strategic resume and cover letter development.

@@ -1,15 +1,17 @@
 #!/bin/bash
 
-# Script to create a new job application folder structure
+# Script to create a new job application folder structure for JSON-based workflow
 
 # Check if company name is provided
 if [ -z "$1" ]; then
   echo "Error: Please provide a company name."
-  echo "Usage: $0 <company-name>"
+  echo "Usage: $0 <company-name> [role-type]"
+  echo "Role types: frontend, backend, fullstack, devops, data"
   exit 1
 fi
 
 COMPANY_NAME=$1
+ROLE_TYPE=${2:-"fullstack"}  # Default to fullstack if not specified
 COMPANY_DIR="applications/active/$COMPANY_NAME"
 TEMPLATE_DIR="templates"
 
@@ -24,13 +26,14 @@ echo "Creating application structure for $COMPANY_NAME..."
 mkdir -p "$COMPANY_DIR/company-research"
 mkdir -p "$COMPANY_DIR/job-details"
 mkdir -p "$COMPANY_DIR/documents"
-mkdir -p "output/$COMPANY_NAME"
+mkdir -p "$COMPANY_DIR/interview"
 
 # Copy templates
 echo "Copying templates..."
 
-# Copy base resume
-cp "$TEMPLATE_DIR/resumes/base-resume.md" "$COMPANY_DIR/documents/resume.md"
+# Generate JSON resume for specific role
+echo "Generating JSON resume for $ROLE_TYPE role..."
+python tools/scripts/json-resume-manager.py --company "$COMPANY_NAME" --role "$ROLE_TYPE" --output "$COMPANY_DIR/documents/resume.json"
 
 # Copy standard cover letter template
 cp "$TEMPLATE_DIR/cover-letters/templates/standard.md" "$COMPANY_DIR/documents/cover-letter.md"
@@ -49,128 +52,102 @@ cat > "$COMPANY_DIR/company-research/company-profile.md" << 'EOF'
 
 ## Mission & Values
 
-
-## Products & Services
-
+## Business Model
 
 ## Recent News & Achievements
 
+## Key Technologies
 
-## Company Culture
-
-
-## Notable Leadership
-
+## Competitive Advantages
 EOF
 
 cat > "$COMPANY_DIR/company-research/culture-notes.md" << 'EOF'
-# Culture Notes: [Company Name]
+# Culture & Work Environment: [Company Name]
 
 ## Work Environment
+- **Remote/Hybrid/Office**: 
+- **Team Size**: 
+- **Work Hours**: 
 
+## Company Culture
+- **Values**: 
+- **Communication Style**: 
+- **Collaboration Approach**: 
 
-## Company Values in Practice
+## Learning & Development
+- **Growth Opportunities**: 
+- **Learning Culture**: 
+- **Career Paths**: 
 
+## Diversity & Inclusion
 
-## Employee Reviews & Insights
-
-
-## Benefits & Perks
-
-
-## Remote/Hybrid Policy
-
-
-## Growth Opportunities
-
+## Employee Benefits
 EOF
 
 cat > "$COMPANY_DIR/company-research/key-people.md" << 'EOF'
 # Key People: [Company Name]
 
-## Hiring Manager/Contact
+## Leadership Team
+- **CEO**: 
+- **CTO**: 
+- **Head of Engineering**: 
 
+## Hiring Manager
+- **Name**: 
+- **Title**: 
+- **Background**: 
 
-## Team Leadership
+## Team Members
+- **Potential Teammates**: 
+- **Team Lead**: 
 
-
-## Company Leadership
-
-
-## Notable Team Members
-
+## Company Alumni
+- **Notable Alumni**: 
+- **Career Paths**: 
 EOF
 
-cat > "$COMPANY_DIR/company-research/application-strategy.md" << 'EOF'
-# Application Strategy: [Company Name]
-
-## Key Points to Emphasize
-
-
-## Skills to Highlight
-
-
-## Company-Specific Keywords
-
-
-## Potential Challenges/Gaps
-
-
-## Follow-up Strategy
-
-EOF
-
-
-# Create job details files
+# Create job details templates
 cat > "$COMPANY_DIR/job-details/job-description.md" << 'EOF'
-# Job Description: [Position] at [Company Name]
+# Job Description: [Position Title] at [Company Name]
 
-## Original Job Posting
-[Paste the full job description here]
+## Position Overview
+- **Title**: 
+- **Department**: 
+- **Location**: 
+- **Type**: Full-time/Part-time/Contract
 
-## Key Requirements
-### Technical Skills
+## Responsibilities
 
+## Requirements
+### Must-Have
+### Preferred
+### Nice-to-Have
 
-### Soft Skills
+## Benefits & Compensation
 
-
-### Experience Level
-
-
-## Nice to Have
-
-
-## Compensation & Benefits
-
+## Application Deadline
 EOF
 
-# Copy analysis templates
 cp "$TEMPLATE_DIR/analysis/requirements-analysis-template.md" "$COMPANY_DIR/job-details/requirements-analysis.md"
 cp "$TEMPLATE_DIR/analysis/matching-skills-template.md" "$COMPANY_DIR/job-details/matching-skills.md"
 
-echo "Application structure for $COMPANY_NAME created successfully!"
-echo "Directory structure:"
-echo "  $COMPANY_DIR/"
-echo "  ├── company-research/"
-echo "  │   ├── company-profile.md"
-echo "  │   ├── culture-notes.md"
-echo "  │   ├── key-people.md"
-echo "  │   ├── application-strategy.md"
-echo "  ├── documents/"
-echo "  │   ├── cover-letter.md (using standard template)"
-echo "  │   └── resume.md (using base template)"
-echo "  ├── job-details/"
-echo "  │   ├── job-description.md"
-echo "  │   ├── requirements-analysis.md"
-echo "  │   └── matching-skills.md"
 echo ""
-echo "Output directory created: output/$COMPANY_NAME/"
+echo "✅ Application structure created successfully!"
 echo ""
-echo "Next steps:"
-echo "1. Add the job description to $COMPANY_DIR/job-details/job-description.md"
-echo "2. Research the company and update the company profile and culture notes"
-echo "3. Analyze job requirements using the templates in job-details/"
-echo "4. Customize the cover letter and resume in documents/"
+echo "📁 Created directories:"
+echo "  - $COMPANY_DIR/company-research/"
+echo "  - $COMPANY_DIR/job-details/"
+echo "  - $COMPANY_DIR/documents/"
 echo ""
-echo "Good luck with your application!" 
+echo "📄 Generated files:"
+echo "  - JSON resume: $COMPANY_DIR/documents/resume.json (optimized for $ROLE_TYPE)"
+echo "  - Cover letter template: $COMPANY_DIR/documents/cover-letter.md"
+echo "  - Company research templates"
+echo "  - Job analysis templates"
+echo ""
+echo "🚀 Next steps:"
+echo "  1. Fill in job description: $COMPANY_DIR/job-details/job-description.md"
+echo "  2. Research company: $COMPANY_DIR/company-research/"
+echo "  3. Analyze job requirements: Use job-description-analyzer"
+echo "  4. Customize documents based on analysis"
+echo "  5. Import JSON resume to Reactive Resume for final PDF" 

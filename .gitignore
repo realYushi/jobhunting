@@ -1,0 +1,66 @@
+# macOS system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+.cursor/
+*~
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# PDF outputs (generated files)
+output/
+*.pdf
+
+# Personal/sensitive information
+**/personal-info.json
+**/contact-details.json
+cover-letters-personal/
+resumes-personal/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Application specific
+applications/active/*/documents/*.pdf
+applications/*/interview/notes-*.md
+
+# Node modules (if using any JS tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log 
