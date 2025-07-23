@@ -1,124 +1,112 @@
 ---
 description: Systematically analyze job descriptions to extract requirements, identify skill matches, and generate strategic insights for tailored applications.
-globs: 
+globs:
 alwaysApply: false
 ---
+
 # Job Description Analyzer Rules
 
 ## Purpose
+
 Systematically analyze job descriptions to extract requirements, identify skill matches, and generate strategic insights for tailored applications.
 
-## Input Files
-- `applications/active/{company-name}/job-details/job-description.md`
+## Input/Output Files
 
-## Output Files
-- `applications/active/{company-name}/job-details/requirements-analysis.md`
-- `applications/active/{company-name}/job-details/matching-skills.md`
-
-## Template Files
-- `templates/analysis/requirements-analysis-template.md`
-- `templates/analysis/matching-skills-template.md`
+-   **Input**: `applications/active/{company-name}/job-details/job-description.md`
+-   **Outputs**:
+    -   `applications/active/{company-name}/job-details/requirements-analysis.md`
+    -   `applications/active/{company-name}/job-details/matching-skills.md`
+-   **Templates**:
+    -   `templates/analysis/requirements-analysis-template.md`
+    -   `templates/analysis/matching-skills-template.md`
 
 ## Analysis Framework
 
-### 1. Multi-Layer Extraction Process
+### 1. Requirements Extraction
 
-#### Technical Requirements Analysis
-- **Hard Skills**: Programming languages, frameworks, tools, certifications
-- **Software/Platforms**: Specific applications, cloud services, databases
-- **Methodologies**: Agile, DevOps, testing frameworks, design patterns
-- **Experience Levels**: Junior/Mid/Senior indicators, years of experience
-- **Industry Standards**: Compliance requirements, best practices
-
-#### Soft Skills & Behavioral Indicators
-- **Leadership**: Team management, mentoring, decision-making
-- **Communication**: Written, verbal, presentation, cross-functional collaboration
-- **Problem-Solving**: Analytical thinking, troubleshooting, innovation
-- **Adaptability**: Learning agility, change management, flexibility
-- **Cultural Fit**: Company values alignment, work style preferences
-
-#### Hidden Requirements Detection
-- **Implicit Skills**: Skills not explicitly mentioned but implied by role context
-- **Growth Trajectory**: Career progression indicators and future responsibilities
-- **Team Dynamics**: Collaboration patterns, reporting structures
-- **Business Impact**: Revenue influence, strategic importance, customer-facing aspects
+-   **Technical Skills**: Programming languages, frameworks, tools, certifications
+-   **Soft Skills**: Leadership, communication, problem-solving, adaptability
+-   **Experience Levels**: Junior/Mid/Senior indicators, years of experience
+-   **Hidden Requirements**: Skills implied by role context but not explicitly stated
 
 ### 2. Prioritization Matrix
-Classify requirements by importance:
-- **Must-Have**: Deal-breaker requirements, explicitly stated as required
-- **Strongly Preferred**: Mentioned multiple times or emphasized
-- **Nice-to-Have**: Listed but not emphasized, or mentioned once
-- **Bonus**: Additional skills that could differentiate candidates
+
+-   **Must-Have**: Deal-breaker requirements, explicitly required
+-   **Strongly Preferred**: Mentioned multiple times or emphasized
+-   **Nice-to-Have**: Listed but not emphasized
+-   **Bonus**: Additional differentiating skills
+
+### 3. Skills Matching Analysis
+
+-   **Technical Alignment**: Score against candidate skills (90-100%, 70-89%, 50-69%, 0-49%)
+-   **Soft Skills Evaluation**: Match behavioral requirements against experience
+-   **Overall Match Score**: Weighted percentage based on requirements priority
+-   **Gap Analysis**: Identify missing skills and preparation recommendations
 
 ## Analysis Process
 
 ### Step 1: Requirements Extraction
-1. **Parse Job Description**: Extract all technical and soft skill requirements
-2. **Categorize by Priority**: Apply prioritization matrix to classify requirements
-3. **Identify Context**: Understand how skills will be used in the role
-4. **Extract Culture Indicators**: Identify company values and work style preferences
-5. **Note Hidden Requirements**: Infer implicit skills from role context
+
+1. Parse job description for all technical and soft skill requirements
+2. Categorize by priority using the prioritization matrix
+3. Identify context and usage patterns for each skill
+4. Extract culture indicators and work style preferences
+5. Note implicit requirements from role responsibilities
 
 ### Step 2: Generate Requirements Analysis
-1. **Use Template**: Copy `templates/analysis/requirements-analysis-template.md`
-2. **Fill Role Overview**: Position level, department, reporting structure, location
-3. **Populate Technical Requirements**: Categorize must-have vs preferred skills
-4. **Document Soft Skills**: Extract behavioral requirements with context
-5. **Analyze Responsibilities**: Break down duties by time allocation
-6. **Identify Red Flags**: Note unrealistic expectations or unclear requirements
+
+1. Use `templates/analysis/requirements-analysis-template.md`
+2. Document role overview: level, department, reporting structure, location
+3. Categorize technical requirements by priority
+4. Extract soft skills with specific context
+5. Analyze responsibilities and time allocation
+6. Identify potential red flags or unclear requirements
 
 ### Step 3: Generate Skills Matching Analysis
-1. **Use Template**: Copy `templates/analysis/matching-skills-template.md`
-2. **Assess Technical Skills**: Score alignment levels (90-100%, 70-89%, 50-69%, 0-49%)
-3. **Evaluate Soft Skills**: Match requirements against candidate experience
-4. **Calculate Match Score**: Provide overall percentage based on weighted requirements
-5. **Extract Keywords**: Identify high and medium priority keywords with frequency
-6. **Generate Strategy**: Provide specific recommendations for application optimization
-7. **Create Action Plan**: Timeline-based preparation steps
-8. **Assess Risk**: Evaluate application timing and success probability
 
-## Analysis Commands
-- "Analyze job description for [company-name] [role-title]"
-- "Generate comprehensive requirements analysis for [company-name]"
-- "Create skills matching report for [company-name] [role-title]"
-- "Assess application readiness for [company-name] position"
+1. Use `templates/analysis/matching-skills-template.md`
+2. Score technical and soft skills alignment
+3. Calculate weighted overall match percentage
+4. Extract high and medium priority keywords
+5. Provide application optimization recommendations
+6. Create timeline-based preparation action plan
+7. Assess application timing and success probability
 
-## Quality Assurance Checklist
-- [ ] All technical requirements extracted and categorized
-- [ ] Soft skills identified with specific context
-- [ ] Hidden requirements detected through role analysis
-- [ ] Realistic skill gap assessment completed
-- [ ] Actionable recommendations provided
-- [ ] Strategic keywords identified with frequency analysis
-- [ ] Timeline for application preparation established
-- [ ] Risk factors and mitigation strategies identified
-- [ ] Templates properly filled with specific, relevant content
-- [ ] No generic placeholder text remaining in outputs
+## Commands
 
-## Usage Instructions
+-   "Analyze job description for [company-name] [role-title]"
+-   "Generate requirements analysis for [company-name]"
+-   "Create skills matching report for [company-name] [role-title]"
+-   "Assess application readiness for [company-name] position"
 
-### 1. Preparation
-```bash
-# Ensure templates are available
-ls templates/analysis/
-# Should show: requirements-analysis-template.md, matching-skills-template.md
-```
+## Quality Assurance
 
-### 2. Analysis Process
-1. **Input**: Place job description in `applications/active/{company-name}/job-details/job-description.md`
-2. **Analyze**: Use AI with command "Analyze job description for [company-name] [role-title]"
-3. **Generate**: AI will create both analysis files using the templates
-4. **Review**: Check outputs against quality assurance checklist
-5. **Refine**: Make any necessary adjustments for specificity and accuracy
+-   [ ] All requirements extracted and categorized by priority
+-   [ ] Soft skills identified with specific context
+-   [ ] Hidden requirements detected through role analysis
+-   [ ] Realistic skill gap assessment completed
+-   [ ] Actionable recommendations provided
+-   [ ] Strategic keywords identified with frequency analysis
+-   [ ] Application timeline established
+-   [ ] Risk factors and mitigation strategies identified
+-   [ ] Templates filled with specific, relevant content
+-   [ ] No generic placeholder text remaining
 
-### 3. Integration with Workflow
-- **Next Step**: Use generated analyses for document creation (cover letter & resume)
-- **Reference Files**: Company research and application strategy documents
-- **Output Usage**: Feed into document-creation and document-formatting processes
+## Integration
+
+-   **Next Step**: Use analyses for document creation (cover letter & resume)
+-   **Reference**: Company research and application strategy documents
+-   **Output Usage**: Feed into document-creation and document-formatting processes
 
 ## Best Practices
-- Always use the latest template versions
-- Customize analysis depth based on role complexity
-- Cross-reference with company research for cultural alignment
-- Update templates based on analysis experience and feedback
-- Maintain consistency in scoring and categorization across analyses
+
+-   Use latest template versions
+-   Customize analysis depth based on role complexity
+-   Cross-reference with company research for cultural alignment
+-   Maintain consistency in scoring across analyses
+-   Update templates based on feedback and experience
+-   Always use the latest template versions
+-   Customize analysis depth based on role complexity
+-   Cross-reference with company research for cultural alignment
+-   Update templates based on analysis experience and feedback
+-   Maintain consistency in scoring and categorization across analyses

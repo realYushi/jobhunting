@@ -1,56 +1,46 @@
----
-description: 
-globs: 
-alwaysApply: true
----
 jobhunting/
-  ├── applications/                # All job applications
-  │   ├── active/                  # Current applications in progress
-  │   │   └── {company-name}/      # Folder for each company
-  │   │       ├── company-research/    # Company information
-  │   │       │   ├── company-profile.md
-  │   │       │   ├── culture-notes.md
-  │   │       │   ├── key-people.md
-  │   │       │   ├── application-strategy.md
-  │   │       │   └── interview-preparation.md
-  │   │       ├── documents/           # Application documents
-  │   │       │   ├── cover-letter.md
-  │   │       │   └── resume.md
-  │   │       ├── job-details/         # Job information
-  │   │       │   ├── job-description.md
-  │   │       │   ├── matching-skills.md
-  │   │       │   └── requirements-analysis.md
-  │   │       └── interview/           # Interview preparation
-  │   │           ├── preparation-notes.md
-  │   │           └── questions-to-ask.md
-  │   ├── archived/               # Past applications (rejected)
-  │   └── completed/              # Completed application cycles
-  ├── output/                     # Generated PDFs and final documents
-  │   └── {company-name}/
-  ├── templates/                  # Reusable templates
-  │   ├── analysis/               # Job analysis templates
-  │   │   ├── requirements-analysis-template.md
-  │   │   └── matching-skills-template.md
-  │   ├── cover-letters/
-  │   │   ├── tailoring-rules.md
-  │   │   └── templates/
-  │   │       ├── achievement-focused.md
-  │   │       ├── innovation-focused.md
-  │   │       ├── leadership-focused.md
-  │   │       ├── problem-solving-focused.md
-  │   │       └── standard.md
-  │   ├── formatting/
-  │   │   ├── awesome-cv.cls       # LaTeX class file for resume styling
-  │   │   ├── cover-letter.tex
-  │   │   └── resume.tex
-  │   └── resumes/
-  │       ├── base-resume.md
-  │       └── skills-library/
-  │           ├── soft-skills.md
-  │           └── technical-skills.md
-  └── tools/                      # Scripts and utilities
-      ├── config/
-      │   └── application-tracker.json
-      └── scripts/
-          ├── create-application.sh
-          └── generate-pdfs.sh
+├── applications/ # All job applications
+│ ├── active/ # Current applications in progress
+│ │ └── {company-name}/ # Folder for each company
+│ │ ├── company-research/ # Company information
+│ │ │ ├── company-profile.md
+│ │ │ ├── culture-notes.md
+│ │ │ ├── key-people.md
+│ │ │ └── application-strategy.md
+│ │ ├── documents/ # Application documents
+│ │ │ ├── cover-letter.md # Simple markdown format
+│ │ │ └── resume.json # JSON resume (primary)
+│ │ ├── job-details/ # Job information
+│ │ │ ├── job-description.md
+│ │ │ ├── matching-skills.md
+│ │ │ └── requirements-analysis.md
+│ │ └── interview/ # Interview preparation
+│ │ ├── preparation-notes.md
+│ │ └── questions-to-ask.md
+│ ├── archived/ # Past applications (rejected)
+│ └── completed/ # Completed application cycles
+├── templates/ # Reusable templates
+│ ├── analysis/ # Job analysis templates
+│ │ ├── requirements-analysis-template.md
+│ │ └── matching-skills-template.md
+│ ├── cover-letters/ # Cover letter templates
+│ │ ├── tailoring-rules.md
+│ │ └── templates/
+│ │ ├── achievement-focused.md
+│ │ ├── innovation-focused.md
+│ │ ├── leadership-focused.md
+│ │ ├── problem-solving-focused.md
+│ │ └── standard.md
+│ └── resumes/ # Resume templates and data
+│ ├── base-resume.json # Master JSON resume (primary)
+│ ├── json-resume-guide.md # JSON system documentation
+│ └── skills-library/
+│ ├── soft-skills.md
+│ └── technical-skills.md
+└── tools/ # Scripts and utilities
+├── config/
+│ └── application-tracker.json
+└── scripts/
+├── json-resume-manager.py # Primary resume tool
+├── fix-cuid2-ids.py # ID validation fixer
+└── create-application.sh # Legacy folder creator

@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""
+Fix CUID2 IDs in JSON Resume
+Updates all ID fields to use proper CUID2 format for Reactive Resume compatibility
+"""
+
+import json
+import secrets
+import string
+from pathlib import Path
+
+def generate_cuid2():
+    """Generate a CUID2-like ID (24 characters, lowercase + digits)"""
+    chars = string.ascii_lowercase + string.digits
+    return ''.join(secrets.choice(chars) for _ in range(24))
+
+def fix_cuid2_ids(data, path=[]):
+    """Recursively fix item 'id' fields in the JSON structure, but preserve section IDs"""
+    if isinstance(data, dict):
+        for key, value in data.items():
+            current_path = path + [key]
+            
+            # Only fix IDs that are NOT section IDs
+            if key == 'id' and isinstance(value, str):
+                # Check if this is a section ID (should be literal string)
+                if len(current_path) >= 3 and current_path[-3] == 'sections':
+                    # This is a section ID, should be literal string like "summary", "experience", etc.
+                    section_name = current_path[-2]  # Get the section name
+                    data[key] = section_name
+                else:
+                    # This is an item ID, should be CUID2
+                    data[key] = generate_cuid2()
+            else:
+                fix_cuid2_ids(value, current_path)
+    elif isinstance(data, list):
+        for i, item in enumerate(data):
+            fix_cuid2_ids(item, path + [i])
+
+def main():
+    # Path to base resume
+    base_resume_path = Path("templates/resumes/base-resume.json")
+    
+    if not base_resume_path.exists():
+        print(f"Error: {base_resume_path} not found")
+        return
+    
+    # Load the resume
+    with open(base_resume_path, 'r') as f:
+        resume_data = json.load(f)
+    
+    # Fix all CUID2 IDs
+    fix_cuid2_ids(resume_data)
+    
+    # Save the updated resume
+    with open(base_resume_path, 'w') as f:
+        json.dump(resume_data, f, indent=2)
+    
+    print(f"✅ Fixed CUID2 IDs in {base_resume_path}")
+    print("Section IDs are now literal strings, item IDs use CUID2 format")
+
+if __name__ == "__main__":
+    main() 

@@ -1,43 +1,51 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
-# AI Agent Rules: Job Application Workflow
 
-## Purpose
-AI-assisted workflow for job applications: company research → job analysis → document creation → formatting.
+**Prompt:** "You are an AI assistant specialized in job application workflows. Your task is to assist users in creating tailored job applications by following these steps:
 
-## High-Level Workflow
+1. **Company Research Analysis**:
 
-### 1. Company Research Analysis
-- Analyze company profile, culture, and key people
-- Extract mission, values, work environment insights
-- Identify company positioning and recent achievements
+    - Analyze the company's profile, culture, and key people
+    - Extract insights about mission, values, work environment, and recent achievements
 
-### 2. Job Description Analysis  
-- Extract technical and soft skills requirements
-- Compare requirements to candidate skills library
-- Identify matching skills and potential gaps
+2. **Job Description Analysis**:
 
-### 3. Document Creation
-- Create tailored cover letter using appropriate template
-- Customize resume highlighting relevant experience
-- Incorporate company-specific language and keywords
+    - Extract technical and soft skills requirements from job descriptions
+    - Compare requirements to the candidate's skills library
+    - Identify matching skills and potential gaps
 
-### 4. Document Formatting
-- Convert markdown documents to professional LaTeX format
-- Apply consistent styling and layout
-- Generate final PDF documents
+3. **Document Creation**:
 
-## Key Principles
-- Use company research to inform application strategy
-- Match candidate skills to job requirements
-- Incorporate company-specific language and culture
-- Maintain professional formatting consistency
-- Follow established templates and guidelines
+    - Generate JSON-based resumes using modern workflow
+    - Create simple markdown cover letters
+    - Incorporate company-specific language and keywords
 
-## Available Specialized Rules
-- **company-research-analyzer**: For analyzing company profiles and culture
-- **document-creation**: For creating cover letters and resumes
-- **document-formatting**: For LaTeX formatting and PDF generation
+4. **Document Formatting**:
+    - Use JSON-to-Reactive Resume for professional PDF generation
+    - Simple markdown format for cover letters
+    - Ensure ATS compatibility and professional presentation
+
+**Key Principles**:
+
+-   Use company research to inform application strategy
+-   Match candidate skills to job requirements
+-   Incorporate company-specific language and culture
+-   Use JSON workflow for resumes and markdown for cover letters
+-   Maintain professional formatting consistency
+
+**Specialized Rules**:
+
+-   Use **company-research-analyzer** for analyzing company profiles
+-   Use **job-description-analyzer** for systematic job analysis
+-   Use **document-creation** for creating tailored documents
+-   Use **document-formatting** for modern formatting workflows
+
+Please provide the company name, job description, and candidate's skills library to begin the process."
+
+-   Use the **document-creation** rule for creating cover letters and resumes.
+-   Use the **document-formatting** rule for LaTeX formatting and PDF generation.
+
+Please provide the company name, job description, and candidate's skills library to begin the process."

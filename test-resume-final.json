@@ -1,0 +1,427 @@
+{
+  "basics": {
+    "name": "Yushi Cui",
+    "headline": "Software Engineer Intern",
+    "email": "realYushi@gmail.com",
+    "phone": "",
+    "location": "Auckland, New Zealand",
+    "url": {
+      "label": "Portfolio",
+      "href": "https://github.com/realYushi"
+    },
+    "customFields": [
+      {
+        "id": "uu3em2rrfxczwprkn8j7rrgt",
+        "icon": "envelope",
+        "name": "Visa Status",
+        "value": "Permanent Resident - No visa sponsorship required"
+      }
+    ],
+    "picture": {
+      "url": "https://lh3.googleusercontent.com/a/ACg8ocLki1iTSmkGuknuxTy8ad4MFe-sSG80JVvMY3dL-MQS54ECF06T=s96-c",
+      "size": 64,
+      "aspectRatio": 1,
+      "borderRadius": 0,
+      "effects": {
+        "hidden": false,
+        "border": false,
+        "grayscale": false
+      }
+    }
+  },
+  "sections": {
+    "summary": {
+      "name": "Professional Summary",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "summary",
+      "content": "<p>A third-year Computer Science student with professional internship experience in frontend development with expertise in modern JavaScript frameworks. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>"
+    },
+    "experience": {
+      "name": "Experience",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "experience",
+      "items": [
+        {
+          "id": "3i5z4i8ruxptz7mz57upi5s3",
+          "visible": true,
+          "company": "HALO Systems by Tag IT",
+          "position": "Software Engineer Intern",
+          "location": "Auckland, New Zealand",
+          "date": "December 2024 - February 2025",
+          "summary": "<p>\u2022 Engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, enabling real-time monitoring of agricultural effluent systems<br>\u2022 Implemented geospatial visualization using Mapbox and GeoJSON, providing farmers with intuitive, map-based sensor data monitoring<br>\u2022 Improved dashboard performance by 40% through implementation of client-side data filtering and optimization<br>\u2022 Developed a reusable SVG-based HMI component library, reducing development time for similar projects by 60%<br>\u2022 Architected Python backend services for efficient real-time sensor data processing, handling data from multiple farm locations</p>",
+          "url": {
+            "label": "",
+            "href": ""
+          }
+        },
+        {
+          "id": "93fl9d1wgi2wa793x5x09ob1",
+          "visible": true,
+          "company": "Costas Taverna Greek Restaurant",
+          "position": "Chef De Partie",
+          "location": "Auckland, New Zealand",
+          "date": "June 2019 - November 2022",
+          "summary": "<p>\u2022 Led a team of 5 kitchen staff, managing high-pressure operations and ensuring quality control<br>\u2022 Improved kitchen efficiency by 25% through implementation of new workflow processes<br>\u2022 Demonstrated strong leadership and problem-solving skills in a fast-paced environment</p>",
+          "url": {
+            "label": "",
+            "href": ""
+          }
+        }
+      ]
+    },
+    "education": {
+      "name": "Education",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "education",
+      "items": [
+        {
+          "id": "ixrf37auffwiusw25u6tcjef",
+          "visible": true,
+          "institution": "Auckland University of Technology",
+          "studyType": "Bachelor of Computer and Information Sciences",
+          "area": "Computer Science",
+          "score": "GPA: 8.0/9.0",
+          "date": "July 2023 - July 2026 (Expected)",
+          "summary": "<p>Third-year Computer Science student maintaining top academic performance while gaining practical industry experience.</p>",
+          "url": {
+            "label": "Official Transcript",
+            "href": "https://www.myequals.net/r/sharelink/fc37c3dd-0108-419f-a8d8-dc283c6f5c11/4c3d3151-ccbb-4515-b0f2-98a437ee2f60"
+          }
+        }
+      ]
+    },
+    "projects": {
+      "name": "Projects",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "projects",
+      "items": [
+        {
+          "id": "e49npeg7to54j5w7qbpf0bty",
+          "visible": true,
+          "name": "Full-Stack Todo List Application",
+          "description": "Comprehensive task management system with modern UI and automated deployment",
+          "date": "Personal Project",
+          "summary": "<p>\u2022 Independently designed and developed a comprehensive task management system with modern, responsive UI using React and TypeScript with Tailwind CSS<br>\u2022 Built robust backend services using .NET Core and EF Core with SQL Server<br>\u2022 Established automated deployment pipeline using GitHub Actions and Azure services<br>\u2022 Achieved 99.9% API uptime through Azure integration and reduced deployment time by 70% via CI/CD implementation</p>",
+          "keywords": [
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            ".NET Core",
+            "EF Core",
+            "SQL Server",
+            "GitHub Actions",
+            "Azure"
+          ],
+          "url": {
+            "label": "GitHub",
+            "href": "https://github.com/realYushi/todo-list"
+          }
+        },
+        {
+          "id": "36y25j2m24v1b1af1zrh33nm",
+          "visible": true,
+          "name": "My Recipe Book: Full Stack Web App",
+          "description": "Full-stack recipe management application with web scraping and rich text editing",
+          "date": "Personal Project",
+          "summary": "<p>\u2022 Developed a full-stack recipe management application using React Router, Node.js (Express.js), and MongoDB<br>\u2022 Implemented web scraping functionality with Puppeteer to automatically import ingredients from external websites<br>\u2022 Designed and built a modern, responsive UI using React Router, Tailwind CSS, and Radix UI<br>\u2022 Integrated a rich text editor (Milkdown) for detailed recipe instructions and enabled image export of recipe cards<br>\u2022 Containerized the entire application using Docker and Docker Compose for streamlined development and deployment<br>\u2022 Established robust authentication using Firebase and a comprehensive test suite with Vitest</p>",
+          "keywords": [
+            "React",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Puppeteer",
+            "Tailwind CSS",
+            "Radix UI",
+            "Docker",
+            "Firebase",
+            "Vitest"
+          ],
+          "url": {
+            "label": "GitHub",
+            "href": "https://github.com/realYushi/my-recipe-book"
+          }
+        }
+      ]
+    },
+    "skills": {
+      "name": "Skills",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "skills",
+      "items": [
+        {
+          "id": "bmh6yz3du8a639zp0efnc25g",
+          "visible": true,
+          "name": "Languages & Frameworks",
+          "description": "Python, JavaScript/TypeScript, C#, Vue.js, React, Node.js, .NET Core",
+          "level": 5,
+          "keywords": [
+            "Python",
+            "JavaScript",
+            "TypeScript",
+            "C#",
+            "Vue.js",
+            "React",
+            "Node.js",
+            ".NET Core"
+          ]
+        },
+        {
+          "id": "a4uui3u077p38rau3e3eo08r",
+          "visible": true,
+          "name": "Database & Cloud",
+          "description": "MongoDB, SQL Server, Azure, Firebase",
+          "level": 4,
+          "keywords": [
+            "MongoDB",
+            "SQL Server",
+            "Azure",
+            "Firebase"
+          ]
+        },
+        {
+          "id": "ydwum14tnep69acsddl2t67n",
+          "visible": true,
+          "name": "Tools & DevOps",
+          "description": "Git, Docker, GitHub Actions, Tailwind CSS, Vitest",
+          "level": 4,
+          "keywords": [
+            "Git",
+            "Docker",
+            "GitHub Actions",
+            "Tailwind CSS",
+            "Vitest"
+          ]
+        },
+        {
+          "id": "kwa64b9tkotgoxd8l2gtsvk2",
+          "visible": true,
+          "name": "Professional",
+          "description": "Agile methodologies, System design, Team collaboration",
+          "level": 4,
+          "keywords": [
+            "Agile",
+            "System Design",
+            "Team Collaboration"
+          ]
+        }
+      ]
+    },
+    "certifications": {
+      "name": "Certifications",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "certifications",
+      "items": [
+        {
+          "id": "3g13z3ebby80c9yotmevrbvw",
+          "visible": true,
+          "name": "Microsoft Azure AI Fundamentals (AI-900)",
+          "issuer": "Microsoft",
+          "date": "2024",
+          "summary": "<p>Foundational knowledge of AI and machine learning concepts on Azure platform</p>",
+          "url": {
+            "label": "",
+            "href": ""
+          }
+        }
+      ]
+    },
+    "interests": {
+      "name": "Interests",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "interests",
+      "items": [
+        {
+          "id": "ootjgbdr68eao3w7f76f7cnm",
+          "visible": true,
+          "name": "Technology & Professional Development",
+          "keywords": [
+            "Software Development",
+            "Emerging Technologies",
+            "Best Practices"
+          ]
+        },
+        {
+          "id": "hkq8owep2qsnr61etepla7pk",
+          "visible": true,
+          "name": "Culinary Arts",
+          "keywords": [
+            "Creative Problem-Solving",
+            "Precision",
+            "Leadership"
+          ]
+        },
+        {
+          "id": "czyqnv7jndjijx5ujr4gj16u",
+          "visible": true,
+          "name": "Problem Solving",
+          "keywords": [
+            "Coding Challenges",
+            "Technical Workshops",
+            "LeetCode"
+          ]
+        },
+        {
+          "id": "sk354b0fp3dt51gx7wyvqxsh",
+          "visible": true,
+          "name": "Continuous Learning",
+          "keywords": [
+            "Cloud Computing",
+            "Software Architecture",
+            "Certifications"
+          ]
+        }
+      ]
+    },
+    "languages": {
+      "name": "Languages",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "languages",
+      "items": [
+        {
+          "id": "s8z4vjeh3j0saoxhcb045uez",
+          "visible": true,
+          "name": "English",
+          "description": "Professional working proficiency",
+          "level": 4
+        },
+        {
+          "id": "8098d4u1g2rs0zgh9rc5w1v0",
+          "visible": true,
+          "name": "Chinese (Mandarin)",
+          "description": "Native speaker",
+          "level": 5
+        }
+      ]
+    },
+    "profiles": {
+      "name": "Profiles",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": true,
+      "id": "profiles",
+      "items": [
+        {
+          "id": "mkbv45xz4ipm2xb17ke61lp0",
+          "visible": true,
+          "network": "GitHub",
+          "username": "realYushi",
+          "icon": "github",
+          "url": {
+            "label": "GitHub",
+            "href": "https://github.com/realYushi"
+          }
+        },
+        {
+          "id": "rsxske8bj2oh5pkjvgrnzwse",
+          "visible": true,
+          "network": "LinkedIn",
+          "username": "yushi-cui-6043aa285",
+          "icon": "linkedin",
+          "url": {
+            "label": "LinkedIn",
+            "href": "https://linkedin.com/in/yushi-cui-6043aa285"
+          }
+        }
+      ]
+    },
+    "awards": {
+      "name": "Awards",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": false,
+      "id": "awards",
+      "items": []
+    },
+    "publications": {
+      "name": "Publications",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": false,
+      "id": "publications",
+      "items": []
+    },
+    "references": {
+      "name": "References",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": false,
+      "id": "references",
+      "items": []
+    },
+    "volunteer": {
+      "name": "Volunteering",
+      "columns": 1,
+      "separateLinks": true,
+      "visible": false,
+      "id": "volunteer",
+      "items": []
+    },
+    "custom": {}
+  },
+  "metadata": {
+    "template": "ditto",
+    "layout": [
+      [
+        [
+          "profiles",
+          "summary",
+          "experience",
+          "projects"
+        ],
+        [
+          "skills",
+          "education",
+          "certifications",
+          "languages"
+        ]
+      ]
+    ],
+    "css": {
+      "value": "",
+      "visible": false
+    },
+    "page": {
+      "margin": 18,
+      "format": "a4",
+      "options": {
+        "breakLine": true,
+        "pageNumbers": true
+      }
+    },
+    "theme": {
+      "background": "#ffffff",
+      "text": "#000000",
+      "primary": "#dc2626"
+    },
+    "typography": {
+      "font": {
+        "family": "IBM Plex Sans",
+        "subset": "latin",
+        "variants": [
+          "regular"
+        ],
+        "size": 14
+      },
+      "lineHeight": 1.5,
+      "hideIcons": false,
+      "underlineLinks": true
+    },
+    "notes": "Customized for TestCompany"
+  }
+}

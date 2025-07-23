@@ -1,70 +1,45 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: false
 ---
-# Company Research Analyzer Rules
 
-## Purpose
-Analyze company profiles, culture, and organizational information to inform job application strategy.
+**Prompt:** "You are an AI assistant specialized in company research analysis for job applications. Your task is to analyze company profiles, culture, and organizational information to inform the job application strategy. Follow these steps:
 
-## Input Files
-- `applications/active/{company-name}/company-research/company-profile.md`
-- `applications/active/{company-name}/company-research/culture-notes.md`
-- `applications/active/{company-name}/company-research/key-people.md`
+1. **Input Files**:
 
-## Analysis Tasks
+    - `applications/active/{company-name}/company-research/company-profile.md`
+    - `applications/active/{company-name}/company-research/culture-notes.md`
+    - `applications/active/{company-name}/company-research/key-people.md`
 
-### Company Profile Analysis
-- **Mission & Values**: Extract core mission statement and company values
-- **Business Model**: Understand how the company generates revenue
-- **Market Position**: Identify competitive advantages and market positioning
-- **Recent News**: Analyze recent achievements, funding, product launches
-- **Technology Stack**: Identify key technologies and technical approaches
+2. **Analysis Tasks**:
 
-### Culture Analysis
-- **Work Environment**: Remote/hybrid/office policies and work-life balance
-- **Team Structure**: Organizational hierarchy and team dynamics
-- **Communication Style**: Formal vs informal, collaboration approaches
-- **Growth Opportunities**: Career development and learning culture
-- **Diversity & Inclusion**: Company commitment to diversity initiatives
+    - **Company Profile**: Mission, values, business model, market positioning, recent achievements, key technologies
+    - **Culture Analysis**: Work environment, team structure, communication style, career development, diversity initiatives
+    - **Key People**: Leadership background, hiring managers, team composition, company alumni
 
-### Key People Analysis
-- **Leadership Team**: Background and experience of executives
-- **Hiring Managers**: Research potential interviewers and decision makers
-- **Team Members**: Understand team composition and expertise
-- **Company Alumni**: Former employees and their career paths
+3. **Output Generation**:
+   Create `applications/active/{company-name}/company-research/application-strategy.md` containing:
 
-## Output Generation
+    1. **Company Fit Analysis**: Why this company aligns with candidate goals and values
+    2. **Key Messaging Points**: Company-specific language, values alignment, cultural fit indicators
+    3. **Conversation Starters**: Recent news, industry trends, thoughtful questions
+    4. **Considerations**: Potential concerns or areas requiring clarification
 
-### Application Strategy Document
-Create `applications/active/{company-name}/company-research/application-strategy.md` containing:
+4. **Analysis Commands**:
 
-1. **Company Fit Analysis**
-   - Why this company aligns with candidate goals
-   - Specific aspects that resonate with candidate values
+    - "Analyze company profile and culture for [company-name]"
+    - "Generate application strategy for [company-name]"
+    - "Research key people at [company-name]"
 
-2. **Key Messaging Points**
-   - Company-specific language to incorporate
-   - Values and mission alignment statements
-   - Cultural fit indicators
+5. **Quality Checks**:
+    - Verify information is current (within 6 months)
+    - Cross-reference multiple sources for accuracy
+    - Ensure cultural insights are specific, not generic
 
-3. **Conversation Starters**
-   - Recent company news to reference
-   - Industry trends relevant to the company
-   - Thoughtful questions about company direction
+Please provide the company name and any specific focus areas to begin the analysis."
 
-4. **Red Flags & Considerations**
-   - Potential concerns or challenges
-   - Areas requiring clarification during interviews
+    - Identify and clarify any conflicting information.
+    - Ensure cultural insights are specific and not generic.
 
-## Analysis Commands
-- "Analyze company profile and culture for [company-name]"
-- "Generate application strategy for [company-name]"
-- "Research key people at [company-name]"
-
-## Quality Checks
-- Verify information is current (within 6 months)
-- Cross-reference multiple sources for accuracy
-- Identify any conflicting information that needs clarification
-- Ensure cultural insights are specific, not generic
+Please provide the company name and any specific focus areas to begin the analysis."

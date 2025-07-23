@@ -1,95 +1,128 @@
----
-description: Create tailored cover letters and resumes based on job requirements and company research.
-globs: 
-alwaysApply: false
----
-# Document Creation Rules
+**Prompt:** "You are an AI assistant specialized in creating tailored cover letters and resumes for job applications. Your task is to generate professional, customized documents based on job requirements and company research. Follow these steps:
 
-## Purpose
-Create tailored cover letters and resumes based on job requirements and company research.
+1. **Input Files**:
 
-## Cover Letter Creation
+    - For cover letters:
+        - `applications/active/{company-name}/job-details/matching-skills.md`
+        - `applications/active/{company-name}/company-research/application-strategy.md`
+        - `templates/cover-letters/templates/*.md`
+        - `templates/cover-letters/tailoring-rules.md`
+    - For resumes (JSON-based workflow):
+        - `applications/active/{company-name}/job-details/matching-skills.md`
+        - `templates/resumes/base-resume.json` (master resume data)
+        - `templates/resumes/skills-library/*.md`
 
-### Input Files
-- `applications/active/{company-name}/job-details/matching-skills.md`
-- `applications/active/{company-name}/company-research/application-strategy.md`
-- `templates/cover-letters/templates/*.md`
-- `templates/cover-letters/tailoring-rules.md`
+2. **Cover Letter Creation (Markdown Format)**:
 
-### Template Selection Strategy
-Choose template based on company culture and role requirements:
-- **Standard**: Traditional companies, formal environments
-- **Achievement-focused**: Results-driven companies, sales/metrics roles
-- **Innovation-focused**: Tech startups, creative roles, R&D positions
-- **Leadership-focused**: Management roles, team lead positions
-- **Problem-solving-focused**: Consulting, engineering, analytical roles
+    - **Template Selection**:
+        - Choose a template based on company culture and role requirements:
+            - Standard, Achievement-focused, Innovation-focused, Leadership-focused, or Problem-solving-focused.
+    - **Simple Markdown Structure**:
+        ```markdown
+        # Cover Letter - [Company Name]
 
-### Cover Letter Structure
-1. **Opening Hook**: Company-specific connection or recent news reference
-2. **Value Proposition**: 2-3 key skills/experiences that match requirements
-3. **Company Alignment**: Why you want to work for this specific company
-4. **Call to Action**: Professional closing with next steps
+        **Date:** [Current Date]
+        **Position:** [Role Title]
 
-### Customization Rules
-- Incorporate company-specific language from application strategy
-- Use keywords from job description naturally
-- Reference specific company initiatives or recent news
-- Match tone to company culture (formal vs casual)
-- Keep to 3-4 paragraphs maximum
+        Dear Hiring Manager,
 
-## Resume Creation
+        [Opening paragraph - company connection/hook]
 
-### Input Files
-- `applications/active/{company-name}/job-details/matching-skills.md`
-- `templates/resumes/base-resume.md`
-- `templates/resumes/skills-library/*.md`
+        [Body paragraph 1 - value proposition and key skills]
 
-### Tailoring Strategy
-1. **Skills Prioritization**: Reorder skills to match job requirements
-2. **Experience Highlighting**: Emphasize relevant projects and achievements
-3. **Keyword Integration**: Naturally incorporate job description keywords
-4. **Quantifiable Results**: Include metrics and measurable outcomes
-5. **Relevance Filtering**: Remove or de-emphasize less relevant experience
+        [Body paragraph 2 - company alignment and enthusiasm]
 
-### Resume Sections Order (by importance)
-1. **Contact Information**: Current and professional
-2. **Professional Summary**: 2-3 sentences highlighting key qualifications
-3. **Technical Skills**: Prioritized by job requirements
-4. **Professional Experience**: Most relevant roles first
-5. **Education**: Include relevant certifications and courses
-6. **Projects**: Highlight relevant personal/professional projects
+        [Closing paragraph - call to action]
 
-## Output Files
-- `applications/active/{company-name}/documents/cover-letter.md`
-- `applications/active/{company-name}/documents/resume.md`
+        Sincerely,
+        [Your Name]
+        ```
+    - **Content Guidelines**:
+        - Keep it simple and clean in markdown
+        - No complex formatting needed - focus on content
+        - Use company-specific language from application strategy
+        - Incorporate keywords from job description naturally
+        - Reference specific company initiatives or recent news
+        - Match tone to company culture (formal or casual)
+        - Limit to 3-4 paragraphs, under 400 words
 
-## Quality Assurance
+3. **Resume Creation (JSON Workflow)**:
 
-### Cover Letter Checks
-- [ ] Company name spelled correctly throughout
-- [ ] Specific role title mentioned
-- [ ] 2-3 concrete examples of relevant experience
-- [ ] Company-specific insights included
-- [ ] Professional tone appropriate for company culture
-- [ ] No generic phrases or template language remaining
+    - **Primary Method - JSON Resume**:
 
-### Resume Checks
-- [ ] Skills section matches job requirements priority
-- [ ] Quantifiable achievements included where possible
-- [ ] Consistent formatting and tense usage
-- [ ] No spelling or grammatical errors
-- [ ] Contact information is current
-- [ ] File size appropriate for ATS systems
+        1. Generate job-specific resume using: `python tools/scripts/json-resume-manager.py --company "[Company]" --role "[role-type]"`
+        2. Customize sections based on job requirements
+        3. Import to Reactive Resume for professional formatting
+        4. Export as PDF for application
 
-## Creation Commands
-- "Create cover letter for [company-name] [role-title]"
-- "Tailor resume for [company-name] [role-title]"
-- "Review and optimize documents for [company-name]"
+    - **JSON Customization Strategy**:
+        1. Hide/show sections relevant to role
+        2. Reorder skills to match job requirements
+        3. Add job-specific keywords to skill items
+        4. Adjust summary for role focus
+        5. Ensure CUID2 compliance for platform compatibility
 
-## Best Practices
-- Always start with the most relevant template
-- Use active voice and strong action verbs
-- Maintain consistency between cover letter and resume messaging
-- Keep cover letter under 400 words
-- Ensure resume fits on 1-2 pages maximum
-- Use industry-standard terminology and acronyms appropriately
+4. **Output Files**:
+
+    - Cover letter: `applications/active/{company-name}/documents/cover-letter.md`
+    - Resume (JSON): `applications/active/{company-name}/documents/resume.json`
+
+5. **Quality Assurance**:
+
+    - **Cover Letter Checks (Markdown)**:
+
+        - Ensure company name is spelled correctly
+        - Mention specific role title
+        - Include 2-3 concrete examples of relevant experience
+        - Add company-specific insights
+        - Maintain professional tone matching company culture
+        - Remove generic phrases or template language
+        - Verify clean markdown formatting (no complex HTML)
+
+    - **Resume Checks (JSON)**:
+        - CUID2 ID validation passes
+        - Section IDs are literal strings
+        - Item IDs use proper CUID2 format
+        - Skills match job requirements
+        - Keywords optimized for role
+        - All sections appropriately visible/hidden
+        - JSON imports successfully to Reactive Resume
+
+6. **Creation Commands**:
+
+    - **Cover Letters**:
+
+        - "Create cover letter for [company-name] [role-title]"
+        - "Generate simple markdown cover letter for [company-name]"
+
+    - **Resumes (JSON)**:
+
+        - "Generate JSON resume for [company-name] [role-type]"
+        - "Customize resume for [job-type] role at [company-name]"
+        - "Create frontend/backend/fullstack resume for [company-name]"
+
+    - **General**:
+        - "Review and optimize documents for [company-name]"
+
+7. **Best Practices**:
+
+    - **Cover Letters**:
+
+        - Keep markdown simple and clean
+        - Focus on content over formatting
+        - Use active voice and strong action verbs
+        - Maintain consistency with resume messaging
+
+    - **Resumes**:
+
+        - Use JSON workflow for modern, professional output
+        - Use Reactive Resume for consistent formatting
+        - Generate role-specific versions efficiently
+        - Validate JSON before platform import
+        - Keep PDF exports ATS-friendly
+
+    - **General**:
+        - Start with most relevant templates
+        - Use industry-standard terminology appropriately
+        - Ensure documents complement each other
+        - Test compatibility with target platforms"
