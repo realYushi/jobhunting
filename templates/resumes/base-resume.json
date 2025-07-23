@@ -22,13 +22,13 @@
     "location": "Auckland, New Zealand",
     "customFields": [
       {
-        "id": "yy3gzhhvtraoxlah9pdbwpri",
+        "id": "h0cs7gtsz1igb5gvewmkqpt2",
         "icon": "code",
         "name": "LeetCode",
         "value": "https://leetcode.com/u/realYushi/"
       },
       {
-        "id": "uu3em2rrfxczwprkn8j7rrgt",
+        "id": "tewax0e0mcygw93w0zlo5wv6",
         "icon": "envelope",
         "name": "Visa Status",
         "value": "Permanent Resident - No visa sponsorship required"
@@ -101,7 +101,7 @@
       "name": "Skills",
       "items": [
         {
-          "id": "a4uui3u077p38rau3e3eo08r",
+          "id": "y7zpcpab6eaaxl6cohptzd4e",
           "visible": true,
           "name": "Database & Cloud",
           "description": "",
@@ -114,7 +114,7 @@
           ]
         },
         {
-          "id": "bmh6yz3du8a639zp0efnc25g",
+          "id": "l43l9bqn3uorb45p27235066",
           "visible": true,
           "name": "Languages & Frameworks",
           "description": "",
@@ -131,7 +131,7 @@
           ]
         },
         {
-          "id": "ydwum14tnep69acsddl2t67n",
+          "id": "q0a28jjoch6md35l4zvevwej",
           "visible": true,
           "name": "Tools & DevOps",
           "description": "",
@@ -145,7 +145,7 @@
           ]
         },
         {
-          "id": "kwa64b9tkotgoxd8l2gtsvk2",
+          "id": "x68jl5c2gqvbp8mbart7sggi",
           "visible": true,
           "name": "Professional",
           "description": "",
@@ -174,7 +174,7 @@
       "name": "Profiles",
       "items": [
         {
-          "id": "mkbv45xz4ipm2xb17ke61lp0",
+          "id": "5pa3gler5jim9wlszo5ok4ly",
           "url": {
             "href": "https://github.com/realYushi",
             "label": "GitHub"
@@ -185,7 +185,7 @@
           "username": "realYushi"
         },
         {
-          "id": "rsxske8bj2oh5pkjvgrnzwse",
+          "id": "899lucx4ev8p7dqso7ror211",
           "url": {
             "href": "https://linkedin.com/in/yushi-cui-6043aa285",
             "label": "LinkedIn"
@@ -205,14 +205,14 @@
       "name": "Projects",
       "items": [
         {
-          "id": "e49npeg7to54j5w7qbpf0bty",
+          "id": "emb2kxjahz3n0s4gae9oqku3",
           "url": {
             "href": "https://github.com/realYushi/todo-list",
             "label": "GitHub"
           },
           "date": "Personal Project",
           "name": "Full-Stack Todo List Application",
-          "summary": "<p>• Independently designed and developed a comprehensive task management system with modern, responsive UI using React and TypeScript with Tailwind CSS<br>• Built robust backend services using .NET Core and EF Core with SQL Server<br>• Established automated deployment pipeline using GitHub Actions and Azure services<br>• Achieved 99.9% API uptime through Azure integration and reduced deployment time by 70% via CI/CD implementation</p>",
+          "summary": "<p>\u2022 Independently designed and developed a comprehensive task management system with modern, responsive UI using React and TypeScript with Tailwind CSS<br>\u2022 Built robust backend services using .NET Core and EF Core with SQL Server<br>\u2022 Established automated deployment pipeline using GitHub Actions and Azure services<br>\u2022 Achieved 99.9% API uptime through Azure integration and reduced deployment time by 70% via CI/CD implementation</p>",
           "visible": true,
           "keywords": [
             "React",
@@ -227,14 +227,14 @@
           "description": "Comprehensive task management system with modern UI and automated deployment"
         },
         {
-          "id": "36y25j2m24v1b1af1zrh33nm",
+          "id": "75zir1kanxcf3kn6bdy118lw",
           "url": {
             "href": "https://github.com/realYushi/my-recipe-book",
             "label": "GitHub"
           },
           "date": "Personal Project",
           "name": "My Recipe Book: Full Stack Web App",
-          "summary": "<p>• Developed a full-stack recipe management application using React Router, Node.js (Express.js), and MongoDB<br>• Implemented web scraping functionality with Puppeteer to automatically import ingredients from external websites<br>• Designed and built a modern, responsive UI using React Router, Tailwind CSS, and Radix UI<br>• Integrated a rich text editor (Milkdown) for detailed recipe instructions and enabled image export of recipe cards<br>• Containerized the entire application using Docker and Docker Compose for streamlined development and deployment<br>• Established robust authentication using Firebase and a comprehensive test suite with Vitest</p>",
+          "summary": "<p>\u2022 Developed a full-stack recipe management application using React Router, Node.js (Express.js), and MongoDB<br>\u2022 Implemented web scraping functionality with Puppeteer to automatically import ingredients from external websites<br>\u2022 Designed and built a modern, responsive UI using React Router, Tailwind CSS, and Radix UI<br>\u2022 Integrated a rich text editor (Milkdown) for detailed recipe instructions and enabled image export of recipe cards<br>\u2022 Containerized the entire application using Docker and Docker Compose for streamlined development and deployment<br>\u2022 Established robust authentication using Firebase and a comprehensive test suite with Vitest</p>",
           "visible": true,
           "keywords": [
             "React",
@@ -260,7 +260,7 @@
       "name": "Education",
       "items": [
         {
-          "id": "ixrf37auffwiusw25u6tcjef",
+          "id": "dij71r97uojxfn2w85lyy0xu",
           "url": {
             "href": "https://www.myequals.net/r/sharelink/fc37c3dd-0108-419f-a8d8-dc283c6f5c11/4c3d3151-ccbb-4515-b0f2-98a437ee2f60",
             "label": "Official Transcript"
@@ -283,7 +283,7 @@
       "name": "Interests",
       "items": [
         {
-          "id": "ootjgbdr68eao3w7f76f7cnm",
+          "id": "0yhvjv0nzrmtmr5nmbkprv5x",
           "name": "Technology & Professional Development",
           "visible": true,
           "keywords": [
@@ -293,7 +293,7 @@
           ]
         },
         {
-          "id": "hkq8owep2qsnr61etepla7pk",
+          "id": "rv0a2onr5jyrohzm4v8fz60z",
           "name": "Culinary Arts",
           "visible": true,
           "keywords": [
@@ -303,7 +303,7 @@
           ]
         },
         {
-          "id": "czyqnv7jndjijx5ujr4gj16u",
+          "id": "lvmu20jqqmoendb9tj1lpg4u",
           "name": "Problem Solving",
           "visible": true,
           "keywords": [
@@ -313,7 +313,7 @@
           ]
         },
         {
-          "id": "sk354b0fp3dt51gx7wyvqxsh",
+          "id": "y19pjee8scnoxgzoo5aoxb4u",
           "name": "Continuous Learning",
           "visible": true,
           "keywords": [
@@ -332,14 +332,14 @@
       "name": "Languages",
       "items": [
         {
-          "id": "s8z4vjeh3j0saoxhcb045uez",
+          "id": "5ug133x99vz05oh7kj0cvznt",
           "name": "English",
           "level": 4,
           "visible": true,
           "description": "Professional working proficiency"
         },
         {
-          "id": "8098d4u1g2rs0zgh9rc5w1v0",
+          "id": "eqsg6y2ut2j6dmla1426wp73",
           "name": "Chinese (Mandarin)",
           "level": 5,
           "visible": true,
@@ -363,27 +363,27 @@
       "name": "Experience",
       "items": [
         {
-          "id": "3i5z4i8ruxptz7mz57upi5s3",
+          "id": "7bjbc6c7bmf385p8lrgxrtvy",
           "url": {
             "href": "",
             "label": ""
           },
           "date": "December 2024 - February 2025",
           "company": "HALO Systems by Tag IT",
-          "summary": "<p>• Engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, enabling real-time monitoring of agricultural effluent systems<br>• Implemented geospatial visualization using Mapbox and GeoJSON, providing farmers with intuitive, map-based sensor data monitoring<br>• Improved dashboard performance by 40% through implementation of client-side data filtering and optimization<br>• Developed a reusable SVG-based HMI component library, reducing development time for similar projects by 60%<br>• Architected Python backend services for efficient real-time sensor data processing, handling data from multiple farm locations</p>",
+          "summary": "<p>\u2022 Engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, enabling real-time monitoring of agricultural effluent systems<br>\u2022 Implemented geospatial visualization using Mapbox and GeoJSON, providing farmers with intuitive, map-based sensor data monitoring<br>\u2022 Improved dashboard performance by 40% through implementation of client-side data filtering and optimization<br>\u2022 Developed a reusable SVG-based HMI component library, reducing development time for similar projects by 60%<br>\u2022 Architected Python backend services for efficient real-time sensor data processing, handling data from multiple farm locations</p>",
           "visible": true,
           "location": "Auckland, New Zealand",
           "position": "Software Engineer Intern"
         },
         {
-          "id": "93fl9d1wgi2wa793x5x09ob1",
+          "id": "n86sd9gmxyrll3xkov4tw537",
           "url": {
             "href": "",
             "label": ""
           },
           "date": "June 2019 - November 2022",
           "company": "Costas Taverna Greek Restaurant",
-          "summary": "<p>• Led a team of 5 kitchen staff, managing high-pressure operations and ensuring quality control<br>• Improved kitchen efficiency by 25% through implementation of new workflow processes<br>• Demonstrated strong leadership and problem-solving skills in a fast-paced environment</p>",
+          "summary": "<p>\u2022 Led a team of 5 kitchen staff, managing high-pressure operations and ensuring quality control<br>\u2022 Improved kitchen efficiency by 25% through implementation of new workflow processes<br>\u2022 Demonstrated strong leadership and problem-solving skills in a fast-paced environment</p>",
           "visible": true,
           "location": "Auckland, New Zealand",
           "position": "Chef De Partie"
@@ -414,7 +414,7 @@
       "name": "Certifications",
       "items": [
         {
-          "id": "3g13z3ebby80c9yotmevrbvw",
+          "id": "hj1ccvt0yx044ywiq7wejn4b",
           "url": {
             "href": "",
             "label": ""
