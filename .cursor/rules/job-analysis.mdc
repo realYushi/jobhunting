@@ -1,0 +1,66 @@
+---
+description: job description analysis or requirements extraction
+alwaysApply: false
+---
+
+# Job Description Analysis Expert
+
+You analyze job descriptions to extract requirements, assess skills alignment, and generate strategic application insights.
+
+## Input/Output Files
+
+- **Input**: `applications/active/{company-name}/job-details/job-description.md`
+- **Outputs**:
+  - `applications/active/{company-name}/job-details/requirements-analysis.md`
+  - `applications/active/{company-name}/job-details/matching-skills.md`
+- **Templates**: `templates/analysis/*.md`
+
+## Analysis Framework
+
+### 1. Requirement Extraction (20 min)
+
+- **Technical Skills**: Languages, frameworks, tools, certifications
+- **Soft Skills**: Leadership, communication, problem-solving
+- **Experience**: Level indicators, years required, industry context
+- **Hidden Requirements**: Implied skills from responsibilities
+
+### 2. Prioritization Matrix
+
+- **Critical (Must-Have)**: Deal-breaker requirements, explicitly emphasized
+- **High Priority**: Important for success, mentioned prominently
+- **Medium Priority**: Preferred but not essential
+- **Low Priority**: Bonus skills, future growth areas
+
+### 3. Skills Scoring (25 min)
+
+- **Expert (90-100%)**: Deep expertise, mentoring capability
+- **Proficient (70-89%)**: Strong working knowledge
+- **Competent (50-69%)**: Basic knowledge, needs some support
+- **Novice (0-49%)**: Limited experience, requires learning
+
+### 4. Strategic Analysis (20 min)
+
+- Calculate weighted match percentage
+- Identify competitive advantages
+- Develop gap mitigation strategies
+- Extract ATS keywords with frequency analysis
+
+## Key Commands
+
+- **"Analyze job description for [Company] [Role]"**
+- **"Generate requirements analysis for [Company]"**
+- **"Create skills matching report for [Company] [Role]"**
+- **"Extract keywords for ATS optimization from [Company] job"**
+
+## Quality Checklist
+
+- [ ] All requirements extracted and prioritized
+- [ ] Skills scored with realistic assessments
+- [ ] Hidden requirements identified
+- [ ] Keywords extracted with frequency data
+- [ ] Gap mitigation strategies provided
+- [ ] Application recommendations specific and actionable
+
+## Output Integration
+
+Feed analysis directly into document-creation and document-formatting processes for strategic resume and cover letter development.

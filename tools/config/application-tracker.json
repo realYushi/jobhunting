@@ -1,6 +1,54 @@
 {
+    "meta": {
+        "last_updated": "2025-08-01",
+        "version": "2.0",
+        "agent_coordination": {
+            "max_active_applications": 5,
+            "current_capacity": "5/5 (at capacity)",
+            "follow_up_schedule": "weekly",
+            "next_review_date": "2025-08-08"
+        }
+    },
     "applications": {
         "active": [
+            {
+                "company": "Beca",
+                "position": "Software Engineer Intern",
+                "date_applied": "2025-07-20",
+                "application_url": "https://beca.com/careers",
+                "contact_person": "HR Team",
+                "contact_email": "careers@beca.com",
+                "status": "Applied",
+                "next_steps": "Wait for response",
+                "priority": "High",
+                "days_pending": 12,
+                "notes": "Engineering consultancy, infrastructure projects, graduate development programme",
+                "agent_context": {
+                    "industry": "engineering-consultancy",
+                    "role_type": "backend",
+                    "company_size": "large",
+                    "follow_up_due": "2025-08-03"
+                }
+            },
+            {
+                "company": "Crown Equipment Limited",
+                "position": "Software Engineer Intern",
+                "date_applied": "2025-07-22",
+                "application_url": "https://crown.com/careers",
+                "contact_person": "HR Team",
+                "contact_email": "careers@crown.com",
+                "status": "Applied",
+                "next_steps": "Wait for response",
+                "priority": "High",
+                "days_pending": 10,
+                "notes": "Material handling equipment manufacturer, forklift technology leader",
+                "agent_context": {
+                    "industry": "manufacturing",
+                    "role_type": "fullstack",
+                    "company_size": "large",
+                    "follow_up_due": "2025-08-05"
+                }
+            },
             {
                 "company": "Eagle Technology",
                 "position": "GIS Summer Intern Programme",
@@ -8,10 +56,56 @@
                 "application_url": "https://eagle.co.nz/careers",
                 "contact_person": "HR Team",
                 "contact_email": "careers@eagle.co.nz",
+                "status": "Follow-up Sent",
+                "next_steps": "Wait for response to follow-up email",
+                "priority": "High",
+                "days_pending": 40,
+                "notes": "Leading GIS solutions provider in New Zealand, 10-week intensive programme, flexible locations (Auckland/Wellington/Christchurch) | Follow-up sent 2025-08-01",
+                "agent_context": {
+                    "industry": "gis-technology",
+                    "role_type": "data",
+                    "company_size": "medium",
+                    "follow_up_due": "2025-08-08",
+                    "last_contact": "2025-08-01"
+                }
+            },
+            {
+                "company": "Fisher & Paykel Healthcare",
+                "position": "Software Engineer Intern",
+                "date_applied": "2025-07-25",
+                "application_url": "https://fphcare.com/careers",
+                "contact_person": "HR Team",
+                "contact_email": "careers@fphcare.com",
                 "status": "Applied",
                 "next_steps": "Wait for response",
                 "priority": "High",
-                "notes": "Leading GIS solutions provider in New Zealand, 10-week intensive programme, flexible locations (Auckland/Wellington/Christchurch)"
+                "days_pending": 7,
+                "notes": "Medical device manufacturer, respiratory care and acute care products",
+                "agent_context": {
+                    "industry": "medical-devices",
+                    "role_type": "frontend",
+                    "company_size": "large",
+                    "follow_up_due": "2025-08-08"
+                }
+            },
+            {
+                "company": "Teknique Resideo",
+                "position": "Software Engineer Intern",
+                "date_applied": "2025-07-28",
+                "application_url": "https://teknique.co.nz/careers",
+                "contact_person": "HR Team",
+                "contact_email": "careers@teknique.co.nz",
+                "status": "Applied",
+                "next_steps": "Wait for response",
+                "priority": "High",
+                "days_pending": 4,
+                "notes": "Smart home technology, Honeywell Resideo partner, IoT solutions",
+                "agent_context": {
+                    "industry": "smart-home",
+                    "role_type": "fullstack",
+                    "company_size": "medium",
+                    "follow_up_due": "2025-08-11"
+                }
             }
         ],
         "interviews": [],
@@ -27,7 +121,13 @@
                 "contact_email": "careers@serato.com",
                 "status": "Rejected",
                 "priority": "High",
-                "notes": "Great company culture, perfect match for skills"
+                "feedback": "Strong technical background but looking for someone with more DJ/music industry exposure",
+                "lessons_learned": "Industry-specific experience matters - consider highlighting relevant personal projects",
+                "agent_context": {
+                    "industry": "music-technology",
+                    "role_type": "frontend",
+                    "rejection_reason": "industry_experience_gap"
+                }
             },
             {
                 "company": "Eroad",
@@ -39,23 +139,76 @@
                 "contact_email": "careers@eroad.com",
                 "status": "Rejected",
                 "priority": "High",
-                "notes": "Transportation technology leader, world-first GNSS/cellular road charging, deadline June 27, 2025"
+                "feedback": "Competitive field, strong candidates with more commercial software experience selected",
+                "lessons_learned": "Emphasize commercial/enterprise software experience over personal projects",
+                "agent_context": {
+                    "industry": "transportation-technology",
+                    "role_type": "backend",
+                    "rejection_reason": "commercial_experience_gap"
+                }
             }
         ],
         "withdrawn": []
+    },
+    "agent_insights": {
+        "current_priorities": [
+            {
+                "priority": "high",
+                "action": "Monitor Eagle Technology response",
+                "reason": "Follow-up sent, expect response within 7 days",
+                "due_date": "2025-08-08"
+            },
+            {
+                "priority": "high",
+                "action": "Monitor Beca and Crown Equipment",
+                "reason": "Approaching 2-week mark",
+                "due_date": "2025-08-05"
+            },
+            {
+                "priority": "medium",
+                "action": "Prepare for new opportunities",
+                "reason": "At capacity - prepare to replace if rejections received",
+                "due_date": "2025-08-15"
+            }
+        ],
+        "improvement_areas": [
+            "Highlight commercial software experience",
+            "Industry-specific project examples",
+            "Enterprise development focus",
+            "Professional portfolio presentation"
+        ],
+        "successful_patterns": [
+            "Technical skills matching job requirements",
+            "Clean application presentation",
+            "Structured folder organization",
+            "Professional cover letter format"
+        ]
     },
     "settings": {
         "follow_up_days": 7,
         "resume_template": "standard",
         "cover_letter_template": "standard",
-        "default_output_format": "pdf"
+        "default_output_format": "pdf",
+        "agent_settings": {
+            "auto_follow_up": true,
+            "capacity_warnings": true,
+            "priority_monitoring": true,
+            "outcome_tracking": true
+        }
     },
     "statistics": {
-        "applications_sent": 3,
-        "response_rate": 66.7,
+        "applications_sent": 7,
+        "response_rate": 28.6,
         "interview_rate": 0,
         "offer_rate": 0,
-        "rejection_rate": 66.7
+        "rejection_rate": 28.6,
+        "pending_rate": 71.4,
+        "average_response_time": 21,
+        "targets": {
+            "response_rate_target": 50,
+            "interview_rate_target": 15,
+            "applications_per_month": 8
+        }
     },
     "tags": [
         "remote",
@@ -64,6 +217,13 @@
         "startup",
         "enterprise",
         "high-priority",
-        "dream-job"
+        "dream-job",
+        "engineering-consultancy",
+        "manufacturing",
+        "gis",
+        "medical-devices",
+        "smart-home",
+        "music-technology",
+        "transportation-technology"
     ]
 }
