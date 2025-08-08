@@ -1,11 +1,15 @@
-Yushi Cui Auckland, New Zealand realYushi@gmail.com https://linkedin.com/in/yushi-cui-6043aa285 https://github.com/realYushi
-[Current Date]
-[Hiring Manager Name] [Company Name] [Company Address] [Suburb, State POSTCODE]
+# Cover Letter - [Company Name]
+
+**Date:** [Current Date]
+**Position:** [Job Title]
+
 Dear Hiring Manager,
-I am writing to express my keen interest in the [Job Title] position at [Company Name], as advertised on [Platform where you saw the ad]. As a Computer Science student with a proven ability to solve complex problems and enhance efficiency, I believe my skills are an excellent fit for your team.
-My research into [Company Name]'s dedication to [specific company value related to problem-solving or efficiency, e.g., 'streamlining complex processes' or 'innovative solutions'] has particularly caught my attention. I am drawn to this [Job Title] role because [explain how this role allows you to apply your problem-solving and efficiency skills].
-During my Software Engineer Intern role at HALO Systems, I consistently focused on optimising systems and delivering effective solutions. I improved dashboard performance by 40% through client-side data filtering and architected Python backend services for efficient real-time sensor data processing. My personal Full-Stack Todo List Application project exemplifies my commitment to efficiency, as I implemented CI/CD via GitHub Actions and Azure, reducing deployment time by 70% and achieving 99.9% API uptime. My academic background from AUT (GPA 8.08/9.0) further solidifies my technical and analytical foundation.
-Beyond coding, my experience as a Chef De Partie at Costas Taverna sharpened my practical problem-solving skills in high-pressure settings, where I successfully improved kitchen efficiency by 25% by implementing new workflow processes. This background has instilled in me a dedication to resolving issues and a high attention to detail.
-I am confident my strong problem-solving aptitude and commitment to efficiency will be a valuable asset to [Company Name]. I have attached my CV for your review and would appreciate the opportunity to discuss how I can contribute to your team's success.
-Kind regards,
+
+I am writing to express my interest in the [Job Title] position at [Company Name]. [Company Name]'s focus on [specific problem-solving initiative/complex challenges] aligns perfectly with my proven ability to analyze complex problems and deliver efficient solutions.
+
+My experience at HALO Systems demonstrates strong problem-solving capabilities: I improved dashboard performance by 40% through strategic optimization and architected Python backend services for complex real-time data processing. Additionally, I enhanced system efficiency by implementing CI/CD pipelines that reduced deployment time by 70% while achieving 99.9% API uptime. My diverse background, including improving kitchen workflow efficiency by 25% in high-pressure environments, has strengthened my analytical thinking and attention to detail under pressure.
+
+Thank you for considering my application. I am eager to discuss how my problem-solving expertise and optimization mindset can help [Company Name] tackle complex technical challenges.
+
+Sincerely,
 Yushi Cui

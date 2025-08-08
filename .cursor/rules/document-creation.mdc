@@ -42,15 +42,26 @@ python tools/scripts/json-resume-manager.py --company "[Company]" --role "[role-
 3. Optimize layout and visual presentation
 4. Export as needed by user
 
-## Cover Letter Creation (45 min)
+## Cover Letter Creation (25 min)
 
-### Template Selection
+### CRITICAL: Skimmable Format Priority
 
-- **Achievement-Focused**: Results-driven companies
-- **Innovation-Focused**: Technology companies
-- **Leadership-Focused**: Management roles
-- **Problem-Solving-Focused**: Technical roles
-- **Standard**: General business applications
+**Target**: 200-400 words, 3 paragraphs maximum
+**Reading Time**: 10 seconds for hiring manager evaluation
+**Focus**: Strategic white space and paragraph structure
+
+### Mandatory 3-Paragraph Structure
+
+1. **Intro** (2-3 sentences): Position application + company insight
+2. **Body/Pitch** (3-4 sentences): Core value proposition + 1-2 quantified achievements
+3. **Conclusion** (1-2 sentences): Professional thank you + call to action
+
+### Template Selection (by brevity priority)
+
+- **Achievement-Focused**: Quantified results emphasis
+- **Innovation-Focused**: Technical impact focus
+- **Problem-Solving-Focused**: Solution-oriented approach
+- **Standard**: Clean, professional tone
 
 ### Content Structure
 
@@ -62,10 +73,14 @@ python tools/scripts/json-resume-manager.py --company "[Company]" --role "[role-
 
 Dear Hiring Manager,
 
-[Opening: Company connection with specific insights]
-[Body 1: Value proposition with 2-3 quantified achievements]
-[Body 2: Cultural alignment and enthusiasm]
-[Closing: Professional call to action]
+**Intro Paragraph (2-3 sentences)**
+[Position application + specific company insight/connection]
+
+**Body/Pitch Paragraph (3-4 sentences)**
+[Core qualification + 1-2 quantified achievements + role alignment]
+
+**Conclusion Paragraph (1-2 sentences)**
+[Thank you + professional call to action]
 
 Sincerely,
 [Your Name]
@@ -73,11 +88,110 @@ Sincerely,
 
 ### Quality Standards
 
-- [ ] Company name and role title accurate
-- [ ] Specific company insights referenced
-- [ ] 2-3 concrete achievement examples included
-- [ ] Cultural alignment demonstrated
-- [ ] Under 400 words, clean markdown formatting
+- [ ] **Word Count**: 200-400 words maximum
+- [ ] **Structure**: Exactly 3 paragraphs
+- [ ] **Skimmability**: Clear paragraph breaks, strategic white space
+- [ ] **Company Specificity**: 1 specific company insight in intro
+- [ ] **Quantified Value**: 1-2 concrete achievements with numbers
+- [ ] **Professional Tone**: Confident but concise
+- [ ] **ATS Optimization**: Key role keywords naturally integrated
+
+## MANDATORY: Final Quality Check Process (10 min)
+
+### Phase 0: Truthfulness Validation (CRITICAL)
+**MUST verify ALL claims against source materials before any other checks**
+
+1. **Experience Claims Check**:
+   - Cross-reference ALL mentioned projects against `base-resume.json`
+   - Verify ALL work experience details against resume sections
+   - Confirm ALL skills claims exist in actual skill sections
+   - Flag ANY fabricated or exaggerated claims
+
+2. **Achievement Verification**:
+   - Validate ALL quantified achievements (percentages, metrics) against resume
+   - Ensure project descriptions match actual GitHub/portfolio work
+   - Confirm technology stacks mentioned are genuinely used
+   - No fictional projects or experience allowed
+
+3. **Factual Accuracy Standards**:
+   - Company names, positions, dates must match resume exactly
+   - Academic details (GPA, institution) must be accurate
+   - Certifications mentioned must exist in resume
+   - No assumptions about candidate background allowed
+
+**IMMEDIATE REJECTION if ANY false claims found - restart from truthful foundation**
+
+### Phase 1: Structural Validation
+**CRITICAL: Must pass ALL checks before proceeding**
+
+1. **Word Count Check**: Count exact words - MUST be 200-400 words
+2. **Paragraph Structure**: Verify exactly 3 paragraphs with clear breaks
+3. **Sentence Count**: 
+   - Intro: 2-3 sentences only
+   - Body: 3-4 sentences only  
+   - Conclusion: 1-2 sentences only
+
+### Phase 2: Content Quality Assessment
+**Rate each element 1-5 (5=excellent, 3=acceptable, <3=needs revision)**
+
+1. **Company Research Integration** (Target: 4+)
+   - Specific company insight mentioned (not generic)
+   - Recent achievement/news referenced appropriately
+   - Shows genuine company knowledge
+
+2. **Value Proposition Clarity** (Target: 4+)
+   - Core qualification clearly stated
+   - 1-2 quantified achievements included
+   - Direct relevance to role requirements
+
+3. **Professional Tone & Flow** (Target: 4+)
+   - Confident without being arrogant
+   - Natural keyword integration
+   - Smooth paragraph transitions
+
+4. **Skimmability Test** (Target: 4+)
+   - Can core message be grasped in 10 seconds?
+   - Clear visual breaks between sections
+   - No dense text blocks
+
+### Phase 3: Critical Issues Check
+**IMMEDIATE REVISION REQUIRED if ANY found:**
+
+- [ ] **FALSE CLAIMS**: Any fabricated projects, experience, or skills
+- [ ] **EXAGGERATED ACHIEVEMENTS**: Unverifiable metrics or outcomes
+- [ ] **FICTIONAL EXPERIENCE**: Projects or roles not in actual background
+- [ ] Generic statements ("I am passionate about technology")
+- [ ] Weak opening ("I am writing to apply...")  
+- [ ] Missing quantified achievements
+- [ ] Company name errors or generic references
+- [ ] Overly long sentences (>25 words)
+- [ ] Missing role-specific keywords
+- [ ] Vague conclusion without call to action
+
+**TRUTHFULNESS PRIORITY**: False claims are the most critical issue - immediate restart required
+
+### Phase 4: Revision Protocol
+**If overall score <4.0 or any critical issues found:**
+
+1. **Identify specific problems** from failed checks
+2. **Revise targeted sections** maintaining 3-paragraph structure
+3. **Re-run complete quality check** until standards met
+4. **Document revision reasons** for continuous improvement
+
+### Phase 5: Final Approval Criteria
+**ALL must be TRUE for approval:**
+
+- [ ] Total word count: 200-400 words
+- [ ] All content quality scores ≥4
+- [ ] Zero critical issues identified
+- [ ] Company-specific insights clearly present
+- [ ] Quantified achievements prominently featured
+- [ ] Professional tone maintained throughout
+- [ ] 10-second skimmability confirmed
+
+**Output Quality Score**: [X]/5.0
+**Revision Count**: [X] iterations
+**Approval Status**: ✅ APPROVED / ❌ NEEDS REVISION
 
 ## Output Files
 
@@ -90,6 +204,147 @@ Sincerely,
 - **"Generate JSON resume optimized for [Role Type] at [Company]"**
 - **"Develop strategic cover letter for [Company] using [Template Type]"**
 - **"Review and validate application materials for [Company]"**
+- **"Run quality check on [Company] cover letter"** _(Creates temp files)_
+- **"Revise cover letter for [Company] based on quality check"** _(Creates temp files)_
+- **"Finalize cover letter for [Company]"** _(Cleans up temp files)_
+
+## Quality Check Workflow
+
+### Automated Quality Assessment & Revision Loop
+1. **Create cover letter** using appropriate template
+2. **Run mandatory quality check** using `templates/cover-letters/quality-check-template.md`
+3. **Document assessment** in temporary quality check files
+4. **AUTO-REVISE if score <4.0 OR critical issues found**
+5. **Re-check after revision** until approval criteria met (max 3 iterations)
+6. **Final approval** with quality score documentation
+7. **CLEANUP: Remove all temporary files** keeping only final cover-letter.md
+
+### Revision Process (Automatic)
+
+#### Phase 1: Issue Identification
+- **Structural Issues**: Word count, paragraph structure, sentence limits
+- **Content Issues**: Missing company insights, weak achievements, poor role alignment
+- **Critical Issues**: Generic statements, errors, missing elements
+
+#### Phase 2: Targeted Revision Strategy
+
+**If Word Count Issues**:
+- **Too Short (<200 words)**: Add specific technical details, expand achievements
+- **Too Long (>400 words)**: Remove redundant phrases, combine sentences, tighten language
+
+**If Company Research Issues (Score <4)**:
+- Research additional company insights from application-strategy.md
+- Add specific recent achievements, leadership names, or mission elements
+- Replace generic statements with company-specific knowledge
+
+**If Value Proposition Issues (Score <4)**:
+- Strengthen core qualification statements
+- Add missing quantified achievements with context
+- Better align skills with job requirements from matching-skills.md
+
+**If Professional Tone Issues (Score <4)**:
+- Replace weak openings ("I am writing to apply...")
+- Eliminate passive voice and uncertain language
+- Improve keyword integration naturalness
+
+**If Skimmability Issues (Score <4)**:
+- Add paragraph breaks and white space
+- Restructure dense sentences
+- Make key achievements more prominent
+
+#### Phase 3: Systematic Revision Implementation
+
+**Revision Decision Tree**:
+
+```
+Quality Score < 4.0 OR Critical Issues Found?
+├── YES → Immediate Revision Required
+│   ├── Structural Issues (Word Count, Paragraphs)?
+│   │   ├── Too Short → Add technical specifics, expand achievements
+│   │   ├── Too Long → Remove redundancy, tighten language
+│   │   └── Wrong Structure → Restructure to 3-paragraph format
+│   ├── Content Issues (Company/Value/Tone < 4)?
+│   │   ├── Company Research Weak → Add specific insights from strategy file
+│   │   ├── Value Proposition Weak → Strengthen achievements, add metrics
+│   │   └── Professional Tone Weak → Replace weak language, improve flow
+│   └── Critical Issues Found?
+│       ├── Generic Statements → Replace with specific, company-tailored content
+│       ├── Missing Metrics → Add quantified achievements with context
+│       └── Errors/Typos → Correct all errors, improve grammar
+└── NO → Conditional or Full Approval
+
+After Each Revision:
+├── Re-run Complete Quality Check
+├── Compare Scores (Before vs After)
+├── Document Changes in Revision Tracking
+└── Continue Loop if Score Still < 4.0 (Max 3 Iterations)
+```
+
+**Specific Revision Strategies by Issue Type**:
+
+**Word Count Optimization**:
+- **Add Content**: Technical details from job requirements, additional metrics, learning interests
+- **Remove Content**: Redundant phrases, filler words, unnecessary adjectives
+- **Restructure**: Combine related sentences, break up overly complex sentences
+
+**Company Research Enhancement**:
+- Mine `application-strategy.md` for unused insights
+- Add recent company achievements, leadership names, specific technologies
+- Connect personal interests to company mission more explicitly
+
+**Value Proposition Strengthening**:
+- Reference `matching-skills.md` for overlooked alignments  
+- Add missing quantified achievements from resume
+- Better connect technical skills to specific job requirements
+
+**Professional Tone Improvement**:
+- Replace weak openings: "I am writing to apply" → "I am excited to apply"
+- Eliminate hedge words: "I believe", "I think", "perhaps"
+- Strengthen action verbs: "helped with" → "architected", "led", "optimized"
+
+#### Phase 4: Quality Re-Check & Documentation
+- **Run complete quality assessment** using same criteria
+- **Calculate improvement delta** (new score - original score)
+- **Document specific changes** in revision tracking file
+- **Assess iteration efficiency** (improvement per revision)
+- **Stop conditions**: Score ≥4.0 OR 3 iterations completed
+
+#### Phase 5: File Cleanup (MANDATORY)
+**After Final Approval - Clean Workspace**:
+
+```bash
+# Remove all temporary quality check files
+rm applications/active/{company}/documents/cover-letter-quality-check*.md
+rm applications/active/{company}/documents/cover-letter-revision-tracking.md  
+rm applications/active/{company}/documents/cover-letter-truthfulness-validation.md
+
+# Keep only final deliverables
+ls applications/active/{company}/documents/
+# Should show: cover-letter.md, resume.json (clean workspace)
+```
+
+**Final Deliverables Only**:
+- `cover-letter.md` - Final approved version (truthful, quality score ≥4.0)
+- `resume.json` - Optimized for role and company
+
+**Removed After Completion**:
+- All quality check iterations and assessments
+- Revision tracking and history files
+- Truthfulness validation documentation
+- Any other temporary working files
+
+**Quality Assurance Standards**:
+- Final cover letter contains NO false claims (verified)
+- Quality score ≥4.0 with all approval criteria met
+- Clean file structure for professional presentation
+- Ready for immediate submission
+
+### Quality Check Output
+- **Quality Score**: X.X/5.0 with detailed breakdown
+- **Approval Status**: ✅ APPROVED / ⚠️ CONDITIONAL / ❌ NEEDS REVISION  
+- **Revision Count**: [X] iterations completed
+- **Improvement Delta**: Score change from initial to final
+- **Specific Recommendations**: Any remaining improvement suggestions
 
 ## Integration Standards
 

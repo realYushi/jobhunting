@@ -11,7 +11,7 @@
     },
     "customFields": [
       {
-        "id": "uu3em2rrfxczwprkn8j7rrgt",
+        "id": "1az4fua8u0rli7hquaoen173",
         "icon": "envelope",
         "name": "Visa Status",
         "value": "Permanent Resident - No visa sponsorship required"
@@ -46,7 +46,7 @@
       "id": "experience",
       "items": [
         {
-          "id": "3i5z4i8ruxptz7mz57upi5s3",
+          "id": "uyg1wuk37j11iqmv1o9o5fhr",
           "visible": true,
           "company": "HALO Systems by Tag IT",
           "position": "Software Engineer Intern",
@@ -59,7 +59,7 @@
           }
         },
         {
-          "id": "93fl9d1wgi2wa793x5x09ob1",
+          "id": "l6wwid4jsuywreecldn3qkkp",
           "visible": true,
           "company": "Costas Taverna Greek Restaurant",
           "position": "Chef De Partie",
@@ -81,7 +81,7 @@
       "id": "education",
       "items": [
         {
-          "id": "ixrf37auffwiusw25u6tcjef",
+          "id": "y6fo5cc6ssu2jff8ow21ap6g",
           "visible": true,
           "institution": "Auckland University of Technology",
           "studyType": "Bachelor of Computer and Information Sciences",
@@ -104,7 +104,7 @@
       "id": "projects",
       "items": [
         {
-          "id": "e49npeg7to54j5w7qbpf0bty",
+          "id": "8rq4tpdplljileuk1wytrczg",
           "visible": true,
           "name": "Full-Stack Todo List Application",
           "description": "Comprehensive task management system with modern UI and automated deployment",
@@ -126,7 +126,7 @@
           }
         },
         {
-          "id": "36y25j2m24v1b1af1zrh33nm",
+          "id": "47w7yd1zfzql4vk9063t68jy",
           "visible": true,
           "name": "My Recipe Book: Full Stack Web App",
           "description": "Full-stack recipe management application with web scraping and rich text editing",
@@ -159,7 +159,7 @@
       "id": "skills",
       "items": [
         {
-          "id": "bmh6yz3du8a639zp0efnc25g",
+          "id": "aoazl2717v5u3g1q2bfn9mnz",
           "visible": true,
           "name": "Languages & Frameworks",
           "description": "Python, JavaScript/TypeScript, C#, Vue.js, React, Node.js, .NET Core",
@@ -176,7 +176,7 @@
           ]
         },
         {
-          "id": "a4uui3u077p38rau3e3eo08r",
+          "id": "d2i2dv2n0sqzig3anqug1pm3",
           "visible": true,
           "name": "Database & Cloud",
           "description": "MongoDB, SQL Server, Azure, Firebase",
@@ -189,7 +189,7 @@
           ]
         },
         {
-          "id": "ydwum14tnep69acsddl2t67n",
+          "id": "6pr95022en7io6k5klvnz00j",
           "visible": true,
           "name": "Tools & DevOps",
           "description": "Git, Docker, GitHub Actions, Tailwind CSS, Vitest",
@@ -203,7 +203,7 @@
           ]
         },
         {
-          "id": "kwa64b9tkotgoxd8l2gtsvk2",
+          "id": "jhiqzhh6vsuz2lry27db5vkp",
           "visible": true,
           "name": "Professional",
           "description": "Agile methodologies, System design, Team collaboration",
@@ -224,7 +224,7 @@
       "id": "certifications",
       "items": [
         {
-          "id": "3g13z3ebby80c9yotmevrbvw",
+          "id": "c3a0tmhx9jp8f5ah9cliv7ru",
           "visible": true,
           "name": "Microsoft Azure AI Fundamentals (AI-900)",
           "issuer": "Microsoft",
@@ -245,7 +245,7 @@
       "id": "interests",
       "items": [
         {
-          "id": "ootjgbdr68eao3w7f76f7cnm",
+          "id": "tulzktk7zfxxsxhp190afr8s",
           "visible": true,
           "name": "Technology & Professional Development",
           "keywords": [
@@ -255,7 +255,7 @@
           ]
         },
         {
-          "id": "hkq8owep2qsnr61etepla7pk",
+          "id": "wut3vw18l0lcqjr8ty8drucz",
           "visible": true,
           "name": "Culinary Arts",
           "keywords": [
@@ -265,7 +265,7 @@
           ]
         },
         {
-          "id": "czyqnv7jndjijx5ujr4gj16u",
+          "id": "q21c30ib19tkl0b0p9pud2xz",
           "visible": true,
           "name": "Problem Solving",
           "keywords": [
@@ -275,7 +275,7 @@
           ]
         },
         {
-          "id": "sk354b0fp3dt51gx7wyvqxsh",
+          "id": "tyd2ptncnhyd4ekdd844xztg",
           "visible": true,
           "name": "Continuous Learning",
           "keywords": [
@@ -294,14 +294,14 @@
       "id": "languages",
       "items": [
         {
-          "id": "s8z4vjeh3j0saoxhcb045uez",
+          "id": "h1y0g35izdcf3r7zth2bh63e",
           "visible": true,
           "name": "English",
           "description": "Professional working proficiency",
           "level": 4
         },
         {
-          "id": "8098d4u1g2rs0zgh9rc5w1v0",
+          "id": "8babp04wydt7wofxslrj48o6",
           "visible": true,
           "name": "Chinese (Mandarin)",
           "description": "Native speaker",
@@ -317,7 +317,7 @@
       "id": "profiles",
       "items": [
         {
-          "id": "mkbv45xz4ipm2xb17ke61lp0",
+          "id": "gymy5y5m4t7204ispz253idx",
           "visible": true,
           "network": "GitHub",
           "username": "realYushi",
@@ -328,7 +328,7 @@
           }
         },
         {
-          "id": "rsxske8bj2oh5pkjvgrnzwse",
+          "id": "823gkrte9qrtjh4f6gkh27zj",
           "visible": true,
           "network": "LinkedIn",
           "username": "yushi-cui-6043aa285",

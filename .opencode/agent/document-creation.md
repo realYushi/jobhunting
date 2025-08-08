@@ -126,6 +126,7 @@ python3 tools/scripts/json-resume-manager.py --validate applications/active/Comp
 ### Content Quality
 - [ ] No placeholder text remaining
 - [ ] Company name correctly formatted throughout
+- [ ] Adheres to "Word Usage Validation" in `quality-framework.md`
 - [ ] Academic year consistency (third-year student)
 - [ ] Professional contact information current
 - [ ] Achievements quantified where possible

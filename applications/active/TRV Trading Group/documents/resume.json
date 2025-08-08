@@ -1,0 +1,443 @@
+{
+  "basics": {
+    "url": {
+      "href": "https://github.com/realYushi",
+      "label": "GitHub"
+    },
+    "name": "Yushi Cui",
+    "email": "realYushi@gmail.com",
+    "phone": "",
+    "picture": {
+      "url": "",
+      "size": 64,
+      "effects": {
+        "border": false,
+        "hidden": false,
+        "grayscale": false
+      },
+      "aspectRatio": 1,
+      "borderRadius": 0
+    },
+    "headline": "Quant Trading Research/Developer Intern",
+    "location": "Auckland, New Zealand",
+    "customFields": [
+      {
+        "id": "aorwep3leip3x10u2mxg1eia",
+        "icon": "code",
+        "name": "LeetCode",
+        "value": "https://leetcode.com/u/realYushi/"
+      },
+      {
+        "id": "r9n7b0gwgk5grvr9r7whacis",
+        "icon": "envelope",
+        "name": "Visa Status",
+        "value": "Permanent Resident - No visa sponsorship required"
+      }
+    ]
+  },
+  "metadata": {
+    "css": {
+      "value": "",
+      "visible": false
+    },
+    "page": {
+      "format": "a4",
+      "margin": 18,
+      "options": {
+        "breakLine": true,
+        "pageNumbers": true
+      }
+    },
+    "notes": "Customized for TRV Trading Group - Quantitative Trading Research/Developer Summer Internship. Optimized for data science/quantitative analysis role with emphasis on Python programming, mathematical modeling, and algorithm development skills.",
+    "theme": {
+      "text": "#000000",
+      "primary": "#d97706",
+      "background": "#ffffff"
+    },
+    "layout": [
+      [
+        [
+          "profiles",
+          "summary",
+          "experience",
+          "education",
+          "projects",
+          "certifications"
+        ],
+        [
+          "skills",
+          "interests",
+          "languages"
+        ]
+      ]
+    ],
+    "template": "gengar",
+    "typography": {
+      "font": {
+        "size": 14,
+        "family": "Open Sans",
+        "subset": "latin",
+        "variants": [
+          "regular"
+        ]
+      },
+      "hideIcons": false,
+      "lineHeight": 1.5,
+      "underlineLinks": true
+    }
+  },
+  "sections": {
+    "awards": {
+      "id": "awards",
+      "name": "Awards",
+      "items": [],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "custom": {},
+    "skills": {
+      "id": "skills",
+      "name": "Skills",
+      "items": [
+        {
+          "id": "q96wyb6h9sj434wqjqe5v7zm",
+          "visible": true,
+          "name": "Programming & Quantitative",
+          "description": "",
+          "level": 5,
+          "keywords": [
+            "Python",
+            "C#",
+            "JavaScript",
+            "TypeScript",
+            "Statistical Analysis",
+            "Algorithm Development",
+            "Mathematical Modeling"
+          ]
+        },
+        {
+          "id": "e6ehpv4abe6tt6duf5fuidjm",
+          "visible": true,
+          "name": "Data Processing & Analytics",
+          "description": "",
+          "level": 4,
+          "keywords": [
+            "Large-scale Data Processing",
+            "Real-time Analytics",
+            "Performance Optimization",
+            "MongoDB",
+            "SQL Server",
+            "Machine Learning"
+          ]
+        },
+        {
+          "id": "3brkgyip6swnx1ylnphhggip",
+          "visible": true,
+          "name": "Development & Infrastructure",
+          "description": "",
+          "level": 4,
+          "keywords": [
+            "Vue.js",
+            "React",
+            "Git",
+            "Docker",
+            "Azure",
+            "GitHub Actions",
+            "CI/CD"
+          ]
+        },
+        {
+          "id": "b7chb86qrc5jixtrs0acmhwk",
+          "visible": true,
+          "name": "Professional & Analytical",
+          "description": "",
+          "level": 4,
+          "keywords": [
+            "System Design",
+            "Problem-solving",
+            "Quantitative Analysis",
+            "Team Leadership",
+            "High-pressure Decision Making"
+          ]
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "summary": {
+      "id": "summary",
+      "name": "Professional Summary",
+      "columns": 1,
+      "content": "<p>Third-year Computer Science student with proven expertise in Python programming, data processing, and performance optimization. Demonstrated ability to handle large-scale data analysis and real-time system optimization through production experience at HALO Systems. Strong mathematical foundation with 7.75/9.0 GPA, seeking to apply analytical skills and programming proficiency to quantitative trading strategies and algorithm development in financial markets.</p>",
+      "visible": true,
+      "separateLinks": true
+    },
+    "profiles": {
+      "id": "profiles",
+      "name": "Profiles",
+      "items": [
+        {
+          "id": "2tfgghdddl7wpa8p040e45o1",
+          "url": {
+            "href": "https://github.com/realYushi",
+            "label": "GitHub"
+          },
+          "icon": "github",
+          "network": "GitHub",
+          "visible": true,
+          "username": "realYushi"
+        },
+        {
+          "id": "0ltz6dy6n0qhwsl8ugnpaayj",
+          "url": {
+            "href": "https://linkedin.com/in/yushi-cui-6043aa285",
+            "label": "LinkedIn"
+          },
+          "icon": "linkedin",
+          "network": "LinkedIn",
+          "visible": true,
+          "username": "yushi-cui-6043aa285"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "projects": {
+      "id": "projects",
+      "name": "Projects",
+      "items": [
+        {
+          "id": "np3yotwdiyc1bgg2ff88cc38",
+          "url": {
+            "href": "https://github.com/realYushi/todo-list",
+            "label": "GitHub"
+          },
+          "date": "Personal Project",
+          "name": "Full-Stack Todo List Application",
+          "summary": "<p>\u2022 Independently designed and developed a comprehensive task management system with modern, responsive UI using React and TypeScript with Tailwind CSS<br>\u2022 Built robust backend services using .NET Core and EF Core with SQL Server<br>\u2022 Established automated deployment pipeline using GitHub Actions and Azure services<br>\u2022 Achieved 99.9% API uptime through Azure integration and reduced deployment time by 70% via CI/CD implementation</p>",
+          "visible": true,
+          "keywords": [
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            ".NET Core",
+            "EF Core",
+            "SQL Server",
+            "GitHub Actions",
+            "Azure"
+          ],
+          "description": "Comprehensive task management system with modern UI and automated deployment"
+        },
+        {
+          "id": "58j0x6myn86zyhbqkzecshb7",
+          "url": {
+            "href": "https://github.com/realYushi/my-recipe-book",
+            "label": "GitHub"
+          },
+          "date": "Personal Project",
+          "name": "My Recipe Book: Full Stack Web App",
+          "summary": "<p>\u2022 Developed a full-stack recipe management application using React Router, Node.js (Express.js), and MongoDB<br>\u2022 Implemented web scraping functionality with Puppeteer to automatically import ingredients from external websites<br>\u2022 Designed and built a modern, responsive UI using React Router, Tailwind CSS, and Radix UI<br>\u2022 Integrated a rich text editor (Milkdown) for detailed recipe instructions and enabled image export of recipe cards<br>\u2022 Containerized the entire application using Docker and Docker Compose for streamlined development and deployment<br>\u2022 Established robust authentication using Firebase and a comprehensive test suite with Vitest</p>",
+          "visible": true,
+          "keywords": [
+            "React",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Puppeteer",
+            "Tailwind CSS",
+            "Radix UI",
+            "Docker",
+            "Firebase",
+            "Vitest"
+          ],
+          "description": "Full-stack recipe management application with web scraping and rich text editing"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "education": {
+      "id": "education",
+      "name": "Education",
+      "items": [
+        {
+          "id": "a25hw2dabk4havfu2lkxjb8o",
+          "url": {
+            "href": "https://www.myequals.net/r/sharelink/fc37c3dd-0108-419f-a8d8-dc283c6f5c11/4c3d3151-ccbb-4515-b0f2-98a437ee2f60",
+            "label": "Official Transcript"
+          },
+          "area": "Computer Science",
+          "date": "July 2023 - July 2026 (Expected)",
+          "score": "GPA: 7.75/9.0",
+          "summary": "<p>Third-year Computer Science student maintaining top academic performance while gaining practical industry experience.</p>",
+          "visible": true,
+          "studyType": "Bachelor of Computer and Information Sciences",
+          "institution": "Auckland University of Technology"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "interests": {
+      "id": "interests",
+      "name": "Interests",
+      "items": [
+        {
+          "id": "uqv2mqqa1dl1sqlsv673wsdq",
+          "name": "Quantitative Finance & Technology",
+          "visible": true,
+          "keywords": [
+            "Financial Markets",
+            "Algorithmic Trading",
+            "Statistical Analysis",
+            "Machine Learning"
+          ]
+        },
+        {
+          "id": "mfblcuegtbhfbxucbmq5ozy6",
+          "name": "Mathematical Problem Solving",
+          "visible": true,
+          "keywords": [
+            "Algorithm Optimization",
+            "Data Structures",
+            "LeetCode",
+            "Quantitative Analysis"
+          ]
+        },
+        {
+          "id": "vr89g1ikha5tdrehmtgvea2j",
+          "name": "Continuous Learning",
+          "visible": true,
+          "keywords": [
+            "Quantitative Methods",
+            "Risk Management",
+            "Trading Systems",
+            "Performance Engineering"
+          ]
+        },
+        {
+          "id": "bp1ayx71xpiuqsgexn9e4mhm",
+          "name": "Leadership Under Pressure",
+          "visible": true,
+          "keywords": [
+            "High-stakes Decision Making",
+            "Team Management",
+            "Precision",
+            "Quality Control"
+          ]
+        }
+      ],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "languages": {
+      "id": "languages",
+      "name": "Languages",
+      "items": [
+        {
+          "id": "cx82vkvjv5kyfgki19gjnc9v",
+          "name": "English",
+          "level": 4,
+          "visible": true,
+          "description": "Professional working proficiency"
+        },
+        {
+          "id": "ayy1q3e4w5aqi87c53yoi7oe",
+          "name": "Chinese (Mandarin)",
+          "level": 5,
+          "visible": true,
+          "description": "Native speaker"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "volunteer": {
+      "id": "volunteer",
+      "name": "Volunteering",
+      "items": [],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "experience": {
+      "id": "experience",
+      "name": "Experience",
+      "items": [
+        {
+          "id": "u6d9m71ggmkovhss5v3w9iyt",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "December 2024 - February 2025",
+          "company": "HALO Systems by Tag IT",
+          "summary": "<p>\u2022 Architected Python backend services for efficient real-time sensor data processing, handling large datasets from multiple farm locations with performance optimization focus<br>\u2022 Implemented advanced data filtering algorithms and visualization techniques, improving dashboard performance by 40% through systematic optimization<br>\u2022 Developed geospatial data analysis using Mapbox and GeoJSON, processing and visualizing complex multi-dimensional datasets in real-time<br>\u2022 Engineered production-grade HMI Dashboard with Vue.js and TypeScript, demonstrating ability to deliver reliable systems under performance constraints<br>\u2022 Created reusable algorithmic component library, reducing development time by 60% through systematic code optimization and modular design principles</p>",
+          "visible": true,
+          "location": "Auckland, New Zealand",
+          "position": "Software Engineer Intern"
+        },
+        {
+          "id": "ql5atoi1vjm37lkklg60ggs1",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "June 2019 - November 2022",
+          "company": "Costas Taverna Greek Restaurant",
+          "summary": "<p>\u2022 Led a team of 5 kitchen staff, managing high-pressure operations and ensuring quality control<br>\u2022 Improved kitchen efficiency by 25% through implementation of new workflow processes<br>\u2022 Demonstrated strong leadership and problem-solving skills in a fast-paced environment</p>",
+          "visible": true,
+          "location": "Auckland, New Zealand",
+          "position": "Chef De Partie"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "references": {
+      "id": "references",
+      "name": "References",
+      "items": [],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "publications": {
+      "id": "publications",
+      "name": "Publications",
+      "items": [],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "certifications": {
+      "id": "certifications",
+      "name": "Certifications",
+      "items": [
+        {
+          "id": "9wn6hyww1eb20rcbkhj1wg1e",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "2024",
+          "name": "Microsoft Azure AI Fundamentals (AI-900)",
+          "issuer": "Microsoft",
+          "summary": "<p>Foundational knowledge of machine learning and statistical analysis concepts on Azure platform, relevant to algorithmic trading and quantitative analysis</p>",
+          "visible": true
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    }
+  }
+}

@@ -1,11 +1,15 @@
-Yushi Cui Auckland, New Zealand realYushi@gmail.com https://linkedin.com/in/yushi-cui-6043aa285 https://github.com/realYushi
-[Current Date]
-[Hiring Manager Name] [Company Name] [Company Address] [Suburb, State POSTCODE]
-Kia ora [Hiring Manager Name],
-I am writing to apply for the [Job Title] position at [Company Name], as advertised on [Platform where you saw the ad]. With a strong foundation in software development and proven leadership and collaboration skills, I am eager to join a team that values collective success.
-[Company Name]'s emphasis on [specific company value related to teamwork or collaboration, e.g., 'fostering a collaborative environment' or 'knowledge sharing'] particularly resonates with my professional approach. I am excited by this [Job Title] role as it offers the chance to [explain how this role aligns with your desire for teamwork and leadership].
-My Software Engineer Intern role at HALO Systems provided practical experience in developing production-grade solutions using Vue.js, TypeScript, and Python. While my internship focused on technical delivery, my previous role as a Chef De Partie at Costas Taverna extensively developed my leadership and team collaboration skills. I led a team of 5 kitchen staff, managing high-pressure operations and demonstrating strong problem-solving abilities within a fast-paced environment. This experience, combined with my academic pursuits in Computer Science at AUT (GPA 8.08/9.0), has honed my ability to work effectively both independently and as part of a high-functioning team.
-My personal projects, such as the Full-Stack Todo List Application and My Recipe Book, showcase my ability to independently design and implement complex systems, further complemented by my experience with Agile methodologies and system design. I am a natural problem solver dedicated to resolving issues, possessing excellent written and verbal communication skills vital for effective teamwork.
-I am confident that my blend of technical capabilities and proven collaborative leadership will enable me to make a significant contribution to [Company Name]. My CV is attached for your review, and I welcome the opportunity to discuss my application further.
-Kind regards,
+# Cover Letter - [Company Name]
+
+**Date:** [Current Date]
+**Position:** [Job Title]
+
+Dear Hiring Manager,
+
+I am writing to apply for the [Job Title] position at [Company Name]. [Company Name]'s emphasis on [specific collaborative culture/team leadership initiative] aligns perfectly with my passion for combining technical excellence with effective team collaboration.
+
+My experience demonstrates both technical competency and leadership capabilities: I delivered production-grade solutions at HALO Systems using Vue.js, TypeScript, and Python while developing strong collaboration skills. Additionally, as Chef De Partie, I successfully led a team of 5 staff in high-pressure environments, improving operational efficiency by 25% through effective team coordination and communication. My academic excellence (GPA 8.08/9.0) and diverse project portfolio showcase my ability to work independently while contributing effectively to team success.
+
+Thank you for considering my application. I am excited to discuss how my combination of technical skills and proven leadership experience can contribute to [Company Name]'s collaborative culture.
+
+Sincerely,
 Yushi Cui

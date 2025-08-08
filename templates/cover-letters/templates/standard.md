@@ -1,11 +1,15 @@
-Yushi Cui Auckland, New Zealand realYushi@gmail.com https://linkedin.com/in/yushi-cui-6043aa285 https://github.com/realYushi (Note: Your full address is typically included at the top, but for flexibility, I've kept it more general based on your profile indicating "Auckland, New Zealand".)
-[Current Date]
-[Hiring Manager Name] (or "Dear Hiring Manager" if name is not provided) [Company Name] [Company Address] [Suburb, State POSTCODE]
-Kia ora [Hiring Manager Name],
-I am writing to express my enthusiastic interest in the [Job Title] position at [Company Name], as advertised on [Platform where you saw the ad]. As a third-year Computer Science student with professional full-stack development internship experience, I am eager to apply my skills in an environment that values innovation and impactful solutions.
-[Company Name]'s commitment to [specific company value, mission, or project you admire] deeply impresses me, and my research into your work on [specific company achievement or initiative] strongly resonates with my aspirations. This [Job Title] role particularly appeals to me because [explain why this specific role within this company appeals to you].
-My recent Software Engineer Intern role at HALO Systems demonstrates my capability in delivering robust, production-grade solutions. I engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, and architected Python backend services for efficient real-time sensor data processing. I also improved dashboard performance by 40% through optimisation. My personal projects, such as the Full-Stack Todo List Application, further highlight my proficiency in React, .NET Core, SQL Server, and automated deployments via GitHub Actions and Azure, achieving 99.9% API uptime. Complementing this, my Bachelor of Computer and Information Sciences at AUT, with a GPA of 8.08/9.0, provides a strong theoretical and practical foundation.
-I also bring transferable skills from my Chef De Partie experience, including resilience, a high attention to detail, and proven problem-solving abilities in fast-paced environments, where I successfully improved kitchen efficiency by 25%. My excellent written and verbal communication skills further enhance my professional capabilities.
-I am confident that my blend of technical expertise and practical experience aligns well with the requirements for this position. I have attached my CV for your review and welcome the opportunity to discuss my application further and how I can contribute to [Company Name]'s success.
-Kind regards,
+# Cover Letter - [Company Name]
+
+**Date:** [Current Date]
+**Position:** [Job Title]
+
+Dear Hiring Manager,
+
+I am writing to express my interest in the [Job Title] position at [Company Name]. [Company Name]'s [specific company insight - mission/recent achievement/value] aligns perfectly with my passion for [relevant field/technology], making this opportunity particularly compelling.
+
+As a Computer Science student with professional internship experience at HALO Systems, I bring proven full-stack development capabilities and production-grade system delivery. I engineered a Vue.js/TypeScript HMI Dashboard and architected Python backend services for real-time data processing, achieving 40% performance improvements. My academic excellence (GPA 8.08/9.0) and hands-on project experience in React, .NET Core, and cloud technologies demonstrate my readiness to contribute immediately to your team.
+
+Thank you for considering my application. I would welcome the opportunity to discuss how my technical skills and proven delivery experience can contribute to [Company Name]'s continued success.
+
+Sincerely,
 Yushi Cui

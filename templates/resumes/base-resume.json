@@ -22,13 +22,13 @@
     "location": "Auckland, New Zealand",
     "customFields": [
       {
-        "id": "h0cs7gtsz1igb5gvewmkqpt2",
+        "id": "9crpa2nre5sswd99q1jzs8hf",
         "icon": "code",
         "name": "LeetCode",
         "value": "https://leetcode.com/u/realYushi/"
       },
       {
-        "id": "tewax0e0mcygw93w0zlo5wv6",
+        "id": "mo8pgaj74iw9jpzczc6tezaa",
         "icon": "envelope",
         "name": "Visa Status",
         "value": "Permanent Resident - No visa sponsorship required"
@@ -101,7 +101,7 @@
       "name": "Skills",
       "items": [
         {
-          "id": "y7zpcpab6eaaxl6cohptzd4e",
+          "id": "m81e99qfc7ibupybu4qcmu2t",
           "visible": true,
           "name": "Database & Cloud",
           "description": "",
@@ -114,7 +114,7 @@
           ]
         },
         {
-          "id": "l43l9bqn3uorb45p27235066",
+          "id": "uwu5achi7q3hdu3sbyzwfelx",
           "visible": true,
           "name": "Languages & Frameworks",
           "description": "",
@@ -131,7 +131,7 @@
           ]
         },
         {
-          "id": "q0a28jjoch6md35l4zvevwej",
+          "id": "5ub364do3i55x6arbprdeaux",
           "visible": true,
           "name": "Tools & DevOps",
           "description": "",
@@ -145,7 +145,7 @@
           ]
         },
         {
-          "id": "x68jl5c2gqvbp8mbart7sggi",
+          "id": "6pyzcs3pubq3rqsj2d9y2wh5",
           "visible": true,
           "name": "Professional",
           "description": "",
@@ -174,7 +174,7 @@
       "name": "Profiles",
       "items": [
         {
-          "id": "5pa3gler5jim9wlszo5ok4ly",
+          "id": "po9qv6oa752mjiaru4hdgrq1",
           "url": {
             "href": "https://github.com/realYushi",
             "label": "GitHub"
@@ -185,7 +185,7 @@
           "username": "realYushi"
         },
         {
-          "id": "899lucx4ev8p7dqso7ror211",
+          "id": "csndc74k59duazk8n2y33apa",
           "url": {
             "href": "https://linkedin.com/in/yushi-cui-6043aa285",
             "label": "LinkedIn"
@@ -205,7 +205,7 @@
       "name": "Projects",
       "items": [
         {
-          "id": "emb2kxjahz3n0s4gae9oqku3",
+          "id": "rmisnlmkojxe219kaui6kkxc",
           "url": {
             "href": "https://github.com/realYushi/todo-list",
             "label": "GitHub"
@@ -227,7 +227,7 @@
           "description": "Comprehensive task management system with modern UI and automated deployment"
         },
         {
-          "id": "75zir1kanxcf3kn6bdy118lw",
+          "id": "apkw5h8oeie6rxrvez79kga4",
           "url": {
             "href": "https://github.com/realYushi/my-recipe-book",
             "label": "GitHub"
@@ -260,7 +260,7 @@
       "name": "Education",
       "items": [
         {
-          "id": "dij71r97uojxfn2w85lyy0xu",
+          "id": "931l29t19zlb0dbygz1x7gka",
           "url": {
             "href": "https://www.myequals.net/r/sharelink/fc37c3dd-0108-419f-a8d8-dc283c6f5c11/4c3d3151-ccbb-4515-b0f2-98a437ee2f60",
             "label": "Official Transcript"
@@ -283,7 +283,7 @@
       "name": "Interests",
       "items": [
         {
-          "id": "0yhvjv0nzrmtmr5nmbkprv5x",
+          "id": "685so3aoeitwt6vlf8gsxdf3",
           "name": "Technology & Professional Development",
           "visible": true,
           "keywords": [
@@ -293,7 +293,7 @@
           ]
         },
         {
-          "id": "rv0a2onr5jyrohzm4v8fz60z",
+          "id": "rwiezo1106lqay6edf8d4iwa",
           "name": "Culinary Arts",
           "visible": true,
           "keywords": [
@@ -303,7 +303,7 @@
           ]
         },
         {
-          "id": "lvmu20jqqmoendb9tj1lpg4u",
+          "id": "8bkoq43az9tgl2y6gjqddge4",
           "name": "Problem Solving",
           "visible": true,
           "keywords": [
@@ -313,7 +313,7 @@
           ]
         },
         {
-          "id": "y19pjee8scnoxgzoo5aoxb4u",
+          "id": "63y680150ax4usilglcohwna",
           "name": "Continuous Learning",
           "visible": true,
           "keywords": [
@@ -332,14 +332,14 @@
       "name": "Languages",
       "items": [
         {
-          "id": "5ug133x99vz05oh7kj0cvznt",
+          "id": "387ok7jq3016sgmujyimaqlf",
           "name": "English",
           "level": 4,
           "visible": true,
           "description": "Professional working proficiency"
         },
         {
-          "id": "eqsg6y2ut2j6dmla1426wp73",
+          "id": "wb31qlosfluizom1jf04lbw2",
           "name": "Chinese (Mandarin)",
           "level": 5,
           "visible": true,
@@ -363,7 +363,7 @@
       "name": "Experience",
       "items": [
         {
-          "id": "7bjbc6c7bmf385p8lrgxrtvy",
+          "id": "tt1pqgj3nn10rg8q28lnxosy",
           "url": {
             "href": "",
             "label": ""
@@ -376,7 +376,7 @@
           "position": "Software Engineer Intern"
         },
         {
-          "id": "n86sd9gmxyrll3xkov4tw537",
+          "id": "tk0gcw96ank06u28slrkqq7x",
           "url": {
             "href": "",
             "label": ""
@@ -414,7 +414,7 @@
       "name": "Certifications",
       "items": [
         {
-          "id": "hj1ccvt0yx044ywiq7wejn4b",
+          "id": "6xolgwjf298gcnq00jjaorpn",
           "url": {
             "href": "",
             "label": ""

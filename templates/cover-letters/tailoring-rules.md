@@ -1,92 +1,81 @@
 # Cover Letter Tailoring Rules for AI Agents
 
+## CRITICAL: Skimmable Format Requirements
+
+### Rule 0: 10-Second Readability Test
+- **Target**: 200-400 words maximum, 3 paragraphs only
+- **Structure**: Intro → Body/Pitch → Conclusion 
+- **White Space**: Strategic paragraph breaks for visual scanning
+- **Hiring Manager Reality**: 10 seconds maximum initial review time
+
 ## Strategic Framework
 
-### Rule 1: Quote & Analyze Job Description
-- Extract key phrases using blockquotes (>)
-- Focus on "what you'll do" and qualifications that match candidate profile
-- Prioritize requirements by emphasis in job description
+### Rule 1: Intro Paragraph (2-3 sentences)
+- Open with position application + specific company insight
+- Reference 1 concrete company achievement/mission element from research
+- Establish immediate connection between candidate and company
 
-### Rule 2: Respond Directly to Requirements  
-- Address each quoted requirement with specific candidate experience
-- Use exact terminology from job description for ATS optimization
-- Include measurable outcomes and links to relevant work/projects
+### Rule 2: Body/Pitch Paragraph (3-4 sentences) 
+- Lead with strongest qualification match
+- Include 1-2 quantified achievements with metrics
+- Connect technical skills directly to role requirements
+- Demonstrate value proposition clearly
 
-### Rule 3: Tell Stories for Key Qualifications
-- Select 2-3 most important matches to elaborate
-- Connect to themes like Leadership, Initiative, Problem-Solving
-- Use candidate's actual project experience and GitHub portfolio
+### Rule 3: Conclusion Paragraph (1-2 sentences)
+- Professional thank you 
+- Clear call to action for next steps
+- Maintain confident, forward-looking tone
 
-### Rule 4: Integrate Company Research
-- Quote company mission/values from research phase
-- Reference recent company news or initiatives (within 6 months)
-- Mention personal experience with their products if applicable
-- Use insights from `company-research/application-strategy.md`
+### Rule 4: Company Research Integration
+- Use specific insights from `company-research/application-strategy.md`
+- Reference recent company news or achievements (within 6 months)
+- Connect candidate values to company mission authentically
 
-### Rule 5: Structure in Markdown
-- Format: Concise intro → Quoted requirements with responses → Brief conclusion
-- Keep under 400 words for optimal impact
-- Format for clean copy/paste to application systems
-
-### Rule 6: Be Authentic & Specific
-- Use candidate's voice with technical details
-- Reference real projects from resume and GitHub
-- Avoid generic statements - everything should be candidate-specific
-
-### Rule 7: Optimize for Humans & ATS
-- Include keywords naturally from job description analysis
-- Keep to one page with clear headings
-- Balance keyword usage with natural language flow
-
-### Rule 8: Clean Formatting Guidelines
-- Avoid bold formatting (**text**) - let content speak for itself
-- Use blockquotes (>) for job requirement quotes only
-- Maintain professional, clean text without emphasis formatting
-- Templates favor substance over stylistic formatting
-- Exception: Company names and job titles may use quotation marks for clarity
+### Rule 5: ATS & Human Optimization
+- Include role keywords naturally in body paragraph
+- Maintain conversational flow while hitting technical terms
+- Balance keyword density with readability
 
 ## Template Selection Guide
 
 ### Achievement-Focused Template
-**Use for:** Results-driven companies, consulting firms, enterprise sales
-**Emphasis:** Quantified outcomes, business impact, measurable achievements
-**Companies:** Beca, Crown Equipment Limited
+**Use for:** Results-driven companies, consulting firms, enterprise
+**Word Count:** 180-250 words
+**Focus:** Quantified outcomes in body paragraph
 
 ### Innovation-Focused Template  
-**Use for:** Technology companies, startups, product development roles
-**Emphasis:** Technical creativity, problem-solving, cutting-edge solutions
-**Companies:** Eagle Technology, Teknique Resideo
+**Use for:** Technology companies, startups, R&D roles
+**Word Count:** 200-280 words
+**Focus:** Technical creativity and modern technologies
 
 ### Problem-Solving-Focused Template
-**Use for:** Engineering roles, technical positions, development-heavy roles
-**Emphasis:** Technical challenges overcome, system improvements, debugging
-**Companies:** All current active applications (technical roles)
+**Use for:** Engineering roles, technical positions, optimization-focused roles
+**Word Count:** 190-260 words
+**Focus:** Technical challenges and system improvements
 
 ### Standard Template
-**Use for:** General business applications, unclear company culture
-**Emphasis:** Balanced professional presentation
-**Companies:** Traditional industries, unclear cultural indicators
+**Use for:** General business applications, traditional industries
+**Word Count:** 170-240 words
+**Focus:** Balanced professional presentation
 
 ## Quality Checklist for AI Agents
 
-### Content Requirements
-- [ ] Company name and role title accurate throughout
-- [ ] 2-3 specific candidate achievements referenced with metrics  
-- [ ] Job requirements quoted and directly addressed
-- [ ] Company research insights incorporated naturally
-- [ ] Technical skills mentioned match job requirements priority
-- [ ] Candidate's GitHub/portfolio referenced where relevant
+### Critical Requirements
+- [ ] **Word Count**: 200-400 words maximum (strict limit)
+- [ ] **Structure**: Exactly 3 paragraphs with clear breaks
+- [ ] **Company Specificity**: 1 specific company insight in intro
+- [ ] **Quantified Value**: 1-2 metrics in body paragraph
+- [ ] **Skimmable**: Clear visual breaks, easy to scan
+- [ ] **Professional Tone**: Confident but concise
 
-### Format Requirements
-- [ ] Clean markdown structure maintained
-- [ ] Under 400 words total length
-- [ ] Professional tone consistent throughout
+### Content Requirements
+- [ ] Company name and role title accurate
+- [ ] Technical skills match job requirements priority  
 - [ ] No placeholder text [brackets] remaining
-- [ ] Ready for copy/paste to application systems
-- [ ] ATS-friendly keyword density (2-3% of total words)
+- [ ] ATS-friendly keyword integration
+- [ ] Ready for immediate copy/paste submission
 
 ### Integration Standards
-- [ ] Messaging aligns with resume JSON customization
-- [ ] Keywords coordinate with resume optimization
-- [ ] Value propositions consistent across all materials
-- [ ] Cultural fit demonstrated through company research
+- [ ] Messaging aligns with resume optimization
+- [ ] Value propositions consistent across materials
+- [ ] Cultural fit demonstrated through research insights

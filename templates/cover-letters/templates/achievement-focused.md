@@ -1,22 +1,15 @@
-Yushi Cui Auckland, New Zealand realYushi@gmail.com https://linkedin.com/in/yushi-cui-6043aa285 https://github.com/realYushi
-[Current Date]
-[Hiring Manager Name] [Company Name] [Company Address] [Suburb, State POSTCODE]
-Kia ora Hiring Manager,
-I am applying for the [Job Title] position at [Company Name], advertised on [Platform where you saw the ad]. My full-stack development experience and proven ability to deliver impactful solutions make me a strong match for this role.
-[Company Name]'s work in [mention specific area of company's excellence] aligns with my aspirations. I am keen to contribute to this [Job Title] role, which offers [briefly state key appeal of the role].
-As a Software Engineer Intern at HALO Systems, I:
-•
-Engineered and deployed a production-grade HMI Dashboard (Vue.js, TypeScript).
-•
-Improved dashboard performance by 40%.
-•
-Architected Python backend services for real-time data processing.
-My personal projects further showcase my capabilities:
-•
-Full-Stack Todo List Application: Achieved 99.9% API uptime and reduced deployment time by 70% via CI/CD (React, .NET Core, SQL Server, GitHub Actions, Azure).
-•
-My Recipe Book: Containerized application with Docker, implemented web scraping.
-My academic background includes a Bachelor of Computer and Information Sciences at AUT (GPA 8.08/9.0). From my Chef De Partie role, I bring leadership and problem-solving skills, having improved kitchen efficiency by 25%. I am a natural problem solver with excellent communication skills.
-I am eager to bring my technical expertise and drive to [Company Name]. My CV is attached, and I look forward to the opportunity to discuss my candidacy.
-Kind regards,
+# Cover Letter - [Company Name]
+
+**Date:** [Current Date]
+**Position:** [Job Title]
+
+Dear Hiring Manager,
+
+I am applying for the [Job Title] position at [Company Name]. [Company Name]'s [specific achievement/initiative] demonstrates the impact-driven culture I seek to join as a results-oriented developer.
+
+My professional experience at HALO Systems showcases quantifiable achievements: engineered a production-grade Vue.js/TypeScript dashboard, improved performance by 40%, and architected Python backend services for real-time data processing. Additionally, my Full-Stack Todo List Application achieved 99.9% API uptime and reduced deployment time by 70% through automated CI/CD pipelines. My academic excellence (GPA 8.08/9.0) and diverse experience, including improving kitchen efficiency by 25% in hospitality, demonstrate my consistent drive for measurable results.
+
+Thank you for considering my application. I am eager to discuss how my proven track record of delivering quantifiable improvements can contribute to [Company Name]'s continued success.
+
+Sincerely,
 Yushi Cui

@@ -38,55 +38,20 @@ You analyze job descriptions to extract both explicit and implicit requirements,
 - **Reference**: `templates/resumes/base-resume.json` for candidate skills
 - **Output**: 
   - `applications/active/{company-name}/job-details/job-description.md`
-  - `applications/active/{company-name}/job-details/requirements-analysis.md`
-  - `applications/active/{company-name}/job-details/matching-skills.md`
+  - `applications/active/{company-name}/job-details/job-analysis.md`
 
-## Analysis Templates
+## Analysis Template
 
-### Requirements Analysis Template
+### Consolidated Analysis Template
 ```markdown
-# Requirements Analysis - [Position Title]
+# Comprehensive Job Analysis for [Company] - [Role Title]
 
-## Critical Requirements (Must Have)
-- [Requirement 1]: [Evidence from job description]
-- [Requirement 2]: [Evidence from job description]
-
-## Preferred Requirements (Nice to Have)
-- [Preference 1]: [Evidence from job description]
-- [Preference 2]: [Evidence from job description]
-
-## Implicit Requirements
-- [Industry knowledge/Cultural fit indicators]
-
-## Experience Level Expectations
-- [Years of experience, seniority level, specific contexts]
-
-## Technology Stack Focus
-- [Primary technologies, frameworks, tools]
-```
-
-### Skills Matching Template
-```markdown
-# Skills Matching Analysis - [Position Title]
-
-## Strong Matches (90-100%)
-- [Skill]: [Specific evidence from candidate experience]
-
-## Good Matches (70-89%)
-- [Skill]: [Related experience and how it transfers]
-
-## Development Areas (Below 70%)
-- [Skill]: [Gap and mitigation strategy]
-
-## Competitive Advantages
-- [Unique strengths that exceed requirements]
-
-## Overall Match Score: [X]%
-
-## Positioning Strategy
-- **Lead with**: [Top 3 strengths to emphasize]
-- **Address gaps through**: [Strategy for handling weaknesses]
-- **Unique value**: [What sets candidate apart]
+## 1. Role & Requirements Extraction
+...
+## 2. Candidate Skill Matching
+...
+## 3. Strategic Application Plan
+...
 ```
 
 ## Role-Specific Analysis Patterns

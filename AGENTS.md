@@ -33,7 +33,7 @@ Use the `job-analysis` agent for requirements extraction:
 - Parse explicit and implicit job requirements
 - Match candidate skills against requirements
 - Develop strategic positioning recommendations
-- Output: `requirements-analysis.md` and `matching-skills.md`
+- Output: `job-analysis.md`
 
 ### 3. Document Creation (25 min)
 Use the `document-creation` agent for resume and cover letter generation:
@@ -43,11 +43,13 @@ Use the `document-creation` agent for resume and cover letter generation:
 - Output: Customized `resume.json` and `cover-letter.md`
 
 ### 4. Quality Assurance (15 min)
-Use the `document-formatting` agent for validation:
-- JSON structure validation and CUID2 compliance
-- Reactive Resume platform compatibility testing
-- Professional formatting and error checking
-- Final quality assurance before submission
+Use the `document-formatting` agent to prepare documents for validation, then use the `validation` agent for quality check, and if needed, the `revision` agent for automatic corrections:
+- **Formatting**: The `document-formatting` agent ensures clean JSON and Markdown structure.
+- **Validation**: The `validation` agent runs a comprehensive check against `templates/quality-framework.md`.
+- **Revision**: If validation fails (❌ NEEDS REVISION), the `revision` agent automatically corrects issues and re-submits for validation.
+- **Iterative Process**: This validation-revision cycle continues until documents achieve ✅ APPROVED status.
+- **Platform Compatibility**: Ensures resume imports correctly into Reactive Resume.
+- **Final Review**: A full quality assurance check before submission.
 
 ### 5. Project Organization (5 min)
 Use the `folder-structure` agent for file management:
@@ -113,7 +115,9 @@ python3 tools/scripts/json-resume-manager.py --validate applications/active/Comp
 For automated company research: @.opencode/agent/company-research.md
 For job requirements analysis: @.opencode/agent/job-analysis.md  
 For document creation workflows: @.opencode/agent/document-creation.md
-For formatting and validation: @.opencode/agent/document-formatting.md
+For formatting and pre-validation: @.opencode/agent/document-formatting.md
+For final quality assurance: @.opencode/agent/validation.md
+For document revision after failed validation: @.opencode/agent/revision.md
 For project structure management: @.opencode/agent/folder-structure.md
 
 ## Critical Success Factors
