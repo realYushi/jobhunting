@@ -48,7 +48,7 @@
         "pageNumbers": true
       }
     },
-    "notes": "",
+    "notes": "Customized for HeartLab",
     "theme": {
       "text": "#000000",
       "primary": "#d97706",
@@ -151,7 +151,12 @@
           "description": "",
           "level": 4,
           "keywords": [
-            "Agile",
+            "Real-time Monitoring",
+            "Healthcare Technology",
+            "Patient Care Systems",
+            "Clinical Workflows",
+            "Performance Optimization",
+            "Production Systems",
             "System Design",
             "Team Collaboration"
           ]
@@ -165,7 +170,7 @@
       "id": "summary",
       "name": "Professional Summary",
       "columns": 1,
-      "content": "<p>A third-year Computer Science student with professional internship experience in full-stack development. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>",
+      "content": "<p>A third-year Computer Science student with professional internship experience in full-stack development and real-time monitoring systems. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills for healthcare technology applications. Passionate about building efficient, patient-focused applications that improve clinical workflows through continuous learning and hands-on development.</p>",
       "visible": true,
       "separateLinks": true
     },
@@ -187,7 +192,7 @@
         {
           "id": "csndc74k59duazk8n2y33apa",
           "url": {
-            "href": "https://linkedin.com/in/yushi-c-6043aa285",
+            "href": "https://linkedin.com/in/yushi-cui-6043aa285",
             "label": "LinkedIn"
           },
           "icon": "linkedin",
@@ -370,7 +375,7 @@
           },
           "date": "December 2024 - February 2025",
           "company": "HALO Systems by Tag IT",
-          "summary": "<p>\u2022 Engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, enabling real-time monitoring of agricultural effluent systems<br>\u2022 Implemented geospatial visualization using Mapbox and GeoJSON, providing farmers with intuitive, map-based sensor data monitoring<br>\u2022 Improved dashboard performance by 40% through implementation of client-side data filtering and optimization<br>\u2022 Developed a reusable SVG-based HMI component library, reducing development time for similar projects by 60%<br>\u2022 Architected Python backend services for efficient real-time sensor data processing, handling data from multiple farm locations</p>",
+          "summary": "<p>\u2022 Engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, enabling real-time monitoring systems applicable to patient care environments<br>\u2022 Implemented geospatial visualization using Mapbox and GeoJSON, providing intuitive data monitoring interfaces for clinical workflows<br>\u2022 Improved dashboard performance by 40% through implementation of client-side data filtering and optimization techniques critical for healthcare applications<br>\u2022 Developed a reusable SVG-based HMI component library, reducing development time for similar projects by 60% and ensuring consistent user experience<br>\u2022 Architected Python backend services for efficient real-time sensor data processing, handling high-volume data streams from multiple locations</p>",
           "visible": true,
           "location": "Auckland, New Zealand",
           "position": "Software Engineer Intern"

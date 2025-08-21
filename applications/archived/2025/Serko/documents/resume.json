@@ -48,7 +48,7 @@
         "pageNumbers": true
       }
     },
-    "notes": "",
+    "notes": "Customized for Serko",
     "theme": {
       "text": "#000000",
       "primary": "#d97706",
@@ -60,13 +60,12 @@
           "profiles",
           "summary",
           "experience",
-          "education",
-          "projects",
-          "certifications",
-          "interests"
+          "projects"
         ],
         [
           "skills",
+          "education",
+          "certifications",
           "languages"
         ]
       ]
@@ -118,7 +117,7 @@
           "visible": true,
           "name": "Languages & Frameworks",
           "description": "",
-          "level": 4,
+          "level": 5,
           "keywords": [
             "Python",
             "JavaScript",
@@ -165,7 +164,7 @@
       "id": "summary",
       "name": "Professional Summary",
       "columns": 1,
-      "content": "<p>A third-year Computer Science student with professional internship experience in full-stack development. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>",
+      "content": "<p>A third-year Computer Science student with professional internship experience in frontend development with expertise in modern JavaScript frameworks. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>",
       "visible": true,
       "separateLinks": true
     },
@@ -187,7 +186,7 @@
         {
           "id": "csndc74k59duazk8n2y33apa",
           "url": {
-            "href": "https://linkedin.com/in/yushi-c-6043aa285",
+            "href": "https://linkedin.com/in/yushi-cui-6043aa285",
             "label": "LinkedIn"
           },
           "icon": "linkedin",

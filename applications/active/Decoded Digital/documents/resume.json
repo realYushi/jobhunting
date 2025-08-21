@@ -6,7 +6,7 @@
     },
     "name": "Yushi Cui",
     "email": "realYushi@gmail.com",
-    "phone": "",
+    "phone": "+64 22 071 5618",
     "picture": {
       "url": "",
       "size": 64,
@@ -22,13 +22,13 @@
     "location": "Auckland, New Zealand",
     "customFields": [
       {
-        "id": "9crpa2nre5sswd99q1jzs8hf",
+        "id": "w01nysqim2voa6tj9h5k9oxc",
         "icon": "code",
         "name": "LeetCode",
         "value": "https://leetcode.com/u/realYushi/"
       },
       {
-        "id": "mo8pgaj74iw9jpzczc6tezaa",
+        "id": "b40a3xubbq4821moncz6vqop",
         "icon": "envelope",
         "name": "Visa Status",
         "value": "Permanent Resident - No visa sponsorship required"
@@ -48,7 +48,7 @@
         "pageNumbers": true
       }
     },
-    "notes": "",
+    "notes": "Customized for Decoded Digital",
     "theme": {
       "text": "#000000",
       "primary": "#d97706",
@@ -101,7 +101,7 @@
       "name": "Skills",
       "items": [
         {
-          "id": "m81e99qfc7ibupybu4qcmu2t",
+          "id": "v0obzwbgabmksybv4cubux70",
           "visible": true,
           "name": "Database & Cloud",
           "description": "",
@@ -110,11 +110,12 @@
             "MongoDB",
             "SQL Server",
             "Azure",
-            "Firebase"
+            "Firebase",
+            "AI Integration"
           ]
         },
         {
-          "id": "uwu5achi7q3hdu3sbyzwfelx",
+          "id": "ts8af47fv9iz3i0b135f2356",
           "visible": true,
           "name": "Languages & Frameworks",
           "description": "",
@@ -131,7 +132,7 @@
           ]
         },
         {
-          "id": "5ub364do3i55x6arbprdeaux",
+          "id": "c3mi0zrgretabtxyqf7mv10j",
           "visible": true,
           "name": "Tools & DevOps",
           "description": "",
@@ -145,7 +146,7 @@
           ]
         },
         {
-          "id": "6pyzcs3pubq3rqsj2d9y2wh5",
+          "id": "c5icqhag7xb01on756cu3xlr",
           "visible": true,
           "name": "Professional",
           "description": "",
@@ -174,7 +175,7 @@
       "name": "Profiles",
       "items": [
         {
-          "id": "po9qv6oa752mjiaru4hdgrq1",
+          "id": "pfgwotu1iwb32h33gu82o6ja",
           "url": {
             "href": "https://github.com/realYushi",
             "label": "GitHub"
@@ -185,9 +186,9 @@
           "username": "realYushi"
         },
         {
-          "id": "csndc74k59duazk8n2y33apa",
+          "id": "kvhpggp1ht9louko6rlzof8r",
           "url": {
-            "href": "https://linkedin.com/in/yushi-c-6043aa285",
+            "href": "https://linkedin.com/in/yushi-cui-6043aa285",
             "label": "LinkedIn"
           },
           "icon": "linkedin",
@@ -205,7 +206,7 @@
       "name": "Projects",
       "items": [
         {
-          "id": "rmisnlmkojxe219kaui6kkxc",
+          "id": "3bnxiykirff3029wzb8l7gsv",
           "url": {
             "href": "https://github.com/realYushi/todo-list",
             "label": "GitHub"
@@ -227,7 +228,7 @@
           "description": "Comprehensive task management system with modern UI and automated deployment"
         },
         {
-          "id": "apkw5h8oeie6rxrvez79kga4",
+          "id": "2v1jwerhaldfgofhev4fwzs6",
           "url": {
             "href": "https://github.com/realYushi/my-recipe-book",
             "label": "GitHub"
@@ -260,7 +261,7 @@
       "name": "Education",
       "items": [
         {
-          "id": "931l29t19zlb0dbygz1x7gka",
+          "id": "n1n9xh9c0rk5xj86ssn2xxul",
           "url": {
             "href": "https://www.myequals.net/r/sharelink/fc37c3dd-0108-419f-a8d8-dc283c6f5c11/4c3d3151-ccbb-4515-b0f2-98a437ee2f60",
             "label": "Official Transcript"
@@ -283,7 +284,7 @@
       "name": "Interests",
       "items": [
         {
-          "id": "685so3aoeitwt6vlf8gsxdf3",
+          "id": "j9p3ct7aj30x304z843824om",
           "name": "Technology & Professional Development",
           "visible": true,
           "keywords": [
@@ -293,7 +294,7 @@
           ]
         },
         {
-          "id": "rwiezo1106lqay6edf8d4iwa",
+          "id": "5shxfpol69swkdlktq1n43ys",
           "name": "Culinary Arts",
           "visible": true,
           "keywords": [
@@ -303,7 +304,7 @@
           ]
         },
         {
-          "id": "8bkoq43az9tgl2y6gjqddge4",
+          "id": "slz1qd4pwftvedganj15bele",
           "name": "Problem Solving",
           "visible": true,
           "keywords": [
@@ -313,7 +314,7 @@
           ]
         },
         {
-          "id": "63y680150ax4usilglcohwna",
+          "id": "sbcxgb4qx5m9t1t9f33ccbsj",
           "name": "Continuous Learning",
           "visible": true,
           "keywords": [
@@ -332,14 +333,14 @@
       "name": "Languages",
       "items": [
         {
-          "id": "387ok7jq3016sgmujyimaqlf",
+          "id": "b704ucxl2oifjt266vl6gt6f",
           "name": "English",
           "level": 4,
           "visible": true,
           "description": "Professional working proficiency"
         },
         {
-          "id": "wb31qlosfluizom1jf04lbw2",
+          "id": "2v43nh6sy0a24dbnhfkifc9j",
           "name": "Chinese (Mandarin)",
           "level": 5,
           "visible": true,
@@ -363,7 +364,7 @@
       "name": "Experience",
       "items": [
         {
-          "id": "tt1pqgj3nn10rg8q28lnxosy",
+          "id": "w6u1s7gq6sa0fe5qr5pj7ahd",
           "url": {
             "href": "",
             "label": ""
@@ -376,7 +377,7 @@
           "position": "Software Engineer Intern"
         },
         {
-          "id": "tk0gcw96ank06u28slrkqq7x",
+          "id": "o474a8qxlsagtl6xpzfe7eps",
           "url": {
             "href": "",
             "label": ""
@@ -414,7 +415,7 @@
       "name": "Certifications",
       "items": [
         {
-          "id": "6xolgwjf298gcnq00jjaorpn",
+          "id": "smiqdv6nb9w5bkcbb7z0k8kc",
           "url": {
             "href": "",
             "label": ""
