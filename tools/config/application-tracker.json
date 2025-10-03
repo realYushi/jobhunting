@@ -1,444 +1,10 @@
 {
     "meta": {
-        "last_updated": "2025-09-02",
-        "version": "2.1",
-        "agent_coordination": {
-            "max_active_applications": 5,
-            "current_capacity": "16/5 (over capacity - monitor responses closely)",
-            "follow_up_schedule": "weekly",
-            "next_review_date": "2025-09-09"
-        }
+        "last_updated": "2025-10-03",
+        "version": "3.0"
     },
     "applications": {
-        "active": [
-            {
-                "company": "Halter",
-                "position": "Firmware Internship 2025/2026",
-                "date_applied": "2025-08-01",
-                "application_url": "https://halter.co.nz/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@halter.co.nz",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "Very High",
-                "days_pending": 32,
-                "notes": "AgTech/IoT virtual fencing for cattle, $165M Series D funding June 2025, firmware internship with embedded systems focus | Documents validated 2025-08-01 - 90%+ quality standards met, CUID2 IDs fixed, ATS optimized",
-                "agent_context": {
-                    "industry": "agricultural-technology",
-                    "role_type": "backend",
-                    "company_size": "medium",
-                    "follow_up_due": "2025-08-15",
-                    "special_notes": "Firmware/embedded systems role - different from typical software positions"
-                }
-            },
-            {
-                "company": "Beca",
-                "position": "Software Engineer Intern",
-                "date_applied": "2025-07-20",
-                "application_url": "https://beca.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@beca.com",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "High",
-                "days_pending": 44,
-                "notes": "Engineering consultancy, infrastructure projects, graduate development programme",
-                "agent_context": {
-                    "industry": "engineering-consultancy",
-                    "role_type": "backend",
-                    "company_size": "large",
-                    "follow_up_due": "2025-08-03"
-                }
-            },
-            {
-                "company": "Fisher & Paykel Healthcare",
-                "position": "Software Engineer Intern",
-                "date_applied": "2025-07-25",
-                "application_url": "https://fphcare.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@fphcare.com",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "High",
-                "days_pending": 39,
-                "notes": "Medical device manufacturer, respiratory care and acute care products",
-                "agent_context": {
-                    "industry": "medical-devices",
-                    "role_type": "frontend",
-                    "company_size": "large",
-                    "follow_up_due": "2025-08-08"
-                }
-            },
-            {
-                "company": "Teknique Resideo",
-                "position": "Software Engineer Intern",
-                "date_applied": "2025-07-28",
-                "application_url": "https://teknique.co.nz/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@teknique.co.nz",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "High",
-                "days_pending": 36,
-                "notes": "Smart home technology, Honeywell Resideo partner, IoT solutions",
-                "agent_context": {
-                    "industry": "smart-home",
-                    "role_type": "fullstack",
-                    "company_size": "medium",
-                    "follow_up_due": "2025-08-11"
-                }
-            },
-            {
-                "company": "2degrees",
-                "position": "Summer Internship 25/26 - Software",
-                "date_applied": "2025-08-01",
-                "application_url": "https://careers.2degrees.nz/jobdetails/ajid/RgW3a/Summer-Internship-25-26-Software,50277",
-                "contact_person": "HR Team",
-                "contact_email": "careers@2degrees.nz",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "Very High",
-                "days_pending": 32,
-                "notes": "Telecommunications challenger brand, 13-week paid programme (Nov 2025 - Feb 2026), Auckland location, strong technical match (92%) with innovation focus alignment | Application submitted 2025-08-01 - 95% quality standards met, comprehensive company research completed",
-                "agent_context": {
-                    "industry": "telecommunications",
-                    "role_type": "fullstack",
-                    "company_size": "large",
-                    "follow_up_due": "2025-08-15",
-                    "special_notes": "Strong technical match, telecommunications domain positioning, challenger brand values alignment emphasized, comprehensive application package created",
-                    "analysis_completed": "2025-08-01",
-                    "documents_completed": "2025-08-01",
-                    "match_score": "92%",
-                    "document_quality": "95% overall quality, ATS optimized, values-driven narrative, CUID2 compliant JSON resume"
-                }
-            },
-            {
-                "company": "Orion Health",
-                "position": "Software Engineer",
-                "date_applied": "2025-08-02",
-                "application_url": "https://orionhealth.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@orionhealth.com",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "Very High",
-                "days_pending": 31,
-                "notes": "Healthcare technology leader, HEALWELL AI acquisition, global interoperability focus, modern tech stack (React, TypeScript, AWS, Kafka) | Documents optimized 2025-08-02 - 91% quality standards met, healthcare technology positioning, 78% skills match with domain growth strategy",
-                "agent_context": {
-                    "industry": "healthcare-technology",
-                    "role_type": "fullstack",
-                    "company_size": "large",
-                    "follow_up_due": "2025-08-16",
-                    "special_notes": "Healthcare interoperability focus, FHIR standards, global collaboration culture, AI-enhanced healthcare solutions, mission-driven positioning emphasized",
-                    "analysis_completed": "2025-08-02",
-                    "documents_completed": "2025-08-02",
-                    "match_score": "78%",
-                    "document_quality": "91% overall quality, healthcare technology specialist positioning, fullstack role optimization, CUID2 compliant JSON resume",
-                    "success_probability": "82%"
-                }
-            },
-            {
-                "company": "Kitea Health",
-                "position": "Software Engineer Intern",
-                "date_applied": "2025-08-03",
-                "application_url": "https://kiteahealth.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "jobs@kiteahealth.com",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "Very High",
-                "days_pending": 30,
-                "notes": "Medical device technology company, implantable sensors for chronic disease management (heart failure, hydrocephalus), first-in-human trials at Auckland Hospital, FDA TAP program participation, mission-driven healthcare innovation | Application submitted 2025-08-03 - 94% quality standards met, 82% skills match with strong database architecture alignment, comprehensive company research completed",
-                "agent_context": {
-                    "industry": "medical-devices",
-                    "role_type": "backend",
-                    "company_size": "small",
-                    "follow_up_due": "2025-08-16",
-                    "application_deadline": "2025-09-15",
-                    "special_notes": "Database architecture focus (RDBMS/NoSQL), medical device software development, regulatory compliance (FDA design controls), 10-week internship program in Parnell Auckland",
-                    "analysis_completed": "2025-08-02",
-                    "documents_completed": "2025-08-02",
-                    "match_score": "82%",
-                    "document_quality": "94% overall quality - JSON resume CUID2 compliant and ATS optimized, cover letter 575 words comprehensive but slightly long, all company research files complete",
-                    "success_probability": "85%",
-                    "validation_results": {
-                        "json_resume": "PASSED - Structure valid, CUID2 compliant",
-                        "cover_letter": "PASSED - Professional formatting, comprehensive content",
-                        "company_research": "COMPLETE - 4 detailed files (strategy, profile, culture, key-people)",
-                        "job_analysis": "COMPLETE - Requirements analysis and skills matching",
-                        "folder_structure": "COMPLETE - All required directories and files present"
-                    }
-                }
-            },
-            {
-                "company": "Navico Group",
-                "position": "Software Engineer Summer Internship",
-                "date_applied": "2025-08-08",
-                "application_url": "https://www.seek.co.nz/job/85947285",
-                "contact_person": "HR Team",
-                "contact_email": "careers@navico.com",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "Very High",
-                "days_pending": 25,
-                "notes": "Marine electronics leader, part of Brunswick Corporation, 10-week summer internship program with 10-12 interns, embedded and application-level systems focus, Auckland CBD location | Application package created 2025-08-08 - ✅ APPROVED status achieved, 78% skills match with strategic positioning for embedded systems transition",
-                "agent_context": {
-                    "industry": "marine-electronics",
-                    "role_type": "fullstack",
-                    "company_size": "large",
-                    "follow_up_due": "2025-08-22",
-                    "application_deadline": "Not specified",
-                    "special_notes": "Embedded systems focus, marine electronics domain, hardware-software integration, production experience positioning, geospatial skills relevance to navigation systems",
-                    "analysis_completed": "2025-08-08",
-                    "documents_completed": "2025-08-08",
-                    "match_score": "78%",
-                    "document_quality": "✅ APPROVED - 92% ATS optimization, buzzwords eliminated, comprehensive company research completed, strategic positioning for embedded systems transition",
-                    "success_probability": "82%",
-                    "validation_results": {
-                        "json_resume": "PASSED - CUID2 compliant, ATS optimized, embedded systems keywords integrated",
-                        "cover_letter": "APPROVED - 341 words, buzzwords eliminated, specific brand references (Lowrance), strategic positioning",
-                        "company_research": "COMPLETE - 5 detailed files (profile, culture, strategy, competitive-analysis, recent-developments)",
-                        "job_analysis": "COMPLETE - 78% match score, requirements analysis, strategic positioning recommendations",
-                        "folder_structure": "COMPLETE - All required directories and files present"
-                    }
-                }
-            },
-            {
-                "company": "TOMRA Food",
-                "position": "Software Engineer Summer Intern",
-                "date_applied": "2025-08-21",
-                "application_url": "https://www.linkedin.com/jobs/view/4279428586/",
-                "contact_person": "HR Team",
-                "contact_email": "careers@tomra.com",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "Very High",
-                "days_pending": 12,
-                "notes": "TOMRA Food - sensor-based sorting and food processing solutions, 50+ years in business, mission 'Every Resource Counts', focus on automation and sustainability, application deadline August 21st 2025 | Application package completed 2025-08-08 - ✅ APPROVED status achieved, 78% skills match with strategic positioning for automation and sensor systems experience",
-                "agent_context": {
-                    "industry": "food-technology",
-                    "role_type": "backend",
-                    "company_size": "large",
-                    "follow_up_due": "2025-08-21",
-                    "application_deadline": "2025-08-21",
-                    "special_notes": "Automation focus, sensor-based systems, food processing domain, system integration emphasis, sustainability mission alignment, requires academic transcript",
-                    "analysis_completed": "2025-08-08",
-                    "documents_completed": "2025-08-08",
-                    "match_score": "78%",
-                    "document_quality": "✅ APPROVED - 4.3/5 content quality, zero critical issues, 90%+ ATS optimization achieved, JSON resume CUID2 compliant and backend optimized, cover letter with specific company research integration",
-                    "success_probability": "82%",
-                    "validation_results": {
-                        "json_resume": "✅ APPROVED - CUID2 compliant, backend optimization applied, automation keywords integrated, ATS optimized",
-                        "cover_letter": "✅ APPROVED - Professional formatting, company mission integration, automation focus positioning, zero critical issues",
-                        "company_research": "COMPLETE - 5 detailed files (strategy, profile, culture, key-people, recent-developments)",
-                        "job_analysis": "COMPLETE - 78% match score, automation focus alignment, strategic positioning for sensor systems experience",
-                        "folder_structure": "COMPLETE - All required directories and files present"
-                    }
-                }
-            },
-            {
-                "company": "HeartLab",
-                "position": "Software Engineering Summer Internship 2025/2026",
-                "date_applied": "2025-08-11",
-                "application_url": "Not specified",
-                "contact_person": "HR Team",
-                "contact_email": "Not specified",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "Very High",
-                "days_pending": 22,
-                "notes": "Cardiac imaging technology company, 1M+ patient studies processed, cloud-native platform, Auckland on-site internship | Application package completed 2025-08-11 - ✅ APPROVED status achieved, 85% skills match with strategic positioning as 'Production-Ready Healthcare Technology Contributor'",
-                "agent_context": {
-                    "industry": "healthcare-technology",
-                    "role_type": "fullstack",
-                    "company_size": "small",
-                    "follow_up_due": "2025-08-25",
-                    "application_deadline": "Not specified",
-                    "special_notes": "Real-time monitoring expertise directly applicable to patient monitoring systems, production internship experience as key differentiator, healthcare mission alignment emphasized, Will Hewitt CEO connection",
-                    "analysis_completed": "2025-08-11",
-                    "documents_completed": "2025-08-11",
-                    "match_score": "85%",
-                    "document_quality": "✅ APPROVED - 5.0/5 content quality, zero critical issues, 90%+ ATS optimization achieved, JSON resume CUID2 compliant and fullstack optimized with healthcare keywords, cover letter 314 words with specific company research integration",
-                    "success_probability": "82%",
-                    "validation_results": {
-                        "json_resume": "✅ APPROVED - CUID2 compliant, fullstack optimization applied, healthcare technology keywords integrated, real-time monitoring positioning",
-                        "cover_letter": "✅ APPROVED - 314 words, company research integration (1M+ studies, clinical workflows), production experience positioning, zero critical issues",
-                        "company_research": "COMPLETE - Application strategy with comprehensive company analysis and strategic positioning framework",
-                        "job_analysis": "COMPLETE - 85% match score, real-time monitoring alignment, strategic positioning for healthcare technology transition",
-                        "folder_structure": "COMPLETE - All required directories and files present"
-                    }
-                }
-            },
-            {
-                "company": "HeartLab",
-                "position": "Summer Internship 2025/2026 - Software Engineering",
-                "date_applied": "2025-08-11",
-                "application_url": "https://www.linkedin.com/jobs/view/4279428586/",
-                "contact_person": "HR Team",
-                "contact_email": "careers@heartlab.com",
-                "status": "Applied",
-                "next_steps": "Wait for response",
-                "priority": "Very High",
-                "days_pending": 22,
-                "notes": "Cardiac imaging technology company, 1M+ patient studies processed worldwide, cloud-based cardiology platform revolutionizing cardiac diagnosis, founded by Will Hewitt 2018, Auckland-based with global clinical impact | Application package completed 2025-08-11 - ✅ APPROVED status achieved, 85% skills match with production experience advantage",
-                "agent_context": {
-                    "industry": "medical-technology",
-                    "role_type": "fullstack",
-                    "company_size": "small",
-                    "follow_up_due": "2025-08-25",
-                    "application_deadline": "Not specified",
-                    "special_notes": "Healthcare technology focus, real-time patient monitoring systems, production internship experience as key differentiator, cloud-native DICOM platform, AI partnerships with Us2.ai and Ultromics",
-                    "analysis_completed": "2025-08-11",
-                    "documents_completed": "2025-08-11",
-                    "match_score": "85%",
-                    "document_quality": "✅ APPROVED - 95/100 application readiness score, 95%+ ATS optimization, healthcare technology keyword integration, production experience positioning",
-                    "success_probability": "82%",
-                    "validation_results": {
-                        "json_resume": "✅ APPROVED - CUID2 compliant, healthcare technology keywords integrated, ATS optimized",
-                        "cover_letter": "✅ APPROVED - 314 words, company research integration, production experience positioning",
-                        "company_research": "COMPLETE - 5 detailed files (profile, culture, key-people, recent-developments, application-strategy)",
-                        "job_analysis": "COMPLETE - 85% match score, production experience advantage identified",
-                        "folder_structure": "COMPLETE - All required directories and files present"
-                    }
-                }
-            },
-            {
-                "company": "Air New Zealand",
-                "position": "Digital Intern - Software Engineering",
-                "date_applied": "2025-08-20",
-                "application_url": "https://airnz.com/careers",
-                "contact_person": "Gracie Wang",
-                "contact_email": "Gracie.Wang@airnz.co.nz",
-                "status": "Ready to Apply",
-                "next_steps": "Submit application by August 29 deadline",
-                "priority": "Very High",
-                "days_pending": 13,
-                "notes": "Digital transformation leader, 12-week ELEVATE internship (Nov 2025 - Jan 2026), Java microservices + front-end web/mobile focus, 185 Fanshawe Street Auckland location | Application package completed 2025-08-20 - ✅ APPROVED status achieved, 88% skills match with strategic positioning as 'Production-Ready Digital Innovation Contributor'",
-                "agent_context": {
-                    "industry": "aviation-technology",
-                    "role_type": "fullstack",
-                    "company_size": "large",
-                    "follow_up_due": "2025-08-29",
-                    "application_deadline": "2025-08-29",
-                    "special_notes": "Fast-track to world's most digital airline mission, Java microservices expertise needed, cross-functional squads, Chief Digital Officer Nikhil Ravishankar connection, assessment centre late September",
-                    "analysis_completed": "2025-08-20",
-                    "documents_completed": "2025-08-20",
-                    "match_score": "88%",
-                    "document_quality": "✅ APPROVED - 5.0/5 content quality, zero critical issues, 92% ATS optimization achieved, JSON resume CUID2 compliant and fullstack optimized, cover letter 362 words with comprehensive company research integration",
-                    "success_probability": "85%",
-                    "validation_results": {
-                        "json_resume": "✅ APPROVED - CUID2 compliant, fullstack optimization applied, Air New Zealand keywords integrated, ATS optimized",
-                        "cover_letter": "✅ APPROVED - 362 words, expanded from 135 words, digital transformation mission integration, production experience positioning, zero critical issues",
-                        "company_research": "COMPLETE - Application strategy with comprehensive company analysis (CDO Nikhil Ravishankar, digital transformation insights, technical positioning framework)",
-                        "job_analysis": "COMPLETE - 88% match score, fullstack alignment with Java microservices growth opportunity, strategic positioning recommendations",
-                        "folder_structure": "COMPLETE - All required directories and files present"
-                    }
-                }
-            },
-            {
-                "company": "Decoded Digital",
-                "position": "Junior Developer Intern",
-                "date_applied": "2025-08-20",
-                "application_url": "Not specified",
-                "contact_person": "Tariq, Shah Nawaz",
-                "contact_email": "shahnawaz.tariq@decoded.digital",
-                "status": "Ready to Apply",
-                "next_steps": "Submit application by September 7 deadline",
-                "priority": "Very High",
-                "days_pending": 13,
-                "notes": "AI-driven software solutions company led by CEO Andrew Radcliffe (20+ years experience), specializes in making AI accessible to NZ SMEs, Voice AI innovation, AI Employees development, React/Node.js stack perfect match, $28.95/hour rate, Symonds Street Auckland Central | COMPREHENSIVE JOB ANALYSIS COMPLETED 2025-08-20 - 95% technical alignment, 90% success probability, strategic positioning as 'AI-Ready Full-Stack Developer with Production Experience'",
-                "agent_context": {
-                    "industry": "ai-software-solutions",
-                    "role_type": "fullstack",
-                    "company_size": "small",
-                    "follow_up_due": "2025-09-07",
-                    "application_deadline": "2025-09-07",
-                    "special_notes": "Perfect React/Node.js stack alignment, CEO Andrew Radcliffe's 'practical over complex' philosophy, Voice AI with RAG systems, AI Employees (Jessica/Brad/Sarah), healthcare automation projects, Zoho trusted partner, production experience differentiation advantage",
-                    "analysis_completed": "2025-08-20",
-                    "documents_completed": "2025-08-20",
-                    "company_research_completed": "2025-08-20",
-                    "match_score": "95%",
-                    "document_quality": "✅ APPROVED - 5.0/5.0 quality score, 95% ATS optimization, zero critical issues, comprehensive validation completed 2025-08-20",
-                    "success_probability": "90%",
-                    "validation_results": {
-                        "comprehensive_validation": "✅ APPROVED - 5.0/5.0 overall quality score, zero critical issues detected, truthfulness verified, ready for immediate submission",
-                        "json_resume": "✅ APPROVED - CUID2 compliant, fullstack optimization applied, AI integration keywords integrated, 95% ATS optimization achieved",
-                        "cover_letter": "✅ APPROVED - 296 words optimized, company research integration complete, strategic positioning achieved, zero buzzwords detected",
-                        "company_research": "✅ COMPLETE - Comprehensive web research: company profile, culture insights, application strategy, key people analysis, research sources (5 detailed files)",
-                        "job_analysis": "✅ COMPLETE - 95% match score, perfect React/Node.js alignment, AI readiness positioning, comprehensive technical skills breakdown with strategic positioning framework",
-                        "folder_structure": "✅ COMPLETE - All required directories and files present with comprehensive research",
-                        "validation_status": "✅ SUBMISSION READY - All quality framework criteria met, 5.0/5.0 score achieved"
-                    }
-                }
-            },
-            {
-                "company": "Marops",
-                "position": "Software Engineering Internship",
-                "date_applied": "2025-08-20",
-                "application_url": "Not specified - job reference MAR-INTERN-2025",
-                "contact_person": "HR Team",
-                "contact_email": "Not specified",
-                "status": "Ready to Apply",
-                "next_steps": "Submit application package",
-                "priority": "Very High",
-                "days_pending": 13,
-                "notes": "Defence/commercial engineering company, 24 years established, Auckland North Shore, RNZAF/RNZN partnerships, requires NZ citizenship and security clearance eligibility, Callaghan Innovation funded internship | Application package completed 2025-08-20 - ✅ APPROVED status achieved, 88% skills match with strategic positioning as \"Production-Ready Defence Technology Contributor\"",
-                "agent_context": {
-                    "industry": "defence-engineering",
-                    "role_type": "backend",
-                    "company_size": "small",
-                    "follow_up_due": "2025-09-03",
-                    "application_deadline": "Not specified",
-                    "special_notes": "Security clearance pathway advantage, production experience differentiator, defence sector positioning, RNZAF ACTC project reference opportunity, 24-year company credibility",
-                    "analysis_completed": "2025-08-20",
-                    "documents_completed": "2025-08-20",
-                    "match_score": "88%",
-                    "document_quality": "✅ APPROVED - 5.0/5 content quality, zero critical issues, 90%+ ATS optimization, JSON resume CUID2 compliant and backend optimized, cover letter 311 words with comprehensive company research integration",
-                    "success_probability": "82%",
-                    "validation_results": {
-                        "json_resume": "✅ APPROVED - CUID2 compliant, backend optimization applied, defence systems keywords integrated, ATS optimized",
-                        "cover_letter": "✅ APPROVED - 311 words, company research integration (RNZAF ACTC, WideEye systems), production experience positioning, zero critical issues",
-                        "company_research": "COMPLETE - 5 detailed files (profile, culture, key-people, recent-developments, application-strategy)",
-                        "job_analysis": "COMPLETE - 88% match score, defence sector alignment, strategic positioning for security clearance pathway",
-                        "folder_structure": "COMPLETE - All required directories and files present"
-                    }
-                }
-            },
-            {
-                "company": "Figured",
-                "position": "Software Development Internship",
-                "date_applied": "2025-09-02",
-                "application_url": "https://figured.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@figured.com",
-                "status": "Ready to Apply",
-                "next_steps": "Submit application package",
-                "priority": "Very High",
-                "days_pending": 0,
-                "notes": "Agricultural technology SaaS platform, 11-year-old NZ company serving 35,000+ farming operations globally, Callaghan Innovation funded internship, strategic AI integration focus, production code contribution opportunity | 🏆 WON FIGURED & WDCC HACKATHON - worked in Figured office, built Vue.js financial dashboard, already established positive relationship with team | Application package completed 2025-09-02 - ✅ APPROVED status achieved with EXCEPTIONAL INSIDER ADVANTAGE, 85% skills match with strategic positioning as 'Proven Vue.js Developer with Cultural Fit'",
-                "agent_context": {
-                    "industry": "agricultural-technology",
-                    "role_type": "fullstack",
-                    "company_size": "medium",
-                    "follow_up_due": "2025-09-16",
-                    "application_deadline": "Not specified",
-                    "special_notes": "🏆 HACKATHON WINNER - Direct company connection through successful Vue.js project collaboration in Figured office, proven cultural fit with team, agricultural domain experience advantage (HALO Systems effluent monitoring), AI integration philosophy alignment, production experience differentiation, Callaghan Innovation funding (NZQA Level 6 requirement)",
-                    "analysis_completed": "2025-09-02",
-                    "documents_completed": "2025-09-02",
-                    "hackathon_advantage": "Won Figured & WDCC hackathon with Vue.js financial dashboard, worked in company office, established positive team relationships",
-                    "match_score": "85%",
-                    "document_quality": "✅ APPROVED - 5.0/5.0 EXCEPTIONAL quality score with hackathon integration, 96% ATS optimization, zero critical issues, direct company experience positioning, Vue.js skills proven in company context",
-                    "success_probability": "95%",
-                    "validation_results": {
-                        "json_resume": "✅ APPROVED - CUID2 compliant, fullstack optimization applied, agricultural technology keywords integrated, ATS optimized",
-                        "cover_letter": "✅ APPROVED - 287 words with 🏆 HACKATHON WIN integration, direct company office experience, Vue.js project success, established team relationships, exceptional insider positioning",
-                        "company_research": "COMPLETE - 5 detailed files (profile, culture, key-people, recent-developments, application-strategy)",
-                        "job_analysis": "COMPLETE - 85% match score, AI integration alignment, strategic positioning for agricultural technology transition",
-                        "folder_structure": "COMPLETE - All required directories and files present"
-                    }
-                }
-            }
-        ],
+        "active": [],
         "interviews": [],
         "offers": [],
         "rejected": [
@@ -451,15 +17,7 @@
                 "contact_person": "HR Team",
                 "contact_email": "careers@generatezero.com",
                 "status": "Rejected",
-                "priority": "Very High",
-                "feedback": "Application declined - no specific feedback provided.",
-                "lessons_learned": "Climate tech positions highly competitive, may need stronger sustainability project portfolio.",
-                "agent_context": {
-                    "industry": "climate-technology",
-                    "role_type": "fullstack",
-                    "company_size": "small",
-                    "rejection_reason": "competitive_field"
-                }
+                "priority": "Very High"
             },
             {
                 "company": "Serato",
@@ -470,14 +28,7 @@
                 "contact_person": "HR Team",
                 "contact_email": "careers@serato.com",
                 "status": "Rejected",
-                "priority": "High",
-                "feedback": "Strong technical background but looking for someone with more DJ/music industry exposure",
-                "lessons_learned": "Industry-specific experience matters - consider highlighting relevant personal projects",
-                "agent_context": {
-                    "industry": "music-technology",
-                    "role_type": "frontend",
-                    "rejection_reason": "industry_experience_gap"
-                }
+                "priority": "High"
             },
             {
                 "company": "Eroad",
@@ -488,14 +39,7 @@
                 "contact_person": "HR Team",
                 "contact_email": "careers@eroad.com",
                 "status": "Rejected",
-                "priority": "High",
-                "feedback": "Competitive field, strong candidates with more commercial software experience selected",
-                "lessons_learned": "Emphasize commercial/enterprise software experience over personal projects",
-                "agent_context": {
-                    "industry": "transportation-technology",
-                    "role_type": "backend",
-                    "rejection_reason": "commercial_experience_gap"
-                }
+                "priority": "High"
             },
             {
                 "company": "TRV Trading Group",
@@ -506,15 +50,7 @@
                 "contact_person": "HR Team",
                 "contact_email": "Not specified",
                 "status": "Rejected",
-                "priority": "Very High",
-                "feedback": "Looking for students in penultimate or final year of study with strong academic performance in relevant fields (Engineering, Computer Science, Mathematics, Statistics, Physics). Competition is intense with many more qualified applications than positions. Encouraged to reapply next year.",
-                "lessons_learned": "Academic year progression matters for quantitative finance roles - timing is critical. Strong academic performance emphasis suggests GPA/grades are key factors. Consider reapplying in penultimate/final year.",
-                "agent_context": {
-                    "industry": "quantitative-finance",
-                    "role_type": "data",
-                    "company_size": "small",
-                    "rejection_reason": "academic_year_progression"
-                }
+                "priority": "Very High"
             },
             {
                 "company": "Eagle Technology",
@@ -525,17 +61,7 @@
                 "contact_person": "HR Team",
                 "contact_email": "careers@eagle.co.nz",
                 "status": "Rejected",
-                "priority": "High",
-                "feedback": "Not specified - rejection received after follow-up attempt",
-                "lessons_learned": "GIS roles highly competitive, may need stronger domain-specific project portfolio. Long response time (53 days) suggests position filled earlier.",
-                "agent_context": {
-                    "industry": "gis-technology",
-                    "role_type": "data",
-                    "company_size": "medium",
-                    "rejection_reason": "competitive_field",
-                    "follow_up_attempted": "2025-08-01",
-                    "total_days_pending": 53
-                }
+                "priority": "High"
             },
             {
                 "company": "Crown Equipment Limited",
@@ -546,16 +72,7 @@
                 "contact_person": "HR Team",
                 "contact_email": "careers@crown.com",
                 "status": "Rejected",
-                "priority": "High",
-                "feedback": "Not specified",
-                "lessons_learned": "Manufacturing industry positions require stronger emphasis on hardware-software integration and industrial systems experience.",
-                "agent_context": {
-                    "industry": "manufacturing",
-                    "role_type": "fullstack",
-                    "company_size": "large",
-                    "rejection_reason": "competitive_field",
-                    "total_days_pending": 27
-                }
+                "priority": "High"
             },
             {
                 "company": "Serko",
@@ -566,17 +83,7 @@
                 "contact_person": "HR Team",
                 "contact_email": "careers@serko.com",
                 "status": "Rejected",
-                "priority": "Very High",
-                "feedback": "Not specified",
-                "lessons_learned": "Travel technology roles highly competitive. Despite 88% skills match and comprehensive application package, may need stronger domain-specific experience or earlier application submission.",
-                "agent_context": {
-                    "industry": "travel-technology",
-                    "role_type": "frontend",
-                    "company_size": "large",
-                    "rejection_reason": "competitive_field",
-                    "match_score": "88%",
-                    "total_days_pending": 21
-                }
+                "priority": "Very High"
             }
         ],
         "withdrawn": [
@@ -590,101 +97,16 @@
                 "contact_email": "careers@gallagher.com",
                 "status": "Withdrawn",
                 "priority": "Very High",
-                "withdrawal_reason": "Location requirement - Hamilton relocation not feasible",
-                "notes": "Global security and animal management technology leader, 10-week paid program (Nov 2025 - Feb 2026), Hamilton location requirement incompatible with current situation",
-                "agent_context": {
-                    "industry": "security-technology",
-                    "role_type": "fullstack",
-                    "company_size": "large",
-                    "withdrawal_reason": "location_incompatible",
-                    "match_score": "82%",
-                    "document_quality": "Documents prepared but not submitted due to location constraint"
-                }
+                "withdrawal_reason": "Location requirement - Hamilton relocation not feasible"
             }
         ]
     },
-    "agent_insights": {
-        "current_priorities": [
-            {
-                "priority": "very-high",
-                "action": "Submit Figured application",
-                "reason": "Ready to apply with ✅ APPROVED document quality, 85% skills match, 88% success probability, agricultural technology positioning advantage",
-                "due_date": "2025-09-16"
-            },
-            {
-                "priority": "very-high",
-                "action": "Submit Air New Zealand application",
-                "reason": "Ready to apply with ✅ APPROVED document quality, 88% skills match, 85% success probability, deadline August 29th",
-                "due_date": "2025-08-29"
-            },
-            {
-                "priority": "very-high",
-                "action": "Submit Decoded Digital application",
-                "reason": "Ready to apply with ✅ APPROVED document quality, 95% skills match, 90% success probability, deadline September 7th",
-                "due_date": "2025-09-07"
-            },
-            {
-                "priority": "high",
-                "action": "Monitor long-pending applications",
-                "reason": "Several applications over 30 days pending - consider follow-up or archival",
-                "due_date": "2025-09-09"
-            },
-            {
-                "priority": "medium",
-                "action": "Capacity management review",
-                "reason": "At 16/5 applications - significantly over capacity, monitor for responses and consider archival",
-                "due_date": "2025-09-09"
-            }
-        ],
-        "improvement_areas": [
-            "Highlight commercial software experience",
-            "Industry-specific project examples",
-            "Enterprise development focus",
-            "Professional portfolio presentation",
-            "Quantitative finance domain knowledge",
-            "Statistical analysis project examples",
-            "Medical device regulatory compliance knowledge",
-            "Agricultural technology domain positioning"
-        ],
-        "successful_patterns": [
-            "Technical skills matching job requirements",
-            "Clean application presentation",
-            "Structured folder organization",
-            "Professional cover letter format",
-            "Comprehensive company research",
-            "Database architecture expertise positioning",
-            "✅ APPROVED validation status achieving high success probability",
-            "Production experience differentiation",
-            "AI integration readiness positioning"
-        ]
-    },
-    "settings": {
-        "follow_up_days": 7,
+      "settings": {
         "resume_template": "standard",
         "cover_letter_template": "standard",
-        "default_output_format": "pdf",
-        "agent_settings": {
-            "auto_follow_up": true,
-            "capacity_warnings": true,
-            "priority_monitoring": true,
-            "outcome_tracking": true
-        }
+        "default_output_format": "pdf"
     },
-    "statistics": {
-        "applications_sent": 16,
-        "response_rate": 43.75,
-        "interview_rate": 0,
-        "offer_rate": 0,
-        "rejection_rate": 43.75,
-        "pending_rate": 56.25,
-        "average_response_time": 27,
-        "targets": {
-            "response_rate_target": 50,
-            "interview_rate_target": 15,
-            "applications_per_month": 8
-        }
-    },
-    "tags": [
+        "tags": [
         "remote",
         "on-site",
         "hybrid",

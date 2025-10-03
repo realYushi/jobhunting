@@ -28,11 +28,9 @@ applications/
 │       │   ├── job-description.md
 │       │   ├── requirements-analysis.md
 │       │   └── matching-skills.md
-│       ├── documents/
-│       │   ├── resume.json
-│       │   └── cover-letter.md
-│       └── interview/
-│           └── .gitkeep
+│       └── documents/
+│           ├── resume.json
+│           └── cover-letter.md
 └── archived/
     └── {year}/
         └── {Company Name}/
@@ -47,7 +45,7 @@ applications/
 ./create-application.sh "Company Name" "role-type"
 
 # Manual folder creation if needed
-mkdir -p "applications/active/Company Name/{company-research,job-details,documents,interview}"
+mkdir -p "applications/active/Company Name/{company-research,job-details,documents}"
 ```
 
 ### Archiving Completed Applications
@@ -79,7 +77,6 @@ mv "applications/active/Company Name" "applications/archived/$(date +%Y)/Company
 ### Active Applications
 - **Limit**: Maximum 5 active applications at once (tracked in application-tracker.json)
 - **Status**: Currently being pursued or awaiting response
-- **Maintenance**: Regular updates and follow-up tracking
 - **Structure**: Complete folder hierarchy maintained
 
 ### Archived Applications
@@ -124,7 +121,6 @@ templates/
 - [ ] No placeholder or temporary files
 - [ ] Version control friendly structure
 - [ ] Clear separation of concerns by folder
-- [ ] Interview folder prepared for future use
 
 ### Capacity Management
 - [ ] Active applications within limit (5 maximum)
@@ -160,13 +156,11 @@ mv "applications/active/Company" "applications/archived/$(date +%Y)/"
 1. **Verify Structure**: Check all active applications have complete folder hierarchy
 2. **Update Tracker**: Ensure application-tracker.json reflects current folder state
 3. **Archive Management**: Move completed applications to appropriate year folder
-4. **Template Updates**: Sync any template improvements across applications
 
 ### Quality Control (Before New Applications)
 1. **Capacity Check**: Verify space for new application within limits
 2. **Name Validation**: Ensure company name formatting consistency
 3. **Structure Verification**: Confirm template folders are current
-4. **Integration Test**: Verify tracker and folder synchronization
 
 ## Error Prevention
 

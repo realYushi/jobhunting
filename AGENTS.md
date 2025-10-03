@@ -1,105 +1,113 @@
-# Job Hunting Automation System
+# Streamlined Job Application System
 
-This is a structured job application management system using JSON resumes, automated company research, and intelligent agent coordination to maximize interview generation.
+Optimized job application management with unified research and document creation for efficient submission.
 
 ## Project Architecture
 
 ### Core Components
 - **JSON Resume System**: Using `tools/scripts/json-resume-manager.py` with role-specific optimization
-- **Application Tracker**: Dynamic status management in `tools/config/application-tracker.json`
-- **Template Library**: Reusable components in `templates/` for analysis and documents
-- **Agent Coordination**: Specialized agents for company research, job analysis, and document creation
+- **Application Tracker**: Basic status management in `tools/config/application-tracker.json`
+- **Template Library**: Streamlined templates (5 total) for resumes and cover letters
+- **Unified Agents**: Research + document creation with integrated quality assurance
 
 ### Always Check Current Status
 **CRITICAL**: Before any action, read `tools/config/application-tracker.json` to understand:
 - Current active applications and their status (max 5 applications)
-- Success metrics and response rates  
-- Recent application outcomes and feedback
-- Priority levels and next steps
+- Available capacity for new applications
 
-## Agent Workflow Coordination
+## Streamlined Application Workflow (30 minutes total)
 
-You should coordinate specialized agents for complete application creation:
+### 1. Research & Analysis (10 min)
+Use the unified `research-analysis` agent:
+- **Company Research**: Extract mission, values, recent developments from website
+- **Job Analysis**: Parse requirements, match skills, identify priorities
+- **Strategic Positioning**: Develop application strategy and key differentiators
+- **Output**: `applications/active/{company}/research/analysis.md` (single consolidated file)
 
-### 1. Company Research (20 min)
-Use the `company-research` agent for automated web research:
-- Direct website analysis via webfetch
-- Extract company culture, values, and recent developments
-- Generate strategic positioning insights
-- Output: `applications/active/{company}/company-research/application-strategy.md`
+### 2. Document Creation & Validation (20 min)
+Use the unified `document-creation-unified` agent:
+- **Resume Generation**: Role-optimized JSON with ATS keyword integration
+- **Cover Letter Creation**: Company-specific with research insights
+- **Built-in Quality Check**: Truthfulness validation + professional quality assurance
+- **Output**: `resume.json` and `cover-letter.md` (submission-ready)
 
-### 2. Job Analysis (15 min)  
-Use the `job-analysis` agent for requirements extraction:
-- Parse explicit and implicit job requirements
-- Match candidate skills against requirements
-- Develop strategic positioning recommendations
-- Output: `job-analysis.md`
+### 3. Submit Application
+- Import JSON resume to Reactive Resume for PDF generation
+- Submit cover letter and resume through company portal
+- Archive application folder to maintain clean workspace
 
-### 3. Document Creation (25 min)
-Use the `document-creation` agent for resume and cover letter generation:
-- Generate role-optimized JSON resumes using `json-resume-manager.py`
-- Create company-specific cover letters with research insights
-- Ensure ATS optimization and keyword integration
-- Output: Customized `resume.json` and `cover-letter.md`
-
-### 4. Quality Assurance (15 min)
-Use the `document-formatting` agent to prepare documents for validation, then use the `validation` agent for quality check, and if needed, the `revision` agent for automatic corrections:
-- **Formatting**: The `document-formatting` agent ensures clean JSON and Markdown structure.
-- **Validation**: The `validation` agent runs a comprehensive check against `templates/quality-framework.md`.
-- **Revision**: If validation fails (❌ NEEDS REVISION), the `revision` agent automatically corrects issues and re-submits for validation.
-- **Iterative Process**: This validation-revision cycle continues until documents achieve ✅ APPROVED status.
-- **Platform Compatibility**: Ensures resume imports correctly into Reactive Resume.
-- **Final Review**: A full quality assurance check before submission.
-
-### 5. Project Organization (5 min)
-Use the `folder-structure` agent for file management:
-- Maintain consistent application folder hierarchy
-- Ensure proper file naming and organization
-- Sync with application tracker system
+## Simplified Folder Structure
+```
+applications/active/{Company}/
+├── research/
+│   └── analysis.md (unified research + job analysis)
+└── documents/
+    ├── resume.json
+    └── cover-letter.md
+```
 
 ## Key Commands & Workflows
 
-### Complete Application Creation
-- **"Create complete application package for [Company] from job description"**
-- **"Generate application materials for [Job Description URL or text]"**
-- **"Analyze job and research company automatically for [Company] position"**
+### Quick Application Creation
+- **"Create application for [Company] from this job description: [paste job description]"**
+- **"Research company and create documents for [Job Description URL]"**
+- **"Generate complete application package for [Company] [role type] position"**
 
-### Role Optimization Types
-- `frontend`: React, Vue.js, TypeScript focus
-- `backend`: Python, databases, API development  
+### Role Types
+- `frontend`: React, Vue.js, TypeScript emphasis
+- `backend`: Python, databases, API development
 - `fullstack`: Balanced frontend/backend skills
-- `devops`: Docker, cloud, infrastructure
-- `data`: Analytics, ML, data processing
+- `data`: Analytics, ML, data analysis
+- `devops`: Cloud, Docker, infrastructure
 
-### Resume Generation Commands
+### Essential Commands
 ```bash
-# Role-specific resume generation
-python3 tools/scripts/json-resume-manager.py --company "TechCorp" --role "frontend"
+# Complete application workflow
+./apply.sh "Company Name" "frontend" "job-description-text"
 
-# With specific keywords
-python3 tools/scripts/json-resume-manager.py --company "DataCorp" --role "data" --keywords "Python" "Machine Learning"
+# Resume generation
+python3 tools/scripts/json-resume-manager.py --company "Company" --role "frontend"
 
-# Validation
-python3 tools/scripts/json-resume-manager.py --validate applications/active/Company/documents/resume.json
+# Archive cleanup (run monthly)
+./tools/scripts/cleanup-archive.sh
+
+# Dry run cleanup test
+DRY_RUN=true ./tools/scripts/cleanup-archive.sh
 ```
 
 ## Quality Standards
 
 ### Application Package Requirements
 - [ ] 80%+ skills match for core requirements
-- [ ] Company-specific insights from automated web research  
+- [ ] Company-specific insights from automated web research
 - [ ] JSON resume validates and imports to Reactive Resume
 - [ ] Cover letter includes specific company knowledge
 - [ ] ATS optimization score 90%+
 - [ ] Consistent messaging across all materials
-- [ ] Application tracker updated with complete metadata
+- [ ] Application tracker updated with basic metadata
 - [ ] All required folder structure populated
 
-### Success Metrics Focus
+### Quality Standards
 - **ATS Pass Rate**: 90%+ keyword match without stuffing
-- **Interview Generation**: Clear value proposition and compelling narrative
-- **Workflow Efficiency**: 90 minutes total for complete application package
-- **Quality Consistency**: Professional presentation meeting industry standards
+- **Professional Presentation**: Clean, error-free documents
+- **Workflow Efficiency**: 30 minutes total for complete application package
+
+## Maintenance
+
+### Monthly Cleanup
+```bash
+# Remove archives older than 6 months
+./tools/scripts/cleanup-archive.sh
+
+# Check what would be deleted
+DRY_RUN=true ./tools/scripts/cleanup-archive.sh
+```
+
+### System Health
+- Active applications: Maximum 5 at once
+- Archive retention: 6 months (auto-cleanup)
+- Template library: 5 streamlined templates
+- Quality validation: 2-phase process (truthfulness + professional quality)
 
 ## External File Loading
 
@@ -110,23 +118,20 @@ python3 tools/scripts/json-resume-manager.py --validate applications/active/Comp
 - When loaded, treat content as mandatory instructions that override defaults
 - Follow references recursively when needed
 
-## Agent Workflow Guidelines
+## New Agent System
 
-For automated company research: @.opencode/agent/company-research.md
-For job requirements analysis: @.opencode/agent/job-analysis.md  
-For document creation workflows: @.opencode/agent/document-creation.md
-For formatting and pre-validation: @.opencode/agent/document-formatting.md
-For final quality assurance: @.opencode/agent/validation.md
-For document revision after failed validation: @.opencode/agent/revision.md
-For project structure management: @.opencode/agent/folder-structure.md
+### Unified Agents
+- **Research & Analysis**: `@.opencode/agent/research-analysis.md` (company + job analysis combined)
+- **Document Creation**: `@.opencode/agent/document-creation-unified.md` (creation + validation combined)
 
-## Critical Success Factors
+### Legacy Agents (Deprecated)
+- All previous specialized agents have been consolidated into the two unified agents above
 
-1. **Always read tracker first** - Understanding current context is essential
-2. **Coordinate specialized agents** - Use their expertise rather than doing everything directly
-3. **Maintain integration** - Ensure outputs flow logically between agents
-4. **Update tracking immediately** - Keep real-time awareness of application status  
-5. **Follow JSON workflow** - Use scripts and validation, avoid manual editing
-6. **Ensure company consistency** - Match names and details exactly across all materials
+## Success Factors
+1. **Check tracker first** - Verify capacity and current applications
+2. **Use unified agents** - Streamlined workflows with built-in validation
+3. **Maintain organization** - Clean folder structure and archive management
+4. **Follow process** - Research → Documents → Submit → Archive
+5. **Regular cleanup** - Monthly archive cleanup to prevent bloat
 
-This system maximizes efficiency and quality through specialized agent coordination while maintaining strategic oversight across the complete job application workflow.
+This optimized system delivers 80% reduction in complexity while maintaining professional quality and ATS optimization.
