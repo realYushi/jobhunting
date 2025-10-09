@@ -1,10 +1,44 @@
 {
     "meta": {
-        "last_updated": "2025-10-03",
+        "last_updated": "2025-10-06",
         "version": "3.0"
     },
     "applications": {
-        "active": [],
+        "active": [
+            {
+                "company": "Valocity",
+                "position": "Intern Software Engineer",
+                "date_applied": "2025-10-06",
+                "application_url": "Not specified",
+                "contact_person": "Hiring Manager",
+                "contact_email": "Not specified",
+                "status": "Application Prepared",
+                "priority": "Very High",
+                "duration": "Dec 1, 2025 - Jan 16, 2026",
+                "salary": "NZD 28/hour",
+                "location": "Auckland, NZ (On-site)",
+                "tech_stack": "C#, Angular, Azure",
+                "grant_eligible": true,
+                "notes": "Callaghan Innovation R&D Experience Grant eligible. Property technology company focused on transforming property decisioning process. Application materials ready for submission."
+            },
+            {
+                "company": "Foster Moore",
+                "position": "Junior Software Engineer (Cloud & DevOps)",
+                "date_applied": "2025-10-06",
+                "application_url": "Not specified",
+                "contact_person": "Hiring Manager",
+                "contact_email": "Not specified",
+                "status": "Application Prepared",
+                "priority": "Very High",
+                "duration": "Full-time position",
+                "salary": "Competitive (market rate)",
+                "location": "Auckland Central, NZ (Hybrid)",
+                "tech_stack": "Java, Go, CI/CD, Kubernetes, Cloud platforms",
+                "industry": "Government/Enterprise Software Solutions",
+                "experience_level": "0-3 years",
+                "notes": "Government software solutions company specializing in essential digital services impacting millions. Strong focus on backend development, CI/CD automation, and cloud technologies. Application materials tailored with emphasis on Java/Go skills, government sector interest, and security-first mindset. Ready for immediate submission."
+            }
+        ],
         "interviews": [],
         "offers": [],
         "rejected": [
