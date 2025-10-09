@@ -1,0 +1,431 @@
+{
+  "basics": {
+    "url": {
+      "href": "https://github.com/realYushi",
+      "label": "GitHub"
+    },
+    "name": "Yushi Cui",
+    "email": "realYushi@gmail.com",
+    "phone": "",
+    "picture": {
+      "url": "",
+      "size": 64,
+      "effects": {
+        "border": false,
+        "hidden": false,
+        "grayscale": false
+      },
+      "aspectRatio": 1,
+      "borderRadius": 0
+    },
+    "headline": "Full-Stack Developer Intern",
+    "location": "Auckland, New Zealand",
+    "customFields": [
+      {
+        "id": "9crpa2nre5sswd99q1jzs8hf",
+        "icon": "code",
+        "name": "LeetCode",
+        "value": "https://leetcode.com/u/realYushi/"
+      },
+      {
+        "id": "mo8pgaj74iw9jpzczc6tezaa",
+        "icon": "envelope",
+        "name": "Visa Status",
+        "value": "Permanent Resident - Callaghan Innovation Grant eligible"
+      }
+    ]
+  },
+  "metadata": {
+    "css": {
+      "value": "",
+      "visible": false
+    },
+    "page": {
+      "format": "a4",
+      "margin": 18,
+      "options": {
+        "breakLine": true,
+        "pageNumbers": true
+      }
+    },
+    "notes": "",
+    "theme": {
+      "text": "#000000",
+      "primary": "#2563eb",
+      "background": "#ffffff"
+    },
+    "layout": [
+      [
+        [
+          "profiles",
+          "summary",
+          "experience",
+          "education",
+          "projects",
+          "certifications",
+          "interests"
+        ],
+        [
+          "skills",
+          "languages"
+        ]
+      ]
+    ],
+    "template": "gengar",
+    "typography": {
+      "font": {
+        "size": 14,
+        "family": "Open Sans",
+        "subset": "latin",
+        "variants": [
+          "regular"
+        ]
+      },
+      "hideIcons": false,
+      "lineHeight": 1.5,
+      "underlineLinks": true
+    }
+  },
+  "sections": {
+    "awards": {
+      "id": "awards",
+      "name": "Awards",
+      "items": [],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "custom": {},
+    "skills": {
+      "id": "skills",
+      "name": "Skills",
+      "items": [
+        {
+          "id": "uwu5achi7q3hdu3sbyzwfelx",
+          "visible": true,
+          "name": "Languages & Frameworks",
+          "description": "",
+          "level": 4,
+          "keywords": [
+            "C#",
+            ".NET Core",
+            "Angular",
+            "TypeScript",
+            "JavaScript",
+            "Python",
+            "Vue.js",
+            "React",
+            "Node.js",
+            "SQL Server"
+          ]
+        },
+        {
+          "id": "m81e99qfc7ibupybu4qcmu2t",
+          "visible": true,
+          "name": "Cloud & Database",
+          "description": "",
+          "level": 4,
+          "keywords": [
+            "Microsoft Azure",
+            "Azure App Services",
+            "Azure Functions",
+            "SQL Server",
+            "MongoDB",
+            "Firebase",
+            "EF Core"
+          ]
+        },
+        {
+          "id": "5ub364do3i55x6arbprdeaux",
+          "visible": true,
+          "name": "Tools & DevOps",
+          "description": "",
+          "level": 4,
+          "keywords": [
+            "Git",
+            "Docker",
+            "GitHub Actions",
+            "Tailwind CSS",
+            "Vitest",
+            "RESTful APIs"
+          ]
+        },
+        {
+          "id": "6pyzcs3pubq3rqsj2d9y2wh5",
+          "visible": true,
+          "name": "Domain Knowledge",
+          "description": "",
+          "level": 3,
+          "keywords": [
+            "Property Technology",
+            "Financial Systems",
+            "Data Processing",
+            "System Integration",
+            "API Development"
+          ]
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "summary": {
+      "id": "summary",
+      "name": "Professional Summary",
+      "columns": 1,
+      "content": "<p>A third-year Computer Science student with production experience in full-stack development using C#/.NET and modern frontend frameworks. Successfully delivered enterprise-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in C# backend development with Angular/TypeScript frontend expertise. Passionate about building efficient property technology solutions through data-driven development and continuous learning.</p>",
+      "visible": true,
+      "separateLinks": true
+    },
+    "profiles": {
+      "id": "profiles",
+      "name": "Profiles",
+      "items": [
+        {
+          "id": "po9qv6oa752mjiaru4hdgrq1",
+          "url": {
+            "href": "https://github.com/realYushi",
+            "label": "GitHub"
+          },
+          "icon": "github",
+          "network": "GitHub",
+          "visible": true,
+          "username": "realYushi"
+        },
+        {
+          "id": "csndc74k59duazk8n2y33apa",
+          "url": {
+            "href": "https://linkedin.com/in/yushi-c-6043aa285",
+            "label": "LinkedIn"
+          },
+          "icon": "linkedin",
+          "network": "LinkedIn",
+          "visible": true,
+          "username": "yushi-cui-6043aa285"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "projects": {
+      "id": "projects",
+      "name": "Projects",
+      "items": [
+        {
+          "id": "rmisnlmkojxe219kaui6kkxc",
+          "url": {
+            "href": "https://github.com/realYushi/todo-list",
+            "label": "GitHub"
+          },
+          "date": "Personal Project",
+          "name": "Full-Stack Todo List Application",
+          "summary": "<p>\u2022 Developed comprehensive task management system using React and TypeScript frontend with C#/.NET Core backend<br>\u2022 Implemented RESTful APIs with EF Core and SQL Server for data persistence and management<br>\u2022 Established automated deployment pipeline using GitHub Actions and Azure App Services<br>\u2022 Achieved 99.9% API uptime through Azure integration and reduced deployment time by 70% via CI/CD implementation</p>",
+          "visible": true,
+          "keywords": [
+            "C#",
+            ".NET Core",
+            "React",
+            "TypeScript",
+            "EF Core",
+            "SQL Server",
+            "Azure App Services",
+            "GitHub Actions",
+            "RESTful APIs"
+          ],
+          "description": "Enterprise-grade task management system with C# backend and automated Azure deployment"
+        },
+        {
+          "id": "apkw5h8oeie6rxrvez79kga4",
+          "url": {
+            "href": "https://github.com/realYushi/my-recipe-book",
+            "label": "GitHub"
+          },
+          "date": "Personal Project",
+          "name": "My Recipe Book: Full Stack Web App",
+          "summary": "<p>\u2022 Built full-stack recipe management application with modern UI using React and TypeScript<br>\u2022 Implemented Node.js backend with Express.js and MongoDB for data storage and retrieval<br>\u2022 Developed web scraping functionality with Puppeteer for automatic ingredient import from websites<br>\u2022 Containerized entire application using Docker and Docker Compose for streamlined deployment</p>",
+          "visible": true,
+          "keywords": [
+            "React",
+            "TypeScript",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Puppeteer",
+            "Docker",
+            "RESTful APIs"
+          ],
+          "description": "Full-stack application demonstrating data processing and modern frontend development"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "education": {
+      "id": "education",
+      "name": "Education",
+      "items": [
+        {
+          "id": "931l29t19zlb0dbygz1x7gka",
+          "url": {
+            "href": "https://www.myequals.net/r/sharelink/fc37c3dd-0108-419f-a8d8-dc283c6f5c11/4c3d3151-ccbb-4515-b0f2-98a437ee2f60",
+            "label": "Official Transcript"
+          },
+          "area": "Computer Science",
+          "date": "July 2023 - July 2026 (Expected)",
+          "score": "GPA: 7.75/9.0",
+          "summary": "<p>Third-year Computer Science student with focus on software engineering, cloud computing, and data structures. Maintaining top academic performance while gaining practical industry experience.</p>",
+          "visible": true,
+          "studyType": "Bachelor of Computer and Information Sciences",
+          "institution": "Auckland University of Technology"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "interests": {
+      "id": "interests",
+      "name": "Interests",
+      "items": [
+        {
+          "id": "685so3aoeitwt6vlf8gsxdf3",
+          "name": "Property Technology",
+          "visible": true,
+          "keywords": [
+            "FinTech Innovation",
+            "Data-Driven Solutions",
+            "System Integration"
+          ]
+        },
+        {
+          "id": "8bkoq43az9tgl2y6gjqddge4",
+          "name": "Software Development",
+          "visible": true,
+          "keywords": [
+            "Full-Stack Development",
+            "Cloud Computing",
+            "API Design"
+          ]
+        },
+        {
+          "id": "63y680150ax4usilglcohwna",
+          "name": "Continuous Learning",
+          "visible": true,
+          "keywords": [
+            "Emerging Technologies",
+            "Best Practices",
+            "System Architecture"
+          ]
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "languages": {
+      "id": "languages",
+      "name": "Languages",
+      "items": [
+        {
+          "id": "387ok7jq3016sgmujyimaqlf",
+          "name": "English",
+          "level": 4,
+          "visible": true,
+          "description": "Professional working proficiency"
+        },
+        {
+          "id": "wb31qlosfluizom1jf04lbw2",
+          "name": "Chinese (Mandarin)",
+          "level": 5,
+          "visible": true,
+          "description": "Native speaker"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "volunteer": {
+      "id": "volunteer",
+      "name": "Volunteering",
+      "items": [],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "experience": {
+      "id": "experience",
+      "name": "Experience",
+      "items": [
+        {
+          "id": "tt1pqgj3nn10rg8q28lnxosy",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "December 2024 - February 2025",
+          "company": "HALO Systems by Tag IT",
+          "summary": "<p>\u2022 Developed production-grade HMI Dashboard using Vue.js and TypeScript for real-time agricultural system monitoring<br>\u2022 Engineered Python backend services for efficient sensor data processing across multiple farm locations<br>\u2022 Implemented geospatial visualization using Mapbox and GeoJSON for intuitive, map-based data monitoring<br>\u2022 Improved dashboard performance by 40% through client-side data filtering and optimization techniques<br>\u2022 Created reusable SVG-based component library, reducing development time for similar projects by 60%</p>",
+          "visible": true,
+          "location": "Auckland, New Zealand",
+          "position": "Software Engineer Intern"
+        },
+        {
+          "id": "tk0gcw96ank06u28slrkqq7x",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "June 2019 - November 2022",
+          "company": "Costas Taverna Greek Restaurant",
+          "summary": "<p>\u2022 Led team of 5 kitchen staff, managing high-pressure operations and quality control systems<br>\u2022 Improved kitchen efficiency by 25% through workflow optimization and process implementation<br>\u2022 Demonstrated strong leadership and problem-solving skills in fast-paced environment</p>",
+          "visible": true,
+          "location": "Auckland, New Zealand",
+          "position": "Chef De Partie"
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    },
+    "references": {
+      "id": "references",
+      "name": "References",
+      "items": [],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "publications": {
+      "id": "publications",
+      "name": "Publications",
+      "items": [],
+      "columns": 1,
+      "visible": false,
+      "separateLinks": true
+    },
+    "certifications": {
+      "id": "certifications",
+      "name": "Certifications",
+      "items": [
+        {
+          "id": "6xolgwjf298gcnq00jjaorpn",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "2024",
+          "name": "Microsoft Azure AI Fundamentals (AI-900)",
+          "issuer": "Microsoft",
+          "summary": "<p>Foundational knowledge of AI and machine learning concepts on Azure platform</p>",
+          "visible": true
+        }
+      ],
+      "columns": 1,
+      "visible": true,
+      "separateLinks": true
+    }
+  }
+}
