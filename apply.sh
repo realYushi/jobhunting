@@ -147,7 +147,7 @@ except FileNotFoundError:
 # Add new application
 new_application = {
     "company": "$COMPANY_NAME",
-    "position": "$ROLE_type Position",
+    "position": "$ROLE_TYPE Position",
     "date_applied": datetime.now().strftime('%Y-%m-%d'),
     "status": "In Progress",
     "priority": "High"

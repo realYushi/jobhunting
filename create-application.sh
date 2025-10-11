@@ -32,7 +32,7 @@ echo "Copying templates..."
 
 # Generate JSON resume for specific role
 echo "Generating JSON resume for $ROLE_TYPE role..."
-python tools/scripts/json-resume-manager.py --company "$COMPANY_NAME" --role "$ROLE_TYPE" --output "$COMPANY_DIR/documents/resume.json"
+python3 tools/scripts/json-resume-manager.py --company "$COMPANY_NAME" --role "$ROLE_TYPE" --output "$COMPANY_DIR/documents/resume.json"
 
 # Copy standard cover letter template
 cp "$TEMPLATE_DIR/cover-letters/templates/standard.md" "$COMPANY_DIR/documents/cover-letter.md"
