@@ -1,146 +1,21 @@
 {
     "meta": {
-        "last_updated": "2025-10-06",
-        "version": "3.0"
+        "last_updated": "2026-03-09",
+        "version": "4.0"
     },
     "applications": {
-        "active": [
-            {
-                "company": "Valocity",
-                "position": "Intern Software Engineer",
-                "date_applied": "2025-10-06",
-                "application_url": "Not specified",
-                "contact_person": "Hiring Manager",
-                "contact_email": "Not specified",
-                "status": "Application Prepared",
-                "priority": "Very High",
-                "duration": "Dec 1, 2025 - Jan 16, 2026",
-                "salary": "NZD 28/hour",
-                "location": "Auckland, NZ (On-site)",
-                "tech_stack": "C#, Angular, Azure",
-                "grant_eligible": true,
-                "notes": "Callaghan Innovation R&D Experience Grant eligible. Property technology company focused on transforming property decisioning process. Application materials ready for submission."
-            },
-            {
-                "company": "Foster Moore",
-                "position": "Junior Software Engineer (Cloud & DevOps)",
-                "date_applied": "2025-10-06",
-                "application_url": "Not specified",
-                "contact_person": "Hiring Manager",
-                "contact_email": "Not specified",
-                "status": "Application Prepared",
-                "priority": "Very High",
-                "duration": "Full-time position",
-                "salary": "Competitive (market rate)",
-                "location": "Auckland Central, NZ (Hybrid)",
-                "tech_stack": "Java, Go, CI/CD, Kubernetes, Cloud platforms",
-                "industry": "Government/Enterprise Software Solutions",
-                "experience_level": "0-3 years",
-                "notes": "Government software solutions company specializing in essential digital services impacting millions. Strong focus on backend development, CI/CD automation, and cloud technologies. Application materials tailored with emphasis on Java/Go skills, government sector interest, and security-first mindset. Ready for immediate submission."
-            }
-        ],
+        "active": [],
         "interviews": [],
         "offers": [],
-        "rejected": [
-            {
-                "company": "Generate Zero",
-                "position": "Software Developer",
-                "date_applied": "2025-08-02",
-                "date_rejected": "2025-08-09",
-                "application_url": "https://datainsight.bamboohr.com/careers/83",
-                "contact_person": "HR Team",
-                "contact_email": "careers@generatezero.com",
-                "status": "Rejected",
-                "priority": "Very High"
-            },
-            {
-                "company": "Serato",
-                "position": "Software Engineer Internship",
-                "date_applied": "2025-06-21",
-                "date_rejected": "2025-07-13",
-                "application_url": "https://serato.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@serato.com",
-                "status": "Rejected",
-                "priority": "High"
-            },
-            {
-                "company": "Eroad",
-                "position": "2025-2026 Summer Internship Programme (Software Engineer)",
-                "date_applied": "2025-06-21",
-                "date_rejected": "2025-07-13",
-                "application_url": "https://eroad.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@eroad.com",
-                "status": "Rejected",
-                "priority": "High"
-            },
-            {
-                "company": "TRV Trading Group",
-                "position": "Quant Trading Research/Developer Summer Internship",
-                "date_applied": "2025-08-01",
-                "date_rejected": "2025-08-14",
-                "application_url": "Not specified",
-                "contact_person": "HR Team",
-                "contact_email": "Not specified",
-                "status": "Rejected",
-                "priority": "Very High"
-            },
-            {
-                "company": "Eagle Technology",
-                "position": "GIS Summer Intern Programme",
-                "date_applied": "2025-06-22",
-                "date_rejected": "2025-08-14",
-                "application_url": "https://eagle.co.nz/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@eagle.co.nz",
-                "status": "Rejected",
-                "priority": "High"
-            },
-            {
-                "company": "Crown Equipment Limited",
-                "position": "Software Engineer Intern",
-                "date_applied": "2025-07-22",
-                "date_rejected": "2025-08-18",
-                "application_url": "https://crown.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@crown.com",
-                "status": "Rejected",
-                "priority": "High"
-            },
-            {
-                "company": "Serko",
-                "position": "Intern Software Engineer - Summer 2025/2026",
-                "date_applied": "2025-08-30",
-                "date_rejected": "2025-08-20",
-                "application_url": "https://serko.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@serko.com",
-                "status": "Rejected",
-                "priority": "Very High"
-            }
-        ],
-        "withdrawn": [
-            {
-                "company": "Gallagher",
-                "position": "Summer Internship 2025/2026",
-                "date_applied": "Not yet applied",
-                "date_withdrawn": "2025-08-09",
-                "application_url": "https://gallagher.com/careers",
-                "contact_person": "HR Team",
-                "contact_email": "careers@gallagher.com",
-                "status": "Withdrawn",
-                "priority": "Very High",
-                "withdrawal_reason": "Location requirement - Hamilton relocation not feasible"
-            }
-        ]
+        "rejected": [],
+        "withdrawn": []
     },
-      "settings": {
+    "settings": {
         "resume_template": "standard",
         "cover_letter_template": "standard",
         "default_output_format": "pdf"
     },
-        "tags": [
+    "tags": [
         "remote",
         "on-site",
         "hybrid",
