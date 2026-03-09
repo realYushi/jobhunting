@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "last_updated": "2026-03-09",
+    "version": "4.1"
+  },
+  "applications": {
+    "active": [
+      {
+        "company": "Acme Corp",
+        "position": "frontend Position",
+        "date_applied": "2026-03-09",
+        "status": "In Progress",
+        "priority": "High"
+      },
+      {
+        "company": "DataWorks",
+        "position": "backend Position",
+        "date_applied": "2026-03-09",
+        "status": "In Progress",
+        "priority": "High"
+      },
+      {
+        "company": "Creative Agency",
+        "position": "Junior Full Stack Developer",
+        "date_applied": "2026-03-09",
+        "status": "In Progress",
+        "priority": "High"
+      },
+      {
+        "company": "DataFlow Systems",
+        "position": "Backend Engineer (Python)",
+        "date_applied": "2026-03-09",
+        "status": "In Progress",
+        "priority": "High"
+      },
+      {
+        "company": "TechStart",
+        "position": "Senior Frontend Developer",
+        "date_applied": "2026-03-09",
+        "status": "In Progress",
+        "priority": "High"
+      }
+    ],
+    "interviews": [],
+    "offers": [],
+    "rejected": [],
+    "withdrawn": []
+  }
+}
