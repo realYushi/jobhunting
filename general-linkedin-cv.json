@@ -126,6 +126,7 @@
             "C#",
             "Vue.js",
             "React",
+            "Next.js",
             "Node.js",
             ".NET Core"
           ]
@@ -142,6 +143,19 @@
             "GitHub Actions",
             "Tailwind CSS",
             "Vitest"
+          ]
+        },
+        {
+          "id": "ai-skills",
+          "visible": true,
+          "name": "AI & LLM",
+          "description": "",
+          "level": 4,
+          "keywords": [
+            "OpenAI",
+            "Prompt Engineering",
+            "AI Agents",
+            "LangChain"
           ]
         },
         {
@@ -165,7 +179,7 @@
       "id": "summary",
       "name": "Professional Summary",
       "columns": 1,
-      "content": "<p>A third-year Computer Science student with professional internship experience in full-stack development. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>",
+      "content": "<p>A third-year Computer Science student with professional internship experience in full-stack development and AI-powered applications. Successfully delivered production-grade solutions at HALO Systems and built an AI coding agent platform at Decoded Venture Studio. Combines strong foundation in modern web technologies (Next.js, Vue.js, TypeScript, Python) with practical experience in LLM integration and multi-agent systems. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>",
       "visible": true,
       "separateLinks": true
     },
@@ -362,6 +376,19 @@
       "id": "experience",
       "name": "Experience",
       "items": [
+        {
+          "id": "decoded2025",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "October 2025 - December 2025",
+          "company": "Decoded Venture Studio",
+          "summary": "<p>\u2022 Built from scratch a full-stack AI-powered coding agent platform (similar to Lovable) as part of a 5-person intern team using Next.js, Express, and MongoDB<br>\u2022 Architected and implemented the core coding agent using OpenAI Agent SDK to generate production-ready applications<br>\u2022 Designed and optimized system prompts and context management strategies to improve agent output quality and reliability<br>\u2022 Built multi-agent orchestration system enabling specialized agents to collaborate on complex coding tasks<br>\u2022 Implemented monitoring and analytics to track agent performance, iteratively fine-tuning prompts and workflows based on data</p>",
+          "visible": true,
+          "location": "Auckland, New Zealand",
+          "position": "Junior Developer"
+        },
         {
           "id": "3i5z4i8ruxptz7mz57upi5s3",
           "url": {
