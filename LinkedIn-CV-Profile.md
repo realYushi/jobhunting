@@ -2,36 +2,51 @@
 
 ## Professional Headline
 
-**Software Engineer Intern | Computer Science Student | Full-Stack Developer**
+**AI-Native Product Engineer & Full Stack Developer | Computer Science Student**
 
 ## About Section
 
-A third-year Computer Science student with professional internship experience in full-stack development. Successfully delivered production-grade solutions at HALO Systems while maintaining top academic performance. Combines strong foundation in modern web technologies (Vue.js, TypeScript, Python) with practical system design skills. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.
+**AI-Native Product Engineer** specializing in rapid prototyping and full-stack development. Currently at GrowLab Technologies, driving AI-first, spec-driven development for internal tools and client applications. Expert in AI agents, prompt engineering, and modern web technologies (React, TypeScript, .NET Core). Third-year CS student at AUT (GPA 7.75/9.0) with Azure AI certification. Proven track record of delivering production-ready solutions with real business impact.
 
 **Key highlights:**
 
--   🎓 Bachelor of Computer and Information Sciences at Auckland University of Technology (GPA: 7.75/9.0)
--   💼 Currently Software Engineer Intern at HALO Systems by Tag IT
--   🚀 Delivered production-grade applications with 40% performance improvements
--   🌟 Strong in full-stack development: Vue.js, React, TypeScript, Python, .NET Core
--   🏆 Microsoft Azure AI Fundamentals certified
--   🇳🇿 Permanent Resident - No visa sponsorship required
+-   🎓 Bachelor of Computer and Information Sciences at Auckland University of Technology (Expected July 2026) | GPA 7.75/9.0
+-   💼 Currently AI-Native Product Engineer & Full Stack Developer at GrowLab Technologies
+-   🚀 Expertise in AI-first, spec-driven development methodology
+-   🌟 Strong in rapid prototyping and full-stack development
+-   🤖 AI agents and prompt engineering specialist
+-   🏆 Microsoft Azure AI Fundamentals, GitHub Foundations, Scrum certified
+-   🇳🇿 **Permanent Resident - No visa sponsorship required**
 
 ## Experience
+
+### AI-Native Product Engineer & Full Stack Developer
+
+**GrowLab Technologies** • March 2026 - Present • Auckland, New Zealand
+
+• Architected AI-first development workflows using prompt engineering and AI agents, reducing development time by 60%
+• Led full-stack development of 5+ internal tools and client applications using React, TypeScript, and .NET Core
+• Implemented spec-driven development methodology, improving code quality and reducing bugs by 40%
+
+### Junior Developer
+
+**Decoded Venture Studio** • Oct 2025 - Dec 2025 • Auckland, New Zealand
+
+• Built AI-powered coding agent platform from scratch using OpenAI Agent SDK and Spec-Driven Development
+• Established AI-human collaboration workflows, improving code review efficiency by 50%
+• Delivered production-ready platform with automated spec compliance validation
 
 ### Software Engineer Intern
 
 **HALO Systems by Tag IT** • Dec 2024 - Feb 2025 • Auckland, New Zealand
 
-• Engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, enabling real-time monitoring of agricultural effluent systems
-• Implemented geospatial visualization using Mapbox and GeoJSON, providing farmers with intuitive, map-based sensor data monitoring
-• Improved dashboard performance by 40% through implementation of client-side data filtering and optimization
-• Developed a reusable SVG-based HMI component library, reducing development time for similar projects by 60%
-• Architected Python backend services for efficient real-time sensor data processing, handling data from multiple farm locations
+• Developed real-time HMI Dashboard for agricultural effluent control using Vue.js, TypeScript, and Mapbox
+• Implemented GeoJSON-based data visualization, enabling immediate operational insights
+• Created reusable SVG component library now used in production across multiple client sites
 
 ### Chef De Partie
 
-**Costas Taverna Greek Restaurant** • Jun 2019 - Nov 2022 • Auckland, New Zealand
+**Costas Taverna Greek Restaurant** • Jun 2019 - Nov 2022 • Christchurch, Canterbury, New Zealand
 
 • Led a team of 5 kitchen staff, managing high-pressure operations and ensuring quality control
 • Improved kitchen efficiency by 25% through implementation of new workflow processes
@@ -48,17 +63,20 @@ Third-year Computer Science student maintaining top academic performance while g
 
 ## Skills
 
+**AI & LLM:**
+OpenAI, Prompt Engineering, AI Agents, LangChain, Claude API
+
 **Languages & Frameworks:**
-Python, JavaScript, TypeScript, C#, Vue.js, React, Node.js, .NET Core
+TypeScript, React, Next.js, Node.js, Python, C#, .NET Core, Vue.js
 
-**Database & Cloud:**
-MongoDB, SQL Server, Azure, Firebase
+**DevOps & Tools:**
+Git, Docker, GitHub Actions, Azure, CI/CD
 
-**Tools & DevOps:**
-Git, Docker, GitHub Actions, Tailwind CSS, Vitest
+**Databases:**
+MongoDB, SQL Server, Firebase, PostgreSQL
 
 **Professional:**
-Agile, System Design, Team Collaboration
+Agile/Scrum, System Design, Technical Leadership
 
 **Additional:**
 Mapbox, GeoJSON, SVG, Web Scraping (Puppeteer), Rich Text Editors, Mobile-First Design
@@ -67,32 +85,31 @@ Mapbox, GeoJSON, SVG, Web Scraping (Puppeteer), Rich Text Editors, Mobile-First 
 
 ### Full-Stack Todo List Application
 
-**Technologies:** React, TypeScript, Tailwind CSS, .NET Core, EF Core, SQL Server, GitHub Actions, Azure
+**Technologies:** React, TypeScript, .NET Core, SQL Server, Azure, GitHub Actions
 
-• Independently designed and developed a comprehensive task management system with modern, responsive UI
-• Built robust backend services using .NET Core and EF Core with SQL Server
-• Established automated deployment pipeline using GitHub Actions and Azure services
-• Achieved 99.9% API uptime through Azure integration and reduced deployment time by 70% via CI/CD implementation
+• Built task management system with React/TypeScript frontend and .NET Core backend
+• Achieved 99.9% API uptime through Azure deployment with automated CI/CD pipeline
+• Reduced deployment time by 70% using GitHub Actions automation
 
 🔗 [GitHub Repository](https://github.com/realYushi/todo-list)
 
 ### My Recipe Book: Full Stack Web App
 
-**Technologies:** React, Node.js, Express.js, MongoDB, Puppeteer, Tailwind CSS, Radix UI, Docker, Firebase, Vitest
+**Technologies:** React, Node.js, MongoDB, Puppeteer, Docker, Firebase
 
-• Developed a full-stack recipe management application with web scraping functionality
-• Implemented automatic ingredient import from external websites using Puppeteer
-• Designed modern, responsive UI using React Router, Tailwind CSS, and Radix UI
-• Integrated rich text editor (Milkdown) for detailed recipe instructions and image export
-• Containerized the entire application using Docker and Docker Compose
-• Established robust authentication using Firebase and comprehensive test suite with Vitest
+• Developed recipe management app with web scraping using Puppeteer and rich text editing
+• Implemented Firebase authentication and comprehensive test suite with Vitest
+• Containerized with Docker for streamlined deployment across environments
 
 🔗 [GitHub Repository](https://github.com/realYushi/my-recipe-book)
 
 ## Certifications
 
-**Microsoft Azure AI Fundamentals (AI-900)** • Microsoft • 2024
-Foundational knowledge of AI and machine learning concepts on Azure platform
+**Microsoft Certified: Azure AI Fundamentals** • Microsoft • 2024
+
+**GitHub Foundations** • GitHub • 2024
+
+**Scrum: The Basics** • LinkedIn Learning • 2024
 
 ## Languages
 
@@ -103,9 +120,10 @@ Foundational knowledge of AI and machine learning concepts on Azure platform
 
 • **Email:** realYushi@gmail.com
 • **Location:** Auckland, New Zealand
+• **Portfolio:** [me.yushi91.com](https://me.yushi91.com)
+• **Blog:** [blog.yushi91.com](https://blog.yushi91.com)
 • **GitHub:** [realYushi](https://github.com/realYushi)
-• **LeetCode:** [realYushi](https://leetcode.com/u/realYushi/)
-• **LinkedIn:** [yushi-cui-6043aa285](https://linkedin.com/in/yushi-cui-6043aa285)
+• **LinkedIn:** [yushi-cui-6043aa285](https://linkedin.com/in/yushi-c-6043aa285)
 
 ---
 

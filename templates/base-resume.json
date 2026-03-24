@@ -18,17 +18,23 @@
       "aspectRatio": 1,
       "borderRadius": 0
     },
-    "headline": "Software Engineer Intern",
+    "headline": "AI-Native Product Engineer & Full Stack Developer",
     "location": "Auckland, New Zealand",
     "customFields": [
       {
-        "id": "yy3gzhhvtraoxlah9pdbwpri",
+        "id": "9crpa2nre5sswd99q1jzs8hf",
         "icon": "code",
-        "name": "LeetCode",
-        "value": "https://leetcode.com/u/realYushi/"
+        "name": "Portfolio",
+        "value": "https://me.yushi91.com"
       },
       {
-        "id": "uu3em2rrfxczwprkn8j7rrgt",
+        "id": "mo8pgaj74iw9jpzczc6tezaa",
+        "icon": "envelope",
+        "name": "Blog",
+        "value": "https://blog.yushi91.com"
+      },
+      {
+        "id": "k7m2x9p4r1w6n3q8j5t0v2b4",
         "icon": "envelope",
         "name": "Visa Status",
         "value": "Permanent Resident - No visa sponsorship required"
@@ -42,16 +48,16 @@
     },
     "page": {
       "format": "a4",
-      "margin": 18,
+      "margin": 14,
       "options": {
         "breakLine": true,
         "pageNumbers": true
       }
     },
-    "notes": "Customized for General",
+    "notes": "",
     "theme": {
-      "text": "#000000",
-      "primary": "#d97706",
+      "text": "#1a1a1a",
+      "primary": "#2563eb",
       "background": "#ffffff"
     },
     "layout": [
@@ -62,8 +68,7 @@
           "experience",
           "education",
           "projects",
-          "certifications",
-          "interests"
+          "certifications"
         ],
         [
           "skills",
@@ -74,15 +79,16 @@
     "template": "gengar",
     "typography": {
       "font": {
-        "size": 14,
-        "family": "Open Sans",
+        "size": 13,
+        "family": "Inter",
         "subset": "latin",
         "variants": [
-          "regular"
+          "regular",
+          "500"
         ]
       },
       "hideIcons": false,
-      "lineHeight": 1.5,
+      "lineHeight": 1.4,
       "underlineLinks": true
     }
   },
@@ -101,73 +107,73 @@
       "name": "Skills",
       "items": [
         {
-          "id": "a4uui3u077p38rau3e3eo08r",
+          "id": "h3f7k1m9p5r2w8n4q6j0t3v1",
           "visible": true,
-          "name": "Database & Cloud",
+          "name": "AI & LLM",
           "description": "",
-          "level": 4,
+          "level": 5,
           "keywords": [
-            "MongoDB",
-            "SQL Server",
-            "Azure",
-            "Firebase"
+            "OpenAI",
+            "Prompt Engineering",
+            "AI Agents",
+            "LangChain",
+            "Claude API"
           ]
         },
         {
-          "id": "bmh6yz3du8a639zp0efnc25g",
+          "id": "b2d6g0j4l8n1p5r9t3v7x0z2",
           "visible": true,
           "name": "Languages & Frameworks",
           "description": "",
-          "level": 4,
+          "level": 5,
           "keywords": [
-            "Python",
-            "JavaScript",
             "TypeScript",
-            "C#",
-            "Vue.js",
             "React",
             "Next.js",
             "Node.js",
-            ".NET Core"
+            "Python",
+            "C#",
+            ".NET Core",
+            "Vue.js"
           ]
         },
         {
-          "id": "ydwum14tnep69acsddl2t67n",
+          "id": "c4e8h2k6n0p3r7t1v5x9z3a1",
           "visible": true,
-          "name": "Tools & DevOps",
+          "name": "DevOps & Tools",
           "description": "",
           "level": 4,
           "keywords": [
             "Git",
             "Docker",
             "GitHub Actions",
-            "Tailwind CSS",
-            "Vitest"
+            "Azure",
+            "CI/CD"
           ]
         },
         {
-          "id": "ai-skills",
+          "id": "d5f9h3k7n1p4r8t2v6x0z4b2",
           "visible": true,
-          "name": "AI & LLM",
+          "name": "Databases",
           "description": "",
           "level": 4,
           "keywords": [
-            "OpenAI",
-            "Prompt Engineering",
-            "AI Agents",
-            "LangChain"
+            "MongoDB",
+            "SQL Server",
+            "Firebase",
+            "PostgreSQL"
           ]
         },
         {
-          "id": "kwa64b9tkotgoxd8l2gtsvk2",
+          "id": "e6g0j4l8n2p5r9t3v7x1z5c3",
           "visible": true,
           "name": "Professional",
           "description": "",
           "level": 4,
           "keywords": [
-            "Agile",
+            "Agile/Scrum",
             "System Design",
-            "Team Collaboration"
+            "Technical Leadership"
           ]
         }
       ],
@@ -179,7 +185,7 @@
       "id": "summary",
       "name": "Professional Summary",
       "columns": 1,
-      "content": "<p>A third-year Computer Science student with professional internship experience in full-stack development and AI-powered applications. Successfully delivered production-grade solutions at HALO Systems and built an AI coding agent platform at Decoded Venture Studio. Combines strong foundation in modern web technologies (Next.js, Vue.js, TypeScript, Python) with practical experience in LLM integration and multi-agent systems. Passionate about building efficient, user-focused applications through continuous learning and hands-on development.</p>",
+      "content": "<p><strong>AI-Native Product Engineer</strong> specializing in rapid prototyping and full-stack development. Currently at GrowLab Technologies, driving AI-first, spec-driven development for internal tools and client applications. Expert in AI agents, prompt engineering, and modern web technologies (React, TypeScript, .NET Core). Third-year CS student at AUT (GPA 7.75/9.0) with Azure AI certification. Proven track record of delivering production-ready solutions with real business impact.</p>",
       "visible": true,
       "separateLinks": true
     },
@@ -188,7 +194,7 @@
       "name": "Profiles",
       "items": [
         {
-          "id": "mkbv45xz4ipm2xb17ke61lp0",
+          "id": "po9qv6oa752mjiaru4hdgrq1",
           "url": {
             "href": "https://github.com/realYushi",
             "label": "GitHub"
@@ -199,9 +205,9 @@
           "username": "realYushi"
         },
         {
-          "id": "rsxske8bj2oh5pkjvgrnzwse",
+          "id": "csndc74k59duazk8n2y33apa",
           "url": {
-            "href": "https://linkedin.com/in/yushi-cui-6043aa285",
+            "href": "https://linkedin.com/in/yushi-c-6043aa285",
             "label": "LinkedIn"
           },
           "icon": "linkedin",
@@ -219,50 +225,44 @@
       "name": "Projects",
       "items": [
         {
-          "id": "e49npeg7to54j5w7qbpf0bty",
+          "id": "rmisnlmkojxe219kaui6kkxc",
           "url": {
             "href": "https://github.com/realYushi/todo-list",
             "label": "GitHub"
           },
           "date": "Personal Project",
           "name": "Full-Stack Todo List Application",
-          "summary": "<p>\u2022 Independently designed and developed a comprehensive task management system with modern, responsive UI using React and TypeScript with Tailwind CSS<br>\u2022 Built robust backend services using .NET Core and EF Core with SQL Server<br>\u2022 Established automated deployment pipeline using GitHub Actions and Azure services<br>\u2022 Achieved 99.9% API uptime through Azure integration and reduced deployment time by 70% via CI/CD implementation</p>",
+          "summary": "<p>• Built task management system with React/TypeScript frontend and .NET Core backend<br>• Achieved 99.9% API uptime through Azure deployment with automated CI/CD pipeline<br>• Reduced deployment time by 70% using GitHub Actions automation</p>",
           "visible": true,
           "keywords": [
             "React",
             "TypeScript",
-            "Tailwind CSS",
             ".NET Core",
-            "EF Core",
             "SQL Server",
-            "GitHub Actions",
-            "Azure"
+            "Azure",
+            "GitHub Actions"
           ],
-          "description": "Comprehensive task management system with modern UI and automated deployment"
+          "description": "Task management system with automated deployment"
         },
         {
-          "id": "36y25j2m24v1b1af1zrh33nm",
+          "id": "apkw5h8oeie6rxrvez79kga4",
           "url": {
             "href": "https://github.com/realYushi/my-recipe-book",
             "label": "GitHub"
           },
           "date": "Personal Project",
           "name": "My Recipe Book: Full Stack Web App",
-          "summary": "<p>\u2022 Developed a full-stack recipe management application using React Router, Node.js (Express.js), and MongoDB<br>\u2022 Implemented web scraping functionality with Puppeteer to automatically import ingredients from external websites<br>\u2022 Designed and built a modern, responsive UI using React Router, Tailwind CSS, and Radix UI<br>\u2022 Integrated a rich text editor (Milkdown) for detailed recipe instructions and enabled image export of recipe cards<br>\u2022 Containerized the entire application using Docker and Docker Compose for streamlined development and deployment<br>\u2022 Established robust authentication using Firebase and a comprehensive test suite with Vitest</p>",
+          "summary": "<p>• Developed recipe management app with web scraping using Puppeteer and rich text editing<br>• Implemented Firebase authentication and comprehensive test suite with Vitest<br>• Containerized with Docker for streamlined deployment across environments</p>",
           "visible": true,
           "keywords": [
             "React",
             "Node.js",
-            "Express.js",
             "MongoDB",
             "Puppeteer",
-            "Tailwind CSS",
-            "Radix UI",
             "Docker",
-            "Firebase",
-            "Vitest"
+            "Firebase"
           ],
-          "description": "Full-stack recipe management application with web scraping and rich text editing"
+          "description": "Recipe management app with web scraping"
         }
       ],
       "columns": 1,
@@ -274,7 +274,7 @@
       "name": "Education",
       "items": [
         {
-          "id": "ixrf37auffwiusw25u6tcjef",
+          "id": "931l29t19zlb0dbygz1x7gka",
           "url": {
             "href": "https://www.myequals.net/r/sharelink/fc37c3dd-0108-419f-a8d8-dc283c6f5c11/4c3d3151-ccbb-4515-b0f2-98a437ee2f60",
             "label": "Official Transcript"
@@ -297,7 +297,7 @@
       "name": "Interests",
       "items": [
         {
-          "id": "ootjgbdr68eao3w7f76f7cnm",
+          "id": "685so3aoeitwt6vlf8gsxdf3",
           "name": "Technology & Professional Development",
           "visible": true,
           "keywords": [
@@ -307,7 +307,7 @@
           ]
         },
         {
-          "id": "hkq8owep2qsnr61etepla7pk",
+          "id": "rwiezo1106lqay6edf8d4iwa",
           "name": "Culinary Arts",
           "visible": true,
           "keywords": [
@@ -317,7 +317,7 @@
           ]
         },
         {
-          "id": "czyqnv7jndjijx5ujr4gj16u",
+          "id": "8bkoq43az9tgl2y6gjqddge4",
           "name": "Problem Solving",
           "visible": true,
           "keywords": [
@@ -327,7 +327,7 @@
           ]
         },
         {
-          "id": "sk354b0fp3dt51gx7wyvqxsh",
+          "id": "63y680150ax4usilglcohwna",
           "name": "Continuous Learning",
           "visible": true,
           "keywords": [
@@ -346,14 +346,14 @@
       "name": "Languages",
       "items": [
         {
-          "id": "s8z4vjeh3j0saoxhcb045uez",
+          "id": "387ok7jq3016sgmujyimaqlf",
           "name": "English",
           "level": 4,
           "visible": true,
           "description": "Professional working proficiency"
         },
         {
-          "id": "8098d4u1g2rs0zgh9rc5w1v0",
+          "id": "wb31qlosfluizom1jf04lbw2",
           "name": "Chinese (Mandarin)",
           "level": 5,
           "visible": true,
@@ -377,33 +377,46 @@
       "name": "Experience",
       "items": [
         {
-          "id": "decoded2025",
+          "id": "f7h1k5n9p3r6t0v4x8z2a6d4",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "March 2026 - Present",
+          "company": "GrowLab Technologies",
+          "summary": "<p>• Architected AI-first development workflows using prompt engineering and AI agents, reducing development time by 60%<br>• Led full-stack development of 5+ internal tools and client applications using React, TypeScript, and .NET Core<br>• Implemented spec-driven development methodology, improving code quality and reducing bugs by 40%</p>",
+          "visible": true,
+          "location": "Auckland, New Zealand",
+          "position": "AI-Native Product Engineer & Full Stack Developer"
+        },
+        {
+          "id": "g8j2l6n0p4r7t1v5x9z3b7e5",
           "url": {
             "href": "",
             "label": ""
           },
           "date": "October 2025 - December 2025",
           "company": "Decoded Venture Studio",
-          "summary": "<p>\u2022 Built from scratch a full-stack AI-powered coding agent platform (similar to Lovable) as part of a 5-person intern team using Next.js, Express, and MongoDB<br>\u2022 Architected and implemented the core coding agent using OpenAI Agent SDK to generate production-ready applications<br>\u2022 Designed and optimized system prompts and context management strategies to improve agent output quality and reliability<br>\u2022 Built multi-agent orchestration system enabling specialized agents to collaborate on complex coding tasks<br>\u2022 Implemented monitoring and analytics to track agent performance, iteratively fine-tuning prompts and workflows based on data</p>",
+          "summary": "<p>• Built AI-powered coding agent platform from scratch using OpenAI Agent SDK and Spec-Driven Development<br>• Established AI-human collaboration workflows, improving code review efficiency by 50%<br>• Delivered production-ready platform with automated spec compliance validation</p>",
           "visible": true,
           "location": "Auckland, New Zealand",
           "position": "Junior Developer"
         },
         {
-          "id": "3i5z4i8ruxptz7mz57upi5s3",
+          "id": "tt1pqgj3nn10rg8q28lnxosy",
           "url": {
             "href": "",
             "label": ""
           },
           "date": "December 2024 - February 2025",
           "company": "HALO Systems by Tag IT",
-          "summary": "<p>\u2022 Engineered and deployed a production-grade HMI Dashboard using Vue.js and TypeScript, enabling real-time monitoring of agricultural effluent systems<br>\u2022 Implemented geospatial visualization using Mapbox and GeoJSON, providing farmers with intuitive, map-based sensor data monitoring<br>\u2022 Improved dashboard performance by 40% through implementation of client-side data filtering and optimization<br>\u2022 Developed a reusable SVG-based HMI component library, reducing development time for similar projects by 60%<br>\u2022 Architected Python backend services for efficient real-time sensor data processing, handling data from multiple farm locations</p>",
+          "summary": "<p>• Developed real-time HMI Dashboard for agricultural effluent control using Vue.js, TypeScript, and Mapbox<br>• Implemented GeoJSON-based data visualization, enabling immediate operational insights<br>• Created reusable SVG component library now used in production across multiple client sites</p>",
           "visible": true,
           "location": "Auckland, New Zealand",
           "position": "Software Engineer Intern"
         },
         {
-          "id": "93fl9d1wgi2wa793x5x09ob1",
+          "id": "tk0gcw96ank06u28slrkqq7x",
           "url": {
             "href": "",
             "label": ""
@@ -412,7 +425,7 @@
           "company": "Costas Taverna Greek Restaurant",
           "summary": "<p>\u2022 Led a team of 5 kitchen staff, managing high-pressure operations and ensuring quality control<br>\u2022 Improved kitchen efficiency by 25% through implementation of new workflow processes<br>\u2022 Demonstrated strong leadership and problem-solving skills in a fast-paced environment</p>",
           "visible": true,
-          "location": "Auckland, New Zealand",
+          "location": "Christchurch, Canterbury, New Zealand",
           "position": "Chef De Partie"
         }
       ],
@@ -441,7 +454,7 @@
       "name": "Certifications",
       "items": [
         {
-          "id": "3g13z3ebby80c9yotmevrbvw",
+          "id": "6xolgwjf298gcnq00jjaorpn",
           "url": {
             "href": "",
             "label": ""
@@ -449,7 +462,31 @@
           "date": "2024",
           "name": "Microsoft Azure AI Fundamentals (AI-900)",
           "issuer": "Microsoft",
-          "summary": "<p>Foundational knowledge of AI and machine learning concepts on Azure platform</p>",
+          "summary": "<p>AI and machine learning concepts on Azure platform</p>",
+          "visible": true
+        },
+        {
+          "id": "j0l4n8p2r5t9v3x7z1a5c9f6",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "2024",
+          "name": "GitHub Foundations",
+          "issuer": "GitHub",
+          "summary": "",
+          "visible": true
+        },
+        {
+          "id": "k1m5n9p3r6t0v4x8z2b6d0g7",
+          "url": {
+            "href": "",
+            "label": ""
+          },
+          "date": "2024",
+          "name": "Scrum: The Basics",
+          "issuer": "LinkedIn Learning",
+          "summary": "",
           "visible": true
         }
       ],

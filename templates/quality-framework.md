@@ -1,54 +1,36 @@
-# Simplified Quality Framework
+# Quality & Truthfulness Validation
 
-## Phase 1: Truthfulness Validation ✅/❌ (CRITICAL)
+## Phase 1: Truthfulness (MUST PASS)
 
-### Factual Accuracy Check (MUST ALL PASS)
-- [ ] **Experience Claims**: All projects/roles verified against `base-resume.json`
-- [ ] **Achievement Metrics**: All percentages/numbers match actual accomplishments
-- [ ] **Skills Listed**: All technologies mentioned exist in candidate's skill set
-- [ ] **Education Details**: GPA, institution, and dates match official records
-- [ ] **No Fabrication**: Zero fictional projects, roles, or achievements present
+Verify every claim against `base-resume.json` and `LinkedIn-CV-Profile.md`:
 
-**Result**: ✅ VERIFIED / ❌ FALSE CLAIMS FOUND
-**If FALSE CLAIMS FOUND**: IMMEDIATE RESTART required
+- [ ] **Experience**: Company names, positions, dates, responsibilities all match source
+- [ ] **Metrics**: All percentages/numbers match actual accomplishments (no inflation)
+- [ ] **Skills**: Every technology mentioned exists in candidate's verified skill set
+- [ ] **Education**: GPA, institution, dates match official records
+- [ ] **Projects**: All referenced projects exist in GitHub/portfolio
 
----
+**If any false claim found: STOP and restart with verified info only.**
 
-## Phase 2: Professional Quality ✅/❌
+### Acceptable vs Unacceptable
+- OK: Connecting transferable skills, highlighting relevant aspects, expressing learning interest
+- NOT OK: Inventing projects/metrics, claiming unverified skills, exaggerating scope/impact
 
-### Document Requirements (MUST ALL PASS)
-- [ ] **ATS Optimization**: Keyword density appropriate without stuffing
-- [ ] **Professional Tone**: Error-free grammar and professional language
-- [ ] **Structure**: Appropriate length and clear organization
-- [ ] **Company Integration**: Research insights properly incorporated
-- [ ] **Submission Ready**: No placeholder text or formatting issues
+## Phase 2: Professional Quality (MUST PASS)
 
-### Quality Checks
-- [ ] Resume imports correctly to Reactive Resume
-- [ ] Cover letter 200-400 words, 3 paragraphs
-- [ ] Consistent messaging across documents
-- [ ] Company-specific knowledge authentic and recent
+- [ ] **ATS**: Keywords from job description naturally integrated (no stuffing)
+- [ ] **Grammar**: Error-free, professional tone
+- [ ] **Structure**: Resume imports to Reactive Resume; cover letter 200-400 words, 3 paragraphs
+- [ ] **Company-specific**: Research insights authentic and recent
+- [ ] **No placeholders**: Zero bracket text or TODO items remaining
+- [ ] **Consistent**: Messaging aligned across resume and cover letter
 
-**Result**: ✅ APPROVED / ❌ NEEDS REVISION
+### Avoid
+- Corporate buzzwords ("synergy", "leverage", "paradigm")
+- Overused intensifiers ("meticulously", "crucial", "essential")
+- Generic phrases ("dynamic environment", "cutting-edge technology")
+- Vague descriptors ("robust", "seamless", "comprehensive")
 
----
+## Final Gate
 
-### Common Issues to Avoid
-- [ ] Corporate buzzwords ("synergy", "leverage", "paradigm")
-- [ ] Overused intensifiers ("meticulously", "crucial", "essential")
-- [ ] Generic phrases ("dynamic environment", "cutting-edge technology")
-- [ ] Filler words ("however", "furthermore", "in order to")
-- [ ] Vague descriptors ("robust", "seamless", "comprehensive")
-
----
-
-## Final Decision
-
-**Approval Requirements:**
-- [ ] **Truthfulness verification passed** (NO false claims)
-- [ ] **Professional quality check passed** (all requirements met)
-- [ ] **Ready for immediate submission**
-
-**FINAL STATUS**: ✅ APPROVED / ❌ NEEDS REVISION
-
-**If NEEDS REVISION:** Fix issues and re-validate before submission.
+Both phases must pass. If either fails, fix and re-validate before submission.

@@ -11,11 +11,7 @@ Thumbs.db
 .vscode/settings.json
 .vscode/launch.json
 .vscode/tasks.json
-# Note: .cursor/rules/, .opencode/agent/, and AGENTS.md contain essential workflow automation - DO NOT ignore
-.cursor/settings.json
-.cursor/chat/
-.opencode/settings.json
-.opencode/chat/
+.cursor/
 *~
 *.swp
 *.swo

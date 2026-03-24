@@ -112,17 +112,4 @@ done
 log "Cleanup completed. Deleted $deleted_count archive directories."
 log "Space freed: ~${total_size_mb}MB"
 
-# Update application tracker
-TRACKER_FILE="tools/config/application-tracker.json"
-if [[ -f "$TRACKER_FILE" ]]; then
-    log "Updating application tracker..."
-
-    # Create backup
-    cp "$TRACKER_FILE" "$TRACKER_FILE.backup.$(date +%Y%m%d_%H%M%S)"
-
-    # Remove old rejected entries (simple approach - keep structure intact)
-    # This is a basic cleanup - more sophisticated tracking would require JSON parsing
-    log "Tracker backup created. Manual cleanup of old entries may be required."
-fi
-
 log "Archive cleanup script completed successfully."
