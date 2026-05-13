@@ -119,3 +119,50 @@ DRY_RUN=true ./tools/cleanup-archive.sh # Preview only
 7. Validate via quality-framework.md
 8. Update applications/application-tracker.json
 9. Lock resume after submission
+
+## LinkedIn Integration
+
+Uses `browser-harness` connected to your real Chrome. Requires Chrome running with `chrome://inspect/#remote-debugging` enabled.
+
+### Pull profile from LinkedIn (source of truth)
+
+```bash
+browser-harness <<'PY'
+import json, time
+tabs = list_tabs()
+li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
+if li_tab:
+    switch_tab(li_tab["targetId"])
+else:
+    new_tab("https://www.linkedin.com/feed/")
+    wait(3)
+goto_url("https://www.linkedin.com/in/yushi-cui/details/experience/")
+wait(3)
+experience = js("document.querySelector('main')?.innerText?.slice(0, 5000) || ''")
+print(experience)
+PY
+```
+
+Detail pages for extraction: `/details/experience/`, `/details/education/`, `/details/skills/`, `/details/certifications/`
+
+### Scrape job postings from LinkedIn
+
+```bash
+browser-harness <<'PY'
+import json, time
+tabs = list_tabs()
+li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
+if li_tab:
+    switch_tab(li_tab["targetId"])
+else:
+    new_tab("https://www.linkedin.com/feed/")
+    wait(3)
+goto_url("https://www.linkedin.com/jobs/search/?keywords=full+stack&location=New+Zealand")
+wait(3)
+# ... extract job cards
+PY
+```
+
+### Update LinkedIn profile
+
+Navigate to edit pages, fill content from local files, save.

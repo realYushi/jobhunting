@@ -13,8 +13,68 @@ Create tailored application packages from a job description. See `AGENTS.md` for
 - User pastes a job description and asks for help applying
 - "apply for this job", "create application for X", "tailor my resume for"
 - Requests for cover letter or resume for a specific job
+- "search LinkedIn for jobs", "find jobs on LinkedIn"
 
 ## Workflow
+
+### 0. (Optional) Scrape Job from LinkedIn
+
+If the user asks to find jobs rather than pasting a JD:
+
+```bash
+browser-harness <<'PY'
+import json, time
+tabs = list_tabs()
+li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
+if li_tab:
+    switch_tab(li_tab["targetId"])
+else:
+    new_tab("https://www.linkedin.com/feed/")
+    wait(3)
+goto_url("https://www.linkedin.com/jobs/search/?keywords={query}&location=New+Zealand")
+wait(3)
+for i in range(3):
+    js("window.scrollBy(0, 600)")
+    time.sleep(0.5)
+jobs = js("""(() => {
+    const cards = document.querySelectorAll('[class*=\"job-card\"]');
+    const seen = new Set();
+    const results = [];
+    cards.forEach(card => {
+        const text = card.innerText.trim();
+        const lines = text.split('\\n').filter(l => l.trim());
+        if (lines.length >= 2) {
+            const title = lines[0]; const company = lines[1];
+            const key = title + company;
+            if (!seen.has(key) && title.length > 3) {
+                seen.add(key);
+                const link = card.querySelector('a[href*=\"/jobs/view/\"]')?.href || '';
+                results.push({title, company, link: link.slice(0, 150)});
+            }
+        }
+    });
+    return JSON.stringify(results.slice(0, 10));
+})()""")
+print(jobs)
+PY
+```
+
+Present the list to the user. When they pick one, navigate to that job URL and extract the full JD:
+
+```bash
+browser-harness <<'PY'
+goto_url("{job_url}")
+wait(3)
+jd = js("""(() => {
+    const desc = document.querySelector('.jobs-description__content') ||
+                 document.querySelector('.show-more-less-html__markup');
+    return desc ? desc.innerText.trim() : 'not found';
+})()""")
+print(jd)
+PY
+```
+
+Then feed the JD into step 1.
 
 ### 1. Validate Capacity
 

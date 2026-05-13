@@ -66,4 +66,7 @@ logs/
 *.log
 
 # Pi local settings
-.pi/ 
+.pi/
+
+# Browser auth state (contains session cookies)
+linkedin-auth.json 
