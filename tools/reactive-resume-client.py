@@ -19,7 +19,10 @@ def load_env():
     """Load environment variables from .env file."""
     env_path = Path(__file__).resolve().parents[1] / ".env"
     if not env_path.exists():
-        print("Error: No .env file found. Create one with REACTIVE_RESUME_API_KEY and REACTIVE_RESUME_BASE_URL.", file=sys.stderr)
+        print(
+            "Error: No .env file found. Create one with REACTIVE_RESUME_API_KEY and REACTIVE_RESUME_BASE_URL.",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
     with open(env_path) as f:
@@ -33,7 +36,9 @@ def load_env():
 def get_config():
     """Get API configuration from environment."""
     api_key = os.environ.get("REACTIVE_RESUME_API_KEY")
-    base_url = os.environ.get("REACTIVE_RESUME_BASE_URL", "https://rxresu.me/api/openapi")
+    base_url = os.environ.get(
+        "REACTIVE_RESUME_BASE_URL", "https://rxresu.me/api/openapi"
+    )
 
     if not api_key or api_key == "your-api-key-here":
         print("Error: REACTIVE_RESUME_API_KEY not set in .env", file=sys.stderr)
@@ -42,7 +47,9 @@ def get_config():
     return api_key, base_url.rstrip("/")
 
 
-def api_request(method: str, path: str, api_key: str, base_url: str, data: Optional[dict] = None) -> tuple:
+def api_request(
+    method: str, path: str, api_key: str, base_url: str, data: Optional[dict] = None
+) -> tuple:
     """Make an API request. Returns (status_code, response_body)."""
     url = f"{base_url}{path}"
     headers = {"x-api-key": api_key}
@@ -95,7 +102,14 @@ def get_resume(resume_id: str, api_key: str, base_url: str):
     return data
 
 
-def create_resume(name: str, slug: str, tags: list, api_key: str, base_url: str, with_sample: bool = False):
+def create_resume(
+    name: str,
+    slug: str,
+    tags: list,
+    api_key: str,
+    base_url: str,
+    with_sample: bool = False,
+):
     """Create a new resume. Returns the resume ID."""
     payload = {
         "name": name,
@@ -115,7 +129,9 @@ def create_resume(name: str, slug: str, tags: list, api_key: str, base_url: str,
 
 def update_resume(resume_id: str, resume_data: dict, api_key: str, base_url: str):
     """Update a resume's data (PUT). Locks must be off."""
-    status, data = api_request("PUT", f"/resumes/{resume_id}", api_key, base_url, resume_data)
+    status, data = api_request(
+        "PUT", f"/resumes/{resume_id}", api_key, base_url, resume_data
+    )
     if status != 200:
         print(f"Error updating resume: {status} {data}", file=sys.stderr)
         sys.exit(1)
@@ -160,8 +176,15 @@ def delete_resume(resume_id: str, api_key: str, base_url: str):
     print(f"Deleted resume: {resume_id}")
 
 
-def push_resume(resume_json_path: str, name: str, slug: str, tags: list,
-                api_key: str, base_url: str, pdf_output: Optional[str] = None):
+def push_resume(
+    resume_json_path: str,
+    name: str,
+    slug: str,
+    tags: list,
+    api_key: str,
+    base_url: str,
+    pdf_output: Optional[str] = None,
+):
     """Full workflow: create resume in Reactive Resume, push data, optionally export PDF."""
     # Load local resume.json
     resume_path = Path(resume_json_path)
@@ -219,7 +242,9 @@ def main():
     create_p.add_argument("--name", required=True, help="Resume name")
     create_p.add_argument("--slug", required=True, help="Unique slug")
     create_p.add_argument("--tags", nargs="*", default=[], help="Tags")
-    create_p.add_argument("--with-sample", action="store_true", help="Include sample data")
+    create_p.add_argument(
+        "--with-sample", action="store_true", help="Include sample data"
+    )
 
     # push (full workflow)
     push_p = sub.add_parser("push", help="Push local resume.json to Reactive Resume")
@@ -232,7 +257,9 @@ def main():
     # update
     update_p = sub.add_parser("update", help="Update resume data from JSON file")
     update_p.add_argument("id", help="Resume ID")
-    update_p.add_argument("--file", required=True, help="JSON file with full resume data")
+    update_p.add_argument(
+        "--file", required=True, help="JSON file with full resume data"
+    )
 
     # pdf
     pdf_p = sub.add_parser("pdf", help="Export resume as PDF")
@@ -258,7 +285,9 @@ def main():
         for r in resumes:
             lock = "🔒" if r.get("isLocked") else "🔓"
             pub = "🌐" if r.get("isPublic") else "🔒"
-            print(f"  {lock} {pub} {r['id']}  {r['name']}  ({r['slug']})  updated: {r.get('updatedAt', 'N/A')[:10]}")
+            print(
+                f"  {lock} {pub} {r['id']}  {r['name']}  ({r['slug']})  updated: {r.get('updatedAt', 'N/A')[:10]}"
+            )
 
     elif args.command == "get":
         data = get_resume(args.id, api_key, base_url)
@@ -271,13 +300,14 @@ def main():
             print(json.dumps(data, indent=2))
 
     elif args.command == "create":
-        rid = create_resume(args.name, args.slug, args.tags, api_key, base_url, args.with_sample)
+        rid = create_resume(
+            args.name, args.slug, args.tags, api_key, base_url, args.with_sample
+        )
         print(f"ID: {rid}")
 
     elif args.command == "push":
         result = push_resume(
-            args.file, args.name, args.slug, args.tags,
-            api_key, base_url, args.pdf
+            args.file, args.name, args.slug, args.tags, api_key, base_url, args.pdf
         )
         print(json.dumps(result, indent=2))
 

@@ -44,15 +44,17 @@ LinkedIn-CV-Profile.md          # Professional background source
 {
   "meta": { "last_updated": "YYYY-MM-DD", "version": "5.0" },
   "applications": {
-    "active": [{
-      "company": "Name",
-      "position": "Title",
-      "date_applied": "YYYY-MM-DD",
-      "status": "In Progress|Submitted|Interview",
-      "priority": "High|Medium|Low",
-      "resume_id": "reactive-resume-id",
-      "pdf_path": "path/to/resume.pdf"
-    }],
+    "active": [
+      {
+        "company": "Name",
+        "position": "Title",
+        "date_applied": "YYYY-MM-DD",
+        "status": "In Progress|Submitted|Interview",
+        "priority": "High|Medium|Low",
+        "resume_id": "reactive-resume-id",
+        "pdf_path": "path/to/resume.pdf"
+      }
+    ],
     "interviews": [],
     "offers": [],
     "rejected": [],

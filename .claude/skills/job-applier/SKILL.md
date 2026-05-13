@@ -18,7 +18,8 @@ Create tailored application packages from a job description. See `AGENTS.md` for
 
 ### 1. Validate Capacity
 
-Read `tools/application-tracker.json`:
+Read `applications/application-tracker.json`:
+
 - Max 5 active applications
 - Check for duplicate company entries
 - If at capacity, suggest archiving before creating new
@@ -28,6 +29,7 @@ Read `tools/application-tracker.json`:
 Extract: company name, job title, role type, required/preferred skills, location, work arrangement.
 
 Infer role type from job title and skills:
+
 - **frontend**: UI/UX, React, Vue, CSS, frontend web dev
 - **backend**: API, server-side, Python, databases
 - **fullstack**: End-to-end, both frontend and backend
@@ -47,6 +49,7 @@ Synthesize into 3-5 key insights for the cover letter.
 Read `LinkedIn-CV-Profile.md` and `templates/base-resume.json` for candidate background.
 
 Create `applications/active/{Company}/research/analysis.md` using `templates/analysis-template.md`:
+
 - Calculate match score per requirement
 - Identify top 3 selling points
 - Note skill gaps with positioning strategy
@@ -77,6 +80,7 @@ python3 tools/reactive-resume-client.py push \
 ```
 
 Save the output to `applications/active/{Company}/documents/resume-metadata.json`:
+
 ```json
 {
   "resume_id": "<id>",
@@ -96,6 +100,7 @@ If the API key is missing or the request fails, fall back to local resume.json o
 Read `templates/cover-letter.md` for structure. Create `applications/active/{Company}/documents/cover-letter.md`.
 
 Customize with:
+
 - Company-specific opening from research insights
 - Top 3 skill matches with specific evidence and metrics
 - Tone matched to company culture
@@ -112,6 +117,7 @@ Run through `templates/quality-framework.md` checklist before presenting to user
 ### 11. Lock After Submission
 
 Only when user confirms submission:
+
 ```bash
 python3 tools/reactive-resume-client.py lock <resume-id>
 ```
