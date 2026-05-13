@@ -105,6 +105,7 @@ PY
 ```
 
 After extracting, the agent should:
+
 1. Parse the structured data from the JSON output
 2. Update `LinkedIn-CV-Profile.md` with the fresh data
 3. Update `templates/base-resume.json` if needed

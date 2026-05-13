@@ -1,82 +1,99 @@
 # LinkedIn Profile CV - Yushi Cui
 
+> Synced from LinkedIn.com on 2026-05-13. LinkedIn is the source of truth.
+
 ## Professional Headline
 
-**AI-Native Product Engineer & Full Stack Developer | Computer Science Student**
+**AI-Native Product Engineer & Full Stack Developer**
 
 ## About Section
 
-**AI-Native Product Engineer** specializing in rapid prototyping and full-stack development. Currently at GrowLab Technologies, driving AI-first, spec-driven development for internal tools and client applications. Expert in AI agents, prompt engineering, and modern web technologies (React, TypeScript, .NET Core). Third-year CS student at AUT (GPA 7.75/9.0) with Azure AI certification. Proven track record of delivering production-ready solutions with real business impact.
+Currently pursuing a Bachelor of Computer and Information Sciences at Auckland University of Technology, with an expected completion in July 2026. Academic studies are complemented by certifications like Microsoft Certified: Azure AI Fundamentals, emphasizing a strong foundation in AI and technology-focused solutions.
+
+At GrowLab Technologies, contributing as an AI-Native Product Engineer by driving rapid prototyping and full-stack development for internal tools and client-facing applications. Leveraging expertise in AI agents and prompt engineering to enhance workflows while utilizing an AI-first, spec-driven approach to accelerate development processes.
 
 **Key highlights:**
 
 -   🎓 Bachelor of Computer and Information Sciences at Auckland University of Technology (Expected July 2026) | GPA 7.75/9.0
--   💼 Currently AI-Native Product Engineer & Full Stack Developer at GrowLab Technologies
+-   💼 Currently AI-Native Product Engineer & Full Stack Developer at GrowLab Technologies (Part-time)
 -   🚀 Expertise in AI-first, spec-driven development methodology
 -   🌟 Strong in rapid prototyping and full-stack development
 -   🤖 AI agents and prompt engineering specialist
--   🏆 Microsoft Azure AI Fundamentals, GitHub Foundations, Scrum certified
+-   🏆 Microsoft Azure AI Fundamentals, GitHub Foundations, Scrum, Anthropic certifications
 -   🇳🇿 **Permanent Resident - No visa sponsorship required**
 
 ## Experience
 
 ### AI-Native Product Engineer & Full Stack Developer
 
-**GrowLab Technologies** • March 2026 - Present • Auckland, New Zealand
+**GrowLab Technologies** • Part-time • March 2026 - Present • Auckland, New Zealand • On-site
 
-• Architected AI-first development workflows using prompt engineering and AI agents, reducing development time by 60%
-• Led full-stack development of 5+ internal tools and client applications using React, TypeScript, and .NET Core
-• Implemented spec-driven development methodology, improving code quality and reducing bugs by 40%
+• Drove rapid prototyping and full-stack development for internal tools and client-facing applications.
+• Architected and orchestrated AI agents and models to enhance product workflows.
+• Leveraged an AI-first and spec-driven development methodology to accelerate the software development lifecycle.
+
+**Skills:** AI Agents, Spec-Driven Software Development, Multi-agent Systems, Product Development, Context Engineering
 
 ### Junior Developer
 
-**Decoded Venture Studio** • Oct 2025 - Dec 2025 • Auckland, New Zealand
+**Decoded Venture Studio** • Internship • Oct 2025 - Dec 2025 • Auckland, New Zealand • On-site
 
-• Built AI-powered coding agent platform from scratch using OpenAI Agent SDK and Spec-Driven Development
-• Established AI-human collaboration workflows, improving code review efficiency by 50%
-• Delivered production-ready platform with automated spec compliance validation
+• Developed a full-stack, AI-powered coding agent platform from concept to implementation using Spec-Driven Development (SDD).
+• Architected the core coding agent with OpenAI Agent SDK to ensure compliance with technical specifications.
+• Established workflows integrating AI tools with human developers, enhancing collaboration and code review processes.
+
+**Skills:** Project Management, AI Agents, and 7 more
 
 ### Software Engineer Intern
 
-**HALO Systems by Tag IT** • Dec 2024 - Feb 2025 • Auckland, New Zealand
+**HALO Systems by Tag IT** • Internship • Dec 2024 - Feb 2025 • Auckland, New Zealand • Hybrid
 
-• Developed real-time HMI Dashboard for agricultural effluent control using Vue.js, TypeScript, and Mapbox
-• Implemented GeoJSON-based data visualization, enabling immediate operational insights
-• Created reusable SVG component library now used in production across multiple client sites
+• Developed a HMI Dashboard for a local farm's effluent control, enhancing monitoring capabilities.
+• Utilized Vue.js, TypeScript, and SCSS for a visually appealing front-end interface.
+• Implemented real-time data visualization with Mapbox and GeoJSON for immediate insights.
+• Delivered a reusable SVG-based HMI component now actively used in production.
+
+**Skills:** Vue.js, TypeScript, and 6 more
+
+### Career Break — Personal Goal Pursuit
+
+**Career Break** • Dec 2022 - Jun 2023 • Christchurch, Canterbury, New Zealand
+
+During this 7-month period, I took a deliberate career break to assess my professional journey and consider the next steps in my life. Having received my resident visa, I saw it as an opportunity for personal and professional growth.
+
+I used this time to explore various fields and ultimately discovered a passion for programming and technology. This led me to make a significant career change and enroll in a Bachelor of Computer Science program at Auckland University of Technology.
 
 ### Chef De Partie
 
-**Costas Taverna Greek Restaurant** • Jun 2019 - Nov 2022 • Christchurch, Canterbury, New Zealand
+**Costas Taverna Greek Restaurant** • Full-time • Jun 2019 - Nov 2022 • Christchurch, Canterbury, New Zealand • On-site
 
-• Led a team of 5 kitchen staff, managing high-pressure operations and ensuring quality control
-• Improved kitchen efficiency by 25% through implementation of new workflow processes
-• Demonstrated strong leadership and problem-solving skills in a fast-paced environment
+**Skills:** Teamwork, Team Leadership, and 4 more
 
 ## Education
 
 ### Bachelor of Computer and Information Sciences
 
-**Auckland University of Technology** • Jul 2023 - Jul 2026 (Expected)
-**GPA: 7.75/9.0** • Major: Computer Science
+**Auckland University of Technology** • Jul 2023 – Jul 2026
+Major: Computer and Information Sciences, General
 
-Third-year Computer Science student maintaining top academic performance while gaining practical industry experience.
+**Skills:** Communication, Computer Science
 
 ## Skills
 
-**AI & LLM:**
-OpenAI, Prompt Engineering, AI Agents, LangChain, Claude API
+**Industry Knowledge:**
+Full-Stack Development, Product Development, AI Agents, Multi-agent Systems, Prompt Engineering, Context Engineering
+
+**Tools & Technologies:**
+Astro, Next.js, NestJS, Retrieval-Augmented Generation (RAG)
 
 **Languages & Frameworks:**
-TypeScript, React, Next.js, Node.js, Python, C#, .NET Core, Vue.js
+TypeScript, React, Vue.js, Node.js, Python, C#, .NET Core
 
 **DevOps & Tools:**
 Git, Docker, GitHub Actions, Azure, CI/CD
 
 **Databases:**
 MongoDB, SQL Server, Firebase, PostgreSQL
-
-**Professional:**
-Agile/Scrum, System Design, Technical Leadership
 
 **Additional:**
 Mapbox, GeoJSON, SVG, Web Scraping (Puppeteer), Rich Text Editors, Mobile-First Design
@@ -105,11 +122,25 @@ Mapbox, GeoJSON, SVG, Web Scraping (Puppeteer), Rich Text Editors, Mobile-First 
 
 ## Certifications
 
-**Microsoft Certified: Azure AI Fundamentals** • Microsoft • 2024
+**Introduction to Model Context Protocol** • Anthropic • Apr 2026
 
-**GitHub Foundations** • GitHub • 2024
+**Building with the Claude API** • Anthropic • Apr 2026
 
-**Scrum: The Basics** • LinkedIn Learning • 2024
+**Certificate of Completion: AI Fluency Framework & Foundations** • Anthropic • Apr 2026
+
+**Certificate of Completion: Claude 101** • Anthropic • Apr 2026
+
+**Certificate of Completion: Introduction to Claude Cowork** • Anthropic • Apr 2026
+
+**Claude Code in Action** • Anthropic • Mar 2026
+
+**Scrum: The Basics** • LinkedIn • Aug 2025
+
+**GitHub Foundations** • GitHub • Apr 2025 (Expires Apr 2028)
+
+**Microsoft Certified: Azure AI Fundamentals** • Microsoft • Apr 2024
+
+**Learning How to Learn: Powerful Mental Tools to Help You Master Tough Subjects** • Coursera • Jul 2019
 
 ## Languages
 
@@ -123,18 +154,4 @@ Mapbox, GeoJSON, SVG, Web Scraping (Puppeteer), Rich Text Editors, Mobile-First 
 • **Portfolio:** [me.yushi91.com](https://me.yushi91.com)
 • **Blog:** [blog.yushi91.com](https://blog.yushi91.com)
 • **GitHub:** [realYushi](https://github.com/realYushi)
-• **LinkedIn:** [yushi-cui-6043aa285](https://linkedin.com/in/yushi-c-6043aa285)
-
----
-
-## LinkedIn Profile Tips
-
-**For your headline:** Use the professional headline above or customize based on roles you're targeting.
-
-**For your about section:** Use the about section content above, highlighting your unique value proposition.
-
-**For experience:** Copy each experience entry into LinkedIn's experience section with the same formatting.
-
-**For skills:** Add the skills listed above to your LinkedIn skills section for better discoverability.
-
-**For featured section:** Add links to your GitHub projects in the featured section of your LinkedIn profile.
+• **LinkedIn:** [yushi-cui](https://linkedin.com/in/yushi-cui/)
