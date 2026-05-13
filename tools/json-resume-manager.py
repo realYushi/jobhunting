@@ -53,12 +53,13 @@ KEYWORD_TO_GROUP = {
     "svelte": "Frontend", "next.js": "Frontend", "nextjs": "Frontend", "nuxt": "Frontend",
     "typescript": "Frontend", "javascript": "Frontend", "css": "Frontend",
     "tailwind": "Frontend", "tailwind css": "Frontend", "html": "Frontend", "sass": "Frontend",
+    "astro": "Frontend", "scss": "Frontend",
     # Backend
     "python": "Backend", "django": "Backend", "flask": "Backend", "fastapi": "Backend",
     "node.js": "Backend", "nodejs": "Backend", "express": "Backend",
     ".net": "Backend", ".net core": "Backend", "c#": "Backend",
     "java": "Backend", "spring": "Backend", "go": "Backend", "rust": "Backend",
-    "graphql": "Backend", "rest": "Backend",
+    "graphql": "Backend", "rest": "Backend", "nestjs": "Backend",
     # DevOps
     "docker": "DevOps", "kubernetes": "DevOps", "k8s": "DevOps",
     "aws": "DevOps", "azure": "DevOps", "gcp": "DevOps",
@@ -67,11 +68,14 @@ KEYWORD_TO_GROUP = {
     "mongodb": "Database", "postgresql": "Database", "postgres": "Database",
     "mysql": "Database", "sql server": "Database", "redis": "Database",
     "firebase": "Database", "dynamodb": "Database",
+    "mapbox": "Database", "geojson": "Database",
     # AI Development
     "openai": "AI Development", "langchain": "AI Development", "llm": "AI Development",
     "ai agents": "AI Development", "ml": "AI Development",
     "prompt engineering": "AI Development", "claude": "AI Development",
     "gpt": "AI Development", "mcp": "AI Development", "rag": "AI Development",
+    "product development": "AI Development", "full-stack development": "AI Development",
+    "openai agent sdk": "AI Development", "multi-agent": "AI Development",
 }
 
 

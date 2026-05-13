@@ -14,13 +14,13 @@ At GrowLab Technologies, contributing as an AI-Native Product Engineer by drivin
 
 **Key highlights:**
 
--   🎓 Bachelor of Computer and Information Sciences at Auckland University of Technology (Expected July 2026) | GPA 7.75/9.0
--   💼 Currently AI-Native Product Engineer & Full Stack Developer at GrowLab Technologies (Part-time)
--   🚀 Expertise in AI-first, spec-driven development methodology
--   🌟 Strong in rapid prototyping and full-stack development
--   🤖 AI agents and prompt engineering specialist
--   🏆 Microsoft Azure AI Fundamentals, GitHub Foundations, Scrum, Anthropic certifications
--   🇳🇿 **Permanent Resident - No visa sponsorship required**
+- 🎓 Bachelor of Computer and Information Sciences at Auckland University of Technology (Expected July 2026) | GPA 7.75/9.0
+- 💼 Currently AI-Native Product Engineer & Full Stack Developer at GrowLab Technologies (Part-time)
+- 🚀 Expertise in AI-first, spec-driven development methodology
+- 🌟 Strong in rapid prototyping and full-stack development
+- 🤖 AI agents and prompt engineering specialist
+- 🏆 Microsoft Azure AI Fundamentals, GitHub Foundations, Scrum, Anthropic certifications
+- 🇳🇿 **Permanent Resident - No visa sponsorship required**
 
 ## Experience
 

@@ -211,7 +211,9 @@
             "Next.js",
             "TypeScript",
             "Vue.js",
-            "Tailwind CSS"
+            "Tailwind CSS",
+            "Astro",
+            "SCSS"
           ]
         },
         {
@@ -225,7 +227,8 @@
             "Node.js",
             ".NET Core",
             "Python",
-            "C#"
+            "C#",
+            "NestJS"
           ]
         },
         {
@@ -253,7 +256,9 @@
             "MongoDB",
             "SQL Server",
             "PostgreSQL",
-            "Firebase"
+            "Firebase",
+            "Mapbox",
+            "GeoJSON"
           ]
         },
         {
@@ -274,7 +279,10 @@
             "Spec-Driven Software Development",
             "AI Agents",
             "Multi-agent Systems",
-            "RAG"
+            "RAG",
+            "Product Development",
+            "Full-Stack Development",
+            "OpenAI Agent SDK"
           ]
         }
       ]
