@@ -5,66 +5,84 @@ Generates role-optimized JSON resumes from the base template.
 """
 
 import json
-import secrets
-import string
 import sys
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 
+# Per-role customizations. Skill-group names must match those in base-resume.json.
 ROLE_CONFIGS = {
     "frontend": {
         "aliases": ["front-end", "ui", "react", "vue"],
-        "summary_replace": ("full-stack development", "frontend development with modern JavaScript frameworks"),
-        "skill_boost": ["Languages & Frameworks", "AI & LLM"],
-        "layout": [
-            [
-                ["profiles", "summary", "experience", "projects"],
-                ["skills", "education", "certifications", "languages"]
-            ]
-        ],
+        "summary": "<p>Frontend-focused product engineer building user-facing tools with React, Next.js, TypeScript, and Vue. Third-year CS student at AUT (GPA 7.75/9.0) with Azure AI certification. Build things that work.</p>",
+        "skill_boost": ["Frontend", "AI Development"],
         "hide_sections": [],
     },
     "backend": {
         "aliases": ["back-end", "api", "server", "python"],
-        "summary_replace": ("modern web technologies", "backend systems, APIs, and database design"),
-        "skill_boost": ["Databases", "Languages & Frameworks"],
-        "layout": [
-            [
-                ["profiles", "summary", "experience", "projects"],
-                ["skills", "education", "certifications", "languages"]
-            ]
-        ],
+        "summary": "<p>Backend engineer building APIs and services with .NET Core, Node.js, Python, and SQL/NoSQL databases. Third-year CS student at AUT (GPA 7.75/9.0) with Azure AI certification. Build things that work.</p>",
+        "skill_boost": ["Backend", "Database"],
         "hide_sections": [],
     },
     "fullstack": {
         "aliases": ["full-stack", "full stack"],
-        "summary_replace": None,
+        "summary": None,
         "skill_boost": [],
-        "layout": None,
         "hide_sections": [],
     },
     "devops": {
         "aliases": ["cloud", "infrastructure", "sre"],
-        "summary_replace": ("modern web technologies", "cloud infrastructure, CI/CD, and DevOps practices"),
-        "skill_boost": ["DevOps & Tools", "Databases"],
-        "layout": None,
+        "summary": "<p>Engineer focused on cloud infrastructure, CI/CD, and DevOps practices with Docker, GitHub Actions, and Azure. Third-year CS student at AUT (GPA 7.75/9.0) with Azure AI certification. Build things that work.</p>",
+        "skill_boost": ["DevOps", "Database"],
         "hide_sections": ["interests"],
     },
     "data": {
         "aliases": ["analytics", "ml", "ai", "machine-learning"],
-        "summary_replace": ("full-stack development", "AI/ML development and data-driven solutions"),
-        "skill_boost": ["AI & LLM", "Databases"],
-        "layout": None,
+        "summary": "<p>AI/ML-focused engineer building agentic systems and data-driven applications with Claude Code, Python, and modern LLM tooling. Third-year CS student at AUT (GPA 7.75/9.0) with Azure AI certification. Build things that work.</p>",
+        "skill_boost": ["AI Development", "Database"],
         "hide_sections": ["interests"],
     },
 }
 
 
-def generate_cuid2() -> str:
-    """Generate a CUID2-like ID (24 characters, lowercase + digits)."""
-    chars = string.ascii_lowercase + string.digits
-    return ''.join(secrets.choice(chars) for _ in range(24))
+# Maps a job keyword (lowercased) to the skill-group in base-resume.json
+# it should be filed under. Anything not listed falls back to the role default.
+KEYWORD_TO_GROUP = {
+    # Frontend
+    "react": "Frontend", "vue": "Frontend", "vue.js": "Frontend", "angular": "Frontend",
+    "svelte": "Frontend", "next.js": "Frontend", "nextjs": "Frontend", "nuxt": "Frontend",
+    "typescript": "Frontend", "javascript": "Frontend", "css": "Frontend",
+    "tailwind": "Frontend", "tailwind css": "Frontend", "html": "Frontend", "sass": "Frontend",
+    # Backend
+    "python": "Backend", "django": "Backend", "flask": "Backend", "fastapi": "Backend",
+    "node.js": "Backend", "nodejs": "Backend", "express": "Backend",
+    ".net": "Backend", ".net core": "Backend", "c#": "Backend",
+    "java": "Backend", "spring": "Backend", "go": "Backend", "rust": "Backend",
+    "graphql": "Backend", "rest": "Backend",
+    # DevOps
+    "docker": "DevOps", "kubernetes": "DevOps", "k8s": "DevOps",
+    "aws": "DevOps", "azure": "DevOps", "gcp": "DevOps",
+    "terraform": "DevOps", "ci/cd": "DevOps", "github actions": "DevOps", "jenkins": "DevOps",
+    # Database
+    "mongodb": "Database", "postgresql": "Database", "postgres": "Database",
+    "mysql": "Database", "sql server": "Database", "redis": "Database",
+    "firebase": "Database", "dynamodb": "Database",
+    # AI Development
+    "openai": "AI Development", "langchain": "AI Development", "llm": "AI Development",
+    "ai agents": "AI Development", "ml": "AI Development",
+    "prompt engineering": "AI Development", "claude": "AI Development",
+    "gpt": "AI Development", "mcp": "AI Development", "rag": "AI Development",
+}
+
+
+# Where unmatched keywords land, per role.
+ROLE_DEFAULT_GROUP = {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "fullstack": "Backend",
+    "devops": "DevOps",
+    "data": "AI Development",
+}
 
 
 def resolve_role(role_input: str) -> str:
@@ -96,63 +114,47 @@ def apply_role_focus(resume: Dict[str, Any], role: str) -> Dict[str, Any]:
     if not config:
         return resume
 
-    # Boost relevant skill categories to level 5
-    if config["skill_boost"]:
+    skill_names = {s["name"] for s in resume["sections"]["skills"]["items"]}
+    for boost_name in config["skill_boost"]:
+        if boost_name not in skill_names:
+            raise ValueError(
+                f"Role '{role}' boosts skill group '{boost_name}', but no such group "
+                f"exists in base-resume.json. Available: {sorted(skill_names)}"
+            )
         for skill in resume["sections"]["skills"]["items"]:
-            if skill["name"] in config["skill_boost"]:
+            if skill["name"] == boost_name:
                 skill["level"] = 5
 
-    # Update summary text
-    if config["summary_replace"]:
-        old, new = config["summary_replace"]
-        resume["sections"]["summary"]["content"] = (
-            resume["sections"]["summary"]["content"].replace(old, new)
-        )
+    if config["summary"]:
+        resume["summary"]["content"] = config["summary"]
 
-    # Override layout if specified
-    if config["layout"]:
-        resume["metadata"]["layout"] = config["layout"]
-
-    # Hide irrelevant sections
     for section_name in config["hide_sections"]:
         if section_name in resume["sections"]:
-            resume["sections"][section_name]["visible"] = False
+            resume["sections"][section_name]["hidden"] = True
 
     return resume
 
 
-def add_keywords(resume: Dict[str, Any], keywords: List[str]) -> Dict[str, Any]:
-    """Add job-specific keywords to matching skill categories."""
-    for skill in resume["sections"]["skills"]["items"]:
-        existing = [k.lower() for k in skill.get("keywords", [])]
-        for kw in keywords:
-            # Match keyword to skill category by checking if it relates to existing keywords
-            if kw.lower() not in existing:
-                # Add to the first skill group that has a related keyword
-                for existing_kw in skill.get("keywords", []):
-                    if _keywords_related(kw, existing_kw):
-                        skill["keywords"].append(kw)
-                        existing.append(kw.lower())
-                        break
+def add_keywords(resume: Dict[str, Any], keywords: List[str],
+                 role: Optional[str] = None) -> Dict[str, Any]:
+    """Add job-specific keywords to skill groups. Never silently drops a keyword."""
+    skill_groups = {s["name"]: s for s in resume["sections"]["skills"]["items"]}
+    default_group = ROLE_DEFAULT_GROUP.get(role or "", "Backend")
+    if default_group not in skill_groups:
+        # Fall back to the first available skill group so unmatched keywords still land.
+        default_group = next(iter(skill_groups), None)
+    if default_group is None:
+        return resume
+
+    for kw in keywords:
+        target = KEYWORD_TO_GROUP.get(kw.lower(), default_group)
+        if target not in skill_groups:
+            target = default_group
+        group = skill_groups[target]
+        existing = {k.lower() for k in group.get("keywords", [])}
+        if kw.lower() not in existing:
+            group.setdefault("keywords", []).append(kw)
     return resume
-
-
-def _keywords_related(new_kw: str, existing_kw: str) -> bool:
-    """Check if two keywords are in the same domain using exact token matching."""
-    domains = [
-        {"react", "vue", "angular", "svelte", "next.js", "nuxt", "typescript", "javascript", "css", "tailwind", "html"},
-        {"python", "django", "flask", "fastapi", "node.js", "express", ".net", "c#", "java", "spring", "go", "rust"},
-        {"docker", "kubernetes", "aws", "azure", "gcp", "terraform", "ci/cd", "github actions", "jenkins"},
-        {"mongodb", "postgresql", "mysql", "sql server", "redis", "firebase", "dynamodb"},
-        {"openai", "langchain", "llm", "ai agents", "ml", "prompt engineering", "claude", "gpt"},
-        {"agile", "scrum", "kanban", "leadership", "management"},
-    ]
-    new_lower = new_kw.lower()
-    existing_lower = existing_kw.lower()
-    for domain in domains:
-        if new_lower in domain and existing_lower in domain:
-            return True
-    return False
 
 
 def create_resume(base_path: Path, company: str, role: str = None,
@@ -167,15 +169,15 @@ def create_resume(base_path: Path, company: str, role: str = None,
     if hide:
         for section in hide:
             if section in resume["sections"]:
-                resume["sections"][section]["visible"] = False
+                resume["sections"][section]["hidden"] = True
 
     if show:
         for section in show:
             if section in resume["sections"]:
-                resume["sections"][section]["visible"] = True
+                resume["sections"][section]["hidden"] = False
 
     if keywords:
-        resume = add_keywords(resume, keywords)
+        resume = add_keywords(resume, keywords, role)
 
     resume["metadata"]["notes"] = f"Customized for {company}"
     return resume
@@ -210,7 +212,7 @@ def main():
         resume = load_base_resume(base_path)
         print("Available sections:")
         for name, section in resume["sections"].items():
-            vis = "visible" if section.get("visible", True) else "hidden"
+            vis = "hidden" if section.get("hidden", False) else "visible"
             print(f"  {name} ({vis})")
         return
 

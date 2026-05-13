@@ -1,15 +1,28 @@
-# Cover Letter - [Company Name]
+# Cover Letter — [Company Name]
 
-**Date:** [Current Date]
+**Date:** [YYYY-MM-DD]
 **Position:** [Job Title]
 
 Hi [Hiring Manager Name or Team],
 
-I'm writing to express my interest in the [Job Title] position at [Company Name]. [Company Name]'s [specific company insight - mission/recent achievement/value] aligns perfectly with my passion for [relevant field/technology], making this opportunity particularly compelling.
+I'm writing to express my interest in the [Job Title] position at [Company Name]. [One sentence connecting a specific company insight — mission, recent product launch, or stated value — to the candidate's interest, drawn from research notes.]
 
-As a Computer Science student (GPA 7.75/9.0) with professional full-stack and AI development experience, I bring proven production-grade system delivery capabilities. At Decoded Venture Studio, I architected and built a full-stack AI-powered coding agent platform from scratch using Next.js, Express, and the OpenAI SDK. Previously at HALO Systems, I engineered complex Vue.js/TypeScript frontend dashboards and Python backend services for real-time data processing, achieving 40% performance improvements. My hands-on experience in building scalable web applications and multi-agent AI systems demonstrates my readiness to contribute immediately to your team.
+[Paragraph 2: Top 3 skill matches with concrete evidence from `LinkedIn-CV-Profile.md` and `templates/base-resume.json`. Lead with the strongest match. Each claim must cite a real role, project, or metric — never invent. Reference the candidate's current role first, then earlier roles only when they add something the current role doesn't cover. Match the job description's terminology where it's accurate.]
 
-Thank you for considering my application. I would welcome the opportunity to discuss how my technical skills and proven delivery experience can contribute to [Company Name]'s continued success.
+Thank you for considering my application. I would welcome the opportunity to discuss how my experience can contribute to [Company Name].
 
 Sincerely,
 Yushi Cui
+
+---
+
+<!--
+Authoring rules (do not include in the rendered letter):
+- 200–400 words, 3 paragraphs.
+- No buzzwords ("synergy", "leverage"), intensifiers ("meticulously"), or generic
+  filler ("dynamic environment", "cutting-edge").
+- Every employer, project, and metric must come from base-resume.json or
+  LinkedIn-CV-Profile.md. If it isn't there, don't write it.
+- Replace every [bracketed placeholder]. Run `templates/quality-framework.md`
+  before submission.
+-->

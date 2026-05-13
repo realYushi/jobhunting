@@ -15,8 +15,8 @@ tools/
   json-resume-manager.py        # Generates role-optimized resume.json
   fix-cuid2-ids.py              # Fixes IDs for Reactive Resume compatibility
   cleanup-archive.sh            # Removes old archived applications
+applications/                   # Created on first application run
   application-tracker.json      # Application status tracking
-applications/
   active/{Company}/             # Current applications
     research/
       job-description.md        # Original posting
@@ -27,7 +27,7 @@ applications/
       cover-letter.md           # Customized cover letter
   archive/                      # Completed/withdrawn applications
 LinkedIn-CV-Profile.md          # Professional background source
-.claude/skills/job-applier/     # Claude Code skill for full workflow
+.agents/skills/                 # Local Claude Code skills used by this repo
 ```
 
 ## Source of Truth
@@ -90,5 +90,5 @@ DRY_RUN=true ./tools/cleanup-archive.sh # Preview only
 5. Create resume in Reactive Resume via MCP, export PDF
 6. Write cover letter using research insights and analysis
 7. Validate via quality-framework.md
-8. Update application-tracker.json
+8. Update applications/application-tracker.json
 9. Lock resume after submission

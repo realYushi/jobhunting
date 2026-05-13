@@ -15,8 +15,10 @@ def generate_cuid2():
     chars = string.ascii_lowercase + string.digits
     return ''.join(secrets.choice(chars) for _ in range(24))
 
-def fix_cuid2_ids(data, path=[]):
+def fix_cuid2_ids(data, path=None):
     """Recursively fix item 'id' fields in the JSON structure, but preserve section IDs"""
+    if path is None:
+        path = []
     if isinstance(data, dict):
         for key, value in data.items():
             current_path = path + [key]

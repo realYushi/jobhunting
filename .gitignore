@@ -63,4 +63,7 @@ yarn-error.log
 
 # Logs
 logs/
-*.log 
+*.log
+
+# Pi local settings
+.pi/ 

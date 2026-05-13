@@ -13,7 +13,7 @@ Given a job description, the system:
 
 ## Quick Start
 
-Paste a job description into Claude Code and say "apply for this job" -- the `job-applier` skill handles the full workflow.
+Paste a job description into Claude Code and say "apply for this job". If the `job-applier` skill is installed in your Claude Code environment, it can handle the full workflow.
 
 ## Manual Tools
 
@@ -26,6 +26,12 @@ python3 tools/fix-cuid2-ids.py --input resume.json --output resume-fixed.json
 
 # Clean old archives
 ./tools/cleanup-archive.sh
+```
+
+## Tests
+
+```bash
+python3 -m unittest tests/test_json_resume_manager.py
 ```
 
 See `AGENTS.md` for full architecture and workflow details.
