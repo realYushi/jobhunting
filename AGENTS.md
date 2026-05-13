@@ -13,6 +13,7 @@ templates/
   json-resume-guide.md          # JSON resume format reference
 tools/
   json-resume-manager.py        # Generates role-optimized resume.json
+  reactive-resume-client.py     # Reactive Resume API client (create, push, PDF, lock)
   fix-cuid2-ids.py              # Fixes IDs for Reactive Resume compatibility
   cleanup-archive.sh            # Removes old archived applications
 applications/                   # Created on first application run
@@ -23,7 +24,8 @@ applications/                   # Created on first application run
       analysis.md               # Skills matching & strategy
     documents/
       resume.json               # Tailored resume
-      resume-metadata.json      # Reactive Resume tracking (ID, PDF URL)
+      resume-metadata.json      # Reactive Resume tracking (ID, PDF path)
+      resume.pdf                # Exported PDF
       cover-letter.md           # Customized cover letter
   archive/                      # Completed/withdrawn applications
 LinkedIn-CV-Profile.md          # Professional background source
@@ -49,7 +51,7 @@ LinkedIn-CV-Profile.md          # Professional background source
       "status": "In Progress|Submitted|Interview",
       "priority": "High|Medium|Low",
       "resume_id": "reactive-resume-id",
-      "pdf_url": "url"
+      "pdf_path": "path/to/resume.pdf"
     }],
     "interviews": [],
     "offers": [],
@@ -74,6 +76,29 @@ python3 tools/json-resume-manager.py --list-sections
 
 Role types: `frontend`, `backend`, `fullstack`, `data`, `devops`
 
+## Reactive Resume API
+
+Requires `.env` with `REACTIVE_RESUME_API_KEY` and `REACTIVE_RESUME_BASE_URL`.
+
+```bash
+# Full workflow: push local resume.json → create in Reactive Resume → export PDF
+python3 tools/reactive-resume-client.py push \
+  --file path/resume.json --name "Company - Role" --slug "company-role" \
+  --tags "active" "frontend" --pdf path/resume.pdf
+
+# List all resumes
+python3 tools/reactive-resume-client.py list
+
+# Export PDF only
+python3 tools/reactive-resume-client.py pdf <resume-id> -o output.pdf
+
+# Lock resume after submission
+python3 tools/reactive-resume-client.py lock <resume-id>
+
+# Delete a resume
+python3 tools/reactive-resume-client.py delete <resume-id>
+```
+
 ## Archive Cleanup
 
 ```bash
@@ -87,7 +112,7 @@ DRY_RUN=true ./tools/cleanup-archive.sh # Preview only
 2. Research company (mission, values, tech stack, recent news)
 3. Analyze job fit against candidate background
 4. Generate tailored resume.json via json-resume-manager.py
-5. Create resume in Reactive Resume via MCP, export PDF
+5. Create resume in Reactive Resume via API client, export PDF
 6. Write cover letter using research insights and analysis
 7. Validate via quality-framework.md
 8. Update applications/application-tracker.json

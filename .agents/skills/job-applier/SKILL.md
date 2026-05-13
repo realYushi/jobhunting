@@ -1,7 +1,7 @@
 ---
 name: job-applier
 description: Create complete job application packages with tailored CV and cover letter. Use this skill whenever the user wants to apply for a job, create a job application, generate a resume/CV, or mentions "apply for this job", "job application", "tailor my resume", "cover letter for job". Automatically analyzes job requirements, researches the company, generates role-optimized resume.json, creates resume in Reactive Resume, generates PDF, and creates customized cover letter.
-compatibility: Requires file system access, Python 3 for JSON resume generation, and Reactive Resume MCP
+compatibility: Requires file system access, Python 3, and Reactive Resume API key in .env
 ---
 
 # Job Application Skill
@@ -65,36 +65,31 @@ python3 tools/json-resume-manager.py \
   --keywords "keyword1" "keyword2"
 ```
 
-### 7. Create in Reactive Resume + Export PDF
+### 7. Push to Reactive Resume + Export PDF
 
-```
-mcp__reactive-resume__create_resume(
-  name="{Company} - {Job Title}",
-  slug="{company-slug}-{YYYY-MM-DD}",
-  tags=["active", "{role}"],
-  withSampleData=false
-)
-```
-
-Patch with content from local resume.json, then:
-
-```
-mcp__reactive-resume__export_resume_pdf(id=<resume-id>)
-mcp__reactive-resume__get_resume_screenshot(id=<resume-id>)
+```bash
+python3 tools/reactive-resume-client.py push \
+  --file "applications/active/{Company}/documents/resume.json" \
+  --name "{Company} - {Job Title}" \
+  --slug "{company-slug}-{YYYY-MM-DD}" \
+  --tags "active" "{role}" \
+  --pdf "applications/active/{Company}/documents/resume.pdf"
 ```
 
-Save tracking info to `applications/active/{Company}/documents/resume-metadata.json`:
+Save the output to `applications/active/{Company}/documents/resume-metadata.json`:
 ```json
 {
   "resume_id": "<id>",
+  "name": "{Company} - {Job Title}",
   "slug": "<slug>",
-  "pdf_url": "<url>",
+  "tags": ["active", "{role}"],
+  "pdf_path": "applications/active/{Company}/documents/resume.pdf",
   "created_at": "<timestamp>",
   "locked": false
 }
 ```
 
-If Reactive Resume MCP is unavailable, fall back to local resume.json only.
+If the API key is missing or the request fails, fall back to local resume.json only.
 
 ### 8. Write Cover Letter
 
@@ -108,7 +103,7 @@ Customize with:
 
 ### 9. Update Tracker
 
-Add entry to `tools/application-tracker.json` with company, position, date, status, resume_id, and pdf_url.
+Add entry to `applications/application-tracker.json` with company, position, date, status, resume_id, and pdf_path.
 
 ### 10. Validate
 
@@ -117,8 +112,8 @@ Run through `templates/quality-framework.md` checklist before presenting to user
 ### 11. Lock After Submission
 
 Only when user confirms submission:
-```
-mcp__reactive-resume__lock_resume(id=<resume-id>)
+```bash
+python3 tools/reactive-resume-client.py lock <resume-id>
 ```
 
 ## Edge Cases
