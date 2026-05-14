@@ -1,42 +1,26 @@
 ---
 name: linkedin
-description: Pull profile data from LinkedIn and push updates back. Use when the user wants to sync their LinkedIn profile, update their CV from LinkedIn, scrape job postings, or push profile changes. Triggers: "sync LinkedIn", "pull from LinkedIn", "update LinkedIn profile", "scrape LinkedIn jobs", "LinkedIn job search".
-allowed-tools: Bash(browser-harness:*)
+description: >
+  Pull profile data from LinkedIn and push updates back. Use when the user
+  wants to sync their LinkedIn profile, update their CV from LinkedIn, scrape
+  job postings, or push profile changes. Triggers include "sync LinkedIn",
+  "pull from LinkedIn", "update LinkedIn profile", "scrape LinkedIn jobs",
+  "LinkedIn job search".
+allowed-tools: "Bash(browser-harness:*)"
 ---
 
 # LinkedIn Integration via browser-harness
 
-Sync LinkedIn.com (source of truth) with local files. Uses browser-harness connected to the user's real Chrome session.
+LinkedIn.com is the source of truth. This skill drives the user's real Chrome (via browser-harness) to pull profile/job data into local files and push edits back.
 
-## Prerequisites
+## Setup
 
-- `browser-harness` installed and on `$PATH`
-- Chrome running with `chrome://inspect/#remote-debugging` enabled
-- User logged into LinkedIn in their Chrome
+- `browser-harness` on `$PATH`, Chrome running with remote debugging enabled, user logged into LinkedIn.
+- Verify: `browser-harness --doctor` (chrome running + daemon alive must pass).
 
-Verify with: `browser-harness --doctor` — chrome running + daemon alive must pass.
+Every script below begins with the same tab-attach boilerplate — reuse an existing LinkedIn tab or open the feed:
 
-## Commands
-
-All commands use the heredoc pattern:
-
-```bash
-browser-harness <<'PY'
-# Python code here — helpers pre-imported
-PY
-```
-
-## Pull: LinkedIn → Local Files
-
-### Full Profile Pull
-
-Scrapes all profile sections and writes to `LinkedIn-CV-Profile.md`.
-
-```bash
-browser-harness <<'PY'
-import json, time
-
-# Switch to a LinkedIn tab (find existing or navigate)
+```python
 tabs = list_tabs()
 li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
 if li_tab:
@@ -44,246 +28,161 @@ if li_tab:
 else:
     new_tab("https://www.linkedin.com/feed/")
     wait(3)
-
-# Navigate to own profile
-goto_url("https://www.linkedin.com/in/yushi-cui/")
-wait(3)
-
-# Extract About
-about = js("""
-(() => {
-    const sections = {};
-    document.querySelectorAll('section').forEach(s => {
-        const h = s.querySelector('h2');
-        if (h && h.innerText.trim() === 'About') {
-            sections['about'] = s.innerText.replace(/^About\\n*/, '').trim();
-        }
-    });
-    return JSON.stringify(sections);
-})()
-""")
-about_data = json.loads(about)
-print("About:", about_data.get('about', '')[:200])
-
-# Extract Experience (detail page)
-goto_url("https://www.linkedin.com/in/yushi-cui/details/experience/")
-wait(3)
-experience = js("document.querySelector('main')?.innerText?.slice(0, 5000) || ''")
-print("Experience extracted:", len(experience), "chars")
-
-# Extract Education (detail page)
-goto_url("https://www.linkedin.com/in/yushi-cui/details/education/")
-wait(3)
-education = js("document.querySelector('main')?.innerText?.slice(0, 2000) || ''")
-print("Education extracted:", len(education), "chars")
-
-# Extract Skills (detail page)
-goto_url("https://www.linkedin.com/in/yushi-cui/details/skills/")
-wait(3)
-skills = js("document.querySelector('main')?.innerText?.slice(0, 3000) || ''")
-print("Skills extracted:", len(skills), "chars")
-
-# Extract Certifications (detail page)
-goto_url("https://www.linkedin.com/in/yushi-cui/details/certifications/")
-wait(3)
-certs = js("document.querySelector('main')?.innerText?.slice(0, 3000) || ''")
-print("Certifications extracted:", len(certs), "chars")
-
-# Output as structured JSON for the agent to write to file
-output = {
-    "headline": "AI-Native Product Engineer & Full Stack Developer",
-    "about": about_data.get('about', ''),
-    "experience": experience,
-    "education": education,
-    "skills": skills,
-    "certifications": certs
-}
-print("\\n=== LINKEDIN_DATA_START ===")
-print(json.dumps(output))
-print("=== LINKEDIN_DATA_END ===")
-PY
 ```
 
-After extracting, the agent should:
+This snippet is implied at the top of every `browser-harness <<'PY'` block.
 
-1. Parse the structured data from the JSON output
-2. Update `LinkedIn-CV-Profile.md` with the fresh data
-3. Update `templates/base-resume.json` if needed
-4. Report what changed
+## Pull: LinkedIn → local files
 
-### Headline Pull (quick)
+The main profile page lazy-loads sections, so always use the `/details/<section>/` URLs. They render cleanly into `main`'s innerText.
 
 ```bash
 browser-harness <<'PY'
 import json
-tabs = list_tabs()
-li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
-if li_tab:
-    switch_tab(li_tab["targetId"])
-else:
-    new_tab("https://www.linkedin.com/feed/")
-    wait(3)
+# [tab-attach boilerplate]
 
-goto_url("https://www.linkedin.com/in/yushi-cui/")
-wait(3)
-headline = js("""
+sections = {}
+for name, url in [
+    ("about",          "https://www.linkedin.com/in/yushi-cui/"),
+    ("experience",     "https://www.linkedin.com/in/yushi-cui/details/experience/"),
+    ("education",      "https://www.linkedin.com/in/yushi-cui/details/education/"),
+    ("skills",         "https://www.linkedin.com/in/yushi-cui/details/skills/"),
+    ("certifications", "https://www.linkedin.com/in/yushi-cui/details/certifications/"),
+]:
+    goto_url(url); wait(3)
+    sections[name] = js("document.querySelector('main')?.innerText?.slice(0, 5000) || ''")
+
+print("=== LINKEDIN_DATA_START ===")
+print(json.dumps(sections))
+print("=== LINKEDIN_DATA_END ===")
+PY
+```
+
+Then parse the JSON, update `LinkedIn-CV-Profile.md` (and `templates/base-resume.json` if needed), and report what changed.
+
+**Verify the pull isn't silently empty.** `/details/skills/` and `/details/certifications/` sometimes return only nav + footer text (the list items render lazily, below the slice window). Before writing files, sanity-check each section: if it's under ~200 chars or contains "Sign in" / "Join LinkedIn", treat it as an auth-wall or render failure, surface to the user, and skip the file update for that section.
+
+**Quick headline-only pull** — useful when you only need the name + headline:
+
+```python
+goto_url("https://www.linkedin.com/in/yushi-cui/"); wait(3)
+print(js("JSON.stringify({name: document.querySelector('h1')?.innerText?.trim(), headline: document.querySelector('.text-body-medium')?.innerText?.trim()})"))
+```
+
+## Optimize: profile audit
+
+Use when the user asks to "optimize my LinkedIn", "audit my profile", "improve my headline", or wants recruiter visibility. Pull fresh data first, then score `LinkedIn-CV-Profile.md` against the checklist below and surface gaps.
+
+**Headline** (220 chars)
+- Searchable role titles recruiters actually query (e.g., "Full Stack Engineer")
+- 2-4 high-value keywords (stack, domain, tools)
+- Avoid: "Open to work", "Student at…", emoji spam
+
+**About** (target 1,500-2,000 of 2,600 chars)
+- First ~300 chars stand alone as a hook (preview-visible)
+- 3-5 paragraphs: who → achievements → what you're looking for
+- Explicit `Key skills:` line with 10-15 searchable terms
+- Closes with a call-to-action
+
+**Experience** — each role: 4-6 metric-bearing bullets, skill tags (LinkedIn weights these in search), scope sentence.
+
+**Skills** — fill toward 50; top 3 pinned match target roles; endorsements on top 5.
+
+**Featured / Recommendations / Photo / Banner** — featured items present; ≥3 recommendations; face fills ~60% of photo; custom 1584×396 banner.
+
+**Target-role keyword gap** — ask the user what roles they're targeting (or infer from recent applications in `applications/application-tracker.json`). Diff that keyword set against headline + About + skills, and list which to add where.
+
+Output format the user can act on:
+
+```
+Headline: 142/220 chars. Missing "Full Stack" and "TypeScript" (top searched).
+  Suggested: "Full Stack Engineer | TypeScript, Python, AWS | Shipping 0→1 AI-native products"
+
+About: 1,820 chars ✓. Weak hook. No `Key skills:` line.
+  Suggested hook: "I build AI-native products end-to-end — from prompt design to production infra."
+
+Skills: 23/50. Add: TypeScript, Next.js, Postgres, CDP, Playwright
+Experience: 2 of 4 roles missing bullets. Role X has no skill tags.
+Featured: 0 items. Recommendations: 1 — ask 2 former colleagues.
+```
+
+Show the diff before pushing. Never push optimizer suggestions automatically.
+
+## Push: local files → LinkedIn
+
+LinkedIn's edit dialogs are stateful and easy to break. Open the edit surface and **let the user review the field before you fill it** — or surface what you'd type and ask them to paste.
+
+```bash
+browser-harness <<'PY'
+# [tab-attach boilerplate]
+goto_url("https://www.linkedin.com/in/yushi-cui/"); wait(3)
+js("""
 (() => {
-    const h = document.querySelector('h2');
-    const name = h?.innerText?.trim() || '';
-    const sub = h?.parentElement?.querySelector('div')?.innerText?.trim() || '';
-    return JSON.stringify({name, headline: sub});
+    for (const a of document.querySelectorAll('a')) {
+        if (a.innerText.trim() === 'Edit about') { a.click(); return 'clicked'; }
+    }
+    return 'not found';
 })()
 """)
-print(headline)
+wait(2)
+capture_screenshot()  # verify the dialog opened
 PY
 ```
 
-## Push: Local Files → LinkedIn
+Once the dialog is open, screenshot to confirm and fill the textarea (selector varies by LinkedIn build — read it from the DOM, don't hardcode). Always show the user the new text first.
 
-### Update About Section
+## Scrape: jobs
+
+This is the canonical home for the LinkedIn job-search path used by the `job-applier` skill.
+
+**Search:**
 
 ```bash
 browser-harness <<'PY'
 import json, time
+# [tab-attach boilerplate]
+goto_url("https://www.linkedin.com/jobs/search/?keywords=full+stack+developer&location=New+Zealand"); wait(3)
+for _ in range(3): js("window.scrollBy(0, 600)"); time.sleep(0.5)
 
-tabs = list_tabs()
-li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
-if li_tab:
-    switch_tab(li_tab["targetId"])
-else:
-    new_tab("https://www.linkedin.com/feed/")
-    wait(3)
-
-# Navigate to About edit
-goto_url("https://www.linkedin.com/in/yushi-cui/")
-wait(3)
-
-# Find and click "Edit about" — use the snapshot approach
-snapshot_text = js("document.body.innerText")
-if "Edit about" in snapshot_text:
-    # Click the edit about link
-    js("""
-    (() => {
-        const links = document.querySelectorAll('a');
-        for (const link of links) {
-            if (link.innerText.trim() === 'Edit about') {
-                link.click();
-                return 'clicked';
-            }
-        }
-        return 'not found';
-    })()
-    """)
-    wait(2)
-    print("Edit about dialog opened")
-else:
-    print("Edit about link not found")
-PY
-```
-
-Then fill the textarea with new content from `LinkedIn-CV-Profile.md` and save.
-
-**Important**: For push operations, always show the user what will change before making edits. Use `--headed` behavior (the real Chrome is already visible).
-
-## Scrape: Job Postings
-
-### Search Jobs
-
-```bash
-browser-harness <<'PY'
-import json, time
-
-tabs = list_tabs()
-li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
-if li_tab:
-    switch_tab(li_tab["targetId"])
-else:
-    new_tab("https://www.linkedin.com/feed/")
-    wait(3)
-
-# Search for jobs
-search_query = "full stack developer"
-location = "New Zealand"
-goto_url(f"https://www.linkedin.com/jobs/search/?keywords={search_query}&location={location}")
-wait(3)
-
-# Scroll to load job cards
-for i in range(3):
-    js("window.scrollBy(0, 600)")
-    time.sleep(0.5)
-
-# Extract job listings
 jobs = js("""
 (() => {
-    const cards = document.querySelectorAll('[class*="job-card"]');
-    const seen = new Set();
-    const results = [];
-    cards.forEach(card => {
-        const text = card.innerText.trim();
-        const lines = text.split('\\n').filter(l => l.trim());
-        if (lines.length >= 2) {
-            const title = lines[0];
-            const company = lines[1];
-            const key = title + company;
-            if (!seen.has(key) && title.length > 3 && company.length > 1) {
-                seen.add(key);
-                const link = card.querySelector('a[href*="/jobs/view/"]')?.href || '';
-                results.push({title, company, link: link.slice(0, 150)});
-            }
-        }
+    const seen = new Set(), out = [];
+    document.querySelectorAll('[class*="job-card"]').forEach(card => {
+        const lines = card.innerText.trim().split('\\n').filter(l => l.trim());
+        if (lines.length < 2) return;
+        const [title, company] = lines, key = title + company;
+        if (seen.has(key) || title.length < 4) return;
+        seen.add(key);
+        const link = card.querySelector('a[href*="/jobs/view/"]')?.href || '';
+        out.push({title, company, link: link.slice(0, 150)});
     });
-    return JSON.stringify(results.slice(0, 10));
+    return JSON.stringify(out.slice(0, 10));
 })()
 """)
 print(jobs)
 PY
 ```
 
-### Get Full Job Description
+**Get a full JD:**
 
 ```bash
 browser-harness <<'PY'
-import json, time
-
-# Navigate to a specific job posting
-job_url = "JOB_URL_HERE"
-goto_url(job_url)
-wait(3)
-
-# Extract the full job description
-jd = js("""
+# [tab-attach boilerplate]
+goto_url("JOB_URL_HERE"); wait(3)
+print(js("""
 (() => {
     const desc = document.querySelector('.jobs-description__content') ||
                  document.querySelector('.show-more-less-html__markup');
     return desc ? desc.innerText.trim() : document.querySelector('main')?.innerText?.slice(0, 5000) || 'not found';
 })()
-""")
-print(jd)
+"""))
 PY
 ```
 
-## Tab Management
+## Notes
 
-Always reuse existing LinkedIn tabs when possible:
-
-```bash
-# Find existing LinkedIn tab
-tabs = list_tabs()
-li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
-if li_tab:
-    switch_tab(li_tab["targetId"])
-else:
-    # Navigate to feed (will use existing session cookies)
-    new_tab("https://www.linkedin.com/feed/")
-    wait(3)
-```
-
-## Key Rules
-
-- LinkedIn is the **source of truth** — always pull fresh data before pushing
-- Never push without showing the user the diff first
-- Use detail pages (`/details/experience/`, `/details/skills/`) for reliable data extraction
-- The main profile page lazy-loads sections — use detail pages instead
-- Rate limit: add `wait(2)` between page navigations to avoid LinkedIn throttling
-- If LinkedIn shows an auth wall, ask the user to log in to LinkedIn in their Chrome
-- Always close any test tabs when done
+- LinkedIn is the source of truth — always pull before pushing.
+- Use `/details/<section>/` URLs, not the main profile (lazy-loaded).
+- `wait(2)` between navigations to avoid throttling.
+- Auth wall → stop and ask the user to log in.
+- Never push without showing the diff first.

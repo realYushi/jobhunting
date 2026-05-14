@@ -3,13 +3,13 @@
 **Date:** [YYYY-MM-DD]
 **Position:** [Job Title]
 
-Hi [Hiring Manager Name or Team],
+Hi Hiring Team, <!-- replace with named contact if known -->
 
-I'm writing to express my interest in the [Job Title] position at [Company Name]. [One sentence connecting a specific company insight — mission, recent product launch, or stated value — to the candidate's interest, drawn from research notes.]
+I’m applying for the [Job Title] role at [Company Name]. [Add one specific sentence that shows you understand what the company is building, why it matters, or what makes this team worth joining. Keep it concrete and tied to research, not admiration filler.]
 
-[Paragraph 2: Top 3 skill matches with concrete evidence from `LinkedIn-CV-Profile.md` and `templates/base-resume.json`. Lead with the strongest match. Each claim must cite a real role, project, or metric — never invent. Reference the candidate's current role first, then earlier roles only when they add something the current role doesn't cover. Match the job description's terminology where it's accurate.]
+In my current role at GrowLab Technologies, I build internal tools, client-facing applications, and AI-powered workflows across the stack. [Paragraph 2 should make a clear case with 2-3 pieces of evidence: the most relevant product or technical work, the strongest matching tools or languages, and one example of shipping something practical or production-facing. Mirror the job description’s language where accurate, and prefer specifics over claims about passion, innovation, or fast learning.]
 
-Thank you for considering my application. I would welcome the opportunity to discuss how my experience can contribute to [Company Name].
+I’d welcome the opportunity to discuss how I could contribute to [Company Name] as a product-minded engineer who can build quickly, work across the stack, and apply AI where it genuinely improves the product or workflow.
 
 Sincerely,
 Yushi Cui
@@ -20,7 +20,9 @@ Yushi Cui
 Authoring rules (do not include in the rendered letter):
 - 200–400 words, 3 paragraphs.
 - No buzzwords ("synergy", "leverage"), intensifiers ("meticulously"), or generic
-  filler ("dynamic environment", "cutting-edge").
+  filler ("dynamic environment", "cutting-edge", "I am excited to apply").
+- Avoid labels without proof: if you say "product-minded", "AI-native", or "full-stack",
+  back it up with shipped work, tools used, or production context.
 - Every employer, project, and metric must come from base-resume.json or
   LinkedIn-CV-Profile.md. If it isn't there, don't write it.
 - Replace every [bracketed placeholder]. Run `templates/quality-framework.md`

@@ -1,12 +1,10 @@
-import importlib.util
+import sys
 import unittest
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-MODULE_PATH = Path(__file__).resolve().parents[1] / "tools" / "json-resume-manager.py"
-spec = importlib.util.spec_from_file_location("json_resume_manager", MODULE_PATH)
-json_resume_manager = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(json_resume_manager)
+from tools.lib.resume import create_resume  # noqa: E402
 
 
 class JsonResumeManagerTests(unittest.TestCase):
@@ -14,7 +12,7 @@ class JsonResumeManagerTests(unittest.TestCase):
         self.repo_root = Path(__file__).resolve().parents[1]
 
     def create_resume(self, role, keywords):
-        return json_resume_manager.create_resume(
+        return create_resume(
             self.repo_root,
             "Acme",
             role=role,
@@ -44,6 +42,18 @@ class JsonResumeManagerTests(unittest.TestCase):
     def test_devops_role_hides_interests(self):
         resume = self.create_resume("devops", [])
         self.assertTrue(resume["sections"]["interests"]["hidden"])
+
+    def test_synonym_keyword_is_not_duplicated(self):
+        # Base Frontend skills already contain "Tailwind CSS". Passing "Tailwind"
+        # should not add a duplicate entry because the synonym map canonicalizes
+        # both to "tailwind css".
+        resume = self.create_resume("frontend", ["Tailwind"])
+        frontend = next(
+            s for s in resume["sections"]["skills"]["items"] if s["name"] == "Frontend"
+        )
+        lowered = [k.lower() for k in frontend["keywords"]]
+        self.assertEqual(lowered.count("tailwind"), 0)
+        self.assertEqual(lowered.count("tailwind css"), 1)
 
     def test_role_boosts_match_existing_skill_groups(self):
         resume = self.create_resume("backend", [])

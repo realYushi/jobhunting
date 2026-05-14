@@ -20,7 +20,7 @@
 
 Fix invalid IDs:
 ```bash
-python3 tools/fix-cuid2-ids.py --input resume.json --output resume-fixed.json
+python3 tools/fix_cuid2_ids.py --input resume.json --output resume-fixed.json
 ```
 
 ## Customization for Job Applications

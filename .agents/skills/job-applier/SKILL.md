@@ -1,197 +1,139 @@
 ---
 name: job-applier
 description: Create complete job application packages with tailored CV and cover letter. Use this skill whenever the user wants to apply for a job, create a job application, generate a resume/CV, or mentions "apply for this job", "job application", "tailor my resume", "cover letter for job". Automatically analyzes job requirements, researches the company, generates role-optimized resume.json, creates resume in Reactive Resume, generates PDF, and creates customized cover letter.
-compatibility: Requires file system access, Python 3, and Reactive Resume API key in .env
+compatibility: Requires file system access, Python 3, and `typst` on PATH (brew install typst). Reactive Resume API key is optional and only needed if you want to also push to the server.
 ---
 
 # Job Application Skill
 
-Create tailored application packages from a job description. See `AGENTS.md` for project structure and file references.
+Build a tailored application package from a job description. See `AGENTS.md` for project structure.
 
-## Trigger Conditions
-
-- User pastes a job description and asks for help applying
-- "apply for this job", "create application for X", "tailor my resume for"
-- Requests for cover letter or resume for a specific job
-- "search LinkedIn for jobs", "find jobs on LinkedIn"
+If the user wants to find jobs first (not paste a JD), use the `linkedin` skill to search and extract the JD, then return here.
 
 ## Workflow
 
-### 0. (Optional) Scrape Job from LinkedIn
+### 1. Validate capacity
 
-If the user asks to find jobs rather than pasting a JD:
+Read `applications/application-tracker.json`. Max 5 active applications; check for duplicate company entries. If at capacity, suggest archiving first.
+
+### 2. Parse the JD
+
+Extract company, job title, location, work arrangement, required vs preferred skills. Infer `role` from the title:
+
+- `frontend` — UI/UX, React, Vue, CSS
+- `backend` — APIs, servers, databases
+- `fullstack` — both
+- `data` — analysis, ML/AI
+- `devops` — cloud, infra, CI/CD
+
+Default to `fullstack` when unclear.
+
+### 3. Score & decide (apply/skip gate)
+
+Don't burn effort tailoring a package you won't send. Save the JD to a temp file, then:
 
 ```bash
-browser-harness <<'PY'
-import json, time
-tabs = list_tabs()
-li_tab = next((t for t in tabs if "linkedin.com" in t.get("url","")), None)
-if li_tab:
-    switch_tab(li_tab["targetId"])
-else:
-    new_tab("https://www.linkedin.com/feed/")
-    wait(3)
-goto_url("https://www.linkedin.com/jobs/search/?keywords={query}&location=New+Zealand")
-wait(3)
-for i in range(3):
-    js("window.scrollBy(0, 600)")
-    time.sleep(0.5)
-jobs = js("""(() => {
-    const cards = document.querySelectorAll('[class*=\"job-card\"]');
-    const seen = new Set();
-    const results = [];
-    cards.forEach(card => {
-        const text = card.innerText.trim();
-        const lines = text.split('\\n').filter(l => l.trim());
-        if (lines.length >= 2) {
-            const title = lines[0]; const company = lines[1];
-            const key = title + company;
-            if (!seen.has(key) && title.length > 3) {
-                seen.add(key);
-                const link = card.querySelector('a[href*=\"/jobs/view/\"]')?.href || '';
-                results.push({title, company, link: link.slice(0, 150)});
-            }
-        }
-    });
-    return JSON.stringify(results.slice(0, 10));
-})()""")
-print(jobs)
-PY
+python3 tools/match_score.py \
+  --jd "{path-to-jd}" \
+  --required "Skill A" "Skill B" "5+ years X" \
+  --preferred "Nice C"
 ```
 
-Present the list to the user. When they pick one, navigate to that job URL and extract the full JD:
+Verdict rubric: **90-100%** overqualified (flight-risk) · **75-89%** apply · **60-74%** apply with strong cover · **<60%** skip unless dream role.
+
+The match score is a deterministic keyword count, not a judgment. Before trusting a low verdict, scan each MISS for **adjacent tech** in the candidate's profile (NestJS ≈ FastAPI, Azure ≈ AWS, Vue ≈ React) and surface those to the user — they're partial matches the score ignores. Then show the tool's output verbatim, add the adjacency notes, and ask `Proceed with this application? (y/n)`. On skip, stop here. The red-flag scan misses context and false-positives on any `$` — treat as a prompt for judgment, not a verdict.
+
+### 4. Research the company
+
+Web search for mission, recent news, tech stack, culture. Synthesize 3-5 insights you'll actually use in the cover letter. If research fails, fall back to JD-only — don't fabricate.
+
+### 5. Build the package skeleton
+
+One call creates the directory, saves the JD, scaffolds analysis.md, generates resume.json, drafts the cover letter, and upserts the tracker:
 
 ```bash
-browser-harness <<'PY'
-goto_url("{job_url}")
-wait(3)
-jd = js("""(() => {
-    const desc = document.querySelector('.jobs-description__content') ||
-                 document.querySelector('.show-more-less-html__markup');
-    return desc ? desc.innerText.trim() : 'not found';
-})()""")
-print(jd)
-PY
+python3 tools/apply.py \
+  --job "{path-to-jd}" \
+  --company "{Company}" \
+  --position "{Job Title}" \
+  --role "{role}" \
+  --keywords "keyword1" "keyword2" \
+  --priority "Medium"
 ```
 
-Then feed the JD into step 1.
+`--keywords` seeds the tailored resume (injected into the right skill group) and the analysis.md scaffold. Pass the strategic JD terms here — not every word, just the 5-10 the role hinges on.
 
-### 1. Validate Capacity
+Output lands in `applications/active/{Company}/`.
 
-Read `applications/application-tracker.json`:
+### 6. Fill in the human parts
 
-- Max 5 active applications
-- Check for duplicate company entries
-- If at capacity, suggest archiving before creating new
+`apply.py` only scaffolds — these still need your judgment:
 
-### 2. Parse Job Description
+- `research/analysis.md` — match score per requirement, top 3 selling points, skill gaps with positioning. See `templates/analysis-template.md` for structure (already seeded into the file).
+- `documents/cover-letter.md` — replace the scaffold with the real opening, top 3 evidence-backed matches, and tone matched to company culture. 200-400 words, 3 paragraphs.
 
-Extract: company name, job title, role type, required/preferred skills, location, work arrangement.
+Pull candidate background from `LinkedIn-CV-Profile.md` and `templates/base-resume.json`. Never invent experience.
 
-Infer role type from job title and skills:
-
-- **frontend**: UI/UX, React, Vue, CSS, frontend web dev
-- **backend**: API, server-side, Python, databases
-- **fullstack**: End-to-end, both frontend and backend
-- **data**: Data analysis, ML/AI, analytics
-- **devops**: Cloud, infrastructure, CI/CD, SRE
-
-Default to `fullstack` if unclear.
-
-### 3. Research Company
-
-Use web search to find: mission/values, recent news, tech stack, culture, why someone would want to work there.
-
-Synthesize into 3-5 key insights for the cover letter.
-
-### 4. Analyze Job Fit
-
-Read `LinkedIn-CV-Profile.md` and `templates/base-resume.json` for candidate background.
-
-Create `applications/active/{Company}/research/analysis.md` using `templates/analysis-template.md`:
-
-- Calculate match score per requirement
-- Identify top 3 selling points
-- Note skill gaps with positioning strategy
-- Extract strategic keywords for ATS
-
-### 5. Save Job Description
-
-Save original to `applications/active/{Company}/research/job-description.md`.
-
-### 6. Generate Resume
+### 7. ATS coverage check
 
 ```bash
-python3 tools/json-resume-manager.py \
-  --company "{Company}" --role "{role}" \
-  --output "applications/active/{Company}/documents/resume.json" \
-  --keywords "keyword1" "keyword2"
+python3 tools/ats_check.py \
+  --resume "applications/active/{Company}/documents/resume.json" \
+  --jd "applications/active/{Company}/research/job-description.md" \
+  --critical "Skill A" "exact phrase B"
 ```
 
-### 7. Push to Reactive Resume + Export PDF
+Without `--critical`, the tool auto-discovers the top 10 JD keywords. Exits 1 below `--threshold` (default 80%). Density target 2-4× per keyword.
+
+If coverage fails, either re-run `tools/resume.py --keywords <missing>` to inject the term into the right skill group, or — if it's a genuine gap — leave it out and let the cover letter address it.
+
+### 8. PDF render
+
+`apply.py` already renders `documents/resume.pdf` locally via Typst — confirm
+it exists and inspect it. If the render was skipped (e.g. typst missing), the
+warning surfaces in step 9's output and you can re-render with:
 
 ```bash
-python3 tools/reactive-resume-client.py push \
+python3 -c "from pathlib import Path; from tools.lib.pdf import \
+  render_resume_pdf_from_file; \
+  render_resume_pdf_from_file(Path('applications/active/{Company}/documents/resume.json'), \
+                              Path('applications/active/{Company}/documents/resume.pdf'))"
+```
+
+**Optional**: also push to Reactive Resume if the user wants the editable copy
+on the server — not required for submission.
+
+```bash
+python3 tools/reactive_resume.py push \
   --file "applications/active/{Company}/documents/resume.json" \
   --name "{Company} - {Job Title}" \
   --slug "{company-slug}-{YYYY-MM-DD}" \
-  --tags "active" "{role}" \
-  --pdf "applications/active/{Company}/documents/resume.pdf"
+  --tags "active" "{role}"
 ```
 
-Save the output to `applications/active/{Company}/documents/resume-metadata.json`:
+Add `--dry-run` to preview without hitting the API.
 
-```json
-{
-  "resume_id": "<id>",
-  "name": "{Company} - {Job Title}",
-  "slug": "<slug>",
-  "tags": ["active", "{role}"],
-  "pdf_path": "applications/active/{Company}/documents/resume.pdf",
-  "created_at": "<timestamp>",
-  "locked": false
-}
-```
+### 9. Validate, then hand off
 
-If the API key is missing or the request fails, fall back to local resume.json only.
+`apply.py` already emits warnings for unresolved placeholders, off-target cover
+letter length, and wrong paragraph count — surface those to the user.
 
-### 8. Write Cover Letter
+Then run the **semantic** checks in `templates/quality-framework.md` before
+handing off: truthfulness against `templates/base-resume.json` +
+`LinkedIn-CV-Profile.md`, tone match, no buzzword stuffing. Those are judgment
+calls code can't make for you.
 
-Read `templates/cover-letter.md` for structure. Create `applications/active/{Company}/documents/cover-letter.md`.
+### 10. Lock after submission
 
-Customize with:
-
-- Company-specific opening from research insights
-- Top 3 skill matches with specific evidence and metrics
-- Tone matched to company culture
-- 200-400 words, 3 paragraphs max
-
-### 9. Update Tracker
-
-Add entry to `applications/application-tracker.json` with company, position, date, status, resume_id, and pdf_path.
-
-### 10. Validate
-
-Run through `templates/quality-framework.md` checklist before presenting to user.
-
-### 11. Lock After Submission
-
-Only when user confirms submission:
+Only when the user confirms they've submitted:
 
 ```bash
-python3 tools/reactive-resume-client.py lock <resume-id>
+python3 tools/reactive_resume.py lock <resume-id>
 ```
 
-## Edge Cases
+## Notes
 
-- **Vague job description**: Note missing info, make reasonable assumptions, suggest user review
-- **Unclear role type**: Default to `fullstack`, note assumption
-- **Company research fails**: Use only job description info, don't fabricate insights
-- **Duplicate slug**: Append number (e.g., `acme-corp-2026-03-09-2`)
-
-## Key Rules
-
-- Never fabricate experience -- only use what's in `LinkedIn-CV-Profile.md` and `base-resume.json`
-- Use specific metrics from real experience
-- Match job description terminology exactly
-- Keep cover letter concise -- hiring managers skim
+- Never fabricate experience — only what's in `LinkedIn-CV-Profile.md` and `base-resume.json`.
+- Match JD terminology exactly; hiring managers and ATS both pattern-match.
+- Vague JD → note missing info and make assumptions explicit.
+- Duplicate slug → append a number (`acme-corp-2026-03-09-2`).

@@ -26,6 +26,8 @@ env/
 venv/
 .env
 .venv
+.ruff_cache/
+**/.ruff_cache/
 
 # LaTeX
 *.aux
@@ -67,6 +69,10 @@ logs/
 
 # Pi local settings
 .pi/
+.pi-lens/
 
 # Browser auth state (contains session cookies)
-linkedin-auth.json 
+linkedin-auth.json
+
+# Typst temp output
+.typst-tmp/
