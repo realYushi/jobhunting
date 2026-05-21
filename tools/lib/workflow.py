@@ -57,7 +57,7 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
     """Create or preview a complete local application package."""
     root = options.project_root
     job_text = options.job_path.read_text(errors="replace")
-    app_dir = company_dir(root, options.company)
+    app_dir = company_dir(root, options.company, options.job_id)
     research_dir = app_dir / "research"
     documents_dir = app_dir / "documents"
     resume_path = documents_dir / "resume.json"

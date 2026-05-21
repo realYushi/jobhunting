@@ -45,6 +45,67 @@ python3 tools/reactive_resume.py push --file path/resume.json --name "..." --slu
 
 Requires `typst` on PATH for local PDF render: `brew install typst`.
 
+## Dedicated scraping browser
+
+By default, `browser-harness` connects to your main Chrome profile. To keep job
+scraping separate, you can run a dedicated CloakBrowser profile instead:
+
+```bash
+python3 -m pip install cloakbrowser
+python3 tools/start_cloak_browser.py
+JOBHUNTING_BROWSER=cloak python3 tools/pipeline.py --scrape-only /tmp/jobhunting-listings.json
+```
+
+The launcher uses `~/.jobhunting-cloak-profile` and CDP port `9333` by default.
+Override with `--profile-dir`, `--port`, or `JOBHUNTING_CLOAK_CDP_URL`. Cloak
+mode also uses a separate `browser-harness` daemon name (`jobhunting-cloak`), so
+it will not reuse a daemon connected to your main Chrome.
+
+For cheap VPS experiments on public pages, you can use Lightpanda instead:
+
+```bash
+python3 tools/start_lightpanda.py
+JOBHUNTING_BROWSER=lightpanda python3 tools/pipeline.py --source seek --scrape-only /tmp/jobhunting-listings.json
+```
+
+The Lightpanda launcher uses CDP port `9222` by default. Override with `--port`
+or `JOBHUNTING_LIGHTPANDA_CDP_URL`. Treat this as a lightweight public scraping
+path; keep LinkedIn/authenticated workflows on Chrome/CloakBrowser unless you
+have tested the session and anti-bot behavior carefully.
+
+For a full remote Chromium backend on a VPS, use Browserless:
+
+```bash
+# Hosted Browserless cloud: paste the CDP/WebSocket URL from your dashboard
+export JOBHUNTING_BROWSERLESS_CDP_WS='wss://your-browserless-endpoint?token=...'
+export JOBHUNTING_BROWSER=browserless
+
+# Check that no local browser is needed
+python3 tools/check_browserless.py
+
+# Route every browser-harness scrape/JD fetch through Browserless
+python3 tools/pipeline.py --scrape-only /tmp/jobhunting-listings.json
+```
+
+You can also put those variables in `.env` (copy `.env.example` first). The
+pipeline loads `.env` automatically for browser routing.
+
+For self-hosted Docker Browserless instead of cloud:
+
+```bash
+python3 tools/start_browserless.py --pull
+
+export JOBHUNTING_BROWSER=browserless
+export JOBHUNTING_BROWSERLESS_CDP_WS='ws://127.0.0.1:3000?token=...'
+python3 tools/pipeline.py --scrape-only /tmp/jobhunting-listings.json
+```
+
+Browserless mode uses a separate `browser-harness` daemon name
+(`jobhunting-browserless`) so it will not reuse local Chrome, CloakBrowser, or
+Lightpanda sessions. Prefer `JOBHUNTING_BROWSERLESS_CDP_WS` for tokenized hosted
+endpoints. For self-hosted endpoints that expose `/json/version` without a
+token, `JOBHUNTING_BROWSERLESS_CDP_URL=http://127.0.0.1:3000` also works.
+
 ## Tests
 
 ```bash

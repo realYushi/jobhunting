@@ -1,0 +1,28 @@
+{
+  "defaults": {
+    "score_cutoff": 65,
+    "per_run_cap": 100,
+    "sources": [
+      "wellfound",
+      "weworkremotely"
+    ]
+  },
+  "profiles": [
+    {
+      "name": "product-engineer",
+      "keywords": [
+        "Software Engineer",
+        "Full Stack Engineer",
+        "Product Engineer"
+      ]
+    },
+    {
+      "name": "ai-native",
+      "keywords": [
+        "AI Engineer",
+        "Machine Learning Engineer",
+        "AI Native Engineer"
+      ]
+    }
+  ]
+}
