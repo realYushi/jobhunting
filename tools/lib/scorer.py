@@ -7,7 +7,11 @@ from __future__ import annotations
 
 import json
 import os
+import re
+import sys
 from dataclasses import dataclass
+from html import unescape
+from pathlib import Path
 from typing import Any
 
 try:
@@ -17,8 +21,90 @@ try:
 except ImportError:
     HAS_ANTHROPIC = False
 
-from .fit_scorer import build_candidate_context
-from .paths import base_resume_path
+from .paths import base_resume_path, project_root
+
+
+def _plain(text: str) -> str:
+    text = unescape(text or "")
+    text = re.sub(r"<br\s*/?>", "\n", text, flags=re.I)
+    text = re.sub(r"</p\s*>", "\n", text, flags=re.I)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+def _section_items(resume: dict[str, Any], name: str) -> list[dict[str, Any]]:
+    return resume.get("sections", {}).get(name, {}).get("items", []) or []
+
+
+def build_candidate_context(
+    root: Path | None = None,
+    resume: dict[str, Any] | None = None,
+) -> str:
+    """Return a compact, evidence-focused candidate summary for scoring."""
+    root = root or project_root()
+    if resume is None:
+        resume = json.loads(base_resume_path(root).read_text())
+
+    basics = resume.get("basics", {})
+    parts: list[str] = []
+    parts.append(f"Name: {basics.get('name', 'Yushi Cui')}")
+    headline = basics.get("headline") or basics.get("label")
+    if headline:
+        parts.append(f"Headline: {headline}")
+    if basics.get("location"):
+        parts.append(f"Location: {basics['location']}")
+
+    summary = _plain(resume.get("summary", {}).get("content", ""))
+    if summary:
+        parts.append(f"Summary: {summary}")
+
+    skill_lines = []
+    for item in _section_items(resume, "skills"):
+        if item.get("hidden"):
+            continue
+        kws = item.get("keywords") or []
+        if kws:
+            skill_lines.append(f"- {item.get('name', 'Skills')}: {', '.join(kws)}")
+    if skill_lines:
+        parts.append("Skills:\n" + "\n".join(skill_lines))
+
+    exp_lines = []
+    for item in _section_items(resume, "experience")[:5]:
+        if item.get("hidden"):
+            continue
+        desc = _plain(item.get("description", ""))
+        exp_lines.append(
+            f"- {item.get('position')} at {item.get('company')} ({item.get('period')}): {desc}"
+        )
+    if exp_lines:
+        parts.append("Experience evidence:\n" + "\n".join(exp_lines))
+
+    project_lines = []
+    for item in _section_items(resume, "projects")[:6]:
+        if item.get("hidden"):
+            continue
+        desc = _plain(item.get("description", ""))
+        project_lines.append(f"- {item.get('name')} ({item.get('period')}): {desc}")
+    if project_lines:
+        parts.append("Project evidence:\n" + "\n".join(project_lines))
+
+    edu_lines = []
+    for item in _section_items(resume, "education")[:3]:
+        if item.get("hidden"):
+            continue
+        edu_lines.append(
+            f"- {item.get('degree') or item.get('description')} at {item.get('school')} "
+            f"({item.get('period')}); grade: {item.get('grade', '')}"
+        )
+    if edu_lines:
+        parts.append("Education:\n" + "\n".join(edu_lines))
+
+    linkedin = root / "LinkedIn-CV-Profile.md"
+    if linkedin.exists():
+        parts.append("LinkedIn mirror excerpt:\n" + linkedin.read_text(errors="replace")[:5000])
+
+    return "\n\n".join(parts)
 
 
 @dataclass(frozen=True)
@@ -49,7 +135,7 @@ def candidate_summary(profile: dict[str, Any]) -> str:
     fit scorer's context builder so list scoring and JD scoring see the same
     evidence-rich candidate summary.
     """
-    return build_candidate_context()
+    return build_candidate_context(resume=profile)
 
 
 def _llm_score_batch(
@@ -107,7 +193,7 @@ Example output format:
 ]"""
 
     response = client.messages.create(
-        model="claude-3-haiku-20250303",
+        model="claude-sonnet-4-6",
         max_tokens=2048,
         temperature=0,
         messages=[{"role": "user", "content": prompt}],
@@ -185,7 +271,7 @@ def score_listings(
             # Fall back to keyword scoring on error
             print(
                 f"LLM scoring failed: {e}. Using keyword overlap.",
-                file=__import__("sys").stderr,
+                file=sys.stderr,
             )
             use_llm = False
 
