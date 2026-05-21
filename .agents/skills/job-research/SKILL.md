@@ -1,7 +1,7 @@
 ---
 name: job-research
 description: Run the automated job research pipeline. Scrapes LinkedIn and Seek for new listings, scores them against your resume via a Sonnet subagent, and generates tailored CV + cover letter packages for top matches. Use when the user says "job research", "find jobs", "scrape jobs", "run the pipeline", "start job search", or wants to see what's available.
-compatibility: Requires file system access, Python 3, browser-harness for scraping (local Chrome, CloakBrowser, Browserless, or Lightpanda), and typst for PDF rendering. Scoring uses a Claude Code subagent (no Anthropic API key required).
+compatibility: Requires file system access, Python 3, browser-harness for scraping (local Chrome), and typst for PDF rendering. Scoring uses a Claude Code subagent (no Anthropic API key required).
 ---
 
 # Job Research Skill
@@ -120,12 +120,5 @@ Current profiles: `fullstack`, `frontend`, `backend`, `ai-engineer`.
 - Jobs are deduped against `application-tracker.json` `seen_jobs`.
 - Skipped jobs (`[~]`) go into `skipped_jobs` and are never re-suggested.
 - Browser-harness auto-starts on first scrape call.
-- To run all browser automation through Browserless on a VPS, start Browserless
-  (`python3 tools/start_browserless.py --pull` for self-hosted Docker, or use a
-  hosted Browserless WebSocket URL), then export
-  `JOBHUNTING_BROWSER=browserless` and `JOBHUNTING_BROWSERLESS_CDP_WS=...`
-  before running the pipeline. This routes LinkedIn public jobs, Seek,
-  Hiring.cafe, Wellfound, WWR, and full-JD fetches through the same remote
-  Chromium backend.
 - Hiring.cafe and Working Nomads must be scraped with targeted JavaScript selectors only; never use full-page text extraction on listing/search pages because it can blow out context. Extract structured card data (title/company/location/snippet/job URL) from visible cards, and if selectors fail, inspect a screenshot/DOM and update the targeted selector. Keep globally/fully remote roles and Auckland/NZ/AU/APAC-friendly roles; skip roles explicitly location-limited outside those regions. These boards are discovery sources; prefer resolving direct employer/apply URLs for final review when available.
 - Scoring rubric lives at `tools/scoring-rubric.md`. Edit there, not in prompts.

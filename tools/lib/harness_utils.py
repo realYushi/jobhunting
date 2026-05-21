@@ -6,126 +6,18 @@ import json
 import os
 import string
 import subprocess
-import urllib.parse
 from pathlib import Path
 from typing import Any
 
 _SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "harness-scripts"
-_ENV_LOADED = False
-DEFAULT_CLOAK_CDP_URL = "http://127.0.0.1:9333"
-DEFAULT_LIGHTPANDA_CDP_URL = "http://127.0.0.1:9222"
-DEFAULT_BROWSERLESS_CDP_URL = "http://127.0.0.1:3000"
-
-
-def _load_optional_env() -> None:
-    """Load project .env if present, without making scraping depend on it."""
-    global _ENV_LOADED
-    if _ENV_LOADED:
-        return
-    _ENV_LOADED = True
-    try:
-        from lib.config import ConfigError, load_env
-
-        try:
-            load_env()
-        except ConfigError:
-            pass
-    except Exception:
-        # Browser routing should still work when this module is used outside the
-        # full project package layout.
-        pass
-
-
-def _append_query_param(url: str, key: str, value: str) -> str:
-    """Return url with key=value added unless key already exists."""
-    parsed = urllib.parse.urlsplit(url)
-    query = urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
-    if any(existing_key == key for existing_key, _ in query):
-        return url
-    query.append((key, value))
-    return urllib.parse.urlunsplit(
-        parsed._replace(query=urllib.parse.urlencode(query))
-    )
-
-
-def _http_to_ws_url(url: str) -> str:
-    """Convert an http(s) Browserless endpoint to its ws(s) equivalent."""
-    parsed = urllib.parse.urlsplit(url)
-    if parsed.scheme == "http":
-        return urllib.parse.urlunsplit(parsed._replace(scheme="ws"))
-    if parsed.scheme == "https":
-        return urllib.parse.urlunsplit(parsed._replace(scheme="wss"))
-    return url
 
 
 def _harness_env() -> dict[str, str]:
     """Return environment for browser-harness subprocesses.
 
-    Set JOBHUNTING_BROWSER=cloak to route browser-harness to a dedicated
-    CloakBrowser instance instead of the user's main Chrome. Start it with:
-        python3 tools/start_cloak_browser.py
-    Override the endpoint with JOBHUNTING_CLOAK_CDP_URL when needed.
-
-    Set JOBHUNTING_BROWSER=lightpanda to target a Lightpanda CDP server. This
-    is intended for cheap VPS/public-page scraping experiments, not LinkedIn
-    logged-in flows. Start it with:
-        python3 tools/start_lightpanda.py
-    Override the endpoint with JOBHUNTING_LIGHTPANDA_CDP_URL when needed.
-
-    Set JOBHUNTING_BROWSER=browserless to target Browserless for all browser
-    automation. Prefer JOBHUNTING_BROWSERLESS_CDP_WS for hosted Browserless
-    endpoints, or JOBHUNTING_BROWSERLESS_CDP_URL for self-hosted endpoints that
-    expose /json/version. JOBHUNTING_BROWSERLESS_TOKEN is appended when set.
+    Connects to the user's local Chrome via browser-harness defaults.
     """
-    _load_optional_env()
-    env = os.environ.copy()
-    browser = env.get("JOBHUNTING_BROWSER", "").strip().lower()
-    if browser == "cloak":
-        # Use a separate browser-harness daemon name so an existing default
-        # daemon connected to the user's main Chrome is never reused.
-        env.setdefault("BU_NAME", "jobhunting-cloak")
-        env.setdefault(
-            "BU_CDP_URL",
-            env.get("JOBHUNTING_CLOAK_CDP_URL", DEFAULT_CLOAK_CDP_URL),
-        )
-    elif browser == "lightpanda":
-        # Keep Lightpanda isolated from both the default Chrome daemon and the
-        # CloakBrowser daemon, because CDP capabilities differ by browser.
-        env.setdefault("BU_NAME", "jobhunting-lightpanda")
-        env.setdefault(
-            "BU_CDP_URL",
-            env.get("JOBHUNTING_LIGHTPANDA_CDP_URL", DEFAULT_LIGHTPANDA_CDP_URL),
-        )
-    elif browser == "browserless":
-        # Browserless is a full Chromium backend and is suitable as the default
-        # VPS browser. Keep it isolated from other browser-harness daemons.
-        env.setdefault("BU_NAME", "jobhunting-browserless")
-
-        token = env.get("JOBHUNTING_BROWSERLESS_TOKEN", "").strip()
-        cdp_ws = env.get("JOBHUNTING_BROWSERLESS_CDP_WS", "").strip()
-        cdp_url = env.get("JOBHUNTING_BROWSERLESS_CDP_URL", "").strip()
-
-        if cdp_ws:
-            env.setdefault(
-                "BU_CDP_WS",
-                _append_query_param(cdp_ws, "token", token) if token else cdp_ws,
-            )
-        else:
-            if not cdp_url:
-                cdp_url = DEFAULT_BROWSERLESS_CDP_URL
-            parsed = urllib.parse.urlsplit(cdp_url)
-            if parsed.scheme in {"ws", "wss"} or token or parsed.query:
-                # browser-harness appends /json/version to BU_CDP_URL, which is
-                # not safe for tokenized Browserless URLs. Use the direct WS URL
-                # form for tokenized/self-hosted Browserless endpoints instead.
-                ws_url = _http_to_ws_url(cdp_url)
-                env.setdefault(
-                    "BU_CDP_WS",
-                    _append_query_param(ws_url, "token", token) if token else ws_url,
-                )
-            else:
-                env.setdefault("BU_CDP_URL", cdp_url)
-    return env
+    return os.environ.copy()
 
 
 def load_script(name: str, **params: Any) -> str:
