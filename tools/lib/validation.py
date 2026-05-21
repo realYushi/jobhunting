@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 
@@ -39,8 +40,8 @@ def validate_no_placeholders(path: Path) -> list[str]:
         "[Company Name]",
         "[Job Title]",
         "[YYYY-MM-DD]",
-        "[One sentence",
-        "[Paragraph 2:",
+        "[Add one specific sentence",
+        "[Paragraph 2 should",
     )
     return [token for token in placeholders if token in text]
 
@@ -63,18 +64,22 @@ def validate_cover_letter_structure(path: Path) -> list[str]:
         return []
 
     text = path.read_text(errors="replace")
-    # Auto-generated context block (between '<!--' and '-->') is editor scaffolding,
-    # not letter content — drop it before counting.
-    body_text = text
-    open_marker = body_text.find("<!--")
-    close_marker = body_text.rfind("-->")
-    if open_marker != -1 and close_marker != -1 and close_marker > open_marker:
-        body_text = body_text[:open_marker] + body_text[close_marker + 3:]
+    # Strip each `<!-- ... -->` block individually. The template has an inline
+    # comment on the salutation line, so a first-open/last-close span would
+    # delete the entire letter body.
+    body_text = re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
 
     word_count = len(body_text.split())
     paragraphs = [p for p in body_text.strip().split("\n\n") if p.strip()]
-    # Drop salutation + signoff one-liners so we count the actual body paragraphs.
-    body_paragraphs = [p for p in paragraphs if len(p.split()) > 6]
+    # Drop salutation + signoff one-liners and the **Date:**/**Position:** header
+    # so we count the actual body paragraphs.
+    body_paragraphs = [
+        p for p in paragraphs
+        if len(p.split()) > 6
+        and "**Date:**" not in p
+        and "**Position:**" not in p
+        and not p.lstrip().startswith("#")
+    ]
 
     warnings: list[str] = []
     if word_count < COVER_LETTER_MIN_WORDS:

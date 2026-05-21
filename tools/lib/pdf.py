@@ -31,17 +31,17 @@ class PdfRenderError(Exception):
 # Order in which sections render. Anything not listed here is skipped even if
 # present in the JSON (keeps the PDF deterministic when the schema evolves).
 _SECTION_ORDER: tuple[tuple[str, str, str], ...] = (
-    ("experience",     "Experience",     "experience"),
-    ("projects",       "Projects",       "project"),
-    ("skills",         "Skills",         "skill"),
-    ("education",      "Education",      "education"),
+    ("experience", "Experience", "experience"),
+    ("projects", "Projects", "project"),
+    ("skills", "Skills", "skill"),
+    ("education", "Education", "education"),
     ("certifications", "Certifications", "certification"),
-    ("languages",      "Languages",      "language"),
-    ("awards",         "Awards",         "award"),
-    ("publications",   "Publications",   "publication"),
-    ("volunteer",      "Volunteer",      "volunteer"),
-    ("interests",      "Interests",      "interest"),
-    ("profiles",       "Profiles",       "profile"),
+    ("languages", "Languages", "language"),
+    ("awards", "Awards", "award"),
+    ("publications", "Publications", "publication"),
+    ("volunteer", "Volunteer", "volunteer"),
+    ("interests", "Interests", "interest"),
+    ("profiles", "Profiles", "profile"),
 )
 
 
@@ -61,8 +61,12 @@ def html_to_text(html: str) -> str:
     text = re.sub(r"<\s*br\s*/?>", "\n", text, flags=re.IGNORECASE)
     text = re.sub(r"<[^>]+>", "", text)
     replacements = {
-        "&nbsp;": " ", "&amp;": "&", "&lt;": "<", "&gt;": ">",
-        "&quot;": '"', "&#39;": "'",
+        "&nbsp;": " ",
+        "&amp;": "&",
+        "&lt;": "<",
+        "&gt;": ">",
+        "&quot;": '"',
+        "&#39;": "'",
     }
     for k, v in replacements.items():
         text = text.replace(k, v)
@@ -254,7 +258,7 @@ def _strip_scheme(url: str) -> str:
     wrap mid-protocol."""
     for prefix in ("https://", "http://"):
         if url.startswith(prefix):
-            return url[len(prefix):]
+            return url[len(prefix) :]
     return url
 
 
@@ -285,18 +289,17 @@ def _normalize_resume(resume: dict) -> dict:
         section = sections_in.get(key) or {}
         if section.get("hidden"):
             continue
-        items_in = [
-            it for it in (section.get("items") or [])
-            if not it.get("hidden")
-        ]
+        items_in = [it for it in (section.get("items") or []) if not it.get("hidden")]
         if not items_in:
             continue
         normalizer = _NORMALIZERS[kind]
         normalized = [normalizer(it).to_dict() for it in items_in]
-        sections_out.append({
-            "title": section.get("name") or default_title,
-            "items": normalized,
-        })
+        sections_out.append(
+            {
+                "title": section.get("name") or default_title,
+                "items": normalized,
+            }
+        )
 
     return {
         "name": basics.get("name", ""),
@@ -359,8 +362,10 @@ def render_resume_pdf(
             [
                 _typst_binary(),
                 "compile",
-                "--root", str(root),
-                "--input", f"data={rel_data_path}",
+                "--root",
+                str(root),
+                "--input",
+                f"data={rel_data_path}",
                 str(template),
                 str(output_path),
             ],
@@ -392,7 +397,168 @@ def render_resume_pdf_from_file(
         resume = json.load(f)
     return render_resume_pdf(
         resume,
-        output_path,
+        output_path=output_path,
+        template_path=template_path,
+        project_dir=project_dir,
+    )
+
+
+def _strip_markdown_comments(markdown: str) -> str:
+    """Remove HTML comments from a cover-letter markdown draft."""
+    return re.sub(r"<!--.*?-->", "", markdown, flags=re.DOTALL).strip()
+
+
+def _normalize_cover_letter(markdown: str) -> dict:
+    """Parse the repository cover-letter markdown shape for Typst rendering.
+
+    Expected scaffold:
+      # Cover Letter — Company
+      **Date:** YYYY-MM-DD
+      **Position:** Role
+      Hi Hiring Team,
+      <3 paragraphs>
+      Sincerely,
+      Yushi Cui
+
+    The parser is intentionally tolerant so hand-edited letters still render.
+    Comments and the trailing markdown rule are ignored.
+    """
+    text = _strip_markdown_comments(markdown)
+    text = text.split("\n---\n", 1)[0].strip()
+    lines = [line.rstrip() for line in text.splitlines()]
+
+    title = "Cover Letter"
+    date_text = ""
+    position = ""
+    salutation = "Hi Hiring Team,"
+    signoff = "Sincerely,"
+    name = "Yushi Cui"
+
+    body_start = 0
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped.startswith("# "):
+            title = stripped[2:].strip()
+            body_start = max(body_start, i + 1)
+        elif stripped.startswith("**Date:**"):
+            date_text = stripped.replace("**Date:**", "").strip()
+            body_start = max(body_start, i + 1)
+        elif stripped.startswith("**Position:**"):
+            position = stripped.replace("**Position:**", "").strip()
+            body_start = max(body_start, i + 1)
+
+    # First non-empty line after metadata is the salutation.
+    salutation_idx: int | None = None
+    for i in range(body_start, len(lines)):
+        if lines[i].strip():
+            salutation = lines[i].strip()
+            salutation_idx = i
+            break
+
+    content_lines = lines[
+        (salutation_idx + 1 if salutation_idx is not None else body_start) :
+    ]
+    signoff_idx: int | None = None
+    for i, line in enumerate(content_lines):
+        if line.strip().lower().rstrip(",") in {"sincerely", "kind regards", "regards"}:
+            signoff_idx = i
+            signoff = line.strip()
+            break
+
+    body_lines = (
+        content_lines[:signoff_idx] if signoff_idx is not None else content_lines
+    )
+    if signoff_idx is not None:
+        for line in content_lines[signoff_idx + 1 :]:
+            if line.strip():
+                name = line.strip()
+                break
+
+    paragraphs = [
+        " ".join(part.split())
+        for part in re.split(r"\n\s*\n", "\n".join(body_lines).strip())
+        if part.strip()
+    ]
+
+    return {
+        "title": title,
+        "date": date_text,
+        "position": position,
+        "salutation": salutation,
+        "paragraphs": paragraphs,
+        "signoff": signoff,
+        "name": name,
+    }
+
+
+def render_cover_letter_pdf(
+    markdown: str,
+    output_path: Path,
+    *,
+    template_path: Path | None = None,
+    project_dir: Path | None = None,
+) -> Path:
+    """Render a cover-letter markdown draft to PDF using Typst."""
+    root = project_dir or project_root()
+    template = template_path or (root / "templates" / "cover-letter.typ")
+    if not template.exists():
+        raise PdfRenderError(f"Typst template not found: {template}")
+
+    normalized = _normalize_cover_letter(markdown)
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    tmp_dir = root / ".typst-tmp"
+    tmp_dir.mkdir(exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".json", dir=tmp_dir, delete=False
+    ) as tf:
+        json.dump(normalized, tf)
+        data_path = Path(tf.name)
+
+    try:
+        rel_data_path = "/" + str(data_path.relative_to(root))
+        result = subprocess.run(
+            [
+                _typst_binary(),
+                "compile",
+                "--root",
+                str(root),
+                "--input",
+                f"data={rel_data_path}",
+                str(template),
+                str(output_path),
+            ],
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode != 0:
+            raise PdfRenderError(
+                f"typst compile failed (exit {result.returncode}):\n"
+                f"{result.stderr.strip()}"
+            )
+    finally:
+        data_path.unlink(missing_ok=True)
+
+    if not output_path.exists() or output_path.stat().st_size == 0:
+        raise PdfRenderError(f"typst produced no output at {output_path}")
+    return output_path
+
+
+def render_cover_letter_pdf_from_file(
+    cover_letter_path: Path,
+    output_path: Path | None = None,
+    *,
+    template_path: Path | None = None,
+    project_dir: Path | None = None,
+) -> Path:
+    """Convenience: render `cover-letter.md` to sibling `cover-letter.pdf`."""
+    cover_letter_path = Path(cover_letter_path)
+    if output_path is None:
+        output_path = cover_letter_path.with_suffix(".pdf")
+    return render_cover_letter_pdf(
+        cover_letter_path.read_text(errors="replace"),
+        Path(output_path),
         template_path=template_path,
         project_dir=project_dir,
     )

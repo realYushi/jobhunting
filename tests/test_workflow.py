@@ -5,11 +5,12 @@ import unittest
 from datetime import date
 from pathlib import Path
 
+from tools.lib.identity import BoardKey
 from tools.lib.tracker import (
     ApplicationRecord,
     empty_tracker,
-    is_seen,
-    mark_seen,
+    is_seen_key,
+    mark_seen_key,
     upsert_active_application,
 )
 from tools.lib.workflow import WorkflowOptions, create_application_package
@@ -79,19 +80,22 @@ class TrackerTests(unittest.TestCase):
                 source="linkedin", job_id="L-1",
             ),
         )
-        self.assertTrue(is_seen(tracker, "linkedin", "L-1"))
+        self.assertTrue(is_seen_key(tracker, BoardKey("linkedin", "L-1")))
         # Manual entry without job_id must not pollute seen set.
         upsert_active_application(
             tracker,
             ApplicationRecord("Bravo", "Engineer", "2026-01-01"),
         )
-        self.assertFalse(is_seen(tracker, "linkedin", "L-2"))
+        self.assertFalse(is_seen_key(tracker, BoardKey("linkedin", "L-2")))
 
     def test_mark_seen_is_idempotent(self):
+        from tools.lib.identity import from_dict
+
         tracker = empty_tracker()
-        mark_seen(tracker, "seek", "abc")
-        mark_seen(tracker, "seek", "abc")
-        self.assertEqual(tracker["seen_jobs"]["seek"], ["abc"])
+        mark_seen_key(tracker, BoardKey("seek", "abc"))
+        mark_seen_key(tracker, BoardKey("seek", "abc"))
+        keys = [from_dict(d) for d in tracker["seen"]]
+        self.assertEqual(keys, [BoardKey("seek", "abc")])
 
 
 class WorkflowTests(unittest.TestCase):
@@ -191,8 +195,8 @@ class WorkflowTests(unittest.TestCase):
         result = create_application_package(options)
 
         joined = "\n".join(result.warnings)
-        self.assertIn("[One sentence", joined)
-        self.assertIn("[Paragraph 2:", joined)
+        self.assertIn("[Add one specific sentence", joined)
+        self.assertIn("[Paragraph 2 should", joined)
 
 
 if __name__ == "__main__":
