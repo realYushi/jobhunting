@@ -14,7 +14,7 @@ If the user wants to find jobs first (not paste a JD), use the `linkedin` skill 
 
 ### 1. Validate capacity
 
-Read `applications/application-tracker.json`. Max 5 active applications; check for duplicate company entries. If at capacity, suggest archiving first.
+Read `applications/application-tracker.json` and check for duplicate company entries. Do not enforce an active-application count limit; the tracker may contain any number of active applications.
 
 ### 2. Parse the JD
 
@@ -65,7 +65,18 @@ python3 tools/apply.py \
 
 Output lands in `applications/active/{Company}/`.
 
-### 6. Fill in the human parts
+### 6. Add package to INBOX.md
+
+After a manual `apply.py` package is created, add an active row to
+`applications/INBOX.md` so the package appears in the review/submission queue:
+
+```markdown
+- [ ] **{Job Title}** @ {Company} (manual package) · [JD](./active/{Company}/research/job-description.md) · [CV](./active/{Company}/documents/resume.pdf) · [Letter](./active/{Company}/documents/cover-letter.md)
+```
+
+If you have the original application URL, append `· [Apply ↗]({url})`. Use URL-encoded spaces in Markdown links when needed.
+
+### 7. Fill in the human parts
 
 `apply.py` only scaffolds — these still need your judgment:
 
@@ -74,7 +85,7 @@ Output lands in `applications/active/{Company}/`.
 
 Pull candidate background from `LinkedIn-CV-Profile.md` and `templates/base-resume.json`. Never invent experience.
 
-### 7. ATS coverage check
+### 8. ATS coverage check
 
 ```bash
 python3 tools/ats_check.py \
@@ -87,11 +98,11 @@ Without `--critical`, the tool auto-discovers the top 10 JD keywords. Exits 1 be
 
 If coverage fails, either re-run `tools/resume.py --keywords <missing>` to inject the term into the right skill group, or — if it's a genuine gap — leave it out and let the cover letter address it.
 
-### 8. PDF render
+### 9. PDF render
 
 `apply.py` already renders `documents/resume.pdf` locally via Typst — confirm
 it exists and inspect it. If the render was skipped (e.g. typst missing), the
-warning surfaces in step 9's output and you can re-render with:
+warning surfaces in the validation output and you can re-render with:
 
 ```bash
 python3 -c "from pathlib import Path; from tools.lib.pdf import \
@@ -113,7 +124,7 @@ python3 tools/reactive_resume.py push \
 
 Add `--dry-run` to preview without hitting the API.
 
-### 9. Validate, then hand off
+### 10. Validate, then hand off
 
 `apply.py` already emits warnings for unresolved placeholders, off-target cover
 letter length, and wrong paragraph count — surface those to the user.
@@ -123,7 +134,7 @@ handing off: truthfulness against `templates/base-resume.json` +
 `LinkedIn-CV-Profile.md`, tone match, no buzzword stuffing. Those are judgment
 calls code can't make for you.
 
-### 10. Lock after submission
+### 11. Lock after submission
 
 Only when the user confirms they've submitted:
 

@@ -133,7 +133,8 @@ DRY_RUN=true ./tools/cleanup-archive.sh # Preview only
 6. Write cover letter using research insights and analysis
 7. Validate via quality-framework.md
 8. Update applications/application-tracker.json
-9. Lock resume after submission
+9. Add the generated package to applications/INBOX.md for review/submission tracking
+10. Lock resume after submission
 
 ## LinkedIn Integration
 

@@ -118,7 +118,7 @@ code reads or enforces it. Either wire it in or stop referencing it.
 paragraph count, placeholder tokens) now run automatically inside the workflow
 via `validate_cover_letter_structure()` and surface as warnings. The semantic
 checks (truthfulness against base-resume / LinkedIn profile, tone, no buzzword
-stuffing) are called out explicitly as agent-enforced in SKILL.md step 9.
+stuffing) are called out explicitly as agent-enforced in SKILL.md step 10.
 
 ### 6. Pick canonical resume source, demote the others ✓
 
@@ -143,6 +143,54 @@ was reworded (`[Add one specific sentence...]` instead of `[One sentence...]`)
 but `validate_no_placeholders` still looks for the old tokens. Two-line fix
 to either the template or the validator; left untouched per surgical-changes
 discipline since it predates Phase 0 work.
+
+## Phase 1 — Scraping ✓
+
+### 1. Browser-harness integration ✓
+
+LinkedIn and Seek scrapers implemented using browser-harness CDP integration.
+Tab reuse for efficiency, company extraction from page titles, newest-first sorting
+(sortBy=DD, sortmode=ListedDate).
+
+**Done.** `tools/scrape_linkedin.py` and `tools/scrape_seek.py` wrap browser-harness
+with domain-specific extraction. `tools/lib/harness_utils.py` provides shared utilities.
+Domain skills created at `agent-workspace/domain-skills/linkedin.com/jobs-search.md` and
+`agent-workspace/domain-skills/seek.co.nz/jobs-search.md`.
+
+### 2. Smart scraping with overlap detection ✓
+
+Multi-source aggregation with "fetch until overlap" pattern. Paginates until hitting
+already-seen jobs, then stops. Global dedup across keywords. Clear summary reporting.
+
+**Done.** `tools/lib/smart_scrape.py` implements `smart_scrape()` with pagination,
+overlap detection, and cross-keyword dedup. `tools/smart_scrape.py` provides CLI wrapper.
+Maintains `seen_jobs` in tracker so daily runs efficiently surface only new listings.
+
+### 3. Search config management ✓
+
+`tools/search-config.json` stores named profiles with keywords, location, remote preference,
+and experience level. `tools/lib/scraper.py` provides `load_search_config()` helper.
+
+**Done.** Config file structure defined. Smart scraper reads profiles and sources from config.
+
+### Phase 1 work completed
+
+- Scorer: semantic matching of listing snippets vs base resume
+- Packager integration: CV tailoring and cover letter generation wired into pipeline
+- Orchestrator: tie everything together into the full pipeline
+- Full JD fetch: scrape full description from listing URLs
+- Never-re-suggest: skipped jobs excluded from future runs
+
+**Done.** All Phase 1 work complete:
+- `tools/lib/scorer.py`: LLM-based scoring via Anthropic API, with keyword fallback
+- `tools/score.py`: CLI for standalone scoring
+- `tools/pipeline.py`: Full 5-phase orchestrator (reconcile → scrape → score → package → INBOX)
+- `tools/lib/tracker.py`: Added `mark_skipped()`/`is_skipped()` helpers, `skipped_jobs` structure
+- `tools/lib/scraper.py`: `dedupe_listings()` now checks `skipped_jobs`
+- `tools/lib/smart_scrape.py`: Filters and counts skipped listings in summary
+- `tools/lib/inbox.py`: Path scheme aligned to plan (`./{slug}/job.md`, `./{slug}/cv.pdf`, `./{slug}/cover.md`)
+- `tools/lib/reconcile.py`: Uses `_identity_key()` for precise matching, marks skipped jobs
+- Tests: `tests/test_scorer.py` (8 tests), updated `tests/test_reconcile.py` with skipped_jobs coverage
 
 ### Explicitly dropped from earlier drafts
 
@@ -179,42 +227,38 @@ discipline since it predates Phase 0 work.
 
 ## Architecture
 
-Sequential pipeline. Sub-agents exist for **context isolation**, not parallelism.
-The orchestrator never sees raw HTML, full JDs, or generated CV drafts — only
-small structured results from each sub-agent. This keeps the main context flat
-so sessions can run long and stay cheap to resume.
+Sequential pipeline. The implementation keeps everything in-process for simplicity
+(Rule 2: Simplicity First). Sub-agents were considered for context isolation but
+not required for the initial implementation. The pipeline runs as:
 
 ```
-orchestrator (Opus)
+pipeline.py
   │
-  ├─ reconciler        archives [x] / [~] from INBOX.md
-  ├─ scraper LinkedIn  returns [{job_id, url, title, company, snippet, posted}]
-  ├─ scraper Seek      same shape
-  ├─ scorer            returns [{job_id, score, one_line_reason}]
-  ├─ packager (×N)     one per accepted job — full CV + cover letter
-  └─ inbox writer      appends rows
+  ├─ reconcile()      archives [x] / [~] from INBOX.md, updates tracker
+  ├─ smart_scrape()   fetches from LinkedIn/Seek, dedups, filters skipped
+  ├─ score_listings() LLM semantic match vs base resume, with keyword fallback
+  ├─ create_application_package (×N)  tailored CV + cover letter, render PDF
+  └─ write_inbox_rows()  appends to INBOX.md
 ```
 
-If the run is interrupted mid-`packager` loop:
+If the run is interrupted mid-packager loop:
 - already-built packages stay on disk
 - unsubmitted job IDs are not yet in the tracker as "seen"
 - the next run picks up where this one stopped
 
-## Sub-agents
+## Sub-agents (deferred)
 
-To be defined in `.claude/agents/`.
+The original plan called for separate sub-agents for each phase to keep the
+orchestrator's context small. The in-process implementation works well for
+current scale; sub-agents can be added later if context size becomes an issue.
 
 | Agent          | Model  | Responsibility                                                                 |
 |----------------|--------|--------------------------------------------------------------------------------|
 | orchestrator   | Opus   | Routing, sequencing, partial-failure handling                                  |
-| `reconciler`   | Haiku  | Parse INBOX.md, move dirs to `archive/submitted` or `archive/skipped`, update tracker |
-| `scraper`      | Sonnet | Drive browser-harness, extract listing cards, handle layout quirks             |
-| `scorer`       | Sonnet | Semantic match listing snippet vs base resume, score 0–100 + one-line reason   |
-| `packager`     | Opus   | Tailor CV, write cover letter, push to Reactive Resume, render PDF             |
-
-Rationale: Opus only on the orchestrator (tiny context) and packager (output a
-recruiter sees). Everything upstream runs on cheaper tiers. First knob if budget
-tightens later: raise scorer cutoff so fewer packager runs fire.
+| `reconciler`   | Haiku  | Parse INBOX.md, move dirs, update tracker                                      |
+| `scraper`      | Sonnet | Drive browser-harness, extract listing cards                                   |
+| `scorer`       | Haiku  | Semantic match listing snippet vs base resume, score 0–100 + one-line reason   |
+| `packager`     | Opus   | Tailor CV, write cover letter, render PDF                                      |
 
 ## Data layout
 
@@ -282,9 +326,7 @@ dedup is brittle because both sites show relative timestamps ("2 days ago").
 
 ## Open items / polish
 
-- Whether `packager` should fail soft (skip job, continue loop) or hard (stop run) on render errors
-- Backlog promotion UX — how to move a `backlog.md` row into the active queue without re-scraping
+- Backlog promotion UX — how to move a skipped row back into the active queue without re-scraping
 - Indeed: revisit after LinkedIn + Seek are stable
-- Optional auto-classify by job_id: if user has skipped 3 jobs from the same company, suggest hiding that company from future scrapes
+- Optional auto-classify by company: if user has skipped 3 jobs from the same company, suggest hiding that company from future scrapes
 - Optional Slack / email notification when INBOX gets new rows
-- Phase 0 item 3 (local PDF) — pick a specific renderer once we start: Typst gives best typography for least effort, WeasyPrint if HTML/CSS templates are preferred
