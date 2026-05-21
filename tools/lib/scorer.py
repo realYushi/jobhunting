@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from html import unescape
 from pathlib import Path
@@ -138,42 +139,7 @@ def candidate_summary(profile: dict[str, Any]) -> str:
     return build_candidate_context(resume=profile)
 
 
-def _llm_score_batch(
-    listings: list[dict[str, Any]],
-    profile_text: str,
-) -> list[dict[str, Any]]:
-    """Score a batch of listings using Claude API.
-
-    Returns a list of dicts with keys: job_id, score, reason.
-    """
-    if not HAS_ANTHROPIC:
-        raise RuntimeError("anthropic package required for LLM scoring")
-
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        raise RuntimeError(
-            "ANTHROPIC_API_KEY environment variable required for LLM scoring"
-        )
-
-    client = Anthropic(api_key=api_key)
-
-    # Build the prompt with candidate profile and listings to score
-    listing_blocks = []
-    for i, lst in enumerate(listings):
-        listing_blocks.append(
-            f"{i + 1}. job_id={lst['job_id']}\n"
-            f"   title: {lst.get('title', 'Unknown')}\n"
-            f"   company: {lst.get('company', 'Unknown')}\n"
-            f"   snippet: {lst.get('snippet', 'No description')}\n"
-        )
-
-    prompt = f"""You are scoring job listings for fit against a candidate. Return ONLY valid JSON.
-
-CANDIDATE PROFILE:
-{profile_text}
-
-JOB LISTINGS TO SCORE:
-{chr(10).join(listing_blocks)}
+_SCORING_INSTRUCTIONS = """You are scoring job listings for fit against a candidate. Return ONLY valid JSON.
 
 Score each listing 0-100 based on:
 - Alignment of skills and experience
@@ -188,19 +154,63 @@ Return JSON array with objects containing:
 
 Example output format:
 [
-  {{"job_id": "12345", "score": 82, "reason": "Strong Python/backend match with senior growth potential"}},
-  {{"job_id": "67890", "score": 45, "reason": "Heavy focus on legacy Java, mismatch with candidate's stack"}}
+  {"job_id": "12345", "score": 82, "reason": "Strong Python/backend match with senior growth potential"},
+  {"job_id": "67890", "score": 45, "reason": "Heavy focus on legacy Java, mismatch with candidate's stack"}
 ]"""
+
+
+def _build_anthropic_client() -> "Anthropic":
+    if not HAS_ANTHROPIC:
+        raise RuntimeError("anthropic package required for LLM scoring")
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "ANTHROPIC_API_KEY environment variable required for LLM scoring"
+        )
+    return Anthropic(api_key=api_key)
+
+
+def _llm_score_batch(
+    client: "Anthropic",
+    listings: list[dict[str, Any]],
+    profile_text: str,
+) -> list[dict[str, Any]]:
+    """Score a batch of listings using Claude API.
+
+    The instructions + candidate profile are sent as cacheable system blocks
+    so that batches 2..N (sharing the same prefix) hit the prompt cache and
+    only pay for the listings block on each call.
+    """
+    listing_blocks = []
+    for i, lst in enumerate(listings):
+        listing_blocks.append(
+            f"{i + 1}. job_id={lst['job_id']}\n"
+            f"   title: {lst.get('title', 'Unknown')}\n"
+            f"   company: {lst.get('company', 'Unknown')}\n"
+            f"   snippet: {lst.get('snippet', 'No description')}\n"
+        )
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=2048,
         temperature=0,
-        messages=[{"role": "user", "content": prompt}],
+        system=[
+            {"type": "text", "text": _SCORING_INSTRUCTIONS},
+            {
+                "type": "text",
+                "text": f"CANDIDATE PROFILE:\n{profile_text}",
+                "cache_control": {"type": "ephemeral"},
+            },
+        ],
+        messages=[
+            {
+                "role": "user",
+                "content": "JOB LISTINGS TO SCORE:\n" + "\n".join(listing_blocks),
+            }
+        ],
     )
 
     result_text = response.content[0].text
-    # Extract JSON from response (in case there's any wrapping text)
     json_start = result_text.find("[")
     json_end = result_text.rfind("]") + 1
     if json_start >= 0 and json_end > json_start:
@@ -235,13 +245,30 @@ def score_listings(
     # Try LLM scoring if available and requested
     if use_llm and HAS_ANTHROPIC and os.environ.get("ANTHROPIC_API_KEY"):
         try:
-            # Score in batches to avoid token limits
+            client = _build_anthropic_client()
             batch_size = 20
+            batches = [
+                listings[i : i + batch_size]
+                for i in range(0, len(listings), batch_size)
+            ]
             llm_results: list[dict[str, Any]] = []
-            for i in range(0, len(listings), batch_size):
-                batch = listings[i : i + batch_size]
-                batch_results = _llm_score_batch(batch, profile_summary)
-                llm_results.extend(batch_results)
+            if len(batches) == 1:
+                llm_results.extend(
+                    _llm_score_batch(client, batches[0], profile_summary)
+                )
+            else:
+                # Run the first batch alone so its cache write lands before the
+                # rest race for the same prefix; remaining batches go parallel
+                # and hit the cache.
+                llm_results.extend(
+                    _llm_score_batch(client, batches[0], profile_summary)
+                )
+                with ThreadPoolExecutor(max_workers=3) as pool:
+                    for batch_results in pool.map(
+                        lambda b: _llm_score_batch(client, b, profile_summary),
+                        batches[1:],
+                    ):
+                        llm_results.extend(batch_results)
 
             # Merge LLM results back with listing metadata
             results_by_id: dict[str, dict[str, Any]] = {

@@ -19,12 +19,11 @@ from lib.identity import ManualKey
 from lib.paths import tracker_path
 from lib.scraper import JobListing
 from lib.tracker import (
-    is_seen_key,
-    is_skipped_key,
+    load_keyset,
     load_tracker,
-    mark_seen_key,
     save_tracker,
     seen_by_source,
+    store_keyset,
 )
 
 
@@ -73,6 +72,11 @@ def smart_scrape(
         (listings, summary)
     """
     tracker = load_tracker(tracker_path())
+    # Snapshot the seen/skipped sets once. The post-scrape loop hits them
+    # multiple times per listing — going through is_seen_key / mark_seen_key
+    # would re-materialise both sets on every call.
+    seen_set = load_keyset(tracker, "seen")
+    skipped_set = load_keyset(tracker, "skipped")
     # Paginators want O(1) "is id from source X seen?" — rebucket the flat
     # seen list into {source: {id, ...}} for them.
     seen_jobs = seen_by_source(tracker)
@@ -103,7 +107,7 @@ def smart_scrape(
 
         if stop_at_overlap and source_listings:
             recent = source_listings[-min(5, len(source_listings)) :]
-            if all(is_seen_key(tracker, lst.key) for lst in recent):
+            if all(lst.key in seen_set for lst in recent):
                 print(
                     "  Reached overlap point, stopping pagination", file=sys.stderr
                 )
@@ -123,16 +127,16 @@ def smart_scrape(
         already_applied = any(
             line.strip().lower() == "applied" for line in snippet.splitlines()
         )
-        if is_seen_key(tracker, lst.key) or already_applied:
+        if lst.key in seen_set or already_applied:
             seen_count += 1
-            mark_seen_key(tracker, lst.key)
-        elif is_skipped_key(tracker, lst.key, fallback=manual):
+            seen_set.add(lst.key)
+        elif lst.key in skipped_set or manual in skipped_set:
             skipped_count += 1
         else:
             new_listings.append(lst)
-            mark_seen_key(tracker, lst.key)
+            seen_set.add(lst.key)
 
-    # Save updated tracker
+    store_keyset(tracker, "seen", seen_set)
     save_tracker(tracker_path(), tracker)
 
     # Build summary

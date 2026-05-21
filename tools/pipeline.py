@@ -177,6 +177,26 @@ OUTSIDE_LOCATION_PHRASES = (
 )
 
 
+_PRE_FILTER_SOURCES = frozenset({"hiringcafe", "workingnomads", "wellfound", "weworkremotely"})
+
+
+def _snippet_location_excluded(listing: "JobListing") -> bool:
+    """True when a listing's snippet contains a hard location exclusion phrase.
+
+    Conservative pre-LLM filter: only drops on STRICT phrases (e.g. "US only",
+    "authorized to work in the US"). Softer signals stay for the full-JD check
+    so we don't drop globally-remote roles whose card text happens to mention
+    a region. Limited to the four sources that mix remote/region-locked roles.
+    """
+    if listing.source not in _PRE_FILTER_SOURCES:
+        return False
+    snippet = listing.snippet or ""
+    if not snippet:
+        return False
+    text = " ".join(snippet.casefold().split())
+    return any(phrase in text for phrase in STRICT_OUTSIDE_LOCATION_PHRASES)
+
+
 def _location_eligibility(item: ScoreResult, jd_text: str) -> tuple[bool, str | None]:
     """Return whether a listing should be packaged under the location rule.
 
@@ -272,26 +292,38 @@ def _norm_identity_text(value: str | None) -> str:
     return " ".join((value or "").casefold().split())
 
 
+def _build_company_title_index(tracker: dict) -> dict[tuple[str, str], list[dict]]:
+    """Bucket all tracker applications by (company, title) for O(1) dedup lookup.
+
+    The caller iterates many candidates; building this once is what avoids the
+    full-tracker scan per candidate.
+    """
+    index: dict[tuple[str, str], list[dict]] = {}
+    for bucket_items in tracker.get("applications", {}).values():
+        for app in bucket_items:
+            key = (
+                _norm_identity_text(app.get("company")),
+                _norm_identity_text(app.get("position")),
+            )
+            index.setdefault(key, []).append(app)
+    return index
+
+
 def _existing_company_title_matches(
-    tracker: dict, item: ScoreResult
+    index: dict[tuple[str, str], list[dict]], item: ScoreResult
 ) -> list[dict]:
     """Return existing applications with the same company and title.
 
-    This catches job boards re-listing the same role under a new id, where the
+    Catches job boards re-listing the same role under a new id, where the
     exact (source, job_id) dedupe cannot help.
     """
-    company = _norm_identity_text(item.company)
-    title = _norm_identity_text(item.title)
-    matches: list[dict] = []
-    for bucket_items in tracker.get("applications", {}).values():
-        for app in bucket_items:
-            if (
-                _norm_identity_text(app.get("company")) == company
-                and _norm_identity_text(app.get("position")) == title
-                and str(app.get("job_id", "")) != str(item.job_id)
-            ):
-                matches.append(app)
-    return matches
+    key = (_norm_identity_text(item.company), _norm_identity_text(item.title))
+    item_job_id = str(item.job_id) if item.job_id is not None else ""
+    return [
+        app
+        for app in index.get(key, [])
+        if str(app.get("job_id", "")) != item_job_id
+    ]
 
 
 def _is_cover_warning(warning: str) -> bool:
@@ -310,9 +342,10 @@ def do_package_from_scores(
     inbox = default_inbox(root)
     print("\n📦 Phase 4: Creating application packages...", file=sys.stderr)
     tracker = load_tracker(root / "applications" / "application-tracker.json")
+    company_title_index = _build_company_title_index(tracker)
     to_package: list[ScoreResult] = []
     for item in passed:
-        matches = _existing_company_title_matches(tracker, item)
+        matches = _existing_company_title_matches(company_title_index, item)
         if matches:
             match = matches[0]
             print(
@@ -367,9 +400,9 @@ def do_package_from_scores(
 
         package_url = _resolve_apply_url(item)
 
-        jd_path: Path | None = None
         jd_text = jd_cache.get(item.url) if item.url else None
         if jd_text:
+            body = jd_text
             with tempfile.NamedTemporaryFile(
                 mode="w", suffix=".md", delete=False
             ) as f:
@@ -378,26 +411,24 @@ def do_package_from_scores(
                 if package_url and package_url != item.url:
                     f.write(f"Direct apply: {package_url}\n")
                 f.write("\n")
-                f.write(jd_text)
+                f.write(body)
                 jd_path = Path(f.name)
-
-        if jd_path is None:
-            # Create a minimal JD from the snippet
+        else:
+            body = (
+                item.reason
+                if hasattr(item, "reason")
+                else "See listing URL for details."
+            )
             with tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False) as f:
                 f.write(f"# {item.title} @ {item.company}\n\n")
-                snippet = (
-                    item.reason
-                    if hasattr(item, "reason")
-                    else "See listing URL for details."
-                )
-                f.write(f"{snippet}\n\n")
+                f.write(f"{body}\n\n")
                 if item.url:
                     f.write(f"Source: {item.url}\n")
                 if package_url and package_url != item.url:
                     f.write(f"Direct apply: {package_url}\n")
                 jd_path = Path(f.name)
 
-        eligible, location_reason = _location_eligibility(item, jd_path.read_text())
+        eligible, location_reason = _location_eligibility(item, body)
         if not eligible:
             print(f"    ⏭️  Skipping: {location_reason}", file=sys.stderr)
             if jd_path and jd_path.exists():
@@ -531,7 +562,14 @@ def run_pipeline(
         return
 
     print("\n📊 Phase 3: Scoring listings...", file=sys.stderr)
-    scored = score_listings([vars(lst) for lst in all_listings])
+    pre_filtered = [lst for lst in all_listings if not _snippet_location_excluded(lst)]
+    dropped = len(all_listings) - len(pre_filtered)
+    if dropped:
+        print(
+            f"  Pre-filter dropped {dropped} region-locked listings before scoring",
+            file=sys.stderr,
+        )
+    scored = score_listings([vars(lst) for lst in pre_filtered])
     scored = sort_by_score(scored)
     passed = filter_by_score(scored, cutoff)
     print(f"  Above cutoff ({cutoff}): {len(passed)}", file=sys.stderr)

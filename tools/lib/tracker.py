@@ -210,33 +210,40 @@ def upsert_active_application(
     return tracker
 
 
-def _load_keyset(tracker: dict[str, Any], field: str) -> set[JobKey]:
+def load_keyset(tracker: dict[str, Any], field: str) -> set[JobKey]:
     """Materialise the flat key list at tracker[field] as a set[JobKey]."""
     return {from_dict(d) for d in tracker.get(field, [])}
 
 
-def _store_keyset(tracker: dict[str, Any], field: str, keys: set[JobKey]) -> None:
+def store_keyset(tracker: dict[str, Any], field: str, keys: set[JobKey]) -> None:
     """Persist a set[JobKey] back to tracker[field] as a list of dicts."""
     tracker[field] = [k.to_dict() for k in keys]
 
 
 def mark_seen_key(tracker: dict[str, Any], key: JobKey) -> None:
-    """Record that this listing was surfaced, so scrapers can dedupe."""
-    keys = _load_keyset(tracker, "seen")
+    """Record that this listing was surfaced, so scrapers can dedupe.
+
+    O(N) — for hot loops that mark many keys, snapshot once via load_keyset,
+    mutate in place, and write back with store_keyset.
+    """
+    keys = load_keyset(tracker, "seen")
     keys.add(key)
-    _store_keyset(tracker, "seen", keys)
+    store_keyset(tracker, "seen", keys)
 
 
 def is_seen_key(tracker: dict[str, Any], key: JobKey) -> bool:
-    """Has this listing already been surfaced in a previous run?"""
-    return key in _load_keyset(tracker, "seen")
+    """Has this listing already been surfaced in a previous run?
+
+    O(N) — same caveat as mark_seen_key for hot loops.
+    """
+    return key in load_keyset(tracker, "seen")
 
 
 def mark_skipped_key(tracker: dict[str, Any], key: JobKey) -> None:
     """Record that this job was skipped, so scrapers never re-suggest it."""
-    keys = _load_keyset(tracker, "skipped")
+    keys = load_keyset(tracker, "skipped")
     keys.add(key)
-    _store_keyset(tracker, "skipped", keys)
+    store_keyset(tracker, "skipped", keys)
 
 
 def is_skipped_key(
@@ -250,7 +257,7 @@ def is_skipped_key(
     posting re-listed under a different id is still caught when the original
     was skipped manually (no board id at the time).
     """
-    skipped = _load_keyset(tracker, "skipped")
+    skipped = load_keyset(tracker, "skipped")
     if primary in skipped:
         return True
     return fallback is not None and fallback in skipped
@@ -263,7 +270,7 @@ def seen_by_source(tracker: dict[str, Any]) -> dict[str, set[str]]:
     this id from this source?" checks. ManualKeys aren't represented.
     """
     out: dict[str, set[str]] = defaultdict(set)
-    for key in _load_keyset(tracker, "seen"):
+    for key in load_keyset(tracker, "seen"):
         if isinstance(key, BoardKey):
             out[key.source].add(key.job_id)
     return dict(out)

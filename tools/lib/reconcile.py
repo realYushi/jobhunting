@@ -16,7 +16,13 @@ from .paths import (
     inbox_path as default_inbox_path,
     tracker_path as tracker_file,
 )
-from .tracker import key_for_app_dict, load_tracker, mark_skipped_key, save_tracker
+from .tracker import (
+    key_for_app_dict,
+    load_keyset,
+    load_tracker,
+    save_tracker,
+    store_keyset,
+)
 
 
 @dataclass(frozen=True)
@@ -332,6 +338,7 @@ def reconcile(
 
     items = parse_inbox(inbox_path)
     tracker = load_tracker(tracker_file(root))
+    skipped_set = load_keyset(tracker, "skipped")
 
     submitted: list[str] = []
     skipped: list[str] = []
@@ -362,14 +369,12 @@ def reconcile(
                     # different id; BoardKey gives fast id-based lookup when
                     # we already know the source/id at parse time.
                     if item.company and item.title:
-                        mark_skipped_key(
-                            tracker,
-                            ManualKey(company_lc=item.company, position_lc=item.title),
+                        skipped_set.add(
+                            ManualKey(company_lc=item.company, position_lc=item.title)
                         )
                     if item.source and item.job_id:
-                        mark_skipped_key(
-                            tracker,
-                            BoardKey(source=item.source, job_id=item.job_id),
+                        skipped_set.add(
+                            BoardKey(source=item.source, job_id=item.job_id)
                         )
                 skipped.append(f"{item.company} — {item.title}")
 
@@ -380,6 +385,7 @@ def reconcile(
             errors.append(f"{item.company}: {e}")
 
     if not dry_run and (submitted or skipped):
+        store_keyset(tracker, "skipped", skipped_set)
         # Remove archived rows from INBOX in one pass
         archived = [item for item in items if item.status in ("[x]", "[~]")]
         remove_inbox_rows(inbox_path, archived)
