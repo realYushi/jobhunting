@@ -1,48 +1,5468 @@
 {
   "meta": {
-    "last_updated": "2026-05-14",
-    "version": "5.0"
+    "last_updated": "2026-05-21",
+    "version": "6.0"
   },
   "applications": {
     "active": [
       {
-        "company": "Deloitte",
-        "position": "AI Engineer",
-        "date_applied": "2026-05-13",
+        "company": "Sunstone Talent",
+        "position": "Junior Full Stack Web Engineer (React / Python / GO)",
+        "date_applied": "2026-05-14",
         "status": "In Progress",
-        "priority": "High",
-        "resume_id": "019e20b7-ffed-7498-99fa-ac7281113d18",
-        "pdf_path": "applications/active/Deloitte/documents/resume.pdf"
+        "priority": "Medium",
+        "pdf_path": "applications/active/Sunstone Talent/documents/resume.pdf",
+        "job_id": "91989874",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91989874?type=standard&ref=search-standalone#sol=5de1fd66ae8e96a76f648cc18df851ae1a22e0bb"
       },
       {
-        "company": "Caruso",
+        "company": "Halter",
+        "position": "Software Engineers (All levels!)",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Halter/documents/resume.pdf",
+        "job_id": "92106804",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92106804?type=standard&ref=search-standalone#sol=0028de82d89573355158884113bf9a8151d68056"
+      },
+      {
+        "company": "Caruso Software Limited",
         "position": "Software Engineer (Agentic)",
-        "date_applied": "2026-05-13",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Caruso Software Limited/documents/resume.pdf",
+        "job_id": "91491952",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91491952?type=promoted&ref=search-standalone#sol=006bcd4087edadff349d26f576c171f2d60fbfb0"
+      },
+      {
+        "company": "Natural Selection Group",
+        "position": "Junior C# + AWS Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Natural Selection Group/documents/resume.pdf",
+        "job_id": "92107167",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92107167?type=standard&ref=search-standalone#sol=dc369e7107ba0c06ccf9a248db9c0d681e19391d"
+      },
+      {
+        "company": "Recruit I.T. Auckland",
+        "position": "Full Stack Python Developer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Recruit I.T. Auckland/documents/resume.pdf",
+        "job_id": "91905814",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91905814?type=standard&ref=search-standalone#sol=16cfb4e0c9c01ca0fc7ef1c1fcbe9b764a84503f"
+      },
+      {
+        "company": "Recruit I.T. Auckland",
+        "position": "Full Stack Python Developer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Recruit I.T. Auckland/documents/resume.pdf",
+        "job_id": "91955613",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91955613?type=standard&ref=search-standalone#sol=7215d35bcf1fc9457798938d262ffb2dd7664eeb"
+      },
+      {
+        "company": "Digital Garage",
+        "position": "Fullstack Developer (Node/React)",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Digital Garage/documents/resume.pdf",
+        "job_id": "91990093",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91990093?type=standard&ref=search-standalone#sol=0f1bc5c4fc375e4cf50ad8a9790c78cedd7a6a0f",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "EnergyAE",
+        "position": "Full Stack Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/EnergyAE/documents/resume.pdf",
+        "job_id": "91631004",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91631004?type=promoted&ref=search-standalone#sol=cbee21cfae8e8ed4e32ca188fb9bc056f28fe3fd"
+      },
+      {
+        "company": "Bidfood Limited",
+        "position": "Junior Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Bidfood Limited/documents/resume.pdf",
+        "job_id": "91882213",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91882213?type=promoted&ref=search-standalone#sol=4c2b85216f41cf0853f9c22a99c2d8d902b42984"
+      },
+      {
+        "company": "Bidfood Limited",
+        "position": "Junior Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Bidfood Limited/documents/resume.pdf",
+        "job_id": "91925145",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91925145?type=standard&ref=search-standalone#sol=5572b506d8caa2c3c929b9abf618a21b65083f6f",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "ANZ Bank New Zealand Limited",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/ANZ Bank New Zealand Limited/documents/resume.pdf",
+        "job_id": "91992569",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91992569?type=standard&ref=search-standalone#sol=d2568ca91b7959fcc54fe67217e50bd328231d6e"
+      },
+      {
+        "company": "HUBCORE CONSULTING LIMITED",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/HUBCORE CONSULTING LIMITED/documents/resume.pdf",
+        "job_id": "91831225",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91831225?type=standard&ref=search-standalone#sol=3d036d867e9c3b3fe85c847be3edfbdb1f348281"
+      },
+      {
+        "company": "Alchemy Consulting",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Alchemy Consulting/documents/resume.pdf",
+        "job_id": "92102688",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92102688?type=standard&ref=search-standalone#sol=b321e4793a68027c26d5ef52d02508147f00b278",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "Agtecnic",
+        "position": "Software Engineer - Image Processing",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Agtecnic/documents/resume.pdf",
+        "job_id": "92089509",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92089509?type=standard&ref=search-standalone#sol=768fef1c1c882ed95f960ab29ec574725eaa012c"
+      },
+      {
+        "company": "Agtecnic",
+        "position": "Software Engineer - Image Processing",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Agtecnic/documents/resume.pdf",
+        "job_id": "92090597",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92090597?type=standard&ref=search-standalone#sol=292412a5ffaa925ff23180b6632670286fd3b7bd"
+      },
+      {
+        "company": "PICWA LTD",
+        "position": "Intermediate Python Developer (Full Stack)",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/PICWA LTD/documents/resume.pdf",
+        "job_id": "92105947",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92105947?type=standard&ref=search-standalone#sol=bbefa0893eace767e36c60024e59f22c7006608c"
+      },
+      {
+        "company": "PropertyMe",
+        "position": "Mid-Level Full Stack Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/PropertyMe/documents/resume.pdf",
+        "job_id": "91986856",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91986856?type=standard&ref=search-standalone#sol=0f0023b265b40ba2ee7aa0538b4dbc1d8f769a2c"
+      },
+      {
+        "company": "PropertyMe",
+        "position": "Mid-Level Full Stack Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/PropertyMe/documents/resume.pdf",
+        "job_id": "91805231",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91805231?type=standard&ref=search-standalone#sol=906cfa4c24ad8e367b293b6bfe1e0c668748311b"
+      },
+      {
+        "company": "LawVu",
+        "position": "Intermediate Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/LawVu/documents/resume.pdf",
+        "job_id": "jskq52td9agmft5b",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/viewjob/jskq52td9agmft5b",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "Datacom",
+        "position": "Graduate AI Developers - Expression of Interest",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Datacom/documents/resume.pdf",
+        "job_id": "06okqvxvlh7zbyic",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/viewjob/06okqvxvlh7zbyic",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "FineSkyAi",
+        "position": "Expression of Interest - AI Solutions Developer (Applied AI / LLMs)",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/FineSkyAi/documents/resume.pdf",
+        "job_id": "91757013",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91757013?type=standard&ref=search-standalone#sol=bfc5a307b95452f967e533600e4527cbab604f23",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "Mansell Taylor Consulting",
+        "position": "Frontend Developer (React / Geospatial Visualisation)",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Mansell Taylor Consulting/documents/resume.pdf",
+        "job_id": "92035565",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92035565?type=standard&ref=search-standalone#sol=3048f9d36dceeea47e5b2f7106ad0e68c238cd9b"
+      },
+      {
+        "company": "GoSource",
+        "position": "Software Developer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/GoSource/documents/resume.pdf",
+        "job_id": "92056885",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92056885?type=standard&ref=search-standalone#sol=1a027b22d57c425d5b2c3fbdf20dac01ea8aa790"
+      },
+      {
+        "company": "SprintSuite",
+        "position": "Front End Developer",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/SprintSuite/documents/resume.pdf",
+        "job_id": "91807715",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91807715?type=standard&ref=search-standalone#sol=fa3e7fd6c88c94c2a5e1bc4b366eeec56525696d",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "Light Pattern",
+        "position": "Tools Programmer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Light Pattern/documents/resume.pdf",
+        "job_id": "92027593",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92027593?type=standard&ref=search-standalone#sol=41f1094cc17141869814dd722bf3fa8c4e334fb9"
+      },
+      {
+        "company": "Air New Zealand",
+        "position": "Mobile Engineer (iOS)",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Air New Zealand/documents/resume.pdf",
+        "job_id": "j1pltcbhoatmth9n",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/viewjob/j1pltcbhoatmth9n",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "The Pillar Group Limited",
+        "position": "Analyst Programmer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/The Pillar Group Limited/documents/resume.pdf",
+        "job_id": "92023554",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92023554?type=standard&ref=search-standalone#sol=e67bfe06914885c5298522e45e6d1f8f306bf70d"
+      },
+      {
+        "company": "Pathfinder Recruitment",
+        "position": "Fullstack Developer - .Net / Kentico Xperience",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Pathfinder Recruitment/documents/resume.pdf",
+        "job_id": "92004122",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92004122?type=standard&ref=search-standalone#sol=a14ae0282941981818a0e03732d6c664fd848616"
+      },
+      {
+        "company": "PropertyMe",
+        "position": "Mid-Level Full Stack Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/PropertyMe/documents/resume.pdf",
+        "job_id": "91823766",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91823766?type=standard&ref=search-standalone#sol=69cd7e6d78329eb94fed335128c31307df3a3532"
+      },
+      {
+        "company": "IDEXX Veterinary Software",
+        "position": "Intermediate Full Stack Engineer",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "High",
+        "pdf_path": "applications/active/IDEXX Veterinary Software/documents/resume.pdf",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "Simpro Group",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Simpro Group/documents/resume.pdf"
+      },
+      {
+        "company": "EverCommerce Timely",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/EverCommerce Timely/documents/resume.pdf"
+      },
+      {
+        "company": "PICWA LTD",
+        "position": "Intermediate Python Developer (Full Stack)",
+        "date_applied": "2026-05-15",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/PICWA LTD/documents/resume.pdf",
+        "job_id": "92123540",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92123540?type=standard&ref=search-standalone"
+      },
+      {
+        "company": "Light Pattern",
+        "position": "Tools Programmer",
+        "date_applied": "2026-05-15",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Light Pattern/documents/resume.pdf",
+        "job_id": "92044383",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92044383?type=standard&ref=search-standalone"
+      },
+      {
+        "company": "Pair People Pty Limited",
+        "position": "Software System Developer (C# / .NET)",
+        "date_applied": "2026-05-15",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Pair People Pty Limited/documents/resume.pdf",
+        "job_id": "91571289",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91571289?type=standard&ref=search-standalone#sol=56fcfad9643dd458916418763cbeb1e99eb88681",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "Talent Army – Winner of Medium Recruitment Agency of the Year 2025",
+        "position": "DevOps Engineer (AWS & Azure)",
+        "date_applied": "2026-05-15",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Talent Army  Winner of Medium Recruitment Agency of the Year 2025/documents/resume.pdf",
+        "job_id": "91899449",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91899449?type=promoted&ref=search-standalone"
+      },
+      {
+        "company": "Comspek International Limited",
+        "position": "Power Platform Developer",
+        "date_applied": "2026-05-15",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Comspek International Limited/documents/resume.pdf",
+        "job_id": "92045195",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92045195?type=standard&ref=search-standalone#sol=67acfa974553dd39f8ed33061ad27db749b5ac2f"
+      },
+      {
+        "company": "New Era Technology",
+        "position": "Entry Level Support Engineer",
+        "date_applied": "2026-05-15",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/New Era Technology/documents/resume.pdf",
+        "job_id": "g8gk0006oq5rgr32",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/viewjob/g8gk0006oq5rgr32"
+      },
+      {
+        "company": "Contact Energy",
+        "position": "Software Engineer Graduate Programme 2027",
+        "date_applied": "2026-05-15",
         "status": "In Progress",
         "priority": "High",
-        "resume_id": "019e20bb-d7a9-770d-bf3c-721944471c6c",
-        "pdf_path": "applications/active/Caruso/documents/resume.pdf"
+        "pdf_path": "applications/active/Contact Energy/documents/resume.pdf"
+      },
+      {
+        "company": "The Burraga Foundation",
+        "position": "Mid-Level React Developer (Full Stack Environment)",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/The Burraga Foundation-91689945/documents/resume.pdf",
+        "job_id": "91689945",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91689945?type=standard&ref=search-standalone&origin=cardTitle#sol=85604dfc29a3b34f7a7f1de6eb759317d7dd87c1"
+      },
+      {
+        "company": "Expertech",
+        "position": "Quantitative Software Engineer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Expertech-91693312/documents/resume.pdf",
+        "job_id": "91693312",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91693312?type=standard&ref=search-standalone&origin=cardTitle#sol=2a7e6fe304b6242f90d2587c13bbd9d1aa033b5e"
+      },
+      {
+        "company": "Evolve Recruitment Group",
+        "position": "Java Developer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Evolve Recruitment Group-92100682/documents/resume.pdf",
+        "job_id": "92100682",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92100682?type=standard&ref=search-standalone&origin=cardTitle#sol=57bb70f8a1c94292083b15060da394a7ebfbc8c2"
+      },
+      {
+        "company": "Evolve Recruitment Group",
+        "position": "Developer",
+        "date_applied": "2026-05-16",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Evolve Recruitment Group-92046771/documents/resume.pdf",
+        "job_id": "92046771",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92046771?type=standard&ref=search-standalone&origin=cardTitle#sol=e2cde0aca67bb8c8965379ad1887769798ab0cb0",
+        "submitted_at": "2026-05-16"
+      },
+      {
+        "company": "ICTx",
+        "position": "Software Engineer – .NET, SQL & BI",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/ICTx-91895782/documents/resume.pdf",
+        "job_id": "91895782",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91895782?type=standard&ref=search-standalone&origin=cardTitle"
+      },
+      {
+        "company": "Breadcrumb Digital",
+        "position": "Power Platform Developer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Breadcrumb Digital-91632278/documents/resume.pdf",
+        "job_id": "91632278",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91632278?type=standard&ref=search-standalone&origin=cardTitle#sol=0e21050fa335852d87f351533de1f11470cc6d24"
+      },
+      {
+        "company": "Private Advertiser",
+        "position": "Website Developer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Private Advertiser-91858078/documents/resume.pdf",
+        "job_id": "91858078",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91858078?type=standard&ref=search-standalone&origin=cardTitle"
+      },
+      {
+        "company": "FirmPilot",
+        "position": "Junior Full-Stack Engineer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/FirmPilot-bir5htln/documents/resume.pdf",
+        "job_id": "bir5htlnx78i1ucu",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/bir5htlnx78i1ucu"
+      },
+      {
+        "company": "MJH Life Sciences",
+        "position": "Associate Product Engineer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/MJH Life Sciences-w4ootqg6/documents/resume.pdf",
+        "job_id": "w4ootqg6rgadttro",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/w4ootqg6rgadttro"
+      },
+      {
+        "company": "New Relic",
+        "position": "Software Engineer - React/Typescript",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/New Relic-a5ohdhio/documents/resume.pdf",
+        "job_id": "a5ohdhio3bzdl0hi",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/a5ohdhio3bzdl0hi"
+      },
+      {
+        "company": "Impiricus",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Impiricus-54ov0off/documents/resume.pdf",
+        "job_id": "54ov0offevrwd3bs",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/54ov0offevrwd3bs"
+      },
+      {
+        "company": "Esri",
+        "position": "Product Engineer II – Web Services",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Esri-cmf5ifhm/documents/resume.pdf",
+        "job_id": "cmf5ifhmppv16di6",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/cmf5ifhmppv16di6"
+      },
+      {
+        "company": "Pindrop",
+        "position": "Artificial intelligence (AI) Engineer Intern",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Pindrop-igbeoftd/documents/resume.pdf",
+        "job_id": "igbeoftdylcq642z",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/igbeoftdylcq642z"
+      },
+      {
+        "company": "Lemio",
+        "position": "Full-stack Software Developer / Engineer for digital wellness mobile app",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Lemio-yz2s5f6u/documents/resume.pdf",
+        "job_id": "yz2s5f6un30vhfnx",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/yz2s5f6un30vhfnx"
+      },
+      {
+        "company": "OneSource Virtual",
+        "position": "Associate Full Stack Developer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/OneSource Virtual-7gwz2ilv/documents/resume.pdf",
+        "job_id": "7gwz2ilvhd9btrap",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/7gwz2ilvhd9btrap"
+      },
+      {
+        "company": "Virtuozzo",
+        "position": "Intern in Frontend team",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Virtuozzo-p838asdp/documents/resume.pdf",
+        "job_id": "p838asdp1oair1dp",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/p838asdp1oair1dp"
+      },
+      {
+        "company": "Cognizant",
+        "position": "Junior Full Stack Developer (C# .NET & Azure)",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Cognizant-af5nsvjl/documents/resume.pdf",
+        "job_id": "af5nsvjlgtn3sg0z",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/af5nsvjlgtn3sg0z"
+      },
+      {
+        "company": "Cognizant",
+        "position": "Junior Full Stack Developer (C# .NET & Azure)",
+        "date_applied": "2026-05-16",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Cognizant-agm8z2da/documents/resume.pdf",
+        "job_id": "agm8z2dansclwn0r",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/agm8z2dansclwn0r"
+      },
+      {
+        "company": "GOLFTEC",
+        "position": "Software Engineer (Remote Opportunity)",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/GOLFTEC-zfv6gwkl/documents/resume.pdf",
+        "job_id": "zfv6gwklx8tb826b",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/zfv6gwklx8tb826b"
+      },
+      {
+        "company": "Arine",
+        "position": "AI Engineering Summer Intern",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Arine-5xkmkne3/documents/resume.pdf",
+        "job_id": "5xkmkne3mf4zh3gp",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/5xkmkne3mf4zh3gp"
+      },
+      {
+        "company": "Phil",
+        "position": "AI Engineering Intern",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Phil-wpr7x6uu/documents/resume.pdf",
+        "job_id": "wpr7x6uu6yv4zuhq",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/wpr7x6uu6yv4zuhq"
+      },
+      {
+        "company": "Vituity",
+        "position": "Intern - Software Engineer Backend",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Vituity-49uj84az/documents/resume.pdf",
+        "job_id": "49uj84azz053gcj8",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/49uj84azz053gcj8"
+      },
+      {
+        "company": "Cisive",
+        "position": "Software Development Intern",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Cisive-0vhhi79c/documents/resume.pdf",
+        "job_id": "0vhhi79ce0lb4iwv",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/0vhhi79ce0lb4iwv"
+      },
+      {
+        "company": "DMI",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DMI-w53pgrs7/documents/resume.pdf",
+        "job_id": "w53pgrs70kjcbu2k",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/w53pgrs70kjcbu2k"
+      },
+      {
+        "company": "Clover Health",
+        "position": "UX engineer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Clover Health-nqxw2yim/documents/resume.pdf",
+        "job_id": "nqxw2yimz4k78ubh",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/nqxw2yimz4k78ubh"
+      },
+      {
+        "company": "Praxent",
+        "position": "Software Engineer(s)",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Praxent-nfnjhjqe/documents/resume.pdf",
+        "job_id": "nfnjhjqecdyg7q84",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/nfnjhjqecdyg7q84"
+      },
+      {
+        "company": "Volkswagen Group Digital Solutions India",
+        "position": "Developer (9935)",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Volkswagen Group Digital Solutions India-fm2q9stn/documents/resume.pdf",
+        "job_id": "fm2q9stnzo0lhysj",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/fm2q9stnzo0lhysj"
+      },
+      {
+        "company": "H&R Block",
+        "position": "Associate Software Engineer, Seasonal",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/HR Block-bnah8h2q/documents/resume.pdf",
+        "job_id": "bnah8h2q1rn60w4f",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/bnah8h2q1rn60w4f"
+      },
+      {
+        "company": "H&R Block",
+        "position": "Associate Software Engineer, Seasonal",
+        "date_applied": "2026-05-16",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/HR Block-kb87ybue/documents/resume.pdf",
+        "job_id": "kb87ybueex5qos80",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/kb87ybueex5qos80"
+      },
+      {
+        "company": "H&R Block",
+        "position": "Associate Software Engineer, Seasonal",
+        "date_applied": "2026-05-16",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/HR Block-h4ntl5kx/documents/resume.pdf",
+        "job_id": "h4ntl5kxvh4ox8xh",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/h4ntl5kxvh4ox8xh"
+      },
+      {
+        "company": "Babyscripts",
+        "position": "Engineering Intern",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Babyscripts-d6tm69am/documents/resume.pdf",
+        "job_id": "d6tm69amyp54w5t1",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/d6tm69amyp54w5t1"
+      },
+      {
+        "company": "University of Wisconsin-Madison",
+        "position": "Student Web Developer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/University of Wisconsin-Madison-xxsqrnzo/documents/resume.pdf",
+        "job_id": "xxsqrnzojchib0qt",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/xxsqrnzojchib0qt"
+      },
+      {
+        "company": "ASRC Federal",
+        "position": "Software Developer Intern",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/ASRC Federal-us1o0c6b/documents/resume.pdf",
+        "job_id": "us1o0c6btsbzkgoq",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/us1o0c6btsbzkgoq"
+      },
+      {
+        "company": "ElevenLabs",
+        "position": "Full-Stack Engineer",
+        "date_applied": "2026-05-16",
+        "status": "Submitted",
+        "priority": "High",
+        "pdf_path": "applications/active/ElevenLabs/documents/resume.pdf",
+        "submitted_at": "2026-05-16"
+      },
+      {
+        "company": "Xapo Bank",
+        "position": "Software Engineer - Graduate",
+        "date_applied": "2026-05-16",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Xapo Bank-1563723/documents/resume.pdf",
+        "job_id": "1563723",
+        "source": "workingnomads",
+        "url": "https://job-boards.greenhouse.io/xapo61/jobs/7594562003"
+      },
+      {
+        "company": "Canonical",
+        "position": "Graduate Software Engineer - Open Source and Linux, Canonical Ubuntu",
+        "date_applied": "2026-05-16",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Canonical-1568802/documents/resume.pdf",
+        "job_id": "1568802",
+        "source": "workingnomads",
+        "url": "https://job-boards.greenhouse.io/canonical/jobs/7814327"
+      },
+      {
+        "company": "Canonical",
+        "position": "Junior Ubuntu Software Engineer",
+        "date_applied": "2026-05-16",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Canonical-1562937/documents/resume.pdf",
+        "job_id": "1562937",
+        "source": "workingnomads",
+        "url": "https://job-boards.greenhouse.io/canonical/jobs/6707669"
+      },
+      {
+        "company": "Atom Intelligence",
+        "position": "Junior Full-Stack Developer",
+        "date_applied": "2026-05-16",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Atom Intelligence-92116333/documents/resume.pdf",
+        "job_id": "92116333",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92116333?type=standard&ref=search-standalone&origin=cardTitle#sol=3c11a8be15678d3ff8d242e69e90c9bd73993766",
+        "submitted_at": "2026-05-16"
+      },
+      {
+        "company": "Hydrogen Group Pty Ltd",
+        "position": "API Developer",
+        "date_applied": "2026-05-16",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Hydrogen Group Pty Ltd-91789343/documents/resume.pdf",
+        "job_id": "91789343",
+        "source": "seek",
+        "url": "https://au.seek.com/job/91789343?type=standard&ref=search-standalone&origin=cardTitle#sol=749890cfefa3b4fb3a06610084d212c061b6ded6"
+      },
+      {
+        "company": "Weeha",
+        "position": "Full Stack Product Engineer (React Native + Next.js + AI-Assisted Development)",
+        "date_applied": "2026-05-16",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Weeha-92150444/documents/resume.pdf",
+        "job_id": "92150444",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92150444?type=promoted&ref=search-standalone&origin=cardTitle",
+        "submitted_at": "2026-05-16"
+      },
+      {
+        "company": "One New Zealand",
+        "position": "Frontend Engineer - Digital",
+        "date_applied": "2026-05-16",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/One New Zealand/documents/resume.pdf",
+        "source": "one-nz-careers",
+        "job_id": "1360437266",
+        "url": "https://careers.one.nz/job/Auckland-Frontend-Engineer-Digital/1360437266/",
+        "submitted_at": "2026-05-16"
       },
       {
         "company": "ZURU",
         "position": "Junior AI Integration Engineer",
-        "date_applied": "2026-05-14",
+        "date_applied": "2026-05-16",
         "status": "Submitted",
         "priority": "High",
-        "resume_id": "019e23f7-cc82-76da-b1a0-90817b8c0866",
-        "pdf_path": "applications/active/ZURU/documents/resume.pdf"
+        "pdf_path": "applications/archive/submitted/ZURU/documents/resume.pdf",
+        "source": "ashby",
+        "job_id": "d768326e-29ef-4d78-86aa-0b1bbbc484f3",
+        "url": "https://jobs.ashbyhq.com/zuru/d768326e-29ef-4d78-86aa-0b1bbbc484f3",
+        "submitted_at": "2026-05-17"
       },
       {
-        "company": "Fonterra",
-        "position": "Full Stack Developer",
-        "date_applied": "2026-05-14",
+        "company": "Blackpepper",
+        "position": "Intermediate Front End Developer – Shopify",
+        "date_applied": "2026-05-18",
         "status": "In Progress",
-        "priority": "High"
+        "priority": "Medium",
+        "pdf_path": "applications/active/Blackpepper-92157871/documents/resume.pdf",
+        "job_id": "92157871",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92157871?type=standard&ref=search-standalone&origin=cardTitle"
+      },
+      {
+        "company": "Teammate App Limited",
+        "position": "Full Stack Developer",
+        "date_applied": "2026-05-18",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Teammate App Limited-92161504/documents/resume.pdf",
+        "job_id": "92161504",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92161504?type=standard&ref=search-standalone&origin=cardTitle#sol=7d365357f40509f7bcda50fa961f069730ccac74"
+      },
+      {
+        "company": "Kernel",
+        "position": "AI & Automation Specialist",
+        "date_applied": "2026-05-18",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Kernel-44104903/documents/resume.pdf",
+        "job_id": "4410490335",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/ai-automation-specialist-at-kernel-4410490335",
+        "skipped_at": "2026-05-21"
+      },
+      {
+        "company": "Sandfield",
+        "position": "Web Developer - UX/UI Design Specialist",
+        "date_applied": "2026-05-18",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Sandfield-44096662/documents/resume.pdf",
+        "job_id": "4409666235",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/web-developer-ux-ui-design-specialist-at-sandfield-4409666235",
+        "skipped_at": "2026-05-21"
+      },
+      {
+        "company": "Enable",
+        "position": "Experienced Engineer",
+        "date_applied": "2026-05-18",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Enable-43576125/documents/resume.pdf",
+        "job_id": "4357612535",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/experienced-engineer-at-enable-4357612535",
+        "skipped_at": "2026-05-21"
+      },
+      {
+        "company": "Kiwibank",
+        "position": "Software Engineer - React",
+        "date_applied": "2026-05-19",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Kiwibank-92193077/documents/resume.pdf",
+        "job_id": "92193077",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92193077?type=standard&ref=search-standalone&origin=cardTitle#sol=cfb260863867590bfc83dd7486c5e4f0b5bf86cc",
+        "submitted_at": "2026-05-20"
+      },
+      {
+        "company": "Tech Mahindra Ltd.",
+        "position": "Developer Programmer",
+        "date_applied": "2026-05-19",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Tech Mahindra Ltd.-92187969/documents/resume.pdf",
+        "job_id": "92187969",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92187969?type=standard&ref=search-standalone&origin=cardTitle#sol=be9fa77e99e557fb93f8e2e627cc65b7eadc34a0"
+      },
+      {
+        "company": "Robert Half Technology",
+        "position": "Product Engineer (AI Native)",
+        "date_applied": "2026-05-20",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Robert Half Technology-92196290/documents/resume.pdf",
+        "job_id": "92196290",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92196290?type=standard&ref=search-standalone&origin=cardTitle#sol=e2b828c54bbcbfd3b86a35bd1ac642bc73f3885c"
+      },
+      {
+        "company": "Youtap Technology",
+        "position": "Graduate Front-end Software Developer",
+        "date_applied": "2026-05-20",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/Youtap Technology/documents/resume.pdf",
+        "source": "linkedin",
+        "job_id": "4416974365",
+        "url": "https://www.linkedin.com/jobs/view/4416974365/",
+        "submitted_at": "2026-05-21"
+      },
+      {
+        "company": "Canva",
+        "position": "Frontend Engineer - Product Features",
+        "date_applied": "2026-05-20",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Canva-4118815/documents/resume.pdf",
+        "job_id": "4118815",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4118815-frontend-engineer-product-features",
+        "submitted_at": "2026-05-21"
+      },
+      {
+        "company": "Composio",
+        "position": "Member of Technical Staff - Product Eng",
+        "date_applied": "2026-05-20",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Composio-composio/documents/resume.pdf",
+        "job_id": "composio-member-of-technical-staff-product-eng",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/composio-member-of-technical-staff-product-eng"
+      },
+      {
+        "company": "Chief Rebel",
+        "position": "Full Stack Engineer (AI-Forward)",
+        "date_applied": "2026-05-20",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Chief Rebel-chiefreb/documents/resume.pdf",
+        "job_id": "chief-rebel-full-stack-engineer-ai-forward",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/chief-rebel-full-stack-engineer-ai-forward"
+      },
+      {
+        "company": "ExpandIQ",
+        "position": "AI Developer",
+        "date_applied": "2026-05-20",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/ExpandIQ-4223430/documents/resume.pdf",
+        "job_id": "4223430",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4223430-ai-developer",
+        "submitted_at": "2026-05-21"
+      },
+      {
+        "company": "CodeSignal",
+        "position": "Software Engineer, Business Experience",
+        "date_applied": "2026-05-20",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/CodeSignal-codesign/documents/resume.pdf",
+        "job_id": "codesignal-software-engineer-business-experience-1",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/codesignal-software-engineer-business-experience-1"
+      },
+      {
+        "company": "GLOBO Language Solutions",
+        "position": "AI/ML Engineer",
+        "date_applied": "2026-05-20",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/GLOBO Language Solutions-4163045/documents/resume.pdf",
+        "job_id": "4163045",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4163045-ai-ml-engineer"
+      },
+      {
+        "company": "Sticker Mule",
+        "position": "Software engineer",
+        "date_applied": "2026-05-20",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Sticker Mule-stickerm/documents/resume.pdf",
+        "job_id": "sticker-mule-software-engineer-3",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/sticker-mule-software-engineer-3",
+        "submitted_at": "2026-05-21"
+      },
+      {
+        "company": "Xsolla",
+        "position": "Full Stack Developer",
+        "date_applied": "2026-05-20",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Xsolla-xsollafu/documents/resume.pdf",
+        "job_id": "xsolla-full-stack-developer",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/xsolla-full-stack-developer"
+      },
+      {
+        "company": "SingleStore",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-20",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/SingleStore-4231129/documents/resume.pdf",
+        "job_id": "4231129",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4231129-software-engineer"
+      },
+      {
+        "company": "GLOBO Language Solutions",
+        "position": "AI Platform Engineer",
+        "date_applied": "2026-05-20",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/GLOBO Language Solutions-3802482/documents/resume.pdf",
+        "job_id": "3802482",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/3802482-ai-platform-engineer"
+      },
+      {
+        "company": "pst.ag",
+        "position": "Agentic AI Engineer",
+        "date_applied": "2026-05-20",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/pst.ag-4212552/documents/resume.pdf",
+        "job_id": "4212552",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4212552-agentic-ai-engineer",
+        "submitted_at": "2026-05-21"
+      },
+      {
+        "company": "dresslife",
+        "position": "Full Stack Developer",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/dresslife-3289382/documents/resume.pdf",
+        "job_id": "3289382",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/3289382-full-stack-developer"
+      },
+      {
+        "company": "Cyreton",
+        "position": "Junior Backend Developer",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Cyreton-4230860/documents/resume.pdf",
+        "job_id": "4230860",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4230860-junior-backend-developer"
+      },
+      {
+        "company": "Holywater",
+        "position": "Full-Stack Developer",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Holywater-holywate/documents/resume.pdf",
+        "job_id": "holywater-full-stack-developer",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/holywater-full-stack-developer"
+      },
+      {
+        "company": "Remotely",
+        "position": "Full Stack Developer",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Remotely-remotely/documents/resume.pdf",
+        "job_id": "remotely-full-stack-developer",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/remotely-full-stack-developer"
+      },
+      {
+        "company": "Melotech",
+        "position": "Full-Stack Developer",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Melotech-melotech/documents/resume.pdf",
+        "job_id": "melotech-full-stack-developer",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/melotech-full-stack-developer"
+      },
+      {
+        "company": "Wubble.AI",
+        "position": "AI Engineer - AI Platform, Agentic Systems, and Applied Generative AI",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Wubble.AI-4238677/documents/resume.pdf",
+        "job_id": "4238677",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4238677-ai-engineer-ai-platform-agentic-systems-and-applied-generative-ai"
+      },
+      {
+        "company": "Wing Assistant",
+        "position": "Full-Stack Developer",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Wing Assistant-wingassi/documents/resume.pdf",
+        "job_id": "wing-assistant-full-stack-developer",
+        "source": "weworkremotely",
+        "url": "https://weworkremotely.com/remote-jobs/wing-assistant-full-stack-developer"
+      },
+      {
+        "company": "Wubble.AI",
+        "position": "AI Inference Engineer",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Wubble.AI-4072457/documents/resume.pdf",
+        "job_id": "4072457",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4072457-ai-inference-engineer"
+      },
+      {
+        "company": "Kami",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "High",
+        "pdf_path": "applications/active/Kami/documents/resume.pdf",
+        "source": "linkedin",
+        "job_id": "4395941390",
+        "url": "https://www.linkedin.com/jobs/view/4395941390/",
+        "apply_url": "https://kami.bamboohr.com/careers/126?source=LinkedIn"
+      },
+      {
+        "company": "Orion Health",
+        "position": "Expression of Interest: Software Engineers (Full Stack, Backend, Frontend)",
+        "date_applied": "2026-05-21",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Orion Health/documents/resume.pdf",
+        "source": "linkedin",
+        "job_id": "4417086156",
+        "url": "https://www.linkedin.com/jobs/view/4417086156/",
+        "apply_url": "https://www.linkedin.com/jobs/view/4417086156/"
       }
     ],
     "interviews": [],
     "offers": [],
-    "rejected": [],
+    "rejected": [
+      {
+        "company": "Fonterra",
+        "position": "Full Stack Developer",
+        "date_applied": "2026-05-16",
+        "status": "Rejected",
+        "priority": "High",
+        "pdf_path": "applications/archive/rejected/Fonterra/documents/resume.pdf",
+        "submitted_at": "2026-05-16",
+        "rejected_at": "2026-05-19"
+      },
+      {
+        "company": "Halter",
+        "position": "Software Engineers (All levels!)",
+        "date_applied": "2026-05-14",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/rejected/Halter/documents/resume.pdf",
+        "job_id": "91858494",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91858494?type=promoted&ref=search-standalone#sol=2d3e20ef454c07f9b696d358ff75c64c454f1fc9",
+        "submitted_at": "2026-05-15",
+        "rejected_at": "2026-05-20"
+      },
+      {
+        "company": "Bellroy",
+        "position": "Software Engineer - Functional Programming (AU & NZ)",
+        "date_applied": "2026-05-14",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/rejected/Bellroy/documents/resume.pdf",
+        "job_id": "erdu1sl82w0643qb",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/viewjob/erdu1sl82w0643qb",
+        "submitted_at": "2026-05-15",
+        "rejected_at": "2026-05-20"
+      }
+    ],
     "withdrawn": []
+  },
+  "seen": [
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91632278"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91841367"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4408352633"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91958084"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1599778"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "pierce-technology-corp-devops-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "gmsxwjl8oj8w90n3"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "comparis-ch-full-stack-software-developer-80-100-f-m-x"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92080108"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4409287509"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4413279903"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91900910"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92224926"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92085636"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92175968"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92083204"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "storetasker-senior-shopify-developer-remote-flexible-3"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4185288"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4411016097"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4322670594"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92056885"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4382152737"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "qta6kggctwpbx23r"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "machine-learning-engineer-training-optimization-canva"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "a4grzz80akf2z717"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "kool7it19nro1xi8"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91824178"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "screenpal-director-of-product-marketing"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "3dtpyy1k2kqba32e"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4163067"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4233947"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91689945"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92202971"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91660935"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "bazaarvoice-product-marketing-manager"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "a5ohdhio3bzdl0hi"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91828428"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "8f9wese9bw7g0sb8"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4234101"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "1xezdauhy5lzo0pu"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4407832740"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91990093"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4295126476"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92220221"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1612838"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4394708079"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92075578"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "af5nsvjlgtn3sg0z"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "69fvvl8ryzhjssym"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "pod2tfj816ct73rh"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4415420401"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "remotely-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "f6anu3sfp84dbdag"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91880862"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "j1pltcbhoatmth9n"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92027593"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4174427"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "emerchantpay-senior-devops-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "openx-intern-marketing-design"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91802546"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91807715"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91895771"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "hwnciwhqvqcwa046"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "06okqvxvlh7zbyic"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "wealth-com-senior-ux-product-designer"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4413902121"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92078859"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92123369"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92083220"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "op56w04wlm0g2p99"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4404388134"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4385095475"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1563723"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4200374843"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92123500"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4412960528"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92110538"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91824113"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92212355"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91881827"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4368509275"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4413183804"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92048603"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92133036"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4318516031"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "0vhhi79ce0lb4iwv"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92105655"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92099180"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92104651"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4411694509"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3605030"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "nomad-senior-software-engineer-ii"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "kb87ybueex5qos80"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "agb81gdbpyj30vnb"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92116389"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4152858"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4220338"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4366277294"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4411363124"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4185470"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92072321"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4155578"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92072877"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "2625080"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92230259"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91986856"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92218323"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91981827"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92107629"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91704907"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "united-tech-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "sprypoint-devops-engineer-iii-transformation-focus"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4406246698"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "wpr7x6uu6yv4zuhq"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4192058"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4318500721"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91780807"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4168110099"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "writesonic-product-support-specialist"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92217724"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4231129"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92187969"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4152859"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4201795"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4406545086"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4408693739"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "2vssz9rsekwr06zx"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "r28u5lhcipqvwshq"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4317736299"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "bounteous-sr-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1600669"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92213232"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92125443"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4210038"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91491597"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "h4ntl5kxvh4ox8xh"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "2x59kvjffaqaxayo"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92044182"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4412550458"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "w4ootqg6rgadttro"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "m1wzjy55g616faop"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1572535"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92217169"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4185454"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4370924021"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91991742"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4382188165"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4318512382"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1555758"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "4a5as06h9xduw2rz"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4413133352"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4025824"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91963050"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4400648385"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "hospitable-staff-ui-ux-product-designer-usa-emea-remote"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "j2752ahhzo0zssfy"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92142723"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92186868"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4147475"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4406517774"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4342706999"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92092889"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92192989"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "toptal-senior-director-of-product-growth"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4199851"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92123422"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4223430"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91695034"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4152877"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92211644"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "qw53cesuaiquorvz"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "constant-contact-software-engineering-manager-product-customer-data-platform"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91828519"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92193077"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92175869"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92090597"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "associate-software-engineer-engage-olo"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4369828463"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4215283"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4317742141"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4309050458"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4409666235"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "us1o0c6btsbzkgoq"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91687796"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4382179465"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4135672"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92110129"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "jimdo-senior-product-marketing-manager"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92004122"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4225535"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "02oea4axyx7a8zkz"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4404848924"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92088721"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92109005"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "lightyear-senior-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "igbeoftdylcq642z"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4399876387"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92213726"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4414981030"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4366676357"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "visualis-senior-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92023554"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "calibrate-group-ai-senior-technical-lead"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "a-team-senior-independent-software-developer-90-170-hr"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4134606"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4163045"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91905814"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4342839140"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4385090788"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4385601787"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "shiftforce-llc-full-stack-developer-net-react-azure-remote-us"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92070265"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91552514"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92071813"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91824157"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "particle41-devops-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1603226"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "binance-devops-engineer-trading-technology"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "workana-senior-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91991616"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4220340"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4335515701"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "nfnjhjqecdyg7q84"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4222490"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "stripe-product-manager-commerce-systems"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4406630230"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4384741958"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4416059384"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "7gwz2ilvhd9btrap"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92131663"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "oqqxehny3l4ovuoq"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4409108633"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91900518"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4118815"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91899345"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "cb7ydsa0ln1ubxqh"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92157774"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92105643"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4307272907"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92074423"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92110456"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91990587"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91888099"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92058708"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4344647002"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92078817"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92017174"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "3st2av2go8fxjm60"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92137096"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "d6tm69amyp54w5t1"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "raspberry-ai-senior-product-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "gii79hto9eanrqlz"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92097127"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92045195"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92185698"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "chief-rebel-full-stack-engineer-ai-forward"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91930400"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "booksy-customer-support-advisor"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "3zdkmlcttlxa317q"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "tabnine-senior-product-marketer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92035565"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91858078"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91831225"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "activate-talent-mobile-app-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92088782"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4383851194"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92169399"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "bncqf6w58msdebun"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "mind-friend-pro-website-admin-design-internship"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "6sense-vp-product-marketing"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "s-pro-senior-lead-devops-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92167669"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91850673"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "vanta-staff-product-designer-ai-powered-workflows"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "fjior8fh4gsel1ze"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "5ubtlcuioje47e07"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "associate-software-engineer-pay-web-olo"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "lucid-software-regulatory-product-counsel"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "rackspace-azure-devops-engineer-ii-iii"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4375447192"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4411408596"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4209773"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92108709"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92045178"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91661403"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91926480"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91981444"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92069854"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92157757"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "jskq52td9agmft5b"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91954614"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1577944"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91883959"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92157776"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "expqf6feki7g0as9"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92071841"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4318514021"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92095953"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92110388"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92076740"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91984183"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4404917320"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91895782"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91871430"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92047346"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "cresta-platform-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3802482"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "tm8wfpgghlc27z5c"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4404888636"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91899449"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92214163"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "d7k6764r2nfaxc82"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91775479"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "yz2s5f6un30vhfnx"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91696622"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "o7umwixzpm02hhhj"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "br9vo5nw2e2f6sol"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92089509"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4343275492"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92073447"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92158919"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92116333"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "m362omt0sgx8h90o"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4083844"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4072457"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "playlab-senior-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "stellar-ai-senior-software-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91903146"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "g8gk0006oq5rgr32"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92123540"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4416059385"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "machine-learning-engineer-i-personalization-minesweeper-spotify"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92100682"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91990078"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92219594"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91705131"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3748202"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "flosum-senior-product-manager-salesforce-platform"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4307261950"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "7bih7q2uf6zijejq"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4402011169"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92197814"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1566335"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "5dsvdim0w9dx0b5n"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4415006393"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4388191495"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4215400"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91996052"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4414271415"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "m3usa-senior-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91789343"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4410490335"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4397362264"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4375440526"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92104126"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4362794930"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4413434984"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "8v4wgvfl4cb48g0g"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92164315"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92194897"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92203157"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91909137"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "nqxw2yimz4k78ubh"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92102834"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91876283"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92089153"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4234114"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91746964"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "instacart-principal-product-manager-agentic-commerce"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4343087718"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "software-engineer-new-grads-welcome-mechanical-orchard"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "prolific-senior-product-designer"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4235671"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92086565"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91954980"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91897501"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3826633"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4278205755"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4324760732"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4405193852"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92028585"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "0s6wnxu4qvngm0ef"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92109034"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92195001"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4199849"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "m4703uqgyurcqpnn"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92129703"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "49uj84azz053gcj8"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4368832938"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91960475"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92213153"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4201811"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92096935"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3289382"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4215405"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92194871"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92184266"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3358293"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92025237"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "fm2q9stnzo0lhysj"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92072341"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4192025"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "clipp-com-full-stack-growth-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "w1r9tkasjm6st646"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3327406"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4318507192"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4233421"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "oowlish-technology-product-manager-growth-focused"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "nghgpp3ldzeondtt"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "appomni-senior-customer-support-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91823766"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "valon-tech-staff-product-security-engineer-customer-platform"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92165424"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "zfv6gwklx8tb826b"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "stp-one-senior-product-manager-m-f-d"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "wing-assistant-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91700009"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "junior-software-engineer-olx"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4121671"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3038650"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92150444"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4318503584"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "ozp70avfo8wygjcc"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92070690"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91959003"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91982834"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92100951"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91631004"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91805231"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "k8w43kctzc7azo3y"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "erdu1sl82w0643qb"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91712871"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92097206"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92106804"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "airalo-staff-data-analyst-product"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91898422"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92084483"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4204817"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4222486"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "stakefish-devops-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92083503"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "xg6gdpif0akpvxw9"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "welltech-product-growth-manager"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91957920"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "i5v4sze7fxdedaox"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "54ov0offevrwd3bs"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4230860"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91621066"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92153975"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "aqz1d2qyn1ptbjgk"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "lnfklx2fq56ur1lj"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "bnah8h2q1rn60w4f"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92225677"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91823569"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92157546"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4318299861"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91956101"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91985599"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4199850"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92026769"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4388574017"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4147328"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4317737281"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91996926"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4238677"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4408733488"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91605445"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91904762"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92193573"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92105947"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "1kdofopge5roz10o"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4210039"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92044383"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91757013"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92183573"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91693312"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4120486"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "agm8z2dansclwn0r"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4176477"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "hrseybomogt8m733"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1605532"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4225533"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "mitek-systems-product-owner-machine-learning"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92044871"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "dqo4q2a2tztfyq8p"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4185197"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4199911"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "2640236"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92158844"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92045529"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91940389"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92196290"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "walter-senior-fullstack-engineer-ruby-react"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92029344"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1589844"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1563175"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "cqafs5hwxwygpncd"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "xxsqrnzojchib0qt"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4220337"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91925145"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "createit-s-c-borkowski-bartosz-fredrych-aleksander-devops-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "pmqek5cemm6cutcj"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4212552"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4410722352"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4209825"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92189189"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4400321260"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "composio-member-of-technical-staff-product-eng"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92149323"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92005806"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92081765"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91806486"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91524107"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92082405"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1577874"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "cmf5ifhmppv16di6"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91898964"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91749819"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "h8m66nc67kqtzycw"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4262449742"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4205036"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1568802"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92075618"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "intellum-senior-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4413402497"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92126444"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91866170"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92109917"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4382335478"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4362291793"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3800554"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91882213"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92101140"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "holywater-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4382171686"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92045450"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4318517202"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92102688"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91571289"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91906067"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "sezzle-product-design-intern"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "walter-full-stack-engineering-lead"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "junior-developer-storyteller"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92073226"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92044591"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92091578"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4415085004"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "lemon-io-senior-full-stack-angular-php-developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "xf7dmjc07yw7mrfm"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92166402"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4410504607"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91663758"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4126155"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91858494"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4408251736"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4174544"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92073286"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92127204"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92046771"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4286307379"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "6lydyzwdtzne9db1"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92222651"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92193044"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92099200"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "softswiss-system-engineer-devops-senior"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "h4znn2grpl76041h"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "upstart-senior-software-engineer-new-product"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92187798"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "dsrq7sbde688lyvr"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4317589281"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92108381"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4408943168"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "rreihi9tmxtivg9v"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91771945"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91909077"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92098621"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3833421"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "jrkixinudfrzn2m9"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92157871"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "p838asdp1oair1dp"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91622348"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4411299806"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "infatica-io-product-manager"
+    },
+    {
+      "kind": "board",
+      "source": "one-nz-careers",
+      "job_id": "1360437266"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "r2wo4zosw6ln74fa"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91662896"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "sticker-mule-software-engineer-3"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4222482"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92048912"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91962800"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4411785850"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91904648"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92126962"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "codesignal-software-engineer-business-experience-1"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92213144"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4294278438"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91926300"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91985081"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91882289"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91992569"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92185661"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91662170"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "happyco-senior-product-designer"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4402209140"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "yxu1rb7qrhchl0j2"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92101640"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "4yagj0vq37od46ke"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92123388"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92185743"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "vanta-senior-product-designer-ai-platform"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "the-flex-senior-product-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91989874"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4317739206"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4385081891"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4303362468"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4386821182"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91656522"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92072546"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "71cs8on2owx3dccr"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3891101"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92159142"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92030496"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91874957"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91713080"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "european-dynamics-devops-engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91876707"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92088799"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91955613"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4268469897"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "jeff-murray-s-programming-shop-inc-experienced-software-developer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92070614"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4119018"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92090154"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "lemon-io-senior-full-stack-symfony-developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "w53pgrs70kjcbu2k"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "5xkmkne3mf4zh3gp"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4374354869"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91491952"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92107537"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91989453"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92088261"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92036771"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92088803"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91909123"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92074329"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4385084899"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "prop-firm-match-global-fzco-head-of-graphic-design"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4303624323"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92087169"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4410330264"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3544540"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4326815977"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "yn7yt4xb4t2ta5td"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92087804"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4333441113"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91688931"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4374457250"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1555296"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92109083"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4336047827"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4135525020"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92212968"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91959583"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92171868"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4201641"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4357612535"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91935256"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4131052"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "oben-technology-devops"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "x17czqapubqy9mdu"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "melotech-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "mvumr9duid791xci"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92191804"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92072538"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91545199"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1562937"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4185263"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "xsolla-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "jzuj2xndxk2i0lrw"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4152857"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92074483"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4121876"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "uddz0vehbvgtg66l"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92161504"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4040035"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "temporal-technologies-senior-staff-product-marketing-manager-ai"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "systabuild-software-group-junior-devops-engineer-m-w-d"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92107167"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4126070"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "bir5htlnx78i1ucu"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92135751"
+    }
+  ],
+  "skipped": [
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "w53pgrs70kjcbu2k"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91899449"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "agtecnic",
+      "position_lc": "software engineer - image processing"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92090597"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91858078"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91831225"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "xsolla-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "7gwz2ilvhd9btrap"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "natural selection group",
+      "position_lc": "junior c# + aws software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "pathfinder recruitment",
+      "position_lc": "fullstack developer - .net / kentico xperience"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "af5nsvjlgtn3sg0z"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "university of wisconsin-madison",
+      "position_lc": "student web developer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91491952"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "composio-member-of-technical-staff-product-eng"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "codesignal-software-engineer-business-experience-1"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "singlestore",
+      "position_lc": "software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "xsolla",
+      "position_lc": "full stack developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "golftec",
+      "position_lc": "software engineer (remote opportunity)"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92045195"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92100682"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "sandfield",
+      "position_lc": "web developer - ux/ui design specialist"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "private advertiser",
+      "position_lc": "website developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "tech mahindra ltd.",
+      "position_lc": "developer programmer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92123540"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "nqxw2yimz4k78ubh"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "virtuozzo",
+      "position_lc": "intern in frontend team"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4357612535"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "onesource virtual",
+      "position_lc": "associate full stack developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "5xkmkne3mf4zh3gp"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "chief rebel",
+      "position_lc": "full stack engineer (ai-forward)"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "0vhhi79ce0lb4iwv"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "codesignal",
+      "position_lc": "software engineer, business experience"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "bir5htlnx78i1ucu"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92107167"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "babyscripts",
+      "position_lc": "engineering intern"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "canonical",
+      "position_lc": "junior ubuntu software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "robert half technology",
+      "position_lc": "product engineer (ai native)"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92161504"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4231129"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "agm8z2dansclwn0r"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "49uj84azz053gcj8"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "expertech",
+      "position_lc": "quantitative software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "new relic",
+      "position_lc": "software engineer - react/typescript"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "cognizant",
+      "position_lc": "junior full stack developer (c# .net & azure)"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "us1o0c6btsbzkgoq"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "private advertiser",
+      "position_lc": "python/full-stack dev, 6 month+ contract"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "anz bank new zealand limited",
+      "position_lc": "software engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91823766"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "xapo bank",
+      "position_lc": "software engineer - graduate"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "blackpepper",
+      "position_lc": "intermediate front end developer – shopify"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92157871"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "simpro group",
+      "position_lc": "software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "picwa ltd",
+      "position_lc": "intermediate python developer (full stack)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "firmpilot",
+      "position_lc": "junior full-stack engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91693312"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "igbeoftdylcq642z"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "asrc federal",
+      "position_lc": "software developer intern"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "4163045"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91895782"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91689945"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "the pillar group limited",
+      "position_lc": "analyst programmer"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1563723"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91631004"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "cmf5ifhmppv16di6"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "arine",
+      "position_lc": "ai engineering summer intern"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "clover health",
+      "position_lc": "ux engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "esri",
+      "position_lc": "product engineer ii – web services"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91989874"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "sunstone talent",
+      "position_lc": "junior full stack web engineer (react / python / go)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "h&r block",
+      "position_lc": "associate software engineer, seasonal"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "enable",
+      "position_lc": "experienced engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "recruit i.t. auckland",
+      "position_lc": "full stack python developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "bnah8h2q1rn60w4f"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1568802"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "h4ntl5kxvh4ox8xh"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "w4ootqg6rgadttro"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "composio",
+      "position_lc": "member of technical staff - product eng"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "comspek international limited",
+      "position_lc": "power platform developer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91955613"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "phil",
+      "position_lc": "ai engineering intern"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "hubcore consulting limited",
+      "position_lc": "software engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91632278"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92056885"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "3dtpyy1k2kqba32e"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "a5ohdhio3bzdl0hi"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92187969"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "evolve recruitment group",
+      "position_lc": "java developer"
+    },
+    {
+      "kind": "board",
+      "source": "workingnomads",
+      "job_id": "1562937"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "mansell taylor consulting",
+      "position_lc": "frontend developer (react / geospatial visualisation)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "vituity",
+      "position_lc": "intern - software engineer backend"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4409666235"
+    },
+    {
+      "kind": "board",
+      "source": "weworkremotely",
+      "job_id": "chief-rebel-full-stack-engineer-ai-forward"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "ictx",
+      "position_lc": "software engineer – .net, sql & bi"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "mjh life sciences",
+      "position_lc": "associate product engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "canonical",
+      "position_lc": "graduate software engineer - open source and linux, canonical ubuntu"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92035565"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92023554"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "light pattern",
+      "position_lc": "tools programmer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92196290"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "zfv6gwklx8tb826b"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "teammate app limited",
+      "position_lc": "full stack developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "lemio",
+      "position_lc": "full-stack software developer / engineer for digital wellness mobile app"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "energyae",
+      "position_lc": "full stack software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "impiricus",
+      "position_lc": "software engineer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "p838asdp1oair1dp"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "propertyme",
+      "position_lc": "mid-level full stack engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91775479"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "wpr7x6uu6yv4zuhq"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "xxsqrnzojchib0qt"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "cisive",
+      "position_lc": "software development intern"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4410490335"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "caruso software limited",
+      "position_lc": "software engineer (agentic)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "new era technology",
+      "position_lc": "entry level support engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "hydrogen group pty ltd",
+      "position_lc": "api developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "dmi",
+      "position_lc": "software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "gosource",
+      "position_lc": "software developer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "d6tm69amyp54w5t1"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "yz2s5f6un30vhfnx"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "the burraga foundation",
+      "position_lc": "mid-level react developer (full stack environment)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "globo language solutions",
+      "position_lc": "ai/ml engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "globo language solutions",
+      "position_lc": "ai platform engineer"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "nfnjhjqecdyg7q84"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "contact energy",
+      "position_lc": "software engineer graduate programme 2027"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "kb87ybueex5qos80"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "54ov0offevrwd3bs"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92004122"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "evercommerce timely",
+      "position_lc": "software engineer"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91789343"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3802482"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92044383"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "volkswagen group digital solutions india",
+      "position_lc": "developer (9935)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "talent army – winner of medium recruitment agency of the year 2025",
+      "position_lc": "devops engineer (aws & azure)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "praxent",
+      "position_lc": "software engineer(s)"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "fm2q9stnzo0lhysj"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "pindrop",
+      "position_lc": "artificial intelligence (ai) engineer intern"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "91992569"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "g8gk0006oq5rgr32"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "breadcrumb digital",
+      "position_lc": "power platform developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "kernel",
+      "position_lc": "ai & automation specialist"
+    }
+  ],
+  "skip_details": [
+    {
+      "key": {
+        "kind": "board",
+        "source": "hiringcafe",
+        "job_id": "3dtpyy1k2kqba32e"
+      },
+      "company": "Agile5 Technologies",
+      "position": "Software Developer (Junior)",
+      "url": "https://hiring.cafe/job/3dtpyy1k2kqba32e",
+      "reason": "Ineligible: requires willingness to obtain Public Trust clearance and U.S. citizenship."
+    },
+    {
+      "key": {
+        "kind": "board",
+        "source": "seek",
+        "job_id": "91775479"
+      },
+      "company": "Private Advertiser",
+      "position": "Python/Full-Stack dev, 6 month+ contract",
+      "url": "https://nz.seek.com/job/91775479?type=promoted&ref=search-standalone&origin=cardTitle",
+      "reason": "User marked as skipped."
+    }
+  ],
+  "seen_jobs": {
+    "linkedin": [
+      "4395941390",
+      "4417086156"
+    ]
   }
 }

@@ -1,0 +1,615 @@
+{
+  "$schema": "https://rxresu.me/schema.json",
+  "version": "5.0.0",
+  "basics": {
+    "name": "Yushi Cui",
+    "headline": "Full-Stack Product Engineer building AI-powered tools and web applications",
+    "email": "realYushi@gmail.com",
+    "phone": "",
+    "location": "Auckland, New Zealand",
+    "website": {
+      "url": "https://github.com/realYushi",
+      "label": "GitHub"
+    },
+    "customFields": [
+      {
+        "id": "9crpa2nre5sswd99q1jzs8hf",
+        "icon": "globe",
+        "text": "me.yushi91.com",
+        "link": "https://me.yushi91.com"
+      },
+      {
+        "id": "mo8pgaj74iw9jpzczc6tezaa",
+        "icon": "book",
+        "text": "blog.yushi91.com",
+        "link": "https://blog.yushi91.com"
+      },
+      {
+        "id": "k7m2x9p4r1w6n3q8j5t0v2b4",
+        "icon": "check",
+        "text": "NZ Permanent Resident",
+        "link": ""
+      }
+    ]
+  },
+  "picture": {
+    "hidden": false,
+    "url": "",
+    "size": 80,
+    "rotation": 0,
+    "aspectRatio": 1,
+    "borderRadius": 0,
+    "borderColor": "rgba(0, 0, 0, 0.5)",
+    "borderWidth": 0,
+    "shadowColor": "rgba(0, 0, 0, 0.5)",
+    "shadowWidth": 0
+  },
+  "summary": {
+    "title": "Professional Summary",
+    "columns": 1,
+    "hidden": false,
+    "content": "<p>Full-stack product engineer at GrowLab Technologies building internal tools, client applications, and AI-powered workflows. Work across React, TypeScript, Node.js, .NET, and modern AI tooling to take ideas from prototype to production. AUT Computer and Information Sciences student graduating in July 2026 (GPA 7.75/9.0), with hands-on experience in web products, developer tooling, and applied AI.</p>"
+  },
+  "sections": {
+    "profiles": {
+      "title": "Profiles",
+      "columns": 1,
+      "hidden": true,
+      "items": [
+        {
+          "id": "po9qv6oa752mjiaru4hdgrq1",
+          "hidden": false,
+          "icon": "github",
+          "network": "GitHub",
+          "username": "realYushi",
+          "website": {
+            "url": "https://github.com/realYushi",
+            "label": "GitHub"
+          }
+        },
+        {
+          "id": "csndc74k59duazk8n2y33apa",
+          "hidden": false,
+          "icon": "linkedin",
+          "network": "LinkedIn",
+          "username": "yushi-cui-6043aa285",
+          "website": {
+            "url": "https://linkedin.com/in/yushi-c-6043aa285",
+            "label": "LinkedIn"
+          }
+        }
+      ]
+    },
+    "experience": {
+      "title": "Experience",
+      "columns": 1,
+      "hidden": false,
+      "items": [
+        {
+          "id": "f7h1k5n9p3r6t0v4x8z2a6d4",
+          "hidden": false,
+          "company": "GrowLab Technologies",
+          "position": "AI-Native Product Engineer & Full Stack Developer",
+          "location": "Auckland, New Zealand",
+          "period": "March 2026 - Present",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "<p>\u2022 Build internal tools and client-facing applications as a full-stack product engineer<br>\u2022 Design and integrate <strong>AI agents</strong> and models into workflows where they improve speed or usability<br>\u2022 Take ideas from quick prototypes through to production-ready features</p>",
+          "role": "Sole developer at an AI-native product studio, owning 0\u21921 delivery from product idea through deployment \u2014 full-stack development, product design, AI integration, and front-end/back-end architecture.",
+          "actions": "Designed and integrated AI agents and models into internal and client workflows. Made the product, design, and architecture calls end-to-end. Carried ideas from initial prototype to production-ready features without a hand-off.",
+          "impact": "",
+          "metrics": [],
+          "roles": []
+        },
+        {
+          "id": "g8j2l6n0p4r7t1v5x9z3b7e5",
+          "hidden": false,
+          "company": "Decoded Venture Studio",
+          "position": "Junior Developer",
+          "location": "Auckland, New Zealand",
+          "period": "October 2025 - December 2025",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "<p>\u2022 Built a full-stack coding agent platform using <strong>OpenAI Agent SDK</strong><br>\u2022 Developed the core agent to keep generated work aligned with technical specifications<br>\u2022 Set up AI-assisted review workflows that paired automation with human review</p>",
+          "role": "R&D engineer owning the coding-agent surface of a full-stack agent platform built on the OpenAI Agent SDK, from PRD through deployed code.",
+          "actions": "Designed the agent architecture and orchestration pipeline. Built the QA and testing layer that kept generated work aligned with technical specifications. Set up the human-in-the-loop review flow pairing automation with reviewer judgment.",
+          "impact": "",
+          "metrics": [],
+          "roles": []
+        },
+        {
+          "id": "tt1pqgj3nn10rg8q28lnxosy",
+          "hidden": false,
+          "company": "HALO Systems by Tag IT",
+          "position": "Software Engineer Intern",
+          "location": "Auckland, New Zealand",
+          "period": "December 2024 - February 2025",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "<p>\u2022 Built real-time <strong>HMI dashboard</strong> for agricultural effluent control with Vue.js, TypeScript, and Mapbox<br>\u2022 Created <strong>GeoJSON visualization</strong> showing live sensor data on farm maps<br>\u2022 Developed SVG component library now used across multiple client sites</p>",
+          "role": "First software engineering role \u2014 internship building a real-time HMI dashboard for agricultural effluent control.",
+          "actions": "Built the dashboard with Vue.js, TypeScript, and Mapbox. Implemented GeoJSON visualization for live farm-map sensor data. Authored an SVG component library.",
+          "impact": "SVG component library reused across multiple client sites.",
+          "metrics": [],
+          "roles": []
+        },
+        {
+          "id": "tk0gcw96ank06u28slrkqq7x",
+          "hidden": false,
+          "company": "Costas Taverna Greek Restaurant",
+          "position": "Chef De Partie",
+          "location": "Christchurch, Canterbury, New Zealand",
+          "period": "June 2019 - November 2022",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "<p>\u2022 Managed kitchen team of 5 during dinner service<br>\u2022 Reorganized prep workflow to reduce bottlenecks<br>\u2022 Handled high-pressure situations and maintained quality standards</p>",
+          "role": "Chef de partie on the dinner service line at a Greek restaurant.",
+          "actions": "Managed a kitchen team during dinner service. Reorganized prep workflow to reduce bottlenecks under sustained time pressure.",
+          "impact": "",
+          "metrics": [
+            "Team of 5"
+          ],
+          "roles": []
+        }
+      ]
+    },
+    "education": {
+      "title": "Education",
+      "columns": 1,
+      "hidden": false,
+      "items": [
+        {
+          "id": "931l29t19zlb0dbygz1x7gka",
+          "hidden": false,
+          "school": "Auckland University of Technology",
+          "degree": "Bachelor of Computer and Information Sciences",
+          "area": "Computer Science",
+          "grade": "GPA: 7.75/9.0",
+          "location": "Auckland, New Zealand",
+          "period": "July 2023 - July 2026 (Expected)",
+          "website": {
+            "url": "https://www.myequals.net/r/sharelink/fc37c3dd-0108-419f-a8d8-dc283c6f5c11/4c3d3151-ccbb-4515-b0f2-98a437ee2f60",
+            "label": "Official Transcript"
+          },
+          "description": "Bachelor of Computer and Information Sciences"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "columns": 1,
+      "hidden": false,
+      "items": [
+        {
+          "id": "trh1k5n9p3r6t0v4x8z2a6d5",
+          "hidden": false,
+          "name": "Truss House: Website Redesign + RAG Chatbot",
+          "period": "GrowLab Technologies Client Project",
+          "website": {
+            "url": "https://www.trusshouse.org/",
+            "label": "trusshouse.org"
+          },
+          "description": "<p>\u2022 Rebuilt marketing site for NZ construction-tech client using <strong>Astro</strong> and <strong>Tailwind CSS</strong> with trade-focused aesthetic<br>\u2022 Shipped customer-facing <strong>RAG chatbot</strong> as separate <strong>Next.js</strong> app on Vercel with semantic search and embeddings over product docs<br>\u2022 Engineered lazy-loaded chatbot widget for zero impact on marketing site's initial page load</p>",
+          "role": "Delivered at GrowLab for Truss House, an NZ construction-tech company \u2014 marketing site rebuild plus a customer-facing AI assistant that answers product questions from their documentation.",
+          "actions": "Rebuilt the site with Astro and Tailwind CSS in a calmer, trade-focused aesthetic. Built the chatbot as a separate Next.js app on Vercel with semantic search and embeddings over their product content.",
+          "impact": "Lazy-loaded chatbot widget keeps zero impact on the marketing site's initial page load.",
+          "metrics": []
+        },
+        {
+          "id": "rmisnlmkojxe219kaui6kkxc",
+          "hidden": true,
+          "name": "Full-Stack Todo List Application",
+          "period": "Personal Project",
+          "website": {
+            "url": "https://github.com/realYushi/todo-list",
+            "label": "GitHub"
+          },
+          "description": "<p>\u2022 Built task manager with <strong>React/TypeScript</strong> frontend and <strong>.NET Core</strong> backend<br>\u2022 Deployed to Azure with <strong>GitHub Actions CI/CD</strong> pipeline<br>\u2022 Maintains stable uptime in production</p>",
+          "role": "Personal full-stack task manager with a React/TypeScript front end and a .NET Core back end.",
+          "actions": "Built the app end-to-end. Deployed to Azure through a GitHub Actions CI/CD pipeline.",
+          "impact": "",
+          "metrics": []
+        },
+        {
+          "id": "gtd1k5n9p3r6t0v4x8z2a6e7",
+          "hidden": false,
+          "name": "My GTD Buddy: Claude Code Skill",
+          "period": "Personal Project",
+          "website": {
+            "url": "https://github.com/realYushi/my-gtd-buddy",
+            "label": "GitHub"
+          },
+          "description": "<p>\u2022 Built a Reminders-native <strong>Getting Things Done (GTD)</strong> workflow as a <strong>Claude Code Skill</strong> with mode-based routing (process, coach, review, health)<br>\u2022 Wrapped Apple Reminders and macOS Calendar via <strong>AppleScript</strong> shell scripts with <strong>yq</strong>-driven YAML state for trend and velocity tracking<br>\u2022 Designed context- and energy-aware task selection with historical pattern detection and undo support</p>",
+          "role": "Reminders-native GTD workflow shipped as a Claude Code Skill.",
+          "actions": "Wrapped Apple Reminders and macOS Calendar via AppleScript shell scripts with yq-driven YAML state. Designed mode-based routing (process, coach, review, health) and context- and energy-aware task selection with undo support.",
+          "impact": "Now drives my daily task management \u2014 used continuously across personal and work tasks.",
+          "metrics": []
+        },
+        {
+          "id": "amk1k5n9p3r6t0v4x8z2a6f8",
+          "hidden": false,
+          "name": "Mini AI App Builder",
+          "period": "Personal Project",
+          "website": {
+            "url": "https://my-app-maker.yushi91.com/",
+            "label": "Live Demo"
+          },
+          "description": "<p>\u2022 Full-stack TypeScript app that turns natural language descriptions into structured app requirements and <strong>generates mock UIs</strong> via <strong>Google Gemini API</strong><br>\u2022 <strong>React 18 + Vite + Tailwind</strong> frontend with <strong>Node.js/Express</strong> backend in a <strong>Turbo monorepo</strong><br>\u2022 357 tests across Jest and Vitest, deployed to production with custom domain</p>",
+          "role": "Full-stack TypeScript app that turns natural-language descriptions into structured app requirements and mock UIs.",
+          "actions": "Built the React 18 + Vite + Tailwind frontend and the Node.js/Express backend in a Turbo monorepo. Integrated Google Gemini for generation.",
+          "impact": "Deployed to production with a custom domain.",
+          "metrics": [
+            "357 tests (Jest + Vitest)"
+          ]
+        }
+      ]
+    },
+    "skills": {
+      "title": "Skills",
+      "columns": 2,
+      "hidden": false,
+      "items": [
+        {
+          "id": "h3f7k1m9p5r2w8n4q6j0t3v1",
+          "hidden": false,
+          "icon": "code",
+          "name": "Frontend",
+          "proficiency": "Advanced",
+          "level": 5,
+          "keywords": [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Vue.js",
+            "Tailwind CSS",
+            "Astro",
+            "SCSS"
+          ]
+        },
+        {
+          "id": "b2d6g0j4l8n1p5r9t3v7x0z2",
+          "hidden": false,
+          "icon": "server",
+          "name": "Backend",
+          "proficiency": "Advanced",
+          "level": 5,
+          "keywords": [
+            "Node.js",
+            ".NET Core",
+            "Python",
+            "C#",
+            "NestJS"
+          ]
+        },
+        {
+          "id": "c4e8h2k6n0p3r7t1v5x9z3a1",
+          "hidden": false,
+          "icon": "wrench",
+          "name": "DevOps",
+          "proficiency": "Advanced",
+          "level": 4,
+          "keywords": [
+            "Docker",
+            "GitHub Actions",
+            "Azure",
+            "Git"
+          ]
+        },
+        {
+          "id": "d5f9h3k7n1p4r8t2v6x0z4b2",
+          "hidden": false,
+          "icon": "database",
+          "name": "Database",
+          "proficiency": "Advanced",
+          "level": 4,
+          "keywords": [
+            "MongoDB",
+            "SQL Server",
+            "PostgreSQL",
+            "Firebase",
+            "Mapbox",
+            "GeoJSON"
+          ]
+        },
+        {
+          "id": "e6g0j4l8n2p5r9t3v7x1z5c3",
+          "hidden": false,
+          "icon": "brain",
+          "name": "AI Development",
+          "proficiency": "Advanced",
+          "level": 5,
+          "keywords": [
+            "Claude Code",
+            "Codex",
+            "Gemini CLI",
+            "Prompt Engineering",
+            "Context Engineering",
+            "Agent Skills",
+            "MCP Servers",
+            "Spec-Driven Software Development",
+            "AI Agents",
+            "Multi-agent Systems",
+            "RAG",
+            "Product Development",
+            "Full-Stack Development",
+            "OpenAI Agent SDK"
+          ]
+        }
+      ]
+    },
+    "languages": {
+      "title": "Languages",
+      "columns": 2,
+      "hidden": false,
+      "items": [
+        {
+          "id": "387ok7jq3016sgmujyimaqlf",
+          "hidden": false,
+          "language": "English",
+          "fluency": "Professional working proficiency",
+          "level": 4
+        },
+        {
+          "id": "wb31qlosfluizom1jf04lbw2",
+          "hidden": false,
+          "language": "Chinese (Mandarin)",
+          "fluency": "Native speaker",
+          "level": 5
+        }
+      ]
+    },
+    "interests": {
+      "title": "Interests",
+      "columns": 1,
+      "hidden": true,
+      "items": [
+        {
+          "id": "685so3aoeitwt6vlf8gsxdf3",
+          "hidden": false,
+          "icon": "lightbulb",
+          "name": "Technology & Professional Development",
+          "keywords": [
+            "Software Development",
+            "Emerging Technologies",
+            "Best Practices"
+          ]
+        },
+        {
+          "id": "rwiezo1106lqay6edf8d4iwa",
+          "hidden": false,
+          "icon": "utensils",
+          "name": "Culinary Arts",
+          "keywords": [
+            "Creative Problem-Solving",
+            "Precision",
+            "Leadership"
+          ]
+        },
+        {
+          "id": "8bkoq43az9tgl2y6gjqddge4",
+          "hidden": false,
+          "icon": "puzzle",
+          "name": "Problem Solving",
+          "keywords": [
+            "Coding Challenges",
+            "Technical Workshops",
+            "LeetCode"
+          ]
+        },
+        {
+          "id": "63y680150ax4usilglcohwna",
+          "hidden": false,
+          "icon": "book",
+          "name": "Continuous Learning",
+          "keywords": [
+            "Cloud Computing",
+            "Software Architecture",
+            "Certifications"
+          ]
+        }
+      ]
+    },
+    "awards": {
+      "title": "Awards",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    },
+    "certifications": {
+      "title": "Certifications",
+      "columns": 1,
+      "hidden": false,
+      "items": [
+        {
+          "id": "6xolgwjf298gcnq00jjaorpn",
+          "hidden": false,
+          "title": "Microsoft Azure AI Fundamentals (AI-900)",
+          "issuer": "Microsoft",
+          "date": "2024",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "AI and machine learning concepts on Azure platform"
+        },
+        {
+          "id": "j0l4n8p2r5t9v3x7z1a5c9f6",
+          "hidden": false,
+          "title": "GitHub Foundations",
+          "issuer": "GitHub",
+          "date": "2025",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "GitHub Foundations Certification"
+        },
+        {
+          "id": "k1m5n9p3r6t0v4x8z2b6d0g7",
+          "hidden": false,
+          "title": "Scrum: The Basics",
+          "issuer": "LinkedIn Learning",
+          "date": "2025",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "Scrum Fundamentals"
+        },
+        {
+          "id": "a1b2c3d4e5f6g7h8i9j0k1l2",
+          "hidden": false,
+          "title": "Introduction to Model Context Protocol",
+          "issuer": "Anthropic",
+          "date": "2026",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "MCP protocol for AI agent tool integration"
+        },
+        {
+          "id": "b2c3d4e5f6g7h8i9j0k1l2m3",
+          "hidden": false,
+          "title": "Building with the Claude API",
+          "issuer": "Anthropic",
+          "date": "2026",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "Claude API integration and development"
+        },
+        {
+          "id": "c3d4e5f6g7h8i9j0k1l2m3n4",
+          "hidden": false,
+          "title": "AI Fluency Framework & Foundations",
+          "issuer": "Anthropic",
+          "date": "2026",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "AI fluency and foundational concepts"
+        },
+        {
+          "id": "d4e5f6g7h8i9j0k1l2m3n4o5",
+          "hidden": false,
+          "title": "Claude 101",
+          "issuer": "Anthropic",
+          "date": "2026",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "Claude fundamentals and best practices"
+        },
+        {
+          "id": "e5f6g7h8i9j0k1l2m3n4o5p6",
+          "hidden": false,
+          "title": "Claude Code in Action",
+          "issuer": "Anthropic",
+          "date": "2026",
+          "website": {
+            "url": "",
+            "label": ""
+          },
+          "description": "Spec-Driven Software Development"
+        }
+      ]
+    },
+    "publications": {
+      "title": "Publications",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    },
+    "volunteer": {
+      "title": "Volunteering",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    },
+    "references": {
+      "title": "References",
+      "columns": 1,
+      "hidden": true,
+      "items": []
+    }
+  },
+  "customSections": [],
+  "metadata": {
+    "template": "ditto",
+    "layout": {
+      "sidebarWidth": 35,
+      "pages": [
+        {
+          "fullWidth": false,
+          "main": [
+            "summary",
+            "experience",
+            "education",
+            "projects"
+          ],
+          "sidebar": [
+            "skills",
+            "certifications",
+            "languages"
+          ]
+        }
+      ]
+    },
+    "css": {
+      "enabled": false,
+      "value": ""
+    },
+    "page": {
+      "gapX": 4,
+      "gapY": 7,
+      "marginX": 14,
+      "marginY": 16,
+      "format": "a4",
+      "locale": "en-US",
+      "hideIcons": false
+    },
+    "design": {
+      "level": {
+        "icon": "star",
+        "type": "circle"
+      },
+      "colors": {
+        "primary": "rgba(37, 99, 235, 1)",
+        "text": "rgba(26, 26, 26, 1)",
+        "background": "rgba(255, 255, 255, 1)"
+      }
+    },
+    "typography": {
+      "body": {
+        "fontFamily": "Inter",
+        "fontWeights": [
+          "400",
+          "500"
+        ],
+        "fontSize": 11,
+        "lineHeight": 1.5
+      },
+      "heading": {
+        "fontFamily": "Inter",
+        "fontWeights": [
+          "600"
+        ],
+        "fontSize": 13,
+        "lineHeight": 1.4
+      }
+    },
+    "notes": "Customized for GLOBO Language Solutions"
+  }
+}
