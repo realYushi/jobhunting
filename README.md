@@ -122,10 +122,78 @@ Requires `typst` on PATH for local PDF rendering:
 brew install typst
 ```
 
-## Scraping Browser
+## Browser Harness Setup
 
-`browser-harness` connects to your local Chrome via CDP. Make sure Chrome is
-running with remote debugging enabled before invoking the pipeline.
+The scrapers use `browser-harness` to control your real Chrome browser through
+Chrome DevTools Protocol (CDP). This lets LinkedIn and other sites use your
+normal logged-in browser session.
+
+### 1. Install `browser-harness`
+
+Install the CLI if it is not already on PATH:
+
+```bash
+npm install -g browser-harness
+# or, if you use Bun globally
+bun add -g browser-harness
+```
+
+Check that the command is available:
+
+```bash
+browser-harness --help
+```
+
+### 2. Start Chrome with remote debugging
+
+Close any existing Chrome instance, then start Chrome with a CDP port:
+
+```bash
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
+  --remote-debugging-port=9222 \
+  --user-data-dir="$HOME/.chrome-jobhunting"
+```
+
+The separate `--user-data-dir` avoids fighting your normal Chrome process. Log
+in to LinkedIn or any other job board inside this Chrome window before running
+scrapers that need an authenticated session.
+
+### 3. Verify CDP is reachable
+
+Open this URL in any browser:
+
+```text
+http://localhost:9222/json/version
+```
+
+You should see a JSON response with Chrome and DevTools metadata.
+
+### 4. Verify `browser-harness` can see tabs
+
+Run a tiny harness command:
+
+```bash
+browser-harness <<'PY'
+print(list_tabs())
+PY
+```
+
+If it prints a list of tabs, the pipeline can use the browser.
+
+### 5. Run a scraper smoke test
+
+```bash
+python3 tools/pipeline.py --dry-run --source linkedin --scrape-only /tmp/linkedin.json
+```
+
+Troubleshooting:
+
+- `browser-harness not found on PATH`: install the CLI or open a shell where the
+  global npm/Bun bin directory is on PATH.
+- connection refused / no tabs: Chrome is not running with
+  `--remote-debugging-port=9222`, or another Chrome instance took over.
+- LinkedIn returns empty or login content: open LinkedIn in the remote-debugging
+  Chrome window and log in manually first.
 
 ## Tests
 
