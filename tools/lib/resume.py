@@ -3,31 +3,23 @@
 from __future__ import annotations
 
 import json
-from functools import lru_cache
 from pathlib import Path
 
 from .paths import base_resume_path, project_root
+from .scoring import load_role_configs
 
 
 class ResumeError(Exception):
     """Raised when resume input is missing or malformed."""
 
 
-@lru_cache(maxsize=1)
-def _load_role_configs() -> dict:
-    """Load and cache role configurations from the external JSON file."""
-    config_path = Path(__file__).resolve().parents[1] / "role-configs.json"
-    with open(config_path) as f:
-        return json.load(f)
-
-
 def _get_configs() -> tuple[dict, dict[str, str], dict[str, str]]:
-    cfg = _load_role_configs()
+    cfg = load_role_configs()
     return cfg["roles"], cfg["keyword_to_group"], cfg["role_default_group"]
 
 
 def _get_synonyms() -> dict[str, str]:
-    return _load_role_configs().get("synonyms", {})
+    return load_role_configs().get("synonyms", {})
 
 
 def _canon(keyword: str, synonyms: dict[str, str]) -> str:

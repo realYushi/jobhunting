@@ -13,6 +13,7 @@ from .paths import (
     active_dir,
     archive_dir,
     company_dirname,
+    inbox_path as default_inbox_path,
     tracker_path as tracker_file,
 )
 from .tracker import key_for_app_dict, load_tracker, mark_skipped_key, save_tracker
@@ -327,7 +328,7 @@ def reconcile(
     Returns the list of actions taken.
     """
     if inbox_path is None:
-        inbox_path = root / "applications" / "INBOX.md"
+        inbox_path = default_inbox_path(root)
 
     items = parse_inbox(inbox_path)
     tracker = load_tracker(tracker_file(root))

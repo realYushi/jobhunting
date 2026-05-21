@@ -7,51 +7,16 @@ from browser_harness import *
 # Params: url, pre_extract
 # pre_extract is a Python snippet (possibly empty) that runs after navigation
 # but before extraction. Used by hiring.cafe to click into the JD tab.
-goto_url("$url")
+#
+# Uses new_tab (not goto_url) so concurrent jd-fetch subprocesses each get
+# their own isolated tab — required for parallel JD fetching from pipeline.py.
+_tab_id = new_tab("$url")
 wait_for_load()
 wait(2)
 exec(r'''$pre_extract''')
 jd_text = js(r"""
 (() => {
-    function seekReduxDataFromHtml() {
-        const marker = 'window.SEEK_REDUX_DATA = ';
-        const html = document.documentElement?.outerHTML || '';
-        const markerIndex = html.indexOf(marker);
-        if (markerIndex < 0) return null;
-
-        const start = markerIndex + marker.length;
-        let depth = 0;
-        let inString = false;
-        let escaped = false;
-        for (let i = start; i < html.length; i++) {
-            const ch = html[i];
-            if (inString) {
-                if (escaped) {
-                    escaped = false;
-                } else if (ch === '\\') {
-                    escaped = true;
-                } else if (ch === '"') {
-                    inString = false;
-                }
-                continue;
-            }
-            if (ch === '"') {
-                inString = true;
-            } else if (ch === '{') {
-                depth += 1;
-            } else if (ch === '}') {
-                depth -= 1;
-                if (depth === 0) {
-                    try {
-                        return JSON.parse(html.slice(start, i + 1));
-                    } catch (_) {
-                        return null;
-                    }
-                }
-            }
-        }
-        return null;
-    }
+    $js_helpers
 
     function htmlToText(html) {
         const el = document.createElement('div');
@@ -93,3 +58,9 @@ jd_text = js(r"""
 """)
 
 print(json.dumps({"jd": jd_text}))
+
+# Close the tab we opened so concurrent fetches don't accumulate stale tabs.
+try:
+    cdp("Target.closeTarget", targetId=_tab_id)
+except Exception:
+    pass

@@ -12,7 +12,7 @@ from __future__ import annotations
 import sys
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Callable
 
 from lib.harness_utils import load_script, parse_harness_json_output, run_harness
 from lib.identity import ManualKey
@@ -79,60 +79,34 @@ def smart_scrape(
 
     all_listings: list[JobListing] = []
 
-    # Group profiles by source
+    # Group profiles by source so we know which sources to scrape.
     source_profiles = defaultdict(list)
     for profile in profiles:
         sources = profile.get("sources", ["linkedin", "seek"])
         for source in sources:
             source_profiles[source].append(profile)
 
-    # Sources whose URLs are hardcoded (independent of per-profile keywords).
-    # For these, we scrape once total per run regardless of how many profiles
-    # reference them.
-    URL_FIXED_SOURCES = {
-        "linkedin",
-        "seek",
-        "hiringcafe",
-        "workingnomads",
-        "wellfound",
-        "weworkremotely",
-    }
-
-    # Scrape each source
+    # Scrape each source. All current sources have URL-fixed search params,
+    # so per-profile keywords/location don't influence the scrape — we run
+    # one pass per source regardless of how many profiles target it.
     for source, profs in source_profiles.items():
+        if not profs:
+            continue
         print(f"\nScraping {source}...", file=sys.stderr)
 
-        for profile in profs:
-            keywords = profile.get("keywords", [])
-            location = profile.get("location", "")
-            remote = profile.get("remote", False)
-            experience = profile.get("experience_level", "mid")
+        source_listings = _scrape_source(
+            source,
+            max_per_source,
+            seen_jobs if stop_at_overlap else None,
+        )
+        all_listings.extend(source_listings)
 
-            source_listings = _scrape_source(
-                source,
-                keywords,
-                location,
-                remote,
-                experience,
-                max_per_source,
-                seen_jobs if stop_at_overlap else None,
-            )
-
-            all_listings.extend(source_listings)
-
-            # Optional: stop if we've hit overlap point
-            if stop_at_overlap and source_listings:
-                # Check if last few are all seen
-                recent = source_listings[-min(5, len(source_listings)) :]
-                if all(is_seen_key(tracker, lst.key) for lst in recent):
-                    print(
-                        "  Reached overlap point, stopping pagination", file=sys.stderr
-                    )
-                    break
-
-            # Hardcoded-URL sources are identical across profiles — one pass is enough.
-            if source in URL_FIXED_SOURCES:
-                break
+        if stop_at_overlap and source_listings:
+            recent = source_listings[-min(5, len(source_listings)) :]
+            if all(is_seen_key(tracker, lst.key) for lst in recent):
+                print(
+                    "  Reached overlap point, stopping pagination", file=sys.stderr
+                )
 
     # Global dedup within this run
     before_dedup = len(all_listings)
@@ -178,115 +152,81 @@ def smart_scrape(
     return new_listings, summary
 
 
-def _scrape_source(
+def _parse_jobs(
+    stdout: str,
     source: str,
-    keywords: list[str],
-    location: str,
-    remote: bool,
-    experience: str,
+    recent_filter: Callable[[str | None], bool] | None = None,
+) -> list[JobListing]:
+    """Build JobListings from one harness run's stdout.
+
+    `recent_filter` (when supplied) drops postings whose `posted` text fails
+    the source-specific recency check (wellfound, weworkremotely).
+    """
+    out: list[JobListing] = []
+    for data in parse_harness_json_output(stdout):
+        if "jobs" not in data:
+            continue
+        for job in data["jobs"]:
+            job_id = job.get("job_id")
+            if not job_id:
+                continue
+            if recent_filter is not None and not recent_filter(job.get("posted")):
+                continue
+            out.append(
+                JobListing(
+                    job_id=str(job_id),
+                    source=source,
+                    url=job["url"],
+                    title=job.get("title") or "Unknown",
+                    company=job.get("company") or "Unknown",
+                    snippet=job.get("snippet", ""),
+                    posted=job.get("posted"),
+                    location=job.get("location") or None,
+                )
+            )
+    return out
+
+
+def _scrape_paginated(
+    source: str,
+    base_urls: tuple[str, ...],
+    script_name: str,
+    page_url: Callable[[str, int], str],
     max_results: int,
     seen_jobs: dict[str, set[str]] | None,
+    *,
+    first_page: int = 1,
+    max_pages: int = 3,
+    log_prefix: str | None = None,
+    recent_filter: Callable[[str | None], bool] | None = None,
 ) -> list[JobListing]:
-    """Scrape a single source with pagination support.
+    """Generic per-URL paginator shared by URL-fixed sources.
 
-    If seen_jobs is provided, stops when reaching overlap.
+    Pagination is bounded by `max_pages` per base URL; we stop early when a
+    page returns no listings, when every listing on a page has been seen
+    before (overlap), or when the harness call fails.
     """
-    if source == "linkedin":
-        return _scrape_linkedin_paginated(
-            keywords, location, remote, experience, max_results, seen_jobs
-        )
-    elif source == "seek":
-        return _scrape_seek_paginated(
-            keywords, location, remote, experience, max_results, seen_jobs
-        )
-    elif source == "hiringcafe":
-        return _scrape_hiringcafe_paginated(
-            keywords, location, remote, experience, max_results, seen_jobs
-        )
-    elif source == "workingnomads":
-        return _scrape_workingnomads_paginated(
-            keywords, location, remote, experience, max_results, seen_jobs
-        )
-    elif source == "wellfound":
-        return _scrape_wellfound_paginated(
-            keywords, location, remote, experience, max_results, seen_jobs
-        )
-    elif source == "weworkremotely":
-        return _scrape_weworkremotely(
-            keywords, location, remote, experience, max_results, seen_jobs
-        )
-    else:
-        print(f"  Unknown source: {source}", file=sys.stderr)
-        return []
-
-
-_LINKEDIN_BASE_URLS: tuple[str, ...] = (
-    # Auckland — Software Engineer, entry/associate level, full-time, last 30 days.
-    "https://www.linkedin.com/jobs/search"
-    "?keywords=Software%20Engineer"
-    "&location=Auckland"
-    "&geoId=100749476"
-    "&distance=25"
-    "&f_TPR=r2592000"
-    "&f_JT=F"
-    "&f_E=2%2C3"
-    "&f_PP=100749476"
-    "&sortBy=DD",
-)
-
-
-def _scrape_linkedin_paginated(
-    keywords: list[str],
-    location: str,
-    remote: bool,
-    experience: str,
-    max_results: int,
-    seen_jobs: dict[str, set[str]] | None,
-) -> list[JobListing]:
-    """Scrape LinkedIn using fixed pre-filtered URLs.
-
-    Per-profile keywords/location/remote/experience are ignored — the URLs
-    already encode the target tracks. Pagination via &start=N (25 per page).
-    """
-    seen = seen_jobs.get("linkedin", set()) if seen_jobs else set()
-
+    seen = seen_jobs.get(source, set()) if seen_jobs else set()
     listings: list[JobListing] = []
 
-    for base_search_url in _LINKEDIN_BASE_URLS:
+    for base_url in base_urls:
         if len(listings) >= max_results:
             break
-        print(f"  LinkedIn base: {base_search_url[:60]}...", file=sys.stderr)
-        page = 0
+        if log_prefix:
+            print(f"  {log_prefix}: {base_url[:60]}...", file=sys.stderr)
 
-        while len(listings) < max_results:
-            start = page * 25
-            url = f"{base_search_url}&start={start}"
-
-            stdout, stderr, retcode = run_harness(
-                load_script("linkedin-list", url=url, page=page),
-                timeout=120,
+        for page_offset in range(max_pages):
+            if len(listings) >= max_results:
+                break
+            page = first_page + page_offset
+            url = page_url(base_url, page)
+            stdout, _stderr, retcode = run_harness(
+                load_script(script_name, url=url, page=page), timeout=120
             )
-
             if retcode != 0:
                 break
 
-            page_listings = []
-            for data in parse_harness_json_output(stdout):
-                if "jobs" in data:
-                    for job in data["jobs"]:
-                        page_listings.append(
-                            JobListing(
-                                job_id=job["job_id"],
-                                source="linkedin",
-                                url=job["url"],
-                                title=job.get("title", "Unknown"),
-                                company=job.get("company") or "Unknown",
-                                snippet="",
-                                posted=None,
-                                location=job.get("location"),
-                            )
-                        )
-
+            page_listings = _parse_jobs(stdout, source, recent_filter)
             if not page_listings:
                 break
 
@@ -302,11 +242,78 @@ def _scrape_linkedin_paginated(
             else:
                 listings.extend(page_listings)
 
-            page += 1
-            if page >= 3:
-                break
-
     return listings[:max_results]
+
+
+def _append_page_param(base: str, page: int) -> str:
+    """Add `page=N` with the right separator; preserves the base URL when page == 1."""
+    if page == 1:
+        return base
+    sep = "&" if "?" in base else "?"
+    return f"{base}{sep}page={page}"
+
+
+def _scrape_source(
+    source: str,
+    max_results: int,
+    seen_jobs: dict[str, set[str]] | None,
+) -> list[JobListing]:
+    """Scrape a single source with pagination support.
+
+    If seen_jobs is provided, stops when reaching overlap.
+    """
+    if source == "linkedin":
+        return _scrape_paginated(
+            "linkedin",
+            _LINKEDIN_BASE_URLS,
+            "linkedin-list",
+            lambda base, page: f"{base}&start={(page - 1) * 25}",
+            max_results,
+            seen_jobs,
+            log_prefix="LinkedIn base",
+        )
+    if source == "seek":
+        return _scrape_paginated(
+            "seek",
+            _SEEK_BASE_URLS,
+            "seek-list",
+            _append_page_param,
+            max_results,
+            seen_jobs,
+            log_prefix="Seek base",
+        )
+    if source == "hiringcafe":
+        return _scrape_hiringcafe_paginated(max_results, seen_jobs)
+    if source == "workingnomads":
+        return _scrape_paginated(
+            "workingnomads",
+            (_WORKINGNOMADS_SEARCH_URL,),
+            "workingnomads-list",
+            _append_page_param,
+            max_results,
+            seen_jobs,
+        )
+    if source == "wellfound":
+        return _scrape_wellfound_paginated(max_results, seen_jobs)
+    if source == "weworkremotely":
+        return _scrape_weworkremotely(max_results, seen_jobs)
+    print(f"  Unknown source: {source}", file=sys.stderr)
+    return []
+
+
+_LINKEDIN_BASE_URLS: tuple[str, ...] = (
+    # Auckland — Software Engineer, entry/associate level, full-time, last 30 days.
+    "https://www.linkedin.com/jobs/search"
+    "?keywords=Software%20Engineer"
+    "&location=Auckland"
+    "&geoId=100749476"
+    "&distance=25"
+    "&f_TPR=r2592000"
+    "&f_JT=F"
+    "&f_E=2%2C3"
+    "&f_PP=100749476"
+    "&sortBy=DD",
+)
 
 
 _SEEK_BASE_URLS: tuple[str, ...] = (
@@ -325,78 +332,6 @@ _SEEK_BASE_URLS: tuple[str, ...] = (
     "?sortmode=ListedDate"
     "&subclassification=6287%2C6302",
 )
-
-
-def _scrape_seek_paginated(
-    keywords: list[str],
-    location: str,
-    remote: bool,
-    experience: str,
-    max_results: int,
-    seen_jobs: dict[str, set[str]] | None,
-) -> list[JobListing]:
-    """Scrape Seek using fixed pre-filtered URLs (NZ + AU).
-
-    Per-profile keywords/location/remote/experience are ignored — the URLs
-    already encode the target tracks. Pagination via `&page=N`.
-    """
-    seen = seen_jobs.get("seek", set()) if seen_jobs else set()
-
-    listings: list[JobListing] = []
-
-    for base_search_url in _SEEK_BASE_URLS:
-        if len(listings) >= max_results:
-            break
-        print(f"  Seek base: {base_search_url[:60]}...", file=sys.stderr)
-        page = 0
-        while len(listings) < max_results:
-            page_param = f"&page={page + 1}" if page > 0 else ""
-            url = f"{base_search_url}{page_param}"
-
-            stdout, stderr, retcode = run_harness(
-                load_script("seek-list", url=url, page=page),
-                timeout=120,
-            )
-            if retcode != 0:
-                break
-
-            page_listings = []
-            for data in parse_harness_json_output(stdout):
-                if "jobs" in data:
-                    for job in data["jobs"]:
-                        page_listings.append(
-                            JobListing(
-                                job_id=job["job_id"],
-                                source="seek",
-                                url=job["url"],
-                                title=job.get("title", "Unknown"),
-                                company=job.get("company", "Unknown"),
-                                snippet=job.get("snippet", ""),
-                                posted=None,
-                                location=job.get("location") or None,
-                            )
-                        )
-
-            if not page_listings:
-                break
-
-            if seen:
-                new_in_page = [j for j in page_listings if j.job_id not in seen]
-                if not new_in_page:
-                    print(
-                        f"  Page {page}: all jobs already seen, stopping",
-                        file=sys.stderr,
-                    )
-                    break
-                listings.extend(new_in_page)
-            else:
-                listings.extend(page_listings)
-
-            page += 1
-            if page >= 3:  # Per-URL pagination cap
-                break
-
-    return listings[:max_results]
 
 
 _HIRINGCAFE_BASE_SEARCH_STATE: dict[str, Any] = {
@@ -454,83 +389,35 @@ _HIRINGCAFE_BASE_SEARCH_STATE: dict[str, Any] = {
 }
 
 
+def _hiringcafe_page_url(_base: str, page: int) -> str:
+    """Build hiring.cafe URL by encoding the page number into searchState JSON."""
+    import json as _json
+    import urllib.parse
+
+    state = {**_HIRINGCAFE_BASE_SEARCH_STATE, "page": page}
+    encoded = urllib.parse.quote(_json.dumps(state, separators=(",", ":")))
+    return f"https://hiring.cafe/?searchState={encoded}"
+
+
 def _scrape_hiringcafe_paginated(
-    keywords: list[str],
-    location: str,
-    remote: bool,
-    experience: str,
     max_results: int,
     seen_jobs: dict[str, set[str]] | None,
 ) -> list[JobListing]:
     """Scrape hiring.cafe with pagination and overlap detection.
 
-    Uses a fixed searchState from the HiringCafe UI: Software Development,
-    no-prior/entry-level roles, YOE 0-2, fetched in the last 61 days, sorted by
-    date, across US remote, Australia/Oceania remote, and Auckland onsite/hybrid.
-    Per-profile keywords are unused because those filters already constrain
-    results to the target tracks. 40 cards per page. Location eligibility is
-    checked later against the full JD so globally remote roles are not lost
-    just because a card shows a country/region.
+    Uses a fixed searchState (Software Development, no-prior/entry-level,
+    YOE 0-2, last 61 days, sorted by date, US/AU/NZ). Location eligibility is
+    checked later against full JDs so globally remote roles are not lost just
+    because a card shows a country/region.
     """
-    import json as _json
-    import urllib.parse
-
-    seen = seen_jobs.get("hiringcafe", set()) if seen_jobs else set()
-
-    listings: list[JobListing] = []
-    page = 1
-
-    while len(listings) < max_results:
-        state = {**_HIRINGCAFE_BASE_SEARCH_STATE, "page": page}
-        encoded = urllib.parse.quote(_json.dumps(state, separators=(",", ":")))
-        url = f"https://hiring.cafe/?searchState={encoded}"
-
-        stdout, stderr, retcode = run_harness(
-            load_script("hiringcafe-list-paginated", url=url, page=page),
-            timeout=120,
-        )
-
-        if retcode != 0:
-            break
-
-        page_listings = []
-        for data in parse_harness_json_output(stdout):
-            if "jobs" in data:
-                for job in data["jobs"]:
-                    if not job.get("job_id"):
-                        continue
-                    page_listings.append(
-                        JobListing(
-                            job_id=job["job_id"],
-                            source="hiringcafe",
-                            url=job["url"],
-                            title=job.get("title") or "Unknown",
-                            company=job.get("company") or "Unknown",
-                            snippet=job.get("snippet", ""),
-                            posted=None,
-                            location=job.get("location") or None,
-                        )
-                    )
-
-        if not page_listings:
-            break
-
-        if seen:
-            new_in_page = [j for j in page_listings if j.job_id not in seen]
-            if not new_in_page:
-                print(
-                    f"  Page {page}: all jobs already seen, stopping", file=sys.stderr
-                )
-                break
-            listings.extend(new_in_page)
-        else:
-            listings.extend(page_listings)
-
-        page += 1
-        if page > 3:
-            break
-
-    return listings[:max_results]
+    return _scrape_paginated(
+        "hiringcafe",
+        ("",),  # base url is generated entirely from searchState
+        "hiringcafe-list-paginated",
+        _hiringcafe_page_url,
+        max_results,
+        seen_jobs,
+    )
 
 
 _WORKINGNOMADS_SEARCH_URL = (
@@ -540,76 +427,6 @@ _WORKINGNOMADS_SEARCH_URL = (
     "&category=development"
     "&positionType=full-time"
 )
-
-
-def _scrape_workingnomads_paginated(
-    keywords: list[str],
-    location: str,
-    remote: bool,
-    experience: str,
-    max_results: int,
-    seen_jobs: dict[str, set[str]] | None,
-) -> list[JobListing]:
-    """Scrape Working Nomads entry-level full-time development listings.
-
-    Uses the configured broad remote search. Location eligibility is checked
-    later against full JDs so truly global/anywhere roles are preserved while
-    region-locked roles are skipped before packaging.
-    """
-    seen = seen_jobs.get("workingnomads", set()) if seen_jobs else set()
-    listings: list[JobListing] = []
-    page = 1
-
-    while len(listings) < max_results:
-        sep = "&" if "?" in _WORKINGNOMADS_SEARCH_URL else "?"
-        url = _WORKINGNOMADS_SEARCH_URL if page == 1 else f"{_WORKINGNOMADS_SEARCH_URL}{sep}page={page}"
-        stdout, stderr, retcode = run_harness(
-            load_script("workingnomads-list", url=url, page=page),
-            timeout=120,
-        )
-        if retcode != 0:
-            break
-
-        page_listings: list[JobListing] = []
-        for data in parse_harness_json_output(stdout):
-            if "jobs" not in data:
-                continue
-            for job in data["jobs"]:
-                if not job.get("job_id"):
-                    continue
-                page_listings.append(
-                    JobListing(
-                        job_id=str(job["job_id"]),
-                        source="workingnomads",
-                        url=job["url"],
-                        title=job.get("title") or "Unknown",
-                        company=job.get("company") or "Unknown",
-                        snippet=job.get("snippet", ""),
-                        posted=job.get("posted"),
-                        location=job.get("location") or None,
-                    )
-                )
-
-        if not page_listings:
-            break
-
-        if seen:
-            new_in_page = [j for j in page_listings if j.job_id not in seen]
-            if not new_in_page:
-                print(
-                    f"  Page {page}: all jobs already seen, stopping",
-                    file=sys.stderr,
-                )
-                break
-            listings.extend(new_in_page)
-        else:
-            listings.extend(page_listings)
-
-        page += 1
-        if page > 3:
-            break
-
-    return listings[:max_results]
 
 
 def _is_wellfound_recent(posted: str | None) -> bool:
@@ -663,26 +480,19 @@ _WELLFOUND_BASE_URLS: tuple[str, ...] = (
 
 
 def _scrape_wellfound_paginated(
-    keywords: list[str],
-    location: str,
-    remote: bool,
-    experience: str,
     max_results: int,
     seen_jobs: dict[str, set[str]] | None,
 ) -> list[JobListing]:
     """Scrape Wellfound remote startup engineering listings.
 
-    Uses fixed remote role pages because Wellfound's public role URLs expose
-    stable pagination and structured cards. Eligibility for US-only / region-
-    locked roles is checked later against the full JD, so discovery keeps the
-    card when the visible location is ambiguous.
+    Round-robins pages across role URLs so the first broad "software engineer"
+    page does not consume the whole per-source cap before full-stack/backend/AI
+    pages get a chance to contribute. Eligibility for US-only / region-locked
+    roles is checked later against the full JD.
     """
     seen = seen_jobs.get("wellfound", set()) if seen_jobs else set()
     listings: list[JobListing] = []
 
-    # Round-robin pages across role URLs so the first broad "software engineer"
-    # page does not consume the whole per-source cap before full-stack/backend/AI
-    # pages get a chance to contribute.
     for page in range(1, 3):
         for base_search_url in _WELLFOUND_BASE_URLS:
             if len(listings) >= max_results:
@@ -691,37 +501,14 @@ def _scrape_wellfound_paginated(
                 f"  Wellfound base: {base_search_url[:60]}... page {page}",
                 file=sys.stderr,
             )
-            sep = "&" if "?" in base_search_url else "?"
-            url = base_search_url if page == 1 else f"{base_search_url}{sep}page={page}"
-            stdout, stderr, retcode = run_harness(
-                load_script("wellfound-list", url=url, page=page),
-                timeout=120,
+            url = _append_page_param(base_search_url, page)
+            stdout, _stderr, retcode = run_harness(
+                load_script("wellfound-list", url=url, page=page), timeout=120
             )
             if retcode != 0:
                 continue
 
-            page_listings: list[JobListing] = []
-            for data in parse_harness_json_output(stdout):
-                if "jobs" not in data:
-                    continue
-                for job in data["jobs"]:
-                    if not job.get("job_id"):
-                        continue
-                    if not _is_wellfound_recent(job.get("posted")):
-                        continue
-                    page_listings.append(
-                        JobListing(
-                            job_id=str(job["job_id"]),
-                            source="wellfound",
-                            url=job["url"],
-                            title=job.get("title") or "Unknown",
-                            company=job.get("company") or "Unknown",
-                            snippet=job.get("snippet", ""),
-                            posted=job.get("posted"),
-                            location=job.get("location") or None,
-                        )
-                    )
-
+            page_listings = _parse_jobs(stdout, "wellfound", _is_wellfound_recent)
             if not page_listings:
                 break
 
@@ -749,52 +536,28 @@ _WEWORKREMOTELY_SEARCH_URL = (
 
 
 def _scrape_weworkremotely(
-    keywords: list[str],
-    location: str,
-    remote: bool,
-    experience: str,
     max_results: int,
     seen_jobs: dict[str, set[str]] | None,
 ) -> list[JobListing]:
-    """Scrape We Work Remotely programming search results.
+    """Scrape We Work Remotely programming search results (single page).
 
-    Uses the pre-filtered URL for full-stack, front-end, and back-end roles.
     WWR embeds all current search results in one page; postings older than one
     month are filtered locally from the visible age label.
     """
     seen = seen_jobs.get("weworkremotely", set()) if seen_jobs else set()
     print(f"  We Work Remotely: {_WEWORKREMOTELY_SEARCH_URL[:60]}...", file=sys.stderr)
-    stdout, stderr, retcode = run_harness(
-        load_script("weworkremotely-list", url=_WEWORKREMOTELY_SEARCH_URL),
+    stdout, _stderr, retcode = run_harness(
+        load_script(
+            "weworkremotely-list", url=_WEWORKREMOTELY_SEARCH_URL, page=1
+        ),
         timeout=120,
     )
     if retcode != 0:
         return []
 
-    listings: list[JobListing] = []
-    for data in parse_harness_json_output(stdout):
-        if "jobs" not in data:
-            continue
-        for job in data["jobs"]:
-            if not job.get("job_id"):
-                continue
-            if not _is_weworkremotely_recent(job.get("posted")):
-                continue
-            if seen and job["job_id"] in seen:
-                continue
-            listings.append(
-                JobListing(
-                    job_id=str(job["job_id"]),
-                    source="weworkremotely",
-                    url=job["url"],
-                    title=job.get("title") or "Unknown",
-                    company=job.get("company") or "Unknown",
-                    snippet=job.get("snippet", ""),
-                    posted=job.get("posted"),
-                    location=job.get("location") or None,
-                )
-            )
-
+    listings = _parse_jobs(stdout, "weworkremotely", _is_weworkremotely_recent)
+    if seen:
+        listings = [j for j in listings if j.job_id not in seen]
     return listings[:max_results]
 
 

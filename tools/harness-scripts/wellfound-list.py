@@ -11,12 +11,10 @@ wait(3)
 
 jobs = js(r"""
 (() => {
+  $js_helpers
+
   const out = [];
   const seen = new Set();
-
-  function clean(text) {
-    return (text || '').replace(/\s+/g, ' ').trim();
-  }
 
   function jobIdFromUrl(href) {
     const m = (href || '').match(/\/jobs\/(\d+)(?:-|[/?#]|$$)/);

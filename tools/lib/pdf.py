@@ -21,7 +21,7 @@ import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
-from .paths import project_root
+from .paths import project_root, templates_dir
 
 
 class PdfRenderError(Exception):
@@ -336,7 +336,7 @@ def render_resume_pdf(
     and shell out to typst.
     """
     root = project_dir or project_root()
-    template = template_path or (root / "templates" / "resume.typ")
+    template = template_path or (templates_dir(root) / "resume.typ")
     if not template.exists():
         raise PdfRenderError(f"Typst template not found: {template}")
 
@@ -500,7 +500,7 @@ def render_cover_letter_pdf(
 ) -> Path:
     """Render a cover-letter markdown draft to PDF using Typst."""
     root = project_dir or project_root()
-    template = template_path or (root / "templates" / "cover-letter.typ")
+    template = template_path or (templates_dir(root) / "cover-letter.typ")
     if not template.exists():
         raise PdfRenderError(f"Typst template not found: {template}")
 

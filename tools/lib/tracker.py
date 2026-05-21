@@ -159,13 +159,26 @@ def load_tracker(path: Path) -> dict[str, Any]:
 def save_tracker(
     path: Path, tracker: dict[str, Any], today: date | None = None
 ) -> None:
-    """Persist tracker JSON with a refreshed last_updated date."""
-    tracker.setdefault("meta", {})["last_updated"] = (today or date.today()).isoformat()
-    tracker["meta"]["version"] = TRACKER_VERSION
+    """Persist tracker JSON with a refreshed last_updated date.
+
+    Skips the write (and the last_updated bump) when serialized output matches
+    the existing file byte-for-byte, so no-op flows don't churn the mtime or
+    re-trigger downstream watchers.
+    """
     # Strip any legacy keys that snuck in (defensive: writers shouldn't add them
     # post-migration, but a hand-edit upstream shouldn't poison the next read).
     tracker.pop("seen_jobs", None)
     tracker.pop("skipped_jobs", None)
+    tracker.setdefault("meta", {})["version"] = TRACKER_VERSION
+
+    # Compare the current dict against the on-disk file before bumping
+    # last_updated. If they match, the caller's mutation was a no-op and we
+    # leave both the contents and the mtime alone.
+    candidate_text = json.dumps(tracker, indent=2) + "\n"
+    if path.exists() and path.read_text() == candidate_text:
+        return
+
+    tracker["meta"]["last_updated"] = (today or date.today()).isoformat()
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w") as f:
         json.dump(tracker, f, indent=2)

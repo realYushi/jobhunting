@@ -17,6 +17,7 @@ import json
 import sys
 import tempfile
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from lib.harness_utils import load_script, run_harness
@@ -55,7 +56,8 @@ def _resolve_apply_url(item: ScoreResult) -> str | None:
 def _fetch_full_jd(url: str) -> str:
     """Fetch the full job description from a listing URL.
 
-    Uses browser-harness to navigate and extract the JD text.
+    Uses browser-harness with new_tab so concurrent callers each get an
+    isolated tab; safe to invoke from a ThreadPoolExecutor.
     """
     # hiring.cafe needs a tab click to reveal the full JD
     pre_extract = ""
@@ -76,7 +78,6 @@ wait(2)
     if retcode != 0:
         return f"# Failed to fetch JD from {url}\n\nError: {stderr}"
 
-    # Parse JSON output
     from lib.harness_utils import parse_harness_json_output
 
     results = parse_harness_json_output(stdout)
@@ -84,6 +85,34 @@ wait(2)
         return results[0]["jd"]
 
     return f"# Could not extract JD from {url}"
+
+
+JD_FETCH_PARALLELISM = 3
+
+
+def _fetch_jds_parallel(
+    items: list[ScoreResult], max_workers: int = JD_FETCH_PARALLELISM
+) -> dict[str, str]:
+    """Fetch JDs for many listings concurrently. Keyed by item.url.
+
+    Each fetch opens its own tab in the user's Chrome via new_tab, so workers
+    don't clobber each other. Failures fall back to a placeholder string, the
+    same shape `_fetch_full_jd` returns on its own error path.
+    """
+    urls = [item.url for item in items if item.url]
+    if not urls:
+        return {}
+
+    out: dict[str, str] = {}
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        futures = {pool.submit(_fetch_full_jd, url): url for url in urls}
+        for fut in futures:
+            url = futures[fut]
+            try:
+                out[url] = fut.result()
+            except Exception as e:
+                out[url] = f"# Failed to fetch JD from {url}\n\nError: {e}"
+    return out
 
 
 STRICT_OUTSIDE_LOCATION_PHRASES = (
@@ -243,13 +272,14 @@ def _norm_identity_text(value: str | None) -> str:
     return " ".join((value or "").casefold().split())
 
 
-def _existing_company_title_matches(root: Path, item: ScoreResult) -> list[dict]:
+def _existing_company_title_matches(
+    tracker: dict, item: ScoreResult
+) -> list[dict]:
     """Return existing applications with the same company and title.
 
     This catches job boards re-listing the same role under a new id, where the
     exact (source, job_id) dedupe cannot help.
     """
-    tracker = load_tracker(root / "applications" / "application-tracker.json")
     company = _norm_identity_text(item.company)
     title = _norm_identity_text(item.title)
     matches: list[dict] = []
@@ -279,9 +309,10 @@ def do_package_from_scores(
     """Phases 4-5: build packages and write INBOX."""
     inbox = default_inbox(root)
     print("\n📦 Phase 4: Creating application packages...", file=sys.stderr)
+    tracker = load_tracker(root / "applications" / "application-tracker.json")
     to_package: list[ScoreResult] = []
     for item in passed:
-        matches = _existing_company_title_matches(root, item)
+        matches = _existing_company_title_matches(tracker, item)
         if matches:
             match = matches[0]
             print(
@@ -296,6 +327,16 @@ def do_package_from_scores(
         if len(to_package) >= cap:
             break
     print(f"  Creating {len(to_package)} packages (cap: {cap})", file=sys.stderr)
+
+    # Pre-fetch JDs in parallel (skip in dry-run since we don't build packages).
+    jd_cache: dict[str, str] = {}
+    if fetch_jd and not dry_run and to_package:
+        print(
+            f"  Fetching {len(to_package)} JDs in parallel "
+            f"(workers={JD_FETCH_PARALLELISM})...",
+            file=sys.stderr,
+        )
+        jd_cache = _fetch_jds_parallel(to_package)
 
     inbox_rows: list[InboxRow] = []
     cover_queue: list[dict] = []
@@ -326,24 +367,19 @@ def do_package_from_scores(
 
         package_url = _resolve_apply_url(item)
 
-        # Fetch full JD if URL available
         jd_path: Path | None = None
-        if fetch_jd and item.url:
-            try:
-                jd_text = _fetch_full_jd(item.url)
-                # Write to a temp file for the workflow
-                with tempfile.NamedTemporaryFile(
-                    mode="w", suffix=".md", delete=False
-                ) as f:
-                    f.write(f"# {item.title} @ {item.company}\n\n")
-                    f.write(f"Source: {item.url}\n")
-                    if package_url and package_url != item.url:
-                        f.write(f"Direct apply: {package_url}\n")
-                    f.write("\n")
-                    f.write(jd_text)
-                    jd_path = Path(f.name)
-            except Exception as e:
-                print(f"    Failed to fetch JD: {e}", file=sys.stderr)
+        jd_text = jd_cache.get(item.url) if item.url else None
+        if jd_text:
+            with tempfile.NamedTemporaryFile(
+                mode="w", suffix=".md", delete=False
+            ) as f:
+                f.write(f"# {item.title} @ {item.company}\n\n")
+                f.write(f"Source: {item.url}\n")
+                if package_url and package_url != item.url:
+                    f.write(f"Direct apply: {package_url}\n")
+                f.write("\n")
+                f.write(jd_text)
+                jd_path = Path(f.name)
 
         if jd_path is None:
             # Create a minimal JD from the snippet

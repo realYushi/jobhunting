@@ -11,9 +11,7 @@ wait(2)
 
 jobs = js(r"""
 (() => {
-    function clean(text) {
-        return (text || '').replace(/\s+/g, ' ').trim();
-    }
+    $js_helpers
 
     function cleanTitle(text) {
         return clean(text)

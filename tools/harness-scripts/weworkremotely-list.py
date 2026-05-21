@@ -11,9 +11,7 @@ wait(3)
 
 jobs = js(r"""
 (() => {
-  function clean(text) {
-    return (text || '').replace(/\s+/g, ' ').trim();
-  }
+  $js_helpers
 
   function slugFromUrl(href) {
     const m = (href || '').match(/\/remote-jobs\/([^/?#]+)/);

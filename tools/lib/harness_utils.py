@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 _SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "harness-scripts"
+_JS_HELPERS_PATH = _SCRIPTS_DIR / "_js_helpers.js"
 
 
 def _harness_env() -> dict[str, str]:
@@ -28,9 +29,13 @@ def load_script(name: str, **params: Any) -> str:
         load_script("seek-list", url="https://nz.seek.com/jobs?...")
     Missing placeholders raise KeyError so a typo fails loudly instead of
     silently producing a broken script.
+
+    A `$js_helpers` placeholder is always available; it expands to the
+    contents of `_js_helpers.js` (shared JS utilities like `clean`).
     """
     path = _SCRIPTS_DIR / f"{name}.py"
     text = path.read_text()
+    params.setdefault("js_helpers", _JS_HELPERS_PATH.read_text())
     return string.Template(text).substitute(**params)
 
 
