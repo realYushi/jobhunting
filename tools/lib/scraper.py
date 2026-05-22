@@ -10,7 +10,7 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
-from .identity import BoardKey, ManualKey
+from .identity import BoardKey, try_manual_key
 from .paths import project_root
 from .tracker import is_seen_key, is_skipped_key
 
@@ -64,7 +64,7 @@ def dedupe_listings(
     """Filter out listings already seen or explicitly skipped in the tracker."""
     out: list[JobListing] = []
     for lst in listings:
-        manual = ManualKey(company_lc=lst.company, position_lc=lst.title)
+        manual = try_manual_key(lst.company, lst.title)
         if is_seen_key(tracker, lst.key):
             continue
         if is_skipped_key(tracker, lst.key, fallback=manual):

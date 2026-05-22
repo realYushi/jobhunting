@@ -1,6 +1,6 @@
 # Job Scoring Rubric
 
-Source of truth for the scoring step of the job-research pipeline. The Sonnet
+Source of truth for the scoring step of the job-research pipeline. The Agent
 subagent reads this file when scoring listings from `--scrape-only` output.
 
 ## Candidate

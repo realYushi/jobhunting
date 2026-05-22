@@ -3,6 +3,10 @@
     "score_cutoff": 65,
     "per_run_cap": 100,
     "sources": [
+      "linkedin",
+      "seek",
+      "hiringcafe",
+      "workingnomads",
       "wellfound",
       "weworkremotely"
     ]

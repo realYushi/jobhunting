@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from typing import Any, Callable
 
 from lib.harness_utils import load_script, parse_harness_json_output, run_harness
-from lib.identity import ManualKey
+from lib.identity import try_manual_key
 from lib.paths import tracker_path
 from lib.scraper import JobListing
 from lib.tracker import (
@@ -122,7 +122,7 @@ def smart_scrape(
     seen_count = 0
     skipped_count = 0
     for lst in unique_listings[:max_total]:
-        manual = ManualKey(company_lc=lst.company, position_lc=lst.title)
+        manual = try_manual_key(lst.company, lst.title)
         snippet = lst.snippet or ""
         already_applied = any(
             line.strip().lower() == "applied" for line in snippet.splitlines()
@@ -130,7 +130,7 @@ def smart_scrape(
         if lst.key in seen_set or already_applied:
             seen_count += 1
             seen_set.add(lst.key)
-        elif lst.key in skipped_set or manual in skipped_set:
+        elif lst.key in skipped_set or (manual is not None and manual in skipped_set):
             skipped_count += 1
         else:
             new_listings.append(lst)
@@ -321,6 +321,13 @@ _LINKEDIN_BASE_URLS: tuple[str, ...] = (
 
 
 _SEEK_BASE_URLS: tuple[str, ...] = (
+    # Auckland (NZ) — Junior Software Developer jobs in ICT, full-time,
+    # last 3 days, subclassifications 6287+6290.
+    "https://nz.seek.com/Junior-Software-Developer-jobs-in-information-communication-technology"
+    "/in-All-Auckland/full-time"
+    "?daterange=3"
+    "&sortmode=ListedDate"
+    "&subclassification=6287%2C6290",
     # Auckland (NZ) — Developer jobs, ICT classifications, last 31 days,
     # subclassifications 6287+6302 (Developers/Programmers + Eng - Software),
     # work arrangement 1+2 (remote + hybrid).

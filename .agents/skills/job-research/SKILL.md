@@ -1,25 +1,25 @@
 ---
 name: job-research
-description: Run the automated job research pipeline. Scrapes LinkedIn and Seek for new listings, scores them against your resume via a Sonnet subagent, and generates tailored CV + cover letter packages for top matches. Use when the user says "job research", "find jobs", "scrape jobs", "run the pipeline", "start job search", or wants to see what's available.
+description: Run the automated job research pipeline. Scrapes LinkedIn and Seek for new listings, scores them against your resume via an Agent subagent, and generates tailored CV + cover letter packages for top matches. Use when the user says "job research", "find jobs", "scrape jobs", "run the pipeline", "start job search", or wants to see what's available.
 compatibility: Requires file system access, Python 3, browser-harness for scraping (local Chrome), and typst for PDF rendering. Scoring uses a Claude Code subagent (no Anthropic API key required).
 ---
 
 # Job Research Skill
 
 Job discovery + package generation. The pipeline is split so the scoring step
-runs as a Claude Code subagent (Sonnet) instead of an inline LLM API call.
+runs as a Claude Code subagent instead of an inline LLM API call.
 
 ## Phases
 
 1. **Reconcile + Scrape** (Python) — archive submitted/skipped INBOX rows, then
    scrape LinkedIn + Seek + Hiring.cafe. Dumps listings to a JSON file.
-2. **Score** (Sonnet subagent) — reads the listings file and
+2. **Score** (Agent subagent) — reads the listings file and
    `tools/scoring-rubric.md`, emits a filtered scores file.
 3. **Package** (Python) — fetches full JDs, builds tailored CV + cover-letter
    **scaffold**, appends rows to `applications/INBOX.md`. Emits a
    `/tmp/jobhunting-cover-queue.json` file listing any packages whose cover
    letter still has unresolved placeholders.
-4. **Fill Cover Letters** (Sonnet subagent) — reads the queue file and writes
+4. **Fill Cover Letters** (Agent subagent) — reads the queue file and writes
    a tailored body into each scaffold cover-letter.md. Required: Phase 3 only
    scaffolds; it does _not_ call an LLM.
 5. **Render Cover PDFs** (Python/Typst) — after placeholders are removed,
@@ -32,8 +32,8 @@ runs as a Claude Code subagent (Sonnet) instead of an inline LLM API call.
 python3 tools/pipeline.py --scrape-only /tmp/jobhunting-listings.json
 ```
 
-Then spawn an Agent subagent with **`model: "sonnet"`** using this prompt
-skeleton:
+Then spawn an Agent subagent using this prompt skeleton. Do not set a `model`
+override; let the subagent inherit the current working model/provider.
 
 > Read `/tmp/jobhunting-listings.json` and apply the rubric at
 > `tools/scoring-rubric.md`. Write filtered + sorted scores to
@@ -47,7 +47,8 @@ python3 tools/pipeline.py --from-scores /tmp/jobhunting-scores.json --cap 100
 ```
 
 If Stage 3 prints `⚠️ N package(s) need cover letter fill-in`, run Stage 4:
-spawn another Sonnet subagent using this prompt skeleton:
+spawn another Agent subagent using this prompt skeleton. Do not set a `model`
+override; let the subagent inherit the current working model/provider.
 
 > Read `/tmp/jobhunting-cover-queue.json`. For each entry, read its
 > `cover_path` (scaffold), `jd_path`, `analysis_path`, and `resume_path`,
@@ -72,15 +73,14 @@ For one-off rendering:
 python3 tools/cover_letter_pdf.py --file "applications/active/Company/documents/cover-letter.md" --force
 ```
 
-## Why Sonnet, why a subagent
+## Why a subagent
 
-- **Sonnet over Haiku**: scoring needs domain judgment ("is this company /
-  vertical on track?") that Haiku has been unreliable on — it kept
-  defence/aerospace, data eng, and ERP integration roles past the cutoff.
 - **Subagent over SDK call**: keeps scoring inside the Claude Code session,
   no API-key plumbing, easier to iterate on the rubric.
-- **Single pass over two-pass**: a tight rubric with Sonnet matches a
-  Haiku + Sonnet two-pass at roughly half the cost.
+- **No explicit model override for now**: the local subagent model resolver can
+  silently route unsupported model aliases to providers that return no output.
+  Let subagents inherit the current working model/provider unless a known-good
+  explicit provider/model is configured.
 
 ## Single-command fallback
 

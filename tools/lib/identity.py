@@ -42,6 +42,17 @@ class BoardKey:
         return {"kind": "board", "source": self.source, "job_id": self.job_id}
 
 
+def _norm_manual_field(value: str) -> str:
+    """Normalize a company/position field for ManualKey equality.
+
+    Uses casefold + whitespace collapse so that visually-equivalent strings
+    (extra spaces, casing differences, locale-specific casefolding like ß→ss)
+    produce the same key. Pipeline code that builds (company, title) lookup
+    indexes must apply the same normalization.
+    """
+    return " ".join(value.casefold().split())
+
+
 @dataclass(frozen=True)
 class ManualKey:
     """Identifier for a record without a stable board id (manual flow)."""
@@ -52,8 +63,12 @@ class ManualKey:
     def __post_init__(self) -> None:
         if not self.company_lc or not self.position_lc:
             raise ValueError("ManualKey requires non-empty company and position")
-        object.__setattr__(self, "company_lc", self.company_lc.strip().lower())
-        object.__setattr__(self, "position_lc", self.position_lc.strip().lower())
+        company = _norm_manual_field(self.company_lc)
+        position = _norm_manual_field(self.position_lc)
+        if not company or not position:
+            raise ValueError("ManualKey requires non-empty company and position")
+        object.__setattr__(self, "company_lc", company)
+        object.__setattr__(self, "position_lc", position)
 
     def to_dict(self) -> dict[str, str]:
         return {
@@ -64,6 +79,20 @@ class ManualKey:
 
 
 JobKey = Union[BoardKey, ManualKey]
+
+
+def try_manual_key(company: str | None, position: str | None) -> ManualKey | None:
+    """Lenient ManualKey constructor: returns None on empty/whitespace input.
+
+    Use at call sites that receive untrusted scraper output or legacy tracker
+    data, where the strict ManualKey constructor would otherwise raise.
+    """
+    if not company or not position:
+        return None
+    try:
+        return ManualKey(company_lc=company, position_lc=position)
+    except ValueError:
+        return None
 
 
 def from_dict(data: dict[str, Any]) -> JobKey:

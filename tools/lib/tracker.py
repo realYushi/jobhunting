@@ -56,11 +56,14 @@ def key_for_app_dict(d: dict[str, Any]) -> JobKey:
     """Same identity rule as ApplicationRecord.key, but for the raw dict form
     stored under tracker['applications'][bucket]. Used so dict-vs-record
     dedup comparisons land on the exact same key."""
+    # `d.get("company") or ""` — bare default of "" would not fire when the
+    # stored value is explicitly None, and `str(None) == "None"` would then
+    # produce a bogus truthy ManualKey("none","none") for every null-company row.
     return key_from_args(
         d.get("source"),
         d.get("job_id"),
-        str(d.get("company", "")),
-        str(d.get("position", "")),
+        str(d.get("company") or ""),
+        str(d.get("position") or ""),
     )
 
 
@@ -199,7 +202,14 @@ def upsert_active_application(
     key = record.key
     payload = record.to_json()
     for idx, existing in enumerate(active):
-        if key_for_app_dict(existing) == key:
+        # key_for_app_dict now raises on rows with neither (source,id) nor
+        # (company,position); skip those so one legacy/malformed row can't
+        # crash every future upsert.
+        try:
+            existing_key = key_for_app_dict(existing)
+        except ValueError:
+            continue
+        if existing_key == key:
             active[idx] = {**existing, **payload}
             break
     else:
@@ -211,8 +221,21 @@ def upsert_active_application(
 
 
 def load_keyset(tracker: dict[str, Any], field: str) -> set[JobKey]:
-    """Materialise the flat key list at tracker[field] as a set[JobKey]."""
-    return {from_dict(d) for d in tracker.get(field, [])}
+    """Materialise the flat key list at tracker[field] as a set[JobKey].
+
+    Skips entries that fail to parse (e.g. legacy ManualKey dicts with empty
+    fields written by the pre-strict constructor) rather than raising — one
+    bad row should not poison the whole keyset and crash callers.
+    """
+    out: set[JobKey] = set()
+    for d in tracker.get(field, []):
+        try:
+            out.add(from_dict(d))
+        except (ValueError, KeyError, TypeError, AttributeError):
+            # AttributeError covers null/non-dict entries (from_dict calls
+            # d.get(...) on a non-dict); the others cover malformed dicts.
+            continue
+    return out
 
 
 def store_keyset(tracker: dict[str, Any], field: str, keys: set[JobKey]) -> None:
