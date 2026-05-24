@@ -932,10 +932,13 @@ def run_from_scores(
     passed = []
     for r in raw_scores:
         lst = listings_by_id.get(r["job_id"], {})
+        # source/title/company/url all backfill from the joined listing so a
+        # scoring subagent that emits a minimal record (just job_id+score+reason)
+        # doesn't crash packaging after scraping/scoring budget is already spent.
         passed.append(
             ScoreResult(
                 job_id=r["job_id"],
-                source=r["source"],
+                source=r.get("source") or lst.get("source") or "",
                 title=r.get("title") or lst.get("title", "Unknown"),
                 company=r.get("company") or lst.get("company", "Unknown"),
                 url=r.get("url") or lst.get("url"),
@@ -954,6 +957,37 @@ def run_from_scores(
             f"   Joined {len(listings_by_id)} full JDs from {listings_file}",
             file=sys.stderr,
         )
+    elif passed and not dry_run:
+        # Without --listings, JDs haven't been pre-fetched and the location
+        # gate hasn't run. Fetch + gate inline so packaging matches the
+        # --scrape-only path; otherwise we'd tailor against the scorer's
+        # one-line reason and ship region-locked roles.
+        print(
+            f"\n📄 Fetching {len(passed)} full JDs in parallel "
+            f"(no --listings, workers={JD_FETCH_PARALLELISM})...",
+            file=sys.stderr,
+        )
+        jd_cache = _fetch_jds_parallel(passed)
+        print("\n🌏 Location gate on full JD...", file=sys.stderr)
+        filtered: list[ScoreResult] = []
+        dropped_loc = 0
+        for item in passed:
+            jd_text = jd_cache.get(item.url, "") if item.url else ""
+            eligible, location_reason = _location_eligibility(item, jd_text)
+            if not eligible:
+                dropped_loc += 1
+                print(
+                    f"  ⏭️  Location gate: {item.title} @ {item.company} "
+                    f"({location_reason})",
+                    file=sys.stderr,
+                )
+                continue
+            if item.job_id:
+                listings_by_id[item.job_id] = {"full_jd": jd_text}
+            filtered.append(item)
+        if dropped_loc:
+            print(f"  Location gate dropped {dropped_loc} listings", file=sys.stderr)
+        passed = filtered
     do_package_from_scores(
         root,
         passed,

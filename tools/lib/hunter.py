@@ -12,24 +12,29 @@ from urllib.request import Request, urlopen
 from .config import ConfigError, load_env, require_env
 
 API_BASE = "https://api.hunter.io/v2"
-# Hosts that are never the hiring company's own domain — ATS application hosts
-# plus job-board aggregators. A URL on any of these yields no domain hint, so we
-# fall back to company-name search instead of (e.g.) querying Hunter for seek.com
-# and getting SEEK's own staff.
-_NON_COMPANY_HOSTS = (
-    "bamboohr.com",
-    "greenhouse.io",
-    "lever.co",
-    "workday.com",
-    "smartrecruiters.com",
-    "ashbyhq.com",
-    "jobvite.com",
-    "seek.com",
-    "linkedin.com",
-    "hiring.cafe",
-    "workingnomads.com",
-    "wellfound.com",
-    "weworkremotely.com",
+# Registrable domains that are never the hiring company's own — ATS application
+# hosts plus job-board aggregators. The check compares against the URL's reduced
+# registrable domain (see `_registrable_domain`) so every regional variant
+# (`seek.com`, `seek.co.nz`, `seek.com.au`) and subdomain (e.g.
+# `boards.greenhouse.io`) collapses to one entry here.
+_NON_COMPANY_HOSTS = frozenset(
+    {
+        "bamboohr.com",
+        "greenhouse.io",
+        "lever.co",
+        "workday.com",
+        "smartrecruiters.com",
+        "ashbyhq.com",
+        "jobvite.com",
+        "seek.com",
+        "seek.co.nz",
+        "seek.com.au",
+        "linkedin.com",
+        "hiring.cafe",
+        "workingnomads.com",
+        "wellfound.com",
+        "weworkremotely.com",
+    }
 )
 
 
@@ -76,9 +81,10 @@ def _domain_hint_from_url(url: str | None) -> str | None:
     host = urlparse(url).netloc.lower().split("@")[-1].split(":")[0]
     if not host:
         return None
-    if any(host.endswith(suffix) for suffix in _NON_COMPANY_HOSTS):
+    registrable = _registrable_domain(host.removeprefix("www."))
+    if registrable in _NON_COMPANY_HOSTS:
         return None
-    return _registrable_domain(host.removeprefix("www."))
+    return registrable
 
 
 def _score_contact(contact: dict[str, Any]) -> int:

@@ -162,24 +162,38 @@ def detect_status_updates(
 
 
 def _move_active_dir(
-    root: Path, company: str, job_id: str | None, bucket: str
+    root: Path,
+    company: str,
+    job_id: str | None,
+    from_bucket: str,
+    to_bucket: str,
 ) -> tuple[str, str] | None:
-    """Move the active application dir into the archive bucket.
+    """Move the application dir into the archive bucket.
 
     Returns ``(src_rel, dest_rel)`` — both relative to ``root`` — so the caller
     can rewrite stored paths against the actual source dir instead of guessing
-    its depth. Returns ``None`` when no matching active dir exists.
+    its depth. Returns ``None`` when no matching dir exists.
+
+    Looks first under ``active/``, but also checks ``archive/<from_bucket>/`` so
+    a row whose dir was already filed under a non-``active`` bucket (e.g. an
+    interview-stage app that was archived early) is still moved to the new
+    bucket instead of leaving the tracker bucket and disk bucket divergent.
     """
     slug = company_dirname(company, job_id)
-    src = active_dir(root) / slug
-    if not src.exists():
-        fallback = active_dir(root) / company_dirname(company, None)
-        src = fallback if fallback.exists() else src
-    if not src.exists():
+    fallback_slug = company_dirname(company, None)
+    candidates: list[Path] = [
+        active_dir(root) / slug,
+        active_dir(root) / fallback_slug,
+    ]
+    if from_bucket and from_bucket != "active":
+        candidates.append(archive_dir(root) / from_bucket / slug)
+        candidates.append(archive_dir(root) / from_bucket / fallback_slug)
+    src = next((p for p in candidates if p.exists()), None)
+    if src is None:
         return None
 
     src_rel = str(src.relative_to(root))
-    dest_parent = archive_dir(root) / bucket
+    dest_parent = archive_dir(root) / to_bucket
     dest_parent.mkdir(parents=True, exist_ok=True)
     dest = dest_parent / src.name
     if dest.exists():
@@ -232,11 +246,21 @@ def apply_status_updates(
                 root,
                 str(app.get("company") or ""),
                 app.get("job_id"),
+                update.from_bucket,
                 update.to_bucket,
             )
         if moved and app.get("pdf_path"):
             src_rel, moved_dir = moved
             old_pdf = Path(str(app["pdf_path"]))
+            # Normalize to a path comparable against `src_rel` (a root-relative
+            # string). Absolute paths stored under root must be re-rooted first
+            # — otherwise the relative_to below raises and the except branch
+            # silently drops the `documents/` segment.
+            if old_pdf.is_absolute():
+                try:
+                    old_pdf = old_pdf.relative_to(root)
+                except ValueError:
+                    old_pdf = Path(old_pdf.name)
             try:
                 sub = old_pdf.relative_to(src_rel)
             except ValueError:

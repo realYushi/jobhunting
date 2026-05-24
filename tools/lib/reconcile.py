@@ -314,7 +314,13 @@ def cleanup_active_folder(
 
 
 def remove_inbox_rows(inbox_path: Path, items: list[InboxItem]) -> None:
-    """Remove archived rows from the To Apply section in one pass."""
+    """Remove archived rows from the To Apply section in one pass.
+
+    Matches by the anchored prefix `format_row` writes (``- [x] **Title** @
+    Company``) so a short company or title can't substring-match an unrelated
+    row (e.g. archived ``AI``/``Engineer`` falsely dropping
+    ``Senior Engineer @ AI Foundry``).
+    """
     if not inbox_path.exists():
         return
 
@@ -322,6 +328,10 @@ def remove_inbox_rows(inbox_path: Path, items: list[InboxItem]) -> None:
     lines = text.splitlines()
     new_lines = []
     in_applied = False
+
+    markers = [
+        f"- {item.status} **{item.title}** @ {item.company}" for item in items
+    ]
 
     for line in lines:
         if line == "## Applied":
@@ -332,13 +342,9 @@ def remove_inbox_rows(inbox_path: Path, items: list[InboxItem]) -> None:
             new_lines.append(line)
             continue
 
-        should_remove = False
-        for item in items:
-            if item.status in line and item.company in line and item.title in line:
-                should_remove = True
-                break
-        if not should_remove:
-            new_lines.append(line)
+        if any(line.startswith(marker) for marker in markers):
+            continue
+        new_lines.append(line)
 
     inbox_path.write_text("\n".join(new_lines).rstrip() + "\n")
 
@@ -427,34 +433,49 @@ def reconcile(
                         if key_for_app_dict(app) == item_key:
                             active[idx]["status"] = "Submitted"
                             active[idx]["submitted_at"] = applied_on
-                            if app.get("pdf_path"):
-                                active[idx]["pdf_path"] = app["pdf_path"].replace(
-                                    "applications/active/",
-                                    "applications/archive/submitted/",
-                                    1,
-                                )
+                            # Only rewrite pdf_path when the dir actually moved
+                            # AND we know which slug it landed under — prefix-only
+                            # replace misses the `-N` dedup suffix.
+                            if archived_dir is not None and app.get("pdf_path"):
+                                marker = f"applications/active/{item.slug}/"
+                                pdf_str = app["pdf_path"]
+                                if marker in pdf_str:
+                                    sub = pdf_str.split(marker, 1)[1]
+                                    active[idx]["pdf_path"] = (
+                                        f"applications/archive/submitted/{archive_slug}/{sub}"
+                                    )
                             applied_on = active[idx]["submitted_at"]
                             break
                 top_contacts: tuple[str, ...] = ()
                 best_contact = None
                 if not dry_run:
                     archive_path = archive_dir(root) / "submitted" / archive_slug
-                    # Reuse contacts discovered at package-creation time (moved
-                    # into the archive). Only hit Hunter when none exist yet, so
-                    # we don't burn quota or clobber good data with an error.
-                    top_contacts = tuple(top_contact_summaries(archive_path, limit=3))
-                    if not top_contacts:
-                        discover_contacts(
-                            archive_path, item.company, root=root, url=item.apply_url
-                        )
+                    # Skip Hunter entirely when there's no archived package on
+                    # disk — `move_to_archive` returning None means we'd be
+                    # mkdir'ing an orphan dir and burning quota for a slot the
+                    # rest of the flow never reaches.
+                    if archive_path.exists():
+                        contacts_json = archive_path / "research" / "contacts.json"
+                        # Reuse contacts discovered at package-creation time
+                        # (moved into the archive). The presence of
+                        # contacts.json — success OR an error/skipped record —
+                        # marks "we already tried"; deleting that file is the
+                        # manual retry. Without this guard a Hunter error stays
+                        # cached as contacts=[] and every subsequent reconcile
+                        # re-burns Free-plan quota on the same row.
                         top_contacts = tuple(top_contact_summaries(archive_path, limit=3))
-                    if top_contacts:
-                        best_contact = top_contacts[0]
-                        entry = _scaffold_cold_email(
-                            root, archive_path, item, top_contact_rows(archive_path, 1)
-                        )
-                        if entry is not None:
-                            coldmail_queue.append(entry)
+                        if not top_contacts and not contacts_json.exists():
+                            discover_contacts(
+                                archive_path, item.company, root=root, url=item.apply_url
+                            )
+                            top_contacts = tuple(top_contact_summaries(archive_path, limit=3))
+                        if top_contacts:
+                            best_contact = top_contacts[0]
+                            entry = _scaffold_cold_email(
+                                root, archive_path, item, top_contact_rows(archive_path, 1)
+                            )
+                            if entry is not None:
+                                coldmail_queue.append(entry)
                 applied_rows.append(
                     AppliedInboxRow(
                         title=item.title,
