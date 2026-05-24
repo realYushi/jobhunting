@@ -8,10 +8,11 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
+from .hunter import discover_contacts
 from .paths import company_dir, tracker_path as tracker_file
 from .pdf import PdfRenderError, render_resume_pdf
 from .resume import create_resume, resolve_role
-from .templates import render_analysis, render_cover_letter
+from .templates import render_analysis, render_cold_email, render_cover_letter
 from .tracker import (
     ApplicationRecord,
     load_tracker,
@@ -64,6 +65,9 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
     analysis_path = research_dir / "analysis.md"
     job_dest = research_dir / "job-description.md"
     cover_path = documents_dir / "cover-letter.md"
+    cold_email_path = documents_dir / "cold-email.md"
+    contacts_json_path = research_dir / "contacts.json"
+    contacts_md_path = research_dir / "contacts.md"
     tracker_path = tracker_file(root)
 
     role = resolve_role(options.role) if options.role else None
@@ -84,12 +88,22 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
         f"Write analysis scaffold: {analysis_path}",
         f"Write tailored resume JSON: {resume_path}",
         f"Write cover letter draft: {cover_path}",
+        f"Write cold email draft: {cold_email_path}",
+        f"Discover contacts: {contacts_json_path}",
+        f"Write contacts summary: {contacts_md_path}",
         f"Upsert tracker entry: {tracker_path}",
     ]
     if options.render_pdf:
         planned.append(f"Render resume PDF: {pdf_path}")
     paths_list: list[Path] = [
-        job_dest, analysis_path, resume_path, cover_path, tracker_path
+        job_dest,
+        analysis_path,
+        resume_path,
+        cover_path,
+        cold_email_path,
+        contacts_json_path,
+        contacts_md_path,
+        tracker_path,
     ]
     if options.render_pdf:
         paths_list.append(pdf_path)
@@ -118,6 +132,18 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
             job_text=job_text,
         )
     )
+    cold_email_path.write_text(
+        render_cold_email(
+            options.company,
+            options.position,
+            root=root,
+            keywords=options.keywords,
+            job_text=job_text,
+            source=options.source,
+            url=options.url,
+        )
+    )
+    discover_contacts(app_dir, options.company, root=root, url=options.url)
 
     remaining = validate_no_placeholders(cover_path)
     structure_warnings = validate_cover_letter_structure(cover_path)

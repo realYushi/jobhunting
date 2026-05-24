@@ -8,7 +8,9 @@ from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
+from .hunter import discover_contacts
 from .identity import BoardKey, JobKey, ManualKey, key_from_args
+from .inbox import AppliedInboxRow, write_applied_row
 from .paths import (
     active_dir,
     archive_dir,
@@ -300,15 +302,24 @@ def cleanup_active_folder(
 
 
 def remove_inbox_rows(inbox_path: Path, items: list[InboxItem]) -> None:
-    """Remove archived rows from INBOX.md in one pass."""
+    """Remove archived rows from the To Apply section in one pass."""
     if not inbox_path.exists():
         return
 
     text = inbox_path.read_text()
     lines = text.splitlines()
     new_lines = []
+    in_applied = False
 
     for line in lines:
+        if line == "## Applied":
+            in_applied = True
+            new_lines.append(line)
+            continue
+        if in_applied:
+            new_lines.append(line)
+            continue
+
         should_remove = False
         for item in items:
             if item.status in line and item.company in line and item.title in line:
@@ -317,7 +328,7 @@ def remove_inbox_rows(inbox_path: Path, items: list[InboxItem]) -> None:
         if not should_remove:
             new_lines.append(line)
 
-    inbox_path.write_text("\n".join(new_lines) + ("\n" if new_lines else ""))
+    inbox_path.write_text("\n".join(new_lines).rstrip() + "\n")
 
 
 def reconcile(
@@ -327,7 +338,8 @@ def reconcile(
 ) -> ReconcileResult:
     """Parse INBOX.md and archive submitted/skipped items.
 
-    - [x] → move to archive/submitted/, set submitted_at in tracker
+    - [x] → move to archive/submitted/, set submitted_at in tracker, append an
+      Applied follow-up block to INBOX
     - [~] → move to archive/skipped/, add to never-suggest list
     - [ ] → leave alone
 
@@ -345,10 +357,12 @@ def reconcile(
     kept: list[str] = []
     errors: list[str] = []
     cleaned_active: list[str] = []
+    applied_rows: list[AppliedInboxRow] = []
 
     for item in items:
         try:
             if item.status == "[x]":
+                applied_on = date.today().isoformat()
                 # Archive as submitted
                 if not dry_run:
                     move_to_archive(item, root, "submitted")
@@ -357,8 +371,49 @@ def reconcile(
                     for idx, app in enumerate(active):
                         if key_for_app_dict(app) == item_key:
                             active[idx]["status"] = "Submitted"
-                            active[idx]["submitted_at"] = date.today().isoformat()
+                            active[idx]["submitted_at"] = applied_on
+                            if app.get("pdf_path"):
+                                active[idx]["pdf_path"] = app["pdf_path"].replace(
+                                    "applications/active/",
+                                    "applications/archive/submitted/",
+                                    1,
+                                )
+                            applied_on = active[idx]["submitted_at"]
                             break
+                top_contacts: tuple[str, ...] = ()
+                best_contact = None
+                if not dry_run:
+                    archive_path = archive_dir(root) / "submitted" / item.slug
+                    contacts_result = discover_contacts(
+                        archive_path,
+                        item.company,
+                        root=root,
+                        url=item.apply_url,
+                    )
+                    if isinstance(contacts_result, dict):
+                        ranked = contacts_result.get("top_contacts") or contacts_result.get("contacts") or []
+                        summaries: list[str] = []
+                        for contact in ranked[:3]:
+                            email = contact.get("email") if isinstance(contact, dict) else None
+                            if not email:
+                                continue
+                            name = contact.get("full_name") or email
+                            position = contact.get("position") or "Contact"
+                            summaries.append(f"{name} — {position} <{email}>")
+                        top_contacts = tuple(summaries)
+                        if top_contacts:
+                            best_contact = top_contacts[0]
+                applied_rows.append(
+                    AppliedInboxRow(
+                        title=item.title,
+                        company=item.company,
+                        archive_slug=item.slug,
+                        applied_on=applied_on,
+                        url=item.apply_url,
+                        best_contact=best_contact,
+                        top_contacts=top_contacts,
+                    )
+                )
                 submitted.append(f"{item.company} — {item.title}")
 
             elif item.status == "[~]":
@@ -389,6 +444,8 @@ def reconcile(
         # Remove archived rows from INBOX in one pass
         archived = [item for item in items if item.status in ("[x]", "[~]")]
         remove_inbox_rows(inbox_path, archived)
+        for row in applied_rows:
+            write_applied_row(inbox_path, row)
         save_tracker(tracker_file(root), tracker)
 
     cleaned_active, cleanup_errors = cleanup_active_folder(

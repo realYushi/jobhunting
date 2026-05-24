@@ -64,8 +64,6 @@ class ParseInboxTests(unittest.TestCase):
         self.assertEqual(items[2].status, "[~]")
 
     def test_slug_no_jobid_uses_bare_company(self):
-        """Rows without a parseable Apply URL job_id (manual flows) keep the
-        bare company-name dir, matching workflow.create_application_package."""
         inbox = Path("/tmp/test-inbox.md")
         inbox.write_text(
             "- [x] **SWE** @ Contact Energy (score: 80) · [JD](./active/Contact%20Energy/research/job-description.md) · [CV](./active/Contact%20Energy/documents/resume.pdf) · [Letter](./active/Contact%20Energy/documents/cover-letter.md)\n"
@@ -75,8 +73,6 @@ class ParseInboxTests(unittest.TestCase):
         self.assertIsNone(items[0].job_id)
 
     def test_slug_with_jobid_is_namespaced(self):
-        """Rows with a recognised Apply URL gain a -{job_id} suffix so the
-        dir matches what workflow.create_application_package writes."""
         inbox = Path("/tmp/test-inbox.md")
         inbox.write_text(
             "- [x] **SWE Agentic** @ Caruso Software Limited (score: 93) · [JD](./Caruso%20Software%20Limited-91491952/research/job-description.md) · [CV](./x/cv.pdf) · [Letter](./x/cover.md) · [Apply ↗](https://nz.seek.com/job/91491952?type=promoted)\n"
@@ -136,13 +132,9 @@ class SkippedJobsTests(unittest.TestCase):
         self.assertFalse(is_skipped_key(tracker, ManualKey("Acme Corp", "Junior Dev")))
 
     def test_is_skipped_falls_back_to_manual_when_called_with_source(self):
-        """A job skipped manually (no source/id) should still match when it
-        later reappears via a scraper that does know source+id — the caller
-        passes the BoardKey as primary and a ManualKey as fallback."""
         tracker = load_tracker(self.tracker_path)
         mark_skipped_key(tracker, ManualKey("Acme Corp", "Senior Engineer"))
 
-        # Same posting reappears via the Seek scraper with a real job_id.
         self.assertTrue(
             is_skipped_key(
                 tracker,
@@ -152,14 +144,12 @@ class SkippedJobsTests(unittest.TestCase):
         )
 
     def test_skipped_persists_across_loads(self):
-        # First write
         tracker1 = load_tracker(self.tracker_path)
         mark_skipped_key(tracker1, BoardKey("seek", "job-slug"))
         from tools.lib.tracker import save_tracker
 
         save_tracker(self.tracker_path, tracker1)
 
-        # Reload and check
         tracker2 = load_tracker(self.tracker_path)
         self.assertTrue(is_skipped_key(tracker2, BoardKey("seek", "job-slug")))
 
@@ -170,17 +160,14 @@ class ReconcileTests(unittest.TestCase):
         self.tempdir = tempfile.TemporaryDirectory()
         self.root = Path(self.tempdir.name)
 
-        # Set up directory structure
         (self.root / "applications" / "active").mkdir(parents=True)
         (self.root / "applications" / "archive" / "submitted").mkdir(parents=True)
         (self.root / "applications" / "archive" / "skipped").mkdir(parents=True)
 
-        # Set up tracker (legacy v5 shape — load_tracker auto-migrates to v6)
         (self.root / "applications" / "application-tracker.json").write_text(
             '{"applications": {"active": []}, "seen_jobs": {}, "skipped_jobs": {}}'
         )
 
-        # Create fake application directories (names match company_dirname)
         (self.root / "applications" / "active" / "Acme").mkdir()
         (self.root / "applications" / "active" / "Globex").mkdir()
         (self.root / "applications" / "active" / "Initech").mkdir()
@@ -245,23 +232,27 @@ class ReconcileTests(unittest.TestCase):
             (self.root / "applications" / "archive" / "submitted" / "Acme").exists()
         )
 
-    def test_reconcile_removes_archived_rows_from_inbox(self):
+    def test_reconcile_removes_archived_rows_from_to_apply_and_adds_applied_block(self):
         inbox_path = self.root / "applications" / "INBOX.md"
         inbox_path.write_text(
+            "# Job INBOX\n\n## To Apply\n\n"
             "- [x] **Senior Python Engineer** @ Acme (score: 82) · [JD](./acme/job.md) · [CV](./acme/cv.pdf) · [Letter](./acme/cover.md) · [Apply ↗](https://acme.com/apply)\n"
-            "- [ ] **Backend Dev** @ Globex (score: 78) · [JD](./globex/job.md) · [CV](./globex/cv.pdf) · [Letter](./globex/cover.md) · [Apply ↗](https://globex.com/apply)\n"
+            "- [ ] **Backend Dev** @ Globex (score: 78) · [JD](./globex/job.md) · [CV](./globex/cv.pdf) · [Letter](./globex/cover.md) · [Apply ↗](https://globex.com/apply)\n\n"
+            "## Applied\n\n"
         )
 
         reconcile(self.root, inbox_path=inbox_path, dry_run=False)
 
         remaining = inbox_path.read_text()
-        self.assertNotIn("Acme", remaining)
+        self.assertNotIn("- [x] **Senior Python Engineer** @ Acme", remaining)
         self.assertIn("Globex", remaining)
+        self.assertIn("## Applied", remaining)
+        self.assertIn("Cold email sent:", remaining)
+        self.assertIn("follow up on:", remaining)
+        self.assertIn("Template", remaining)
+        self.assertIn("[Cold Email](./archive/submitted/Acme/documents/cold-email.md)", remaining)
 
     def test_reconcile_sets_submitted_status_for_byid_tracker_row(self):
-        """Tracker rows scraped from job boards carry source+job_id, so the
-        InboxItem must surface those (parsed from Apply URL) so item.key
-        builds a BoardKey that matches the tracker row's key."""
         tracker_path = self.root / "applications" / "application-tracker.json"
         import json
 
@@ -275,11 +266,11 @@ class ReconcileTests(unittest.TestCase):
                 "source": "seek",
                 "job_id": "12345678",
                 "url": "https://nz.seek.com/job/12345678?type=standard",
+                "pdf_path": "applications/active/Acme-12345678/documents/resume.pdf",
             }
         )
         tracker_path.write_text(json.dumps(tracker))
 
-        # Recreate the active dir under the namespaced name
         (self.root / "applications" / "active" / "Acme-12345678").mkdir()
 
         inbox_path = self.root / "applications" / "INBOX.md"
@@ -295,9 +286,12 @@ class ReconcileTests(unittest.TestCase):
         )
         self.assertEqual(row["status"], "Submitted")
         self.assertIsNotNone(row.get("submitted_at"))
+        self.assertEqual(
+            row.get("pdf_path"),
+            "applications/archive/submitted/Acme-12345678/documents/resume.pdf",
+        )
 
     def test_reconcile_marks_skipped_in_tracker(self):
-        """Verify that skipped items are added to skipped_jobs for dedup."""
         inbox_path = self.root / "applications" / "INBOX.md"
         inbox_path.write_text(
             "- [~] **Frontend Lead** @ Initech (score: 65) · [JD](./initech/job.md) · [CV](./initech/cv.pdf) · [Letter](./initech/cover.md) · [Apply ↗](https://initech.com/apply)\n"

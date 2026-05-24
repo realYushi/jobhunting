@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
+from unittest.mock import patch
 
 from tools.lib.identity import BoardKey
 from tools.lib.tracker import (
@@ -31,8 +32,6 @@ class TrackerTests(unittest.TestCase):
         self.assertEqual(active[0]["date_applied"], "2026-01-02")
 
     def test_upsert_treats_company_variants_as_same_when_job_id_matches(self):
-        # The fragile pre-job_id key would let "Caruso" and "Caruso Corp" collide
-        # silently. With a (source, job_id) key, the scraper can distinguish them.
         tracker = empty_tracker()
         upsert_active_application(
             tracker,
@@ -81,7 +80,6 @@ class TrackerTests(unittest.TestCase):
             ),
         )
         self.assertTrue(is_seen_key(tracker, BoardKey("linkedin", "L-1")))
-        # Manual entry without job_id must not pollute seen set.
         upsert_active_application(
             tracker,
             ApplicationRecord("Bravo", "Engineer", "2026-01-01"),
@@ -104,12 +102,18 @@ class WorkflowTests(unittest.TestCase):
         self.tempdir = tempfile.TemporaryDirectory()
         self.root = Path(self.tempdir.name)
         (self.root / "templates").mkdir()
-        for name in ("base-resume.json", "cover-letter.md", "analysis-template.md"):
+        for name in (
+            "base-resume.json",
+            "cover-letter.md",
+            "analysis-template.md",
+            "cold-email.md",
+        ):
             shutil.copyfile(
                 self.source_root / "templates" / name,
                 self.root / "templates" / name,
             )
         (self.root / "applications").mkdir()
+        (self.root / ".env").write_text("HUNTER_API_KEY=test-key\n")
         self.job_path = self.root / "job.md"
         self.job_path.write_text("We need React, TypeScript, and FastAPI.")
 
@@ -146,8 +150,11 @@ class WorkflowTests(unittest.TestCase):
         app_dir = self.root / "applications" / "active" / "Acme"
         self.assertTrue((app_dir / "research" / "job-description.md").exists())
         self.assertTrue((app_dir / "research" / "analysis.md").exists())
+        self.assertTrue((app_dir / "research" / "contacts.json").exists())
+        self.assertTrue((app_dir / "research" / "contacts.md").exists())
         self.assertTrue((app_dir / "documents" / "resume.json").exists())
         self.assertTrue((app_dir / "documents" / "cover-letter.md").exists())
+        self.assertTrue((app_dir / "documents" / "cold-email.md").exists())
 
         tracker_path = self.root / "applications" / "application-tracker.json"
         tracker = json.loads(tracker_path.read_text())
@@ -181,6 +188,134 @@ class WorkflowTests(unittest.TestCase):
         self.assertNotIn("[Job Title]", cover_text)
         self.assertNotIn("[YYYY-MM-DD]", cover_text)
         self.assertIn("Hi Hiring Team,", cover_text)
+
+    def test_cold_email_is_generated_from_template(self):
+        options = WorkflowOptions(
+            project_root=self.root,
+            job_path=self.job_path,
+            company="Acme",
+            position="Frontend Engineer",
+            role="frontend",
+            keywords=("React", "FastAPI"),
+            dry_run=False,
+        )
+        create_application_package(options)
+
+        cold_email_text = (
+            self.root
+            / "applications"
+            / "active"
+            / "Acme"
+            / "documents"
+            / "cold-email.md"
+        ).read_text()
+
+        self.assertIn("Quick question about Frontend Engineer at Acme", cold_email_text)
+        self.assertIn("GrowLab Technologies", cold_email_text)
+        self.assertNotIn("[Company Name]", cold_email_text)
+        self.assertNotIn("[Job Title]", cold_email_text)
+
+    def test_cold_email_uses_recruiter_style_for_job_board_source(self):
+        options = WorkflowOptions(
+            project_root=self.root,
+            job_path=self.job_path,
+            company="Acme",
+            position="Frontend Engineer",
+            role="frontend",
+            keywords=("React", "FastAPI"),
+            source="seek",
+            job_id="12345678",
+            url="https://nz.seek.com/job/12345678",
+            dry_run=False,
+        )
+        create_application_package(options)
+
+        cold_email_text = (
+            self.root
+            / "applications"
+            / "active"
+            / "Acme-12345678"
+            / "documents"
+            / "cold-email.md"
+        ).read_text()
+
+        self.assertIn(
+            "happy to be pointed to whoever handles hiring for this role",
+            cold_email_text,
+        )
+        self.assertIn("recruiter-style", cold_email_text)
+
+    def test_cold_email_uses_hiring_manager_style_for_direct_company_role(self):
+        options = WorkflowOptions(
+            project_root=self.root,
+            job_path=self.job_path,
+            company="Acme",
+            position="Frontend Engineer",
+            role="frontend",
+            keywords=("React", "FastAPI"),
+            url="https://acme.com/careers/frontend-engineer",
+            dry_run=False,
+        )
+        create_application_package(options)
+
+        cold_email_text = (
+            self.root
+            / "applications"
+            / "active"
+            / "Acme"
+            / "documents"
+            / "cold-email.md"
+        ).read_text()
+
+        self.assertIn(
+            "I’d be glad to share a few relevant examples of my work",
+            cold_email_text,
+        )
+        self.assertIn("hiring-manager-style", cold_email_text)
+
+    def test_contact_discovery_is_written_when_available(self):
+        options = WorkflowOptions(
+            project_root=self.root,
+            job_path=self.job_path,
+            company="Acme",
+            position="Frontend Engineer",
+            role="frontend",
+            keywords=("React", "FastAPI"),
+            dry_run=False,
+        )
+        hunter_payload = {
+            "status": "ok",
+            "company": "Acme",
+            "domain": "acme.com",
+            "contacts": [
+                {
+                    "full_name": "Jane Recruiter",
+                    "email": "jane@acme.com",
+                    "position": "Talent Partner",
+                    "verification_status": "valid",
+                    "confidence": 90,
+                }
+            ],
+            "top_contact": {
+                "full_name": "Jane Recruiter",
+                "email": "jane@acme.com",
+                "position": "Talent Partner",
+            },
+        }
+        with patch("tools.lib.hunter.discover_company_contacts", return_value=hunter_payload):
+            create_application_package(options)
+
+        contacts_json = json.loads(
+            (
+                self.root
+                / "applications"
+                / "active"
+                / "Acme"
+                / "research"
+                / "contacts.json"
+            ).read_text()
+        )
+        self.assertEqual(contacts_json["top_contact"]["email"], "jane@acme.com")
 
     def test_unfilled_editor_prompts_surface_as_warnings(self):
         options = WorkflowOptions(

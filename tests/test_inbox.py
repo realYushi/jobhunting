@@ -3,9 +3,12 @@ import unittest
 from pathlib import Path
 
 from tools.lib.inbox import (
+    AppliedInboxRow,
     InboxRow,
     clear_inbox,
+    format_applied_row,
     format_row,
+    write_applied_row,
     write_inbox_row,
     write_inbox_rows,
 )
@@ -27,7 +30,7 @@ class FormatRowTests(unittest.TestCase):
         self.assertIn("(score: 82)", line)
         self.assertIn("[JD](./active/acme/research/job-description.md)", line)
         self.assertIn("[CV](./active/acme/documents/resume.pdf)", line)
-        self.assertIn("[Letter](./active/acme/documents/cover-letter.pdf)", line)
+        self.assertIn("[Letter](./active/acme/documents/cover-letter.md)", line)
         self.assertIn("[Apply ↗](https://acme.com/apply)", line)
         self.assertIn(" · ", line)
 
@@ -54,6 +57,31 @@ class FormatRowTests(unittest.TestCase):
         self.assertIn("[x]", line)
         self.assertNotIn("[ ]", line)
 
+    def test_format_applied_row(self):
+        row = AppliedInboxRow(
+            title="Senior Python Engineer",
+            company="Acme",
+            archive_slug="Acme",
+            applied_on="2026-05-24",
+            url="https://acme.com/apply",
+            best_contact="Jane Recruiter — Talent Partner <jane@acme.com>",
+            top_contacts=(
+                "Jane Recruiter — Talent Partner <jane@acme.com>",
+                "Eve Manager — Engineering Manager <eve@acme.com>",
+                "Sam HR — HR Business Partner <sam@acme.com>",
+            ),
+        )
+        block = format_applied_row(row)
+        self.assertIn("applied 2026-05-24", block)
+        self.assertIn("archive/submitted/Acme", block)
+        self.assertIn("Top contacts:", block)
+        self.assertIn("1. Jane Recruiter — Talent Partner <jane@acme.com>", block)
+        self.assertIn("2. Eve Manager — Engineering Manager <eve@acme.com>", block)
+        self.assertIn("3. Sam HR — HR Business Partner <sam@acme.com>", block)
+        self.assertIn("Cold email sent: 2026-05-24 → follow up on: 2026-05-31", block)
+        self.assertIn("Template", block)
+        self.assertIn("[Cold Email](./archive/submitted/Acme/documents/cold-email.md)", block)
+
 
 class WriteInboxTests(unittest.TestCase):
     def setUp(self):
@@ -75,17 +103,17 @@ class WriteInboxTests(unittest.TestCase):
         self.assertTrue(self.inbox_path.exists())
         content = self.inbox_path.read_text()
         self.assertIn("# Job INBOX", content)
+        self.assertIn("## To Apply", content)
+        self.assertIn("## Applied", content)
         self.assertIn("Senior Python Engineer", content)
 
     def test_write_appends_to_existing_inbox(self):
-        # First row
         write_inbox_row(
             self.inbox_path,
             InboxRow(
                 title="Senior Python Engineer", company="Acme", slug="acme", score=82
             ),
         )
-        # Second row
         write_inbox_row(
             self.inbox_path,
             InboxRow(title="Backend Dev", company="Globex", slug="globex", score=78),
@@ -94,7 +122,6 @@ class WriteInboxTests(unittest.TestCase):
         content = self.inbox_path.read_text()
         self.assertIn("Acme", content)
         self.assertIn("Globex", content)
-        # Should only have one header
         self.assertEqual(content.count("# Job INBOX"), 1)
 
     def test_write_does_not_duplicate(self):
@@ -105,11 +132,10 @@ class WriteInboxTests(unittest.TestCase):
             score=82,
         )
         write_inbox_row(self.inbox_path, row)
-        write_inbox_row(self.inbox_path, row)  # Same row again
+        write_inbox_row(self.inbox_path, row)
 
         content = self.inbox_path.read_text()
-        # Count occurrences of the company name (should be 1, not 2)
-        lines = [line for line in content.splitlines() if "Acme" in line]
+        lines = [line for line in content.splitlines() if "Acme" in line and "[ ]" in line]
         self.assertEqual(len(lines), 1)
 
     def test_write_keeps_titles_that_are_substrings(self):
@@ -153,6 +179,23 @@ class WriteInboxTests(unittest.TestCase):
         self.assertIn("Globex", content)
         self.assertIn("Initech", content)
 
+    def test_write_applied_row(self):
+        write_applied_row(
+            self.inbox_path,
+            AppliedInboxRow(
+                title="Senior Python Engineer",
+                company="Acme",
+                archive_slug="Acme",
+                applied_on="2026-05-24",
+                url="https://acme.com/apply",
+            ),
+        )
+
+        content = self.inbox_path.read_text()
+        self.assertIn("## Applied", content)
+        self.assertIn("Cold email sent: 2026-05-24 → follow up on: 2026-05-31", content)
+        self.assertIn("Template", content)
+
     def test_clear_inbox(self):
         write_inbox_row(
             self.inbox_path,
@@ -165,6 +208,8 @@ class WriteInboxTests(unittest.TestCase):
         clear_inbox(self.inbox_path)
         content = self.inbox_path.read_text()
         self.assertIn("# Job INBOX", content)
+        self.assertIn("## To Apply", content)
+        self.assertIn("## Applied", content)
         self.assertNotIn("Acme", content)
 
 
