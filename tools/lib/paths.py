@@ -50,6 +50,11 @@ def tracker_path(root: Path | None = None) -> Path:
     return (root or project_root()) / "applications" / "application-tracker.json"
 
 
+def ledger_path(root: Path | None = None) -> Path:
+    """Sidecar holding the scrape-dedup `seen` ledger (gitignored, regenerable)."""
+    return (root or project_root()) / "applications" / "application-ledger.json"
+
+
 def active_dir(root: Path | None = None) -> Path:
     """Return the active applications directory."""
     return (root or project_root()) / "applications" / "active"

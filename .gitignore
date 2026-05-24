@@ -58,6 +58,9 @@ temp/
 applications/active/*/documents/*.pdf
 applications/*/interview/notes-*.md
 
+# Scrape-dedup ledger (regenerable cache, split out of application-tracker.json)
+applications/application-ledger.json
+
 # Node modules (if using any JS tools)
 node_modules/
 npm-debug.log

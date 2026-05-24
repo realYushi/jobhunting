@@ -11,10 +11,12 @@ from typing import Any
 
 from .identity import BoardKey, JobKey, ManualKey, from_dict, key_from_args
 
-# Bumped when the on-disk schema changes. v6 = flat seen/skipped lists of
-# typed JobKey dicts (was bucketed seen_jobs/skipped_jobs in v5.x).
-TRACKER_VERSION = "6.0"
+# Bumped when the on-disk schema changes. v7 = `seen` moved to a sidecar ledger
+# file (application-ledger.json); v6 = flat seen/skipped lists of typed JobKey
+# dicts (was bucketed seen_jobs/skipped_jobs in v5.x).
+TRACKER_VERSION = "7.0"
 BUCKETS = ("active", "interviews", "offers", "rejected", "withdrawn")
+LEDGER_NAME = "application-ledger.json"
 
 
 @dataclass(frozen=True)
@@ -141,10 +143,38 @@ def _dedup_key_dicts(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return out
 
 
+def _ledger_for(tracker_file: Path) -> Path:
+    """Sidecar ledger path sitting next to the tracker file."""
+    return tracker_file.with_name(LEDGER_NAME)
+
+
+def _load_seen_ledger(ledger_file: Path) -> list[dict[str, Any]] | None:
+    """Return the `seen` key list from the sidecar, or None when it's absent.
+
+    None means "no sidecar yet" so the caller falls back to any inline `seen`
+    still in a pre-v7 tracker.json; a present-but-empty sidecar returns [].
+    """
+    if not ledger_file.exists():
+        return None
+    with open(ledger_file) as f:
+        data = json.load(f)
+    seen = data.get("seen") if isinstance(data, dict) else None
+    return seen if isinstance(seen, list) else []
+
+
+def _sorted_key_dicts(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Stable, deterministic ordering for key-dict lists so the serialized
+    output doesn't reshuffle each run (sets have no order) and churn the diff."""
+    return sorted(items or [], key=lambda d: json.dumps(d, sort_keys=True))
+
+
 def load_tracker(path: Path) -> dict[str, Any]:
     """Load tracker JSON, creating an in-memory default when missing.
 
-    Migrates v5.x bucketed seen_jobs/skipped_jobs to v6 flat key lists on read.
+    `seen` lives in a sidecar ledger (v7); it's read back into the in-memory
+    tracker so the helper API is unchanged. Falls back to inline `seen` from a
+    pre-v7 file when no sidecar exists yet. Also migrates v5.x bucketed
+    seen_jobs/skipped_jobs to flat key lists on read.
     """
     if not path.exists():
         return empty_tracker()
@@ -154,6 +184,11 @@ def load_tracker(path: Path) -> dict[str, Any]:
     apps = tracker.setdefault("applications", {})
     for bucket in BUCKETS:
         apps.setdefault(bucket, [])
+
+    ledger_seen = _load_seen_ledger(_ledger_for(path))
+    if ledger_seen is not None:
+        tracker["seen"] = ledger_seen
+
     _migrate_legacy_seen_skipped(tracker)
     tracker["meta"]["version"] = TRACKER_VERSION
     return tracker
@@ -162,30 +197,46 @@ def load_tracker(path: Path) -> dict[str, Any]:
 def save_tracker(
     path: Path, tracker: dict[str, Any], today: date | None = None
 ) -> None:
-    """Persist tracker JSON with a refreshed last_updated date.
+    """Persist the tracker, splitting `seen` into its sidecar ledger.
 
-    Skips the write (and the last_updated bump) when serialized output matches
-    the existing file byte-for-byte, so no-op flows don't churn the mtime or
-    re-trigger downstream watchers.
+    tracker.json holds meta + applications + skipped (+ skip_details); the
+    `seen` dedup cache goes to application-ledger.json. Both writes skip when
+    their serialized output matches disk byte-for-byte, so no-op flows don't
+    churn mtimes or re-trigger downstream watchers. The in-memory `tracker`
+    keeps `seen`, so callers can read it after saving.
     """
     # Strip any legacy keys that snuck in (defensive: writers shouldn't add them
     # post-migration, but a hand-edit upstream shouldn't poison the next read).
     tracker.pop("seen_jobs", None)
     tracker.pop("skipped_jobs", None)
-    tracker.setdefault("meta", {})["version"] = TRACKER_VERSION
+    meta = tracker.setdefault("meta", {})
+    meta["version"] = TRACKER_VERSION
 
-    # Compare the current dict against the on-disk file before bumping
-    # last_updated. If they match, the caller's mutation was a no-op and we
-    # leave both the contents and the mtime alone.
-    candidate_text = json.dumps(tracker, indent=2) + "\n"
-    if path.exists() and path.read_text() == candidate_text:
+    # tracker.json document — everything except `seen`, with key lists sorted so
+    # set-derived ordering doesn't reshuffle the diff each run.
+    main_doc = {k: v for k, v in tracker.items() if k != "seen"}
+    if "skipped" in main_doc:
+        main_doc["skipped"] = _sorted_key_dicts(main_doc["skipped"])
+    ledger_doc = {"seen": _sorted_key_dicts(tracker.get("seen", []))}
+    ledger_file = _ledger_for(path)
+
+    main_text = json.dumps(main_doc, indent=2) + "\n"
+    ledger_text = json.dumps(ledger_doc, indent=2) + "\n"
+    main_unchanged = path.exists() and path.read_text() == main_text
+    ledger_unchanged = ledger_file.exists() and ledger_file.read_text() == ledger_text
+    if main_unchanged and ledger_unchanged:
         return
 
-    tracker["meta"]["last_updated"] = (today or date.today()).isoformat()
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w") as f:
-        json.dump(tracker, f, indent=2)
-        f.write("\n")
+    if not main_unchanged:
+        # last_updated tracks tracker.json content; ledger-only writes don't bump it.
+        meta["last_updated"] = (today or date.today()).isoformat()
+        main_text = json.dumps(main_doc, indent=2) + "\n"
+        with open(path, "w") as f:
+            f.write(main_text)
+    if not ledger_unchanged:
+        with open(ledger_file, "w") as f:
+            f.write(ledger_text)
 
 
 def upsert_active_application(
