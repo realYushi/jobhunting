@@ -8,6 +8,8 @@ I came across the [Job Title] role at [Company Name] and wanted to reach out, no
 
 [Current Role] [Relevant Example]
 
+I'd love to learn more about how I could bring that energy to your team.
+
 [CTA]
 
 Thanks so much for the time,

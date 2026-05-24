@@ -328,6 +328,104 @@ class ReconcileTests(unittest.TestCase):
             inbox_path.read_text(),
         )
 
+    def test_reconcile_scaffolds_contact_aware_cold_email_and_queues_it(self):
+        # Once Hunter resolves a recipient at submit time, reconcile scaffolds a
+        # contact-aware cold-email into the archive and queues it for body fill.
+        # The email is never produced at package time — only on commit ([x]).
+        import shutil
+
+        templates = self.root / "templates"
+        templates.mkdir(exist_ok=True)
+        shutil.copyfile(
+            Path(__file__).resolve().parents[1] / "templates" / "cold-email.md",
+            templates / "cold-email.md",
+        )
+        app = self.root / "applications" / "active" / "Acme"
+        (app / "documents").mkdir()
+        research = app / "research"
+        research.mkdir()
+        (research / "job-description.md").write_text("Build React + FastAPI tools.")
+        (research / "contacts.json").write_text(
+            json.dumps(
+                {
+                    "contacts": [
+                        {
+                            "first_name": "Jane",
+                            "full_name": "Jane Recruiter",
+                            "position": "Talent Partner",
+                            "email": "jane@acme.com",
+                        }
+                    ]
+                }
+            )
+        )
+
+        inbox_path = self.root / "applications" / "INBOX.md"
+        inbox_path.write_text(
+            "# Job INBOX\n\n## To Apply\n\n"
+            "- [x] **Senior Python Engineer** @ Acme (score: 82) · [JD](./acme/job.md) · [CV](./acme/cv.pdf) · [Letter](./acme/cover.md) · [Apply ↗](https://acme.com/apply)\n\n"
+            "## Applied\n\n"
+        )
+
+        with patch("tools.lib.reconcile.discover_contacts") as mock_discover:
+            result = reconcile(self.root, inbox_path=inbox_path, dry_run=False)
+
+        # Contacts already existed, so submit-time discovery was skipped.
+        mock_discover.assert_not_called()
+
+        cold_email = (
+            self.root
+            / "applications"
+            / "archive"
+            / "submitted"
+            / "Acme"
+            / "documents"
+            / "cold-email.md"
+        )
+        self.assertTrue(cold_email.exists())
+        text = cold_email.read_text()
+        self.assertIn("Hi Jane,", text)  # salutation filled from the contact
+        self.assertIn("Jane Recruiter — Talent Partner", text)  # recipient context
+
+        self.assertEqual(len(result.coldmail_queue), 1)
+        entry = result.coldmail_queue[0]
+        self.assertEqual(entry["company"], "Acme")
+        self.assertTrue(
+            entry["cold_email_path"].endswith("Acme/documents/cold-email.md")
+        )
+        self.assertTrue(
+            entry["contacts_path"].endswith("Acme/research/contacts.json")
+        )
+
+    def test_reconcile_skips_cold_email_when_no_contact_found(self):
+        # No recipient means there is nothing to address — no email, no queue.
+        app = self.root / "applications" / "active" / "Acme"
+        (app / "documents").mkdir()
+        (app / "research").mkdir()
+
+        inbox_path = self.root / "applications" / "INBOX.md"
+        inbox_path.write_text(
+            "# Job INBOX\n\n## To Apply\n\n"
+            "- [x] **Senior Python Engineer** @ Acme (score: 82) · [JD](./acme/job.md) · [CV](./acme/cv.pdf) · [Letter](./acme/cover.md) · [Apply ↗](https://acme.com/apply)\n\n"
+            "## Applied\n\n"
+        )
+
+        with patch("tools.lib.reconcile.discover_contacts"):
+            result = reconcile(self.root, inbox_path=inbox_path, dry_run=False)
+
+        self.assertEqual(result.coldmail_queue, [])
+        self.assertFalse(
+            (
+                self.root
+                / "applications"
+                / "archive"
+                / "submitted"
+                / "Acme"
+                / "documents"
+                / "cold-email.md"
+            ).exists()
+        )
+
     def test_reconcile_sets_submitted_status_for_byid_tracker_row(self):
         tracker_path = self.root / "applications" / "application-tracker.json"
         import json

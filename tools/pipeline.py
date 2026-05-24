@@ -1,13 +1,17 @@
 """Job research pipeline orchestrator.
 
-Run: "python tools/pipeline.py"
+Runs as two orchestrated stages around a Claude Code scoring subagent (there is
+no single-command path; scoring is pure-LLM, not deterministic):
 
-This runs the full pipeline:
-1. Reconcile INBOX (archive submitted/skipped)
-2. Scrape LinkedIn + Seek for each configured profile
-3. Stage-1 match score on listing snippets → drop below cutoff
-4. Stage-2: generate CV + cover letter for top N matches
-5. Append rows to INBOX.md, report counts
+  1. --scrape-only OUT   Phases 1-5: reconcile INBOX → scrape sources → dedup vs
+                         tracker/INBOX → fetch full JD for all survivors →
+                         location gate. Dumps eligible listings (with full_jd)
+                         + candidate profile summary to OUT.
+  2. <scoring subagent>  Phase 6: scores the full JDs against
+                         tools/scoring-rubric.md, writes a filtered scores file.
+  3. --from-scores IN    Phases 7-8: package CV + cover letter for the capped
+                         top matches (reusing full JDs via --listings) and
+                         append rows to INBOX.md.
 """
 
 from __future__ import annotations
@@ -23,16 +27,13 @@ from pathlib import Path
 from lib.harness_utils import load_script, run_harness
 from lib.identity import BoardKey, JobKey, ManualKey, _norm_manual_field, try_manual_key
 from lib.inbox import InboxRow, write_inbox_rows
-from lib.linkedin_status import sync_linkedin_statuses
 from lib.paths import company_dirname, inbox_path as default_inbox, project_root
-from lib.reconcile import InboxItem, parse_inbox, reconcile
+from lib.reconcile import InboxItem, ReconcileResult, parse_inbox, reconcile
 from lib.tracker import key_for_app_dict, load_keyset, load_tracker
 from lib.scorer import (
     ScoreResult,
     candidate_summary,
-    filter_by_score,
     load_candidate_profile,
-    score_listings,
     sort_by_score,
 )
 from lib.scraper import JobListing, load_search_config
@@ -268,26 +269,7 @@ def do_reconcile_and_scrape(
             print(f"  🧹 {cleaned}", file=sys.stderr)
         for error in result.errors:
             print(f"  ⚠️ Reconcile cleanup issue: {error}", file=sys.stderr)
-
-        print("\n🔔 Phase 1b: Syncing LinkedIn application statuses...", file=sys.stderr)
-        try:
-            status_updates = sync_linkedin_statuses(root, dry_run=dry_run)
-            if status_updates:
-                print(
-                    f"  Updated {len(status_updates)} application status(es) from LinkedIn",
-                    file=sys.stderr,
-                )
-                for update in status_updates:
-                    print(
-                        "  ↪ "
-                        f"{update['company']} — {update['position']} "
-                        f"({update['from_bucket']} → {update['to_bucket']})",
-                        file=sys.stderr,
-                    )
-            else:
-                print("  No LinkedIn status changes found", file=sys.stderr)
-        except Exception as e:
-            print(f"  ⚠️ LinkedIn status sync failed: {e}", file=sys.stderr)
+        _write_coldmail_queue(result)
     else:
         print("🔄 Phase 1: Skipping INBOX reconcile (--no-reconcile)", file=sys.stderr)
 
@@ -311,6 +293,23 @@ def do_reconcile_and_scrape(
 
 
 COVER_QUEUE_PATH = Path("/tmp/jobhunting-cover-queue.json")
+COLDMAIL_QUEUE_PATH = Path("/tmp/jobhunting-coldmail-queue.json")
+
+
+def _write_coldmail_queue(result: ReconcileResult) -> None:
+    """Persist submit-time cold-email scaffolds for the body-fill subagent.
+
+    reconcile() scaffolds a contact-aware cold-email for each [x] submission
+    that resolved a recipient; the orchestrator fills the body on this run.
+    """
+    queue = result.coldmail_queue
+    if not queue:
+        return
+    COLDMAIL_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(COLDMAIL_QUEUE_PATH, "w") as f:
+        json.dump({"emails": queue}, f, indent=2)
+    print(f"\n✉️  {len(queue)} cold email(s) need body fill-in.", file=sys.stderr)
+    print(f"   Queue written to: {COLDMAIL_QUEUE_PATH}", file=sys.stderr)
 
 
 def _norm_identity_text(value: str | None) -> str:
@@ -514,17 +513,20 @@ def do_package_from_scores(
     passed: list[ScoreResult],
     cap: int,
     dry_run: bool,
-    fetch_jd: bool,
+    listings_by_id: dict[str, dict] | None = None,
     skip_reconcile: bool = False,
 ) -> None:
-    """Phases 4-5: build packages and write INBOX.
+    """Phases 7-8: build packages and write INBOX.
 
-    Pass ``skip_reconcile=True`` when the caller has already reconciled INBOX
-    in this same process (e.g. the inline `run_pipeline` flow) to avoid a
-    redundant second pass through `cleanup_active_folder`.
+    Full JD text, the dedup pass, and the location gate all happen upstream in
+    ``run_scrape_only`` now. ``listings_by_id`` carries each scored listing's
+    pre-fetched ``full_jd`` (keyed by ``job_id``) so packaging never re-fetches.
+    The dedup loop below is kept as a cheap, fetch-free final guard against rows
+    submitted/skipped between the scrape and package stages.
     """
+    listings_by_id = listings_by_id or {}
     inbox = default_inbox(root)
-    print("\n📦 Phase 4: Creating application packages...", file=sys.stderr)
+    print("\n📦 Phase 7: Creating application packages...", file=sys.stderr)
 
     if not skip_reconcile:
         # Package-only runs may happen after the user has marked INBOX rows as
@@ -540,6 +542,7 @@ def do_package_from_scores(
             )
         for error in reconcile_result.errors:
             print(f"  ⚠️ Reconcile issue before packaging: {error}", file=sys.stderr)
+        _write_coldmail_queue(reconcile_result)
 
     tracker = load_tracker(root / "applications" / "application-tracker.json")
     skipped_set = load_keyset(tracker, "skipped")
@@ -570,16 +573,6 @@ def do_package_from_scores(
             break
     print(f"  Creating {len(to_package)} packages (cap: {cap})", file=sys.stderr)
 
-    # Pre-fetch JDs in parallel (skip in dry-run since we don't build packages).
-    jd_cache: dict[str, str] = {}
-    if fetch_jd and not dry_run and to_package:
-        print(
-            f"  Fetching {len(to_package)} JDs in parallel "
-            f"(workers={JD_FETCH_PARALLELISM})...",
-            file=sys.stderr,
-        )
-        jd_cache = _fetch_jds_parallel(to_package)
-
     inbox_rows: list[InboxRow] = []
     cover_queue: list[dict] = []
     complete_count = 0
@@ -609,7 +602,7 @@ def do_package_from_scores(
 
         package_url = _resolve_apply_url(item)
 
-        jd_text = jd_cache.get(item.url) if item.url else None
+        jd_text = (listings_by_id.get(item.job_id) or {}).get("full_jd") or None
         if jd_text:
             body = jd_text
             with tempfile.NamedTemporaryFile(
@@ -636,13 +629,6 @@ def do_package_from_scores(
                 if package_url and package_url != item.url:
                     f.write(f"Direct apply: {package_url}\n")
                 jd_path = Path(f.name)
-
-        eligible, location_reason = _location_eligibility(item, body)
-        if not eligible:
-            print(f"    ⏭️  Skipping: {location_reason}", file=sys.stderr)
-            if jd_path and jd_path.exists():
-                jd_path.unlink(missing_ok=True)
-            continue
 
         try:
             # Create the application package
@@ -758,41 +744,41 @@ def do_package_from_scores(
         print("\n✅ Pipeline complete — all cover letters filled.", file=sys.stderr)
 
 
-def run_pipeline(
-    root: Path,
-    profiles: list[str] | None = None,
-    score_cutoff: int | None = None,
-    per_run_cap: int | None = None,
-    sources: list[str] | None = None,
-    dry_run: bool = False,
-    fetch_jd: bool = True,
-    reconcile_inbox: bool = True,
-) -> None:
-    """Default end-to-end flow: reconcile → scrape → score (in-process) → package."""
-    profile_configs, sources, cutoff, cap = _resolve_config(
-        profiles, sources, score_cutoff, per_run_cap
-    )
-    all_listings = do_reconcile_and_scrape(
-        root, profile_configs, dry_run, reconcile_inbox=reconcile_inbox
-    )
-    if not all_listings:
-        print("\n⚠️ No new listings found. Pipeline complete.", file=sys.stderr)
-        return
+def _dedup_survivors(
+    root: Path, inbox: Path, listings: list[JobListing]
+) -> list[JobListing]:
+    """Phase 3: drop listings already applied/skipped/in INBOX (fetch-free).
 
-    print("\n📊 Phase 3: Scoring listings...", file=sys.stderr)
-    pre_filtered = [lst for lst in all_listings if not _snippet_location_excluded(lst)]
-    dropped = len(all_listings) - len(pre_filtered)
-    if dropped:
-        print(
-            f"  Pre-filter dropped {dropped} region-locked listings before scoring",
-            file=sys.stderr,
+    Runs before the expensive JD fetch + scoring so we never pay to fetch or
+    score a job we've already handled. Reuses the same ``_duplicate_reason``
+    indexes the packaging guard uses; ``JobListing`` exposes the same
+    ``source``/``job_id``/``company``/``title``/``url`` attributes the dedup
+    helpers read off a ``ScoreResult``.
+    """
+    tracker = load_tracker(root / "applications" / "application-tracker.json")
+    skipped_set = load_keyset(tracker, "skipped")
+    application_key_index = _build_application_key_index(tracker)
+    company_title_index = _build_company_title_index(tracker)
+    inbox_key_index, inbox_company_title_index = _build_inbox_indexes(parse_inbox(inbox))
+
+    survivors: list[JobListing] = []
+    for lst in listings:
+        reason = _duplicate_reason(
+            lst,
+            application_key_index=application_key_index,
+            company_title_index=company_title_index,
+            inbox_key_index=inbox_key_index,
+            inbox_company_title_index=inbox_company_title_index,
+            skipped_set=skipped_set,
         )
-    scored = score_listings([vars(lst) for lst in pre_filtered])
-    scored = sort_by_score(scored)
-    passed = filter_by_score(scored, cutoff)
-    print(f"  Above cutoff ({cutoff}): {len(passed)}", file=sys.stderr)
-
-    do_package_from_scores(root, passed, cap, dry_run, fetch_jd, skip_reconcile=True)
+        if reason:
+            print(
+                f"  ⏭️  Dedup: {lst.title} @ {lst.company} ({reason})",
+                file=sys.stderr,
+            )
+            continue
+        survivors.append(lst)
+    return survivors
 
 
 def run_scrape_only(
@@ -803,7 +789,12 @@ def run_scrape_only(
     dry_run: bool,
     reconcile_inbox: bool = True,
 ) -> None:
-    """Run phases 1-2, dump listings + profile summary to JSON, exit.
+    """Phases 1-5: reconcile → scrape → dedup → fetch full JD → location gate.
+
+    Dumps location-eligible, deduped listings (each carrying its pre-fetched
+    ``full_jd``) plus the candidate profile summary to OUTFILE for the scoring
+    subagent. Because JD text is fetched here once, ``--from-scores`` packaging
+    never re-fetches.
 
     Output schema:
       {
@@ -811,49 +802,107 @@ def run_scrape_only(
         "cutoff": <int>,
         "cap": <int>,
         "listings": [
-            {"job_id", "source", "title", "company", "url", "snippet", ...}
+            {"job_id","source","title","company","url","location","snippet","full_jd"}
         ]
       }
     """
     profile_configs, _sources, cutoff, cap = _resolve_config(
         profiles, sources, None, None
     )
+    inbox = default_inbox(root)
     all_listings = do_reconcile_and_scrape(
         root, profile_configs, dry_run, reconcile_inbox=reconcile_inbox
     )
+
+    print("\n🧹 Phase 3: Deduping against tracker / INBOX...", file=sys.stderr)
+    survivors = _dedup_survivors(root, inbox, all_listings)
+    print(f"  After dedup: {len(survivors)} new listings", file=sys.stderr)
+
+    # Cheap pre-fetch trim: drop hard region-locked snippets before paying to
+    # fetch their full JD (STRICT phrases only — conservative, zero risk).
+    pre_trimmed = [lst for lst in survivors if not _snippet_location_excluded(lst)]
+    dropped_pre = len(survivors) - len(pre_trimmed)
+    if dropped_pre:
+        print(
+            f"  Pre-fetch trim dropped {dropped_pre} region-locked listings",
+            file=sys.stderr,
+        )
+
+    jd_cache: dict[str, str] = {}
+    if not dry_run and pre_trimmed:
+        print(
+            f"\n📄 Phase 4: Fetching {len(pre_trimmed)} full JDs in parallel "
+            f"(workers={JD_FETCH_PARALLELISM})...",
+            file=sys.stderr,
+        )
+        jd_cache = _fetch_jds_parallel(pre_trimmed)
+
+    print("\n🌏 Phase 5: Location gate on full JD...", file=sys.stderr)
+    listings_out: list[dict] = []
+    dropped_loc = 0
+    for lst in pre_trimmed:
+        jd_text = jd_cache.get(lst.url, "") if lst.url else ""
+        if not dry_run:
+            eligible, location_reason = _location_eligibility(lst, jd_text)
+            if not eligible:
+                dropped_loc += 1
+                print(
+                    f"  ⏭️  Location gate: {lst.title} @ {lst.company} "
+                    f"({location_reason})",
+                    file=sys.stderr,
+                )
+                continue
+        listings_out.append(
+            {
+                "job_id": lst.job_id,
+                "source": lst.source,
+                "title": lst.title,
+                "company": lst.company,
+                "url": lst.url,
+                "location": lst.location,
+                "snippet": lst.snippet,
+                "full_jd": jd_text,
+            }
+        )
+    if dropped_loc:
+        print(f"  Location gate dropped {dropped_loc} listings", file=sys.stderr)
 
     payload = {
         "profile_summary": candidate_summary(load_candidate_profile()),
         "cutoff": cutoff,
         "cap": cap,
-        "listings": [vars(lst) for lst in all_listings],
+        "listings": listings_out,
     }
     outfile.parent.mkdir(parents=True, exist_ok=True)
     with open(outfile, "w") as f:
         json.dump(payload, f, indent=2)
     print(
-        f"\n📤 Wrote {len(all_listings)} listings + profile summary to {outfile}",
+        f"\n📤 Wrote {len(listings_out)} listings + profile summary to {outfile}",
         file=sys.stderr,
     )
     print(
-        "   Next: have a Claude Code subagent score these and write back a",
+        "   Next: have a Claude Code subagent score these (full JD) per",
         file=sys.stderr,
     )
-    print("   scores file, then run:", file=sys.stderr)
-    print("     python3 tools/pipeline.py --from-scores <scores.json>", file=sys.stderr)
+    print("   tools/scoring-rubric.md, then run:", file=sys.stderr)
+    print(
+        "     python3 tools/pipeline.py --from-scores <scores.json> "
+        f"--listings {outfile}",
+        file=sys.stderr,
+    )
 
 
 def run_from_scores(
     root: Path,
     scores_file: Path,
+    listings_file: Path | None,
     cap_override: int | None,
     dry_run: bool,
-    fetch_jd: bool,
     reconcile_inbox: bool = True,
 ) -> None:
-    """Run phases 4-5 from a pre-scored JSON file.
+    """Phases 7-8: package + write INBOX from a pre-scored JSON file.
 
-    Input schema (whichever the subagent emits):
+    Input schema (emitted by the scoring subagent):
       {
         "cap": <int>,                           # optional
         "scores": [
@@ -861,31 +910,57 @@ def run_from_scores(
         ]
       }
     Scores below cutoff should already be filtered out by the subagent.
+
+    ``listings_file`` is the ``--scrape-only`` dump; its embedded ``full_jd`` is
+    joined onto each score by ``job_id`` so packaging uses the JD fetched
+    upstream rather than re-fetching. Title/company/url missing from a score are
+    backfilled from the joined listing.
     """
     with open(scores_file) as f:
         data = json.load(f)
 
+    listings_by_id: dict[str, dict] = {}
+    if listings_file:
+        with open(listings_file) as f:
+            listings_data = json.load(f)
+        for lst in listings_data.get("listings", []):
+            jid = lst.get("job_id")
+            if jid:
+                listings_by_id[jid] = lst
+
     raw_scores = data.get("scores", [])
-    passed = [
-        ScoreResult(
-            job_id=r["job_id"],
-            source=r["source"],
-            title=r.get("title", "Unknown"),
-            company=r.get("company", "Unknown"),
-            url=r.get("url"),
-            score=int(r["score"]),
-            reason=r.get("reason", ""),
+    passed = []
+    for r in raw_scores:
+        lst = listings_by_id.get(r["job_id"], {})
+        passed.append(
+            ScoreResult(
+                job_id=r["job_id"],
+                source=r["source"],
+                title=r.get("title") or lst.get("title", "Unknown"),
+                company=r.get("company") or lst.get("company", "Unknown"),
+                url=r.get("url") or lst.get("url"),
+                score=int(r["score"]),
+                reason=r.get("reason", ""),
+            )
         )
-        for r in raw_scores
-    ]
     passed = sort_by_score(passed)
 
     cap = cap_override or data.get("cap") or 10
     print(
         f"📥 Loaded {len(passed)} scored listings from {scores_file}", file=sys.stderr
     )
+    if listings_file:
+        print(
+            f"   Joined {len(listings_by_id)} full JDs from {listings_file}",
+            file=sys.stderr,
+        )
     do_package_from_scores(
-        root, passed, cap, dry_run, fetch_jd, skip_reconcile=not reconcile_inbox
+        root,
+        passed,
+        cap,
+        dry_run,
+        listings_by_id=listings_by_id,
+        skip_reconcile=not reconcile_inbox,
     )
 
 
@@ -896,11 +971,6 @@ def main() -> None:
         action="append",
         dest="profiles",
         help="Search profile to run (can specify multiple times, default: all)",
-    )
-    parser.add_argument(
-        "--cutoff",
-        type=int,
-        help="Score cutoff (default: from config or 65)",
     )
     parser.add_argument(
         "--cap",
@@ -919,36 +989,41 @@ def main() -> None:
         help="Show what would be done without making changes",
     )
     parser.add_argument(
-        "--no-fetch-jd",
-        action="store_true",
-        help="Skip fetching full JD (use snippet only)",
-    )
-    parser.add_argument(
         "--no-reconcile",
         action="store_true",
-        help="Skip the INBOX reconcile step in every mode "
-        "(full pipeline Phase 1, --scrape-only Phase 1, and the pre-package "
-        "reconcile inside --from-scores). Useful when re-running packaging "
-        "without mutating INBOX/tracker.",
+        help="Skip the INBOX reconcile step (--scrape-only Phase 1 and the "
+        "pre-package reconcile inside --from-scores). Useful when re-running "
+        "packaging without mutating INBOX/tracker.",
     )
     parser.add_argument(
         "--scrape-only",
         type=Path,
         metavar="OUTFILE",
-        help="Run phases 1-2 only and dump listings + profile summary to OUTFILE (JSON). "
-        "Use when an external scorer (e.g. Claude Code subagent) will score next.",
+        help="Run phases 1-5 (reconcile, scrape, dedup, fetch full JD, location "
+        "gate) and dump location-eligible listings (with full_jd) + profile "
+        "summary to OUTFILE (JSON), for the scoring subagent to score next.",
     )
     parser.add_argument(
         "--from-scores",
         type=Path,
         metavar="INFILE",
-        help="Skip phases 1-3. Load scored listings from INFILE (JSON) and run "
-        "phases 4-5 (package + write INBOX).",
+        help="Skip phases 1-6. Load scored listings from INFILE (JSON) and run "
+        "phases 7-8 (package + write INBOX). Pair with --listings to reuse the "
+        "full JDs fetched during --scrape-only.",
+    )
+    parser.add_argument(
+        "--listings",
+        type=Path,
+        metavar="LISTINGS",
+        help="The --scrape-only dump; joined onto --from-scores by job_id so "
+        "packaging reuses the upstream full JDs instead of re-fetching.",
     )
     args = parser.parse_args()
 
     if args.scrape_only and args.from_scores:
         parser.error("--scrape-only and --from-scores are mutually exclusive")
+    if args.listings and not args.from_scores:
+        parser.error("--listings is only valid together with --from-scores")
 
     root = project_root()
 
@@ -967,22 +1042,20 @@ def main() -> None:
         run_from_scores(
             root=root,
             scores_file=args.from_scores,
+            listings_file=args.listings,
             cap_override=args.cap,
             dry_run=args.dry_run,
-            fetch_jd=not args.no_fetch_jd,
             reconcile_inbox=not args.no_reconcile,
         )
         return
 
-    run_pipeline(
-        root=root,
-        profiles=args.profiles,
-        score_cutoff=args.cutoff,
-        per_run_cap=args.cap,
-        sources=args.sources,
-        dry_run=args.dry_run,
-        fetch_jd=not args.no_fetch_jd,
-        reconcile_inbox=not args.no_reconcile,
+    parser.error(
+        "no mode selected. The pipeline runs as two orchestrated stages:\n"
+        "  1. python3 tools/pipeline.py --scrape-only /tmp/jobhunting-listings.json\n"
+        "  2. <scoring subagent scores per tools/scoring-rubric.md>\n"
+        "  3. python3 tools/pipeline.py --from-scores /tmp/jobhunting-scores.json "
+        "--listings /tmp/jobhunting-listings.json\n"
+        "See the job-research skill."
     )
 
 

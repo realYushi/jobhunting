@@ -99,89 +99,49 @@ def _recent_example(keywords: tuple[str, ...]) -> str:
     )
 
 
-def _cold_email_style(source: str | None, url: str | None) -> str:
-    """Infer whether outreach should read like a recruiter or hiring-manager note."""
-    recruiter_sources = {
-        "seek",
-        "linkedin",
-        "hiringcafe",
-        "workingnomads",
-        "wellfound",
-        "weworkremotely",
-    }
-    recruiter_hosts = (
-        "bamboohr.com",
-        "greenhouse.io",
-        "lever.co",
-        "workday.com",
-        "smartrecruiters.com",
-        "ashbyhq.com",
-        "jobvite.com",
-    )
-    if source in recruiter_sources:
-        return "recruiter"
-    if url and any(host in url for host in recruiter_hosts):
-        return "recruiter"
-    return "hiring-manager"
-
-
-def _cold_email_cta(style: str) -> str:
-    """Return the closing ask for the chosen outreach style."""
-    if style == "recruiter":
-        return (
-            "If you’re the right person to chat with, I’d be grateful for a quick "
-            "conversation, or happy to be pointed to whoever handles hiring for this role."
-        )
-    return (
-        "If this role sits with you or someone on your team, I’d be glad to share a few "
-        "relevant examples of my work and learn more about what you need."
-    )
-
-
-def _cold_email_notes(style: str) -> str:
-    """Return tailoring notes for the chosen outreach style."""
-    if style == "recruiter":
-        return (
-            "- Replace `[First Name]` with the actual contact if you have it.\n"
-            "- Swap `[LinkedIn / Portfolio]` for the best link for this outreach.\n"
-            "- Keep the generated proof point truthful; edit for tone, not invention.\n"
-            "- This draft is recruiter-style: short, easy to route, and low-pressure."
-        )
-    return (
-        "- Replace `[First Name]` with the actual contact if you have it.\n"
-        "- Swap `[LinkedIn / Portfolio]` for the best link for this outreach.\n"
-        "- Keep the generated proof point truthful; edit for tone, not invention.\n"
-        "- This draft is hiring-manager-style: slightly more direct about fit and team contribution."
-    )
-
-
 def render_cold_email(
     company: str,
     position: str,
     root: Path | None = None,
     keywords: tuple[str, ...] = (),
     job_text: str = "",
-    source: str | None = None,
-    url: str | None = None,
+    contact: dict | None = None,
 ) -> str:
-    """Render templates/cold-email.md into a job-specific outreach draft."""
+    """Render templates/cold-email.md into a contact-aware outreach scaffold.
+
+    ``contact`` (a row from research/contacts.json) supplies the recipient's
+    first name for the salutation and is surfaced in the editing context so the
+    fill-in step can tailor the pitch to that person's role. Body slots that
+    require judgment (``[CTA]``, ``[Style Notes]``) are left as placeholders
+    for the fill subagent — role-based tone now comes from the recipient, not
+    from the job source.
+    """
     text = _read("cold-email.md", root)
-    style = _cold_email_style(source, url)
+    first_name = (contact or {}).get("first_name") or ""
     rendered = (
         text.replace("[Company Name]", company)
         .replace("[Job Title]", position)
+        .replace("[First Name]", first_name or "[First Name]")
         .replace("[YYYY-MM-DD]", date.today().isoformat())
         .replace("[Specific Reason]", _specific_reason(position, keywords, job_text))
         .replace("[Current Role]", _candidate_current_sentence(root))
         .replace("[Relevant Example]", _recent_example(keywords))
-        .replace("[CTA]", _cold_email_cta(style))
-        .replace("[Style Notes]", _cold_email_notes(style))
     )
     keyword_line = ", ".join(keywords) if keywords else "(none specified)"
     excerpt = job_text[:800]
+    recipient_block = ""
+    if contact:
+        name = contact.get("full_name") or first_name or "(name unknown)"
+        recipient_block = (
+            f"Recipient: {name} — {contact.get('position') or 'role unknown'} "
+            f"<{contact.get('email', '')}>\n"
+            "Tailor the pitch to THIS person's role: recruiter/talent → fit + "
+            "logistics; hiring manager / eng leader / CTO → technical depth.\n"
+        )
     context_block = (
         "\n<!--\n"
         "Context for editing (auto-generated, remove before sending):\n"
+        f"{recipient_block}"
         f"Strategic keywords: {keyword_line}\n"
         "Job description excerpt:\n"
         f"{excerpt}\n"

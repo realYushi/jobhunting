@@ -8,7 +8,11 @@ from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
-from .hunter import discover_contacts, top_contact_summaries
+from .hunter import (
+    discover_contacts,
+    top_contact_summaries,
+    top_contacts as top_contact_rows,
+)
 from .identity import BoardKey, JobKey, ManualKey, key_from_args
 from .inbox import AppliedInboxRow, write_applied_row
 from .paths import (
@@ -18,6 +22,7 @@ from .paths import (
     inbox_path as default_inbox_path,
     tracker_path as tracker_file,
 )
+from .templates import render_cold_email
 from .tracker import (
     key_for_app_dict,
     load_keyset,
@@ -82,6 +87,9 @@ class ReconcileResult:
     kept: list[str]
     errors: list[str]
     cleaned_active: list[str] = field(default_factory=list)
+    # Cold emails scaffolded at submit time that need an LLM body fill-in. Each
+    # entry mirrors the cover-letter queue: paths the fill subagent reads.
+    coldmail_queue: list[dict] = field(default_factory=list)
 
 
 _INBOX_PATTERN = re.compile(
@@ -335,6 +343,45 @@ def remove_inbox_rows(inbox_path: Path, items: list[InboxItem]) -> None:
     inbox_path.write_text("\n".join(new_lines).rstrip() + "\n")
 
 
+def _scaffold_cold_email(
+    root: Path,
+    archive_path: Path,
+    item: InboxItem,
+    contacts: list[dict],
+) -> dict | None:
+    """Render a contact-aware cold-email scaffold into the archived package.
+
+    Returns a fill-queue entry (the paths the body-fill subagent reads) or None
+    when the archived package has no documents dir to write into.
+    """
+    documents_dir = archive_path / "documents"
+    if not documents_dir.exists():
+        return None
+    research_dir = archive_path / "research"
+    jd_file = research_dir / "job-description.md"
+    job_text = jd_file.read_text(errors="replace") if jd_file.exists() else ""
+    contact = contacts[0] if contacts else None
+    cold_email_path = documents_dir / "cold-email.md"
+    cold_email_path.write_text(
+        render_cold_email(
+            item.company,
+            item.title,
+            root=root,
+            job_text=job_text,
+            contact=contact,
+        )
+    )
+    return {
+        "company": item.company,
+        "position": item.title,
+        "cold_email_path": str(cold_email_path),
+        "contacts_path": str(research_dir / "contacts.json"),
+        "jd_path": str(jd_file),
+        "analysis_path": str(research_dir / "analysis.md"),
+        "resume_path": str(documents_dir / "resume.json"),
+    }
+
+
 def reconcile(
     root: Path,
     inbox_path: Path | None = None,
@@ -362,6 +409,7 @@ def reconcile(
     errors: list[str] = []
     cleaned_active: list[str] = []
     applied_rows: list[AppliedInboxRow] = []
+    coldmail_queue: list[dict] = []
 
     for item in items:
         try:
@@ -402,6 +450,11 @@ def reconcile(
                         top_contacts = tuple(top_contact_summaries(archive_path, limit=3))
                     if top_contacts:
                         best_contact = top_contacts[0]
+                        entry = _scaffold_cold_email(
+                            root, archive_path, item, top_contact_rows(archive_path, 1)
+                        )
+                        if entry is not None:
+                            coldmail_queue.append(entry)
                 applied_rows.append(
                     AppliedInboxRow(
                         title=item.title,
@@ -461,4 +514,5 @@ def reconcile(
         kept=kept,
         errors=errors,
         cleaned_active=cleaned_active,
+        coldmail_queue=coldmail_queue,
     )

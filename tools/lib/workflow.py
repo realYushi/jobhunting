@@ -11,7 +11,7 @@ from pathlib import Path
 from .paths import company_dir, tracker_path as tracker_file
 from .pdf import PdfRenderError, render_resume_pdf
 from .resume import create_resume, resolve_role
-from .templates import render_analysis, render_cold_email, render_cover_letter
+from .templates import render_analysis, render_cover_letter
 from .tracker import (
     ApplicationRecord,
     load_tracker,
@@ -64,7 +64,6 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
     analysis_path = research_dir / "analysis.md"
     job_dest = research_dir / "job-description.md"
     cover_path = documents_dir / "cover-letter.md"
-    cold_email_path = documents_dir / "cold-email.md"
     tracker_path = tracker_file(root)
 
     role = resolve_role(options.role) if options.role else None
@@ -85,7 +84,6 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
         f"Write analysis scaffold: {analysis_path}",
         f"Write tailored resume JSON: {resume_path}",
         f"Write cover letter draft: {cover_path}",
-        f"Write cold email draft: {cold_email_path}",
         f"Upsert tracker entry: {tracker_path}",
     ]
     if options.render_pdf:
@@ -95,7 +93,6 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
         analysis_path,
         resume_path,
         cover_path,
-        cold_email_path,
         tracker_path,
     ]
     if options.render_pdf:
@@ -125,19 +122,9 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
             job_text=job_text,
         )
     )
-    cold_email_path.write_text(
-        render_cold_email(
-            options.company,
-            options.position,
-            root=root,
-            keywords=options.keywords,
-            job_text=job_text,
-            source=options.source,
-            url=options.url,
-        )
-    )
-    # Contact discovery is deferred to submit time (reconcile) to conserve the
-    # limited Hunter search quota — packages we never submit cost no searches.
+    # Cold email + contact discovery are deferred to submit time (reconcile):
+    # the email is only worth writing once we commit to applying and Hunter has
+    # resolved a recipient to address it to, which also conserves Hunter quota.
 
     remaining = validate_no_placeholders(cover_path)
     structure_warnings = validate_cover_letter_structure(cover_path)

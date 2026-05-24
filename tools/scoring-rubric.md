@@ -3,6 +3,10 @@
 Source of truth for the scoring step of the job-research pipeline. The Agent
 subagent reads this file when scoring listings from `--scrape-only` output.
 
+Each listing in that output carries a `full_jd` field — **score against the full
+JD**, not just the title/snippet. Use the title for the seniority/off-track
+token checks below, but judge fit, stack, and seniority from the full JD body.
+
 ## Candidate
 
 **Auckland-based junior-to-intermediate full-stack / AI engineer.** Two tracks:
@@ -57,10 +61,12 @@ Europe-only, or require work authorization outside NZ/AU.
 - `pm`, `product manager`, `program manager`, `engineering manager`,
   `recruiter`, `designer`, `marketing`, `sales`
 
-### Location / authorization mismatch
-- Remote roles limited to the United States, Canada, Europe, EMEA, LATAM, or a
-  specific non-NZ/AU country/region
-- Roles requiring US/EU/Canada work authorization or security clearance
+### Location / authorization mismatch (backup only)
+The pipeline already runs a location gate on the full JD **before** scoring, so
+listings reaching you are location-eligible. Still drop anything that slipped
+through and is clearly limited to the United States, Canada, Europe, EMEA,
+LATAM, or a specific non-NZ/AU region, or requires US/EU/Canada work
+authorization or security clearance.
 
 ## Sanity check
 

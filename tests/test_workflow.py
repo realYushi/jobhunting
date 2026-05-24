@@ -151,8 +151,9 @@ class WorkflowTests(unittest.TestCase):
         self.assertTrue((app_dir / "research" / "analysis.md").exists())
         self.assertTrue((app_dir / "documents" / "resume.json").exists())
         self.assertTrue((app_dir / "documents" / "cover-letter.md").exists())
-        self.assertTrue((app_dir / "documents" / "cold-email.md").exists())
-        # Contact discovery is deferred to submit time to conserve Hunter quota.
+        # Cold email + contact discovery are deferred to submit time (reconcile):
+        # the email needs a resolved recipient, and this conserves Hunter quota.
+        self.assertFalse((app_dir / "documents" / "cold-email.md").exists())
         self.assertFalse((app_dir / "research" / "contacts.json").exists())
 
         tracker_path = self.root / "applications" / "application-tracker.json"
@@ -187,90 +188,6 @@ class WorkflowTests(unittest.TestCase):
         self.assertNotIn("[Job Title]", cover_text)
         self.assertNotIn("[YYYY-MM-DD]", cover_text)
         self.assertIn("Hi Hiring Team,", cover_text)
-
-    def test_cold_email_is_generated_from_template(self):
-        options = WorkflowOptions(
-            project_root=self.root,
-            job_path=self.job_path,
-            company="Acme",
-            position="Frontend Engineer",
-            role="frontend",
-            keywords=("React", "FastAPI"),
-            dry_run=False,
-        )
-        create_application_package(options)
-
-        cold_email_text = (
-            self.root
-            / "applications"
-            / "active"
-            / "Acme"
-            / "documents"
-            / "cold-email.md"
-        ).read_text()
-
-        self.assertIn("Quick question about Frontend Engineer at Acme", cold_email_text)
-        self.assertIn("GrowLab Technologies", cold_email_text)
-        self.assertNotIn("[Company Name]", cold_email_text)
-        self.assertNotIn("[Job Title]", cold_email_text)
-
-    def test_cold_email_uses_recruiter_style_for_job_board_source(self):
-        options = WorkflowOptions(
-            project_root=self.root,
-            job_path=self.job_path,
-            company="Acme",
-            position="Frontend Engineer",
-            role="frontend",
-            keywords=("React", "FastAPI"),
-            source="seek",
-            job_id="12345678",
-            url="https://nz.seek.com/job/12345678",
-            dry_run=False,
-        )
-        create_application_package(options)
-
-        cold_email_text = (
-            self.root
-            / "applications"
-            / "active"
-            / "Acme-12345678"
-            / "documents"
-            / "cold-email.md"
-        ).read_text()
-
-        self.assertIn(
-            "happy to be pointed to whoever handles hiring for this role",
-            cold_email_text,
-        )
-        self.assertIn("recruiter-style", cold_email_text)
-
-    def test_cold_email_uses_hiring_manager_style_for_direct_company_role(self):
-        options = WorkflowOptions(
-            project_root=self.root,
-            job_path=self.job_path,
-            company="Acme",
-            position="Frontend Engineer",
-            role="frontend",
-            keywords=("React", "FastAPI"),
-            url="https://acme.com/careers/frontend-engineer",
-            dry_run=False,
-        )
-        create_application_package(options)
-
-        cold_email_text = (
-            self.root
-            / "applications"
-            / "active"
-            / "Acme"
-            / "documents"
-            / "cold-email.md"
-        ).read_text()
-
-        self.assertIn(
-            "I’d be glad to share a few relevant examples of my work",
-            cold_email_text,
-        )
-        self.assertIn("hiring-manager-style", cold_email_text)
 
     def test_unfilled_editor_prompts_surface_as_warnings(self):
         options = WorkflowOptions(

@@ -154,8 +154,8 @@ def _contact_summary(contact: dict[str, Any] | None) -> str | None:
     return f"{name} — {position} <{contact['email']}>"
 
 
-def top_contact_summaries(application_dir: Path, limit: int = 3) -> list[str]:
-    """Read the top stored contact summaries from an application directory."""
+def top_contacts(application_dir: Path, limit: int = 3) -> list[dict[str, Any]]:
+    """Read the top stored contact rows (structured) from an application dir."""
     contacts_json = application_dir / "research" / "contacts.json"
     if not contacts_json.exists():
         return []
@@ -166,8 +166,13 @@ def top_contact_summaries(application_dir: Path, limit: int = 3) -> list[str]:
     contacts = payload.get("contacts") or []
     if not contacts and payload.get("top_contact"):
         contacts = [payload["top_contact"]]
+    return list(contacts[:limit])
+
+
+def top_contact_summaries(application_dir: Path, limit: int = 3) -> list[str]:
+    """Read the top stored contact summaries from an application directory."""
     summaries: list[str] = []
-    for contact in contacts[:limit]:
+    for contact in top_contacts(application_dir, limit):
         summary = _contact_summary(contact)
         if summary:
             summaries.append(summary)
