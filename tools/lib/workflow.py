@@ -8,7 +8,6 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from .hunter import discover_contacts
 from .paths import company_dir, tracker_path as tracker_file
 from .pdf import PdfRenderError, render_resume_pdf
 from .resume import create_resume, resolve_role
@@ -66,8 +65,6 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
     job_dest = research_dir / "job-description.md"
     cover_path = documents_dir / "cover-letter.md"
     cold_email_path = documents_dir / "cold-email.md"
-    contacts_json_path = research_dir / "contacts.json"
-    contacts_md_path = research_dir / "contacts.md"
     tracker_path = tracker_file(root)
 
     role = resolve_role(options.role) if options.role else None
@@ -89,8 +86,6 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
         f"Write tailored resume JSON: {resume_path}",
         f"Write cover letter draft: {cover_path}",
         f"Write cold email draft: {cold_email_path}",
-        f"Discover contacts: {contacts_json_path}",
-        f"Write contacts summary: {contacts_md_path}",
         f"Upsert tracker entry: {tracker_path}",
     ]
     if options.render_pdf:
@@ -101,8 +96,6 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
         resume_path,
         cover_path,
         cold_email_path,
-        contacts_json_path,
-        contacts_md_path,
         tracker_path,
     ]
     if options.render_pdf:
@@ -143,7 +136,8 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
             url=options.url,
         )
     )
-    discover_contacts(app_dir, options.company, root=root, url=options.url)
+    # Contact discovery is deferred to submit time (reconcile) to conserve the
+    # limited Hunter search quota — packages we never submit cost no searches.
 
     remaining = validate_no_placeholders(cover_path)
     structure_warnings = validate_cover_letter_structure(cover_path)

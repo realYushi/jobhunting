@@ -5,6 +5,8 @@ from pathlib import Path
 from unittest.mock import patch
 
 from tools.lib.hunter import (
+    HunterError,
+    _domain_hint_from_url,
     best_contact_summary,
     discover_company_contacts,
     discover_contacts,
@@ -60,7 +62,7 @@ class HunterTests(unittest.TestCase):
         self.assertEqual(result["top_contact"]["email"], "jane@acme.com")
         self.assertEqual(result["top_contacts"][0]["email"], "jane@acme.com")
         self.assertEqual(result["domain"], "acme.com")
-        self.assertEqual(result["query"]["domain"], "jobs.acme.com")
+        self.assertEqual(result["query"]["domain"], "acme.com")
 
     def test_discover_contacts_writes_files(self):
         payload = {
@@ -125,6 +127,31 @@ class HunterTests(unittest.TestCase):
         self.assertIn("Jane Recruiter", summaries[0])
         self.assertIn("Eve Manager", summaries[1])
         self.assertIn("Sam HR", summaries[2])
+
+    def test_domain_hint_reduces_subdomains_to_apex(self):
+        # Hunter indexes apex domains; a careers/jobs subdomain would return
+        # nothing, so the hint must be reduced to the registrable domain.
+        self.assertEqual(_domain_hint_from_url("https://careers.acme.com/x"), "acme.com")
+        self.assertEqual(_domain_hint_from_url("https://jobs.acme.co.nz/x"), "acme.co.nz")
+        self.assertEqual(_domain_hint_from_url("https://www.acme.com"), "acme.com")
+        # ATS hosts and job-board aggregators yield no hint (fall back to
+        # company-name search) — never the board's own domain.
+        self.assertIsNone(_domain_hint_from_url("https://boards.greenhouse.io/acme"))
+        self.assertIsNone(_domain_hint_from_url("https://nz.seek.com/job/123"))
+
+    def test_network_timeout_is_wrapped_and_soft_fails(self):
+        # A read timeout (socket.timeout/TimeoutError) is not a URLError; it must
+        # be wrapped as HunterError and degrade to a "skipped/error" result
+        # rather than crashing the caller.
+        with patch("tools.lib.hunter._http_get_json", side_effect=TimeoutError("timed out")):
+            with self.assertRaises(HunterError):
+                discover_company_contacts("Acme", root=self.root, url="https://acme.com")
+
+        app_dir = self.root / "applications" / "active" / "Acme"
+        with patch("tools.lib.hunter._http_get_json", side_effect=TimeoutError("timed out")):
+            result = discover_contacts(app_dir, "Acme", root=self.root, url="https://acme.com")
+        self.assertEqual(result["status"], "error")
+        self.assertEqual(result["contacts"], [])
 
     def test_best_contact_summary_reads_saved_contact(self):
         app_dir = self.root / "applications" / "archive" / "submitted" / "Acme"

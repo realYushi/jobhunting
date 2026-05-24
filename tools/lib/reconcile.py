@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
-from .hunter import discover_contacts
+from .hunter import discover_contacts, top_contact_summaries
 from .identity import BoardKey, JobKey, ManualKey, key_from_args
 from .inbox import AppliedInboxRow, write_applied_row
 from .paths import (
@@ -217,9 +217,13 @@ def _move_active_dir_to_archive(
     return dest_dir
 
 
-def move_to_archive(item: InboxItem, root: Path, archive_type: str) -> None:
-    """Move an application directory to the appropriate archive folder."""
-    _move_active_dir_to_archive(active_dir(root) / item.slug, root, archive_type)
+def move_to_archive(item: InboxItem, root: Path, archive_type: str) -> Path | None:
+    """Move an application directory to the appropriate archive folder.
+
+    Returns the actual destination (which may be a `{slug}-N` dedup) so callers
+    don't assume the un-deduped slug.
+    """
+    return _move_active_dir_to_archive(active_dir(root) / item.slug, root, archive_type)
 
 
 def _archive_type_for_tracker_row(bucket: str, status: str | None) -> str | None:
@@ -363,9 +367,12 @@ def reconcile(
         try:
             if item.status == "[x]":
                 applied_on = date.today().isoformat()
+                archive_slug = item.slug
                 # Archive as submitted
                 if not dry_run:
-                    move_to_archive(item, root, "submitted")
+                    archived_dir = move_to_archive(item, root, "submitted")
+                    if archived_dir is not None:
+                        archive_slug = archived_dir.name
                     active = tracker.get("applications", {}).get("active", [])
                     item_key = item.key
                     for idx, app in enumerate(active):
@@ -383,31 +390,23 @@ def reconcile(
                 top_contacts: tuple[str, ...] = ()
                 best_contact = None
                 if not dry_run:
-                    archive_path = archive_dir(root) / "submitted" / item.slug
-                    contacts_result = discover_contacts(
-                        archive_path,
-                        item.company,
-                        root=root,
-                        url=item.apply_url,
-                    )
-                    if isinstance(contacts_result, dict):
-                        ranked = contacts_result.get("top_contacts") or contacts_result.get("contacts") or []
-                        summaries: list[str] = []
-                        for contact in ranked[:3]:
-                            email = contact.get("email") if isinstance(contact, dict) else None
-                            if not email:
-                                continue
-                            name = contact.get("full_name") or email
-                            position = contact.get("position") or "Contact"
-                            summaries.append(f"{name} — {position} <{email}>")
-                        top_contacts = tuple(summaries)
-                        if top_contacts:
-                            best_contact = top_contacts[0]
+                    archive_path = archive_dir(root) / "submitted" / archive_slug
+                    # Reuse contacts discovered at package-creation time (moved
+                    # into the archive). Only hit Hunter when none exist yet, so
+                    # we don't burn quota or clobber good data with an error.
+                    top_contacts = tuple(top_contact_summaries(archive_path, limit=3))
+                    if not top_contacts:
+                        discover_contacts(
+                            archive_path, item.company, root=root, url=item.apply_url
+                        )
+                        top_contacts = tuple(top_contact_summaries(archive_path, limit=3))
+                    if top_contacts:
+                        best_contact = top_contacts[0]
                 applied_rows.append(
                     AppliedInboxRow(
                         title=item.title,
                         company=item.company,
-                        archive_slug=item.slug,
+                        archive_slug=archive_slug,
                         applied_on=applied_on,
                         url=item.apply_url,
                         best_contact=best_contact,

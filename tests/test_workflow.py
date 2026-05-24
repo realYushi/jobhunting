@@ -4,7 +4,6 @@ import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
-from unittest.mock import patch
 
 from tools.lib.identity import BoardKey
 from tools.lib.tracker import (
@@ -150,11 +149,11 @@ class WorkflowTests(unittest.TestCase):
         app_dir = self.root / "applications" / "active" / "Acme"
         self.assertTrue((app_dir / "research" / "job-description.md").exists())
         self.assertTrue((app_dir / "research" / "analysis.md").exists())
-        self.assertTrue((app_dir / "research" / "contacts.json").exists())
-        self.assertTrue((app_dir / "research" / "contacts.md").exists())
         self.assertTrue((app_dir / "documents" / "resume.json").exists())
         self.assertTrue((app_dir / "documents" / "cover-letter.md").exists())
         self.assertTrue((app_dir / "documents" / "cold-email.md").exists())
+        # Contact discovery is deferred to submit time to conserve Hunter quota.
+        self.assertFalse((app_dir / "research" / "contacts.json").exists())
 
         tracker_path = self.root / "applications" / "application-tracker.json"
         tracker = json.loads(tracker_path.read_text())
@@ -272,50 +271,6 @@ class WorkflowTests(unittest.TestCase):
             cold_email_text,
         )
         self.assertIn("hiring-manager-style", cold_email_text)
-
-    def test_contact_discovery_is_written_when_available(self):
-        options = WorkflowOptions(
-            project_root=self.root,
-            job_path=self.job_path,
-            company="Acme",
-            position="Frontend Engineer",
-            role="frontend",
-            keywords=("React", "FastAPI"),
-            dry_run=False,
-        )
-        hunter_payload = {
-            "status": "ok",
-            "company": "Acme",
-            "domain": "acme.com",
-            "contacts": [
-                {
-                    "full_name": "Jane Recruiter",
-                    "email": "jane@acme.com",
-                    "position": "Talent Partner",
-                    "verification_status": "valid",
-                    "confidence": 90,
-                }
-            ],
-            "top_contact": {
-                "full_name": "Jane Recruiter",
-                "email": "jane@acme.com",
-                "position": "Talent Partner",
-            },
-        }
-        with patch("tools.lib.hunter.discover_company_contacts", return_value=hunter_payload):
-            create_application_package(options)
-
-        contacts_json = json.loads(
-            (
-                self.root
-                / "applications"
-                / "active"
-                / "Acme"
-                / "research"
-                / "contacts.json"
-            ).read_text()
-        )
-        self.assertEqual(contacts_json["top_contact"]["email"], "jane@acme.com")
 
     def test_unfilled_editor_prompts_surface_as_warnings(self):
         options = WorkflowOptions(

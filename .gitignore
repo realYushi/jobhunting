@@ -61,6 +61,10 @@ applications/*/interview/notes-*.md
 # Scrape-dedup ledger (regenerable cache, split out of application-tracker.json)
 applications/application-ledger.json
 
+# Contact-discovery output (third-party PII: recruiter emails / phone numbers)
+applications/**/research/contacts.json
+applications/**/research/contacts.md
+
 # Node modules (if using any JS tools)
 node_modules/
 npm-debug.log

@@ -12,7 +12,11 @@ from urllib.request import Request, urlopen
 from .config import ConfigError, load_env, require_env
 
 API_BASE = "https://api.hunter.io/v2"
-_ATS_HOSTS = (
+# Hosts that are never the hiring company's own domain — ATS application hosts
+# plus job-board aggregators. A URL on any of these yields no domain hint, so we
+# fall back to company-name search instead of (e.g.) querying Hunter for seek.com
+# and getting SEEK's own staff.
+_NON_COMPANY_HOSTS = (
     "bamboohr.com",
     "greenhouse.io",
     "lever.co",
@@ -20,6 +24,12 @@ _ATS_HOSTS = (
     "smartrecruiters.com",
     "ashbyhq.com",
     "jobvite.com",
+    "seek.com",
+    "linkedin.com",
+    "hiring.cafe",
+    "workingnomads.com",
+    "wellfound.com",
+    "weworkremotely.com",
 )
 
 
@@ -34,6 +44,31 @@ def _http_get_json(url: str) -> dict[str, Any]:
         return json.loads(response.read().decode("utf-8"))
 
 
+_COMPOUND_TLDS = (
+    "co.nz",
+    "com.au",
+    "net.au",
+    "org.au",
+    "co.uk",
+    "org.uk",
+    "co.jp",
+    "co.za",
+    "com.sg",
+    "com.br",
+)
+
+
+def _registrable_domain(host: str) -> str:
+    """Reduce a host to its apex domain so Hunter (which indexes apex domains)
+    finds contacts even when the apply URL points at a careers/jobs subdomain."""
+    parts = host.split(".")
+    if len(parts) <= 2:
+        return host
+    if ".".join(parts[-2:]) in _COMPOUND_TLDS:
+        return ".".join(parts[-3:])
+    return ".".join(parts[-2:])
+
+
 def _domain_hint_from_url(url: str | None) -> str | None:
     """Infer a likely company domain from a direct company URL."""
     if not url:
@@ -41,9 +76,9 @@ def _domain_hint_from_url(url: str | None) -> str | None:
     host = urlparse(url).netloc.lower().split("@")[-1].split(":")[0]
     if not host:
         return None
-    if any(host.endswith(suffix) for suffix in _ATS_HOSTS):
+    if any(host.endswith(suffix) for suffix in _NON_COMPANY_HOSTS):
         return None
-    return host.removeprefix("www.")
+    return _registrable_domain(host.removeprefix("www."))
 
 
 def _score_contact(contact: dict[str, Any]) -> int:
@@ -203,8 +238,10 @@ def discover_company_contacts(
         "limit": str(limit),
         "type": "personal",
         "required_field": "full_name,position",
-        "seniority": "senior,executive",
-        "department": "hr,it,management",
+        # No seniority filter: most recruiters aren't tagged senior/executive,
+        # and `executive` department keeps founders/CTOs that _score_contact
+        # rewards. Ranking is done by _score_contact, not by the server filter.
+        "department": "executive,hr,it,management",
     }
     if domain_hint:
         params["domain"] = domain_hint
@@ -219,6 +256,11 @@ def discover_company_contacts(
         raise HunterError(f"HTTP {exc.code}: {detail}") from exc
     except URLError as exc:
         raise HunterError(str(exc.reason)) from exc
+    except (OSError, json.JSONDecodeError) as exc:
+        # Read timeouts (socket.timeout/TimeoutError), connection resets, and
+        # non-JSON bodies aren't URLError subclasses — without this they escape
+        # discover_contacts' soft-fail handling and crash the whole workflow.
+        raise HunterError(str(exc)) from exc
 
     if payload.get("errors"):
         message = "; ".join(err.get("details", "unknown error") for err in payload["errors"])

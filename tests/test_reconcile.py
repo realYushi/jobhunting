@@ -1,6 +1,8 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from tools.lib.reconcile import (
     parse_inbox,
@@ -251,6 +253,80 @@ class ReconcileTests(unittest.TestCase):
         self.assertIn("follow up on:", remaining)
         self.assertIn("Template", remaining)
         self.assertIn("[Cold Email](./archive/submitted/Acme/documents/cold-email.md)", remaining)
+
+    def test_reconcile_uses_deduped_slug_and_reuses_existing_contacts(self):
+        # An existing archive/submitted/Acme forces the move to dedup to Acme-2;
+        # the Applied block and reused contacts must follow the real folder.
+        (self.root / "applications" / "archive" / "submitted" / "Acme").mkdir()
+        research = self.root / "applications" / "active" / "Acme" / "research"
+        research.mkdir(parents=True)
+        (research / "contacts.json").write_text(
+            json.dumps(
+                {
+                    "top_contact": {
+                        "full_name": "Jane Recruiter",
+                        "position": "Talent Partner",
+                        "email": "jane@acme.com",
+                    }
+                }
+            )
+        )
+
+        inbox_path = self.root / "applications" / "INBOX.md"
+        inbox_path.write_text(
+            "# Job INBOX\n\n## To Apply\n\n"
+            "- [x] **Senior Python Engineer** @ Acme (score: 82) · [JD](./acme/job.md) · [CV](./acme/cv.pdf) · [Letter](./acme/cover.md) · [Apply ↗](https://acme.com/apply)\n\n"
+            "## Applied\n\n"
+        )
+
+        with patch("tools.lib.reconcile.discover_contacts") as mock_discover:
+            reconcile(self.root, inbox_path=inbox_path, dry_run=False)
+
+        # Existing contacts were reused, so Hunter was never re-queried.
+        mock_discover.assert_not_called()
+        self.assertTrue(
+            (self.root / "applications" / "archive" / "submitted" / "Acme-2").exists()
+        )
+        remaining = inbox_path.read_text()
+        self.assertIn("./archive/submitted/Acme-2/documents/cold-email.md", remaining)
+        self.assertIn("Jane Recruiter — Talent Partner <jane@acme.com>", remaining)
+
+    def test_reconcile_discovers_contacts_at_submit_when_none_exist(self):
+        # No contacts were discovered at creation time (quota-saving), so the
+        # submit step must run discovery exactly once and surface the result.
+        inbox_path = self.root / "applications" / "INBOX.md"
+        inbox_path.write_text(
+            "# Job INBOX\n\n## To Apply\n\n"
+            "- [x] **Senior Python Engineer** @ Acme (score: 82) · [JD](./acme/job.md) · [CV](./acme/cv.pdf) · [Letter](./acme/cover.md) · [Apply ↗](https://acme.com/apply)\n\n"
+            "## Applied\n\n"
+        )
+
+        def fake_discover(application_dir, company, *, root=None, url=None):
+            research = application_dir / "research"
+            research.mkdir(parents=True, exist_ok=True)
+            (research / "contacts.json").write_text(
+                json.dumps(
+                    {
+                        "top_contact": {
+                            "full_name": "Jane Recruiter",
+                            "position": "Talent Partner",
+                            "email": "jane@acme.com",
+                        }
+                    }
+                )
+            )
+            return {"status": "ok"}
+
+        with patch(
+            "tools.lib.reconcile.discover_contacts", side_effect=fake_discover
+        ) as mock_discover:
+            reconcile(self.root, inbox_path=inbox_path, dry_run=False)
+
+        self.assertEqual(mock_discover.call_count, 1)
+        self.assertIn(
+            "Jane Recruiter — Talent Partner <jane@acme.com>",
+            inbox_path.read_text(),
+        )
 
     def test_reconcile_sets_submitted_status_for_byid_tracker_row(self):
         tracker_path = self.root / "applications" / "application-tracker.json"
