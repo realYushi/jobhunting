@@ -23,6 +23,7 @@ from pathlib import Path
 from lib.harness_utils import load_script, run_harness
 from lib.identity import BoardKey, JobKey, ManualKey, _norm_manual_field, try_manual_key
 from lib.inbox import InboxRow, write_inbox_rows
+from lib.linkedin_status import sync_linkedin_statuses
 from lib.paths import company_dirname, inbox_path as default_inbox, project_root
 from lib.reconcile import InboxItem, parse_inbox, reconcile
 from lib.tracker import key_for_app_dict, load_keyset, load_tracker
@@ -253,7 +254,7 @@ def do_reconcile_and_scrape(
     dry_run: bool,
     reconcile_inbox: bool = True,
 ) -> list[JobListing]:
-    """Phases 1-2: reconcile INBOX, then scrape sources."""
+    """Phases 1-2: reconcile INBOX, sync LinkedIn statuses, then scrape."""
     if reconcile_inbox:
         print("🔄 Phase 1: Reconciling INBOX...", file=sys.stderr)
         inbox = default_inbox(root)
@@ -267,6 +268,26 @@ def do_reconcile_and_scrape(
             print(f"  🧹 {cleaned}", file=sys.stderr)
         for error in result.errors:
             print(f"  ⚠️ Reconcile cleanup issue: {error}", file=sys.stderr)
+
+        print("\n🔔 Phase 1b: Syncing LinkedIn application statuses...", file=sys.stderr)
+        try:
+            status_updates = sync_linkedin_statuses(root, dry_run=dry_run)
+            if status_updates:
+                print(
+                    f"  Updated {len(status_updates)} application status(es) from LinkedIn",
+                    file=sys.stderr,
+                )
+                for update in status_updates:
+                    print(
+                        "  ↪ "
+                        f"{update['company']} — {update['position']} "
+                        f"({update['from_bucket']} → {update['to_bucket']})",
+                        file=sys.stderr,
+                    )
+            else:
+                print("  No LinkedIn status changes found", file=sys.stderr)
+        except Exception as e:
+            print(f"  ⚠️ LinkedIn status sync failed: {e}", file=sys.stderr)
     else:
         print("🔄 Phase 1: Skipping INBOX reconcile (--no-reconcile)", file=sys.stderr)
 
