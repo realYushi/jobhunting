@@ -43,6 +43,20 @@ jd_text = js(r"""
     const wwrDesc = document.querySelector(".lis-container__job, .lis-container");
     if (wwrDesc) return wwrDesc.innerText;
 
+    // Try Prosple opportunity detail pages
+    if (location.hostname.includes("prosple.com") && location.pathname.includes("/jobs-internships/")) {
+        const sections = Array.from(document.querySelectorAll("section"))
+            .map(el => (el.innerText || "").trim())
+            .filter(Boolean);
+        const rich = sections.find(text =>
+            text.includes("Opportunity details")
+            || text.includes("Your Role")
+            || text.includes("About You")
+        );
+        if (rich) return rich;
+        return document.body?.innerText || "";
+    }
+
     // Fallback: get the main content area
     const main = document.querySelector("main");
     if (main) return main.innerText;

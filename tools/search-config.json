@@ -8,7 +8,8 @@
       "hiringcafe",
       "workingnomads",
       "wellfound",
-      "weworkremotely"
+      "weworkremotely",
+      "prosple"
     ]
   },
   "profiles": [
@@ -16,14 +17,25 @@
       "name": "product-engineer",
       "keywords": [
         "Software Engineer",
+        "Software Developer",
         "Full Stack Engineer",
-        "Product Engineer"
+        "Full Stack Developer",
+        "Frontend Engineer",
+        "Frontend Developer",
+        "Backend Engineer",
+        "Backend Developer",
+        "Product Engineer",
+        "Web Engineer",
+        "Application Developer"
       ]
     },
     {
       "name": "ai-native",
       "keywords": [
         "AI Engineer",
+        "AI Application Engineer",
+        "LLM Engineer",
+        "Applied AI Engineer",
         "Machine Learning Engineer",
         "AI Native Engineer"
       ]

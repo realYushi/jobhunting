@@ -64,6 +64,7 @@ _URL_SOURCES: tuple[tuple[str, str, str], ...] = (
     ("workingnomads.com", "workingnomads", r"/jobs/([^/?#]+)"),
     ("wellfound.com", "wellfound", r"/jobs/(\d+)"),
     ("weworkremotely.com", "weworkremotely", r"/remote-jobs/([^/?#]+)"),
+    ("prosple.com", "prosple", r"/jobs-internships/([^/?#]+)"),
 )
 
 

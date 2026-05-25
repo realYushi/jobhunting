@@ -59,8 +59,9 @@ def _resolve_apply_url(item: ScoreResult) -> str | None:
 def _fetch_full_jd(url: str) -> str:
     """Fetch the full job description from a listing URL.
 
-    Uses browser-harness with new_tab so concurrent callers each get an
-    isolated tab; safe to invoke from a ThreadPoolExecutor.
+    browser-harness subprocesses all talk to the same Chrome instance. In
+    practice, concurrent JD fetches can read the wrong active tab and return a
+    different listing's content, so callers should serialize access.
     """
     # hiring.cafe needs a tab click to reveal the full JD
     pre_extract = ""
@@ -75,8 +76,11 @@ js(r"""
 """)
 wait(2)
 '''
+    source = None
+    if "prosple.com" in url:
+        source = "prosple"
     stdout, stderr, retcode = run_harness(
-        load_script("jd-fetch", url=url, pre_extract=pre_extract), timeout=60
+        load_script("jd-fetch", url=url, pre_extract=pre_extract), timeout=60, source=source
     )
     if retcode != 0:
         return f"# Failed to fetch JD from {url}\n\nError: {stderr}"
@@ -90,17 +94,19 @@ wait(2)
     return f"# Could not extract JD from {url}"
 
 
-JD_FETCH_PARALLELISM = 3
+JD_FETCH_PARALLELISM = 1
 
 
 def _fetch_jds_parallel(
     items: list[ScoreResult], max_workers: int = JD_FETCH_PARALLELISM
 ) -> dict[str, str]:
-    """Fetch JDs for many listings concurrently. Keyed by item.url.
+    """Fetch JDs for many listings. Keyed by item.url.
 
-    Each fetch opens its own tab in the user's Chrome via new_tab, so workers
-    don't clobber each other. Failures fall back to a placeholder string, the
-    same shape `_fetch_full_jd` returns on its own error path.
+    This is intentionally serialized by default. Although each fetch opens its
+    own tab, browser-harness subprocesses still share one Chrome session and
+    concurrent runs have produced cross-contaminated JDs. Failures fall back to
+    a placeholder string, the same shape `_fetch_full_jd` returns on its own
+    error path.
     """
     urls = [item.url for item in items if item.url]
     if not urls:
@@ -181,6 +187,42 @@ OUTSIDE_LOCATION_PHRASES = (
 
 
 _PRE_FILTER_SOURCES = frozenset({"hiringcafe", "workingnomads", "wellfound", "weworkremotely"})
+
+HARD_DROP_TITLE_PATTERNS = (
+    "senior",
+    "lead",
+    "principal",
+    "staff",
+    "architect",
+    "manager",
+    "head of",
+    "founding engineer",
+    "qa",
+    "quality assurance",
+    "test engineer",
+    "sdet",
+    "devops",
+    "site reliability",
+    "sre",
+    "platform engineer",
+    "network engineer",
+    "security engineer",
+)
+
+
+def _title_hard_drop_reason(listing: "JobListing") -> str | None:
+    """Return a conservative prefetch drop reason from the title alone.
+
+    This keeps obvious rubric hard-drops from consuming JD-fetch/scoring budget.
+    The list is intentionally narrow: only strong seniority/off-track signals.
+    """
+    title = " ".join((listing.title or "").casefold().split())
+    if not title:
+        return None
+    for pattern in HARD_DROP_TITLE_PATTERNS:
+        if pattern in title:
+            return f"title hard-drop: {pattern}"
+    return None
 
 
 def _snippet_location_excluded(listing: "JobListing") -> bool:
@@ -818,13 +860,32 @@ def run_scrape_only(
     survivors = _dedup_survivors(root, inbox, all_listings)
     print(f"  After dedup: {len(survivors)} new listings", file=sys.stderr)
 
-    # Cheap pre-fetch trim: drop hard region-locked snippets before paying to
-    # fetch their full JD (STRICT phrases only — conservative, zero risk).
-    pre_trimmed = [lst for lst in survivors if not _snippet_location_excluded(lst)]
-    dropped_pre = len(survivors) - len(pre_trimmed)
-    if dropped_pre:
+    # Cheap pre-fetch trim: drop obvious title hard-drops and hard
+    # region-locked snippets before paying to fetch the full JD.
+    pre_trimmed: list[JobListing] = []
+    dropped_title = 0
+    dropped_region = 0
+    for lst in survivors:
+        title_reason = _title_hard_drop_reason(lst)
+        if title_reason:
+            dropped_title += 1
+            print(
+                f"  ⏭️  Pre-fetch title trim: {lst.title} @ {lst.company} ({title_reason})",
+                file=sys.stderr,
+            )
+            continue
+        if _snippet_location_excluded(lst):
+            dropped_region += 1
+            continue
+        pre_trimmed.append(lst)
+    if dropped_title:
         print(
-            f"  Pre-fetch trim dropped {dropped_pre} region-locked listings",
+            f"  Pre-fetch title trim dropped {dropped_title} listings",
+            file=sys.stderr,
+        )
+    if dropped_region:
+        print(
+            f"  Pre-fetch trim dropped {dropped_region} region-locked listings",
             file=sys.stderr,
         )
 
@@ -1015,7 +1076,7 @@ def main() -> None:
         "--source",
         action="append",
         dest="sources",
-        help="Sources to scrape (can specify multiple times: linkedin, seek, hiringcafe, workingnomads, wellfound, weworkremotely)",
+        help="Sources to scrape (can specify multiple times: linkedin, seek, hiringcafe, workingnomads, wellfound, weworkremotely, prosple)",
     )
     parser.add_argument(
         "--dry-run",

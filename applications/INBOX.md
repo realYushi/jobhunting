@@ -9,7 +9,85 @@
 
 ## Applied
 
-- **Full Stack Developer - Intermediate** @ Veovo — applied 2026-05-24 · [JD](./archive/submitted/Veovo/research/job-description.md) · [CV](./archive/submitted/Veovo/documents/resume.pdf) · [Letter](./archive/submitted/Veovo/documents/cover-letter.md) · [Cold Email](./archive/submitted/Veovo/documents/cold-email.md) · [Apply ↗](https://gentrack.bamboohr.com/careers/1396)
+- **Mobile Engineer (iOS)** @ Air New Zealand — applied 2026-05-15 · [JD](./archive/submitted/Air New Zealand/research/job-description.md) · [CV](./archive/submitted/Air New Zealand/documents/resume.pdf) · [Letter](./archive/submitted/Air New Zealand/documents/cover-letter.md) · [Cold Email](./archive/submitted/Air New Zealand/documents/cold-email.md) · [Apply ↗](https://hiring.cafe/viewjob/j1pltcbhoatmth9n)
+  - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
+
+- **Software Engineer** @ Alchemy Consulting — applied 2026-05-15 · [JD](./archive/submitted/Alchemy Consulting/research/job-description.md) · [CV](./archive/submitted/Alchemy Consulting/documents/resume.pdf) · [Letter](./archive/submitted/Alchemy Consulting/documents/cover-letter.md) · [Cold Email](./archive/submitted/Alchemy Consulting/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92102688?type=standard&ref=search-standalone#sol=b321e4793a68027c26d5ef52d02508147f00b278)
+  - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
+
+- **Junior Software Engineer** @ Bidfood Limited — applied 2026-05-15 · [JD](./archive/submitted/Bidfood Limited/research/job-description.md) · [CV](./archive/submitted/Bidfood Limited/documents/resume.pdf) · [Letter](./archive/submitted/Bidfood Limited/documents/cover-letter.md) · [Cold Email](./archive/submitted/Bidfood Limited/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/91925145?type=standard&ref=search-standalone#sol=5572b506d8caa2c3c929b9abf618a21b65083f6f)
+  - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
+
+- **Graduate AI Developers - Expression of Interest** @ Datacom — applied 2026-05-15 · [JD](./archive/submitted/Datacom/research/job-description.md) · [CV](./archive/submitted/Datacom/documents/resume.pdf) · [Letter](./archive/submitted/Datacom/documents/cover-letter.md) · [Cold Email](./archive/submitted/Datacom/documents/cold-email.md) · [Apply ↗](https://hiring.cafe/viewjob/06okqvxvlh7zbyic)
+  - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
+
+- **Expression of Interest - AI Solutions Developer (Applied AI / LLMs)** @ FineSkyAi — applied 2026-05-15 · [JD](./archive/submitted/FineSkyAi/research/job-description.md) · [CV](./archive/submitted/FineSkyAi/documents/resume.pdf) · [Letter](./archive/submitted/FineSkyAi/documents/cover-letter.md) · [Cold Email](./archive/submitted/FineSkyAi/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/91757013?type=standard&ref=search-standalone#sol=bfc5a307b95452f967e533600e4527cbab604f23)
+  - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
+
+- **Intermediate Software Engineer** @ LawVu — applied 2026-05-15 · [JD](./archive/submitted/LawVu/research/job-description.md) · [CV](./archive/submitted/LawVu/documents/resume.pdf) · [Letter](./archive/submitted/LawVu/documents/cover-letter.md) · [Cold Email](./archive/submitted/LawVu/documents/cold-email.md) · [Apply ↗](https://hiring.cafe/viewjob/jskq52td9agmft5b)
+  - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
+
+- **Software System Developer (C# / .NET)** @ Pair People Pty Limited — applied 2026-05-15 · [JD](./archive/submitted/Pair People Pty Limited/research/job-description.md) · [CV](./archive/submitted/Pair People Pty Limited/documents/resume.pdf) · [Letter](./archive/submitted/Pair People Pty Limited/documents/cover-letter.md) · [Cold Email](./archive/submitted/Pair People Pty Limited/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/91571289?type=standard&ref=search-standalone#sol=56fcfad9643dd458916418763cbeb1e99eb88681)
+  - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
+
+- **Front End Developer** @ SprintSuite — applied 2026-05-15 · [JD](./archive/submitted/SprintSuite/research/job-description.md) · [CV](./archive/submitted/SprintSuite/documents/resume.pdf) · [Letter](./archive/submitted/SprintSuite/documents/cover-letter.md) · [Cold Email](./archive/submitted/SprintSuite/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/91807715?type=standard&ref=search-standalone#sol=fa3e7fd6c88c94c2a5e1bc4b366eeec56525696d)
+  - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
+
+- **Frontend Engineer - Digital** @ One New Zealand — applied 2026-05-16 · [JD](./archive/submitted/One New Zealand/research/job-description.md) · [CV](./archive/submitted/One New Zealand/documents/resume.pdf) · [Letter](./archive/submitted/One New Zealand/documents/cover-letter.md) · [Cold Email](./archive/submitted/One New Zealand/documents/cold-email.md) · [Apply ↗](https://careers.one.nz/job/Auckland-Frontend-Engineer-Digital/1360437266/)
+  - [ ] Cold email sent: 2026-05-16 → follow up on: 2026-05-23 · [Template](../templates/cold-email.md)
+
+- **Junior AI Integration Engineer** @ ZURU — applied 2026-05-17 · [JD](./archive/submitted/ZURU/research/job-description.md) · [CV](./archive/submitted/ZURU/documents/resume.pdf) · [Letter](./archive/submitted/ZURU/documents/cover-letter.md) · [Cold Email](./archive/submitted/ZURU/documents/cold-email.md) · [Apply ↗](https://jobs.ashbyhq.com/zuru/d768326e-29ef-4d78-86aa-0b1bbbc484f3)
+  - [ ] Cold email sent: 2026-05-17 → follow up on: 2026-05-24 · [Template](../templates/cold-email.md)
+
+- **Mobile Engineer (Android)** @ Air New Zealand — applied 2026-05-24 · [JD](./archive/submitted/Air New Zealand-44164833/research/job-description.md) · [CV](./archive/submitted/Air New Zealand-44164833/documents/resume.pdf) · [Letter](./archive/submitted/Air New Zealand-44164833/documents/cover-letter.md) · [Cold Email](./archive/submitted/Air New Zealand-44164833/documents/cold-email.md) · [Apply ↗](https://www.linkedin.com/jobs/view/4416483363/?eBP=NON_CHARGEABLE_CHANNEL&refId=Z%2BxKR8js4Hc2Ck9Hka5VVg%3D%3D&trackingId=K7j02HU9lsKlcvLcukcdfg%3D%3D&trk=flagship3_search_srp_jobs)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Junior Full-Stack Developer** @ Atom Intelligence — applied 2026-05-24 · [JD](./archive/submitted/Atom Intelligence-92116333/research/job-description.md) · [CV](./archive/submitted/Atom Intelligence-92116333/documents/resume.pdf) · [Letter](./archive/submitted/Atom Intelligence-92116333/documents/cover-letter.md) · [Cold Email](./archive/submitted/Atom Intelligence-92116333/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92116333?type=standard&ref=search-standalone&origin=cardTitle#sol=3c11a8be15678d3ff8d242e69e90c9bd73993766)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Intermediate Software Engineer** @ Auror — applied 2026-05-24 · [JD](./archive/submitted/Auror-44162021/research/job-description.md) · [CV](./archive/submitted/Auror-44162021/documents/resume.pdf) · [Letter](./archive/submitted/Auror-44162021/documents/cover-letter.md) · [Cold Email](./archive/submitted/Auror-44162021/documents/cold-email.md) · [Apply ↗](https://www.linkedin.com/jobs/view/4416202186/?eBP=NON_CHARGEABLE_CHANNEL&refId=Z%2BxKR8js4Hc2Ck9Hka5VVg%3D%3D&trackingId=nPbqrr%2BUCHXA98sbujEz%2BQ%3D%3D&trk=flagship3_search_srp_jobs)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Frontend Engineer - Product Features** @ Canva — applied 2026-05-24 · [JD](./archive/submitted/Canva-4118815/research/job-description.md) · [CV](./archive/submitted/Canva-4118815/documents/resume.pdf) · [Letter](./archive/submitted/Canva-4118815/documents/cover-letter.md) · [Cold Email](./archive/submitted/Canva-4118815/documents/cold-email.md) · [Apply ↗](https://wellfound.com/jobs/4118815-frontend-engineer-product-features)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **AI Developer** @ ExpandIQ — applied 2026-05-24 · [JD](./archive/submitted/ExpandIQ-4223430/research/job-description.md) · [CV](./archive/submitted/ExpandIQ-4223430/documents/resume.pdf) · [Letter](./archive/submitted/ExpandIQ-4223430/documents/cover-letter.md) · [Cold Email](./archive/submitted/ExpandIQ-4223430/documents/cold-email.md) · [Apply ↗](https://wellfound.com/jobs/4223430-ai-developer)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Software Engineer - React** @ Kiwibank — applied 2026-05-24 · [JD](./archive/submitted/Kiwibank-92193077/research/job-description.md) · [CV](./archive/submitted/Kiwibank-92193077/documents/resume.pdf) · [Letter](./archive/submitted/Kiwibank-92193077/documents/cover-letter.md) · [Cold Email](./archive/submitted/Kiwibank-92193077/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92193077?type=standard&ref=search-standalone&origin=cardTitle#sol=cfb260863867590bfc83dd7486c5e4f0b5bf86cc)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **AI Expert – Trading Systems & Agent Development** @ Private Advertiser — applied 2026-05-24 · [JD](./archive/submitted/Private Advertiser-92275451/research/job-description.md) · [CV](./archive/submitted/Private Advertiser-92275451/documents/resume.pdf) · [Letter](./archive/submitted/Private Advertiser-92275451/documents/cover-letter.md) · [Cold Email](./archive/submitted/Private Advertiser-92275451/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92275451?type=standard&ref=search-standalone&origin=cardTitle#sol=0d6399efec10c45c302a836aa0ed224ffae8c4ec)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Junior Software Engineer C++** @ Serato Limited — applied 2026-05-24 · [JD](./archive/submitted/Serato Limited-92184419/research/job-description.md) · [CV](./archive/submitted/Serato Limited-92184419/documents/resume.pdf) · [Letter](./archive/submitted/Serato Limited-92184419/documents/cover-letter.md) · [Cold Email](./archive/submitted/Serato Limited-92184419/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92184419?type=standard&ref=search-standalone&origin=cardTitle#sol=0022c0e5d00d507b1f8ee11d73c28fd9b257c3f3)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Software engineer** @ Sticker Mule — applied 2026-05-24 · [JD](./archive/submitted/Sticker Mule-stickerm/research/job-description.md) · [CV](./archive/submitted/Sticker Mule-stickerm/documents/resume.pdf) · [Letter](./archive/submitted/Sticker Mule-stickerm/documents/cover-letter.md) · [Cold Email](./archive/submitted/Sticker Mule-stickerm/documents/cold-email.md) · [Apply ↗](https://weworkremotely.com/remote-jobs/sticker-mule-software-engineer-3)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Full Stack Developer - Junior** @ Trade Me — applied 2026-05-24 · [JD](./archive/submitted/Trade Me-92257220/research/job-description.md) · [CV](./archive/submitted/Trade Me-92257220/documents/resume.pdf) · [Letter](./archive/submitted/Trade Me-92257220/documents/cover-letter.md) · [Cold Email](./archive/submitted/Trade Me-92257220/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92257220?type=standard&ref=search-standalone&origin=cardTitle#sol=c6b129977fda10a2565e44ec98b876b7e62b9d0d)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Full Stack Developer - Intermediate** @ Veovo — applied 2026-05-24 · [JD](./archive/submitted/Veovo/research/job-description.md) · [CV](./archive/submitted/Veovo/documents/resume.pdf) · [Letter](./archive/submitted/Veovo/documents/cover-letter.md) · [Cold Email](./archive/submitted/Veovo/documents/cold-email.md)
   - Top contacts:
     1. Fook-Weng Chan — Director of Project Delivery <fook-weng.chan@veovo.com>
   - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Full Stack Product Engineer (React Native + Next.js + AI-Assisted Development)** @ Weeha — applied 2026-05-24 · [JD](./archive/submitted/Weeha-92150444/research/job-description.md) · [CV](./archive/submitted/Weeha-92150444/documents/resume.pdf) · [Letter](./archive/submitted/Weeha-92150444/documents/cover-letter.md) · [Cold Email](./archive/submitted/Weeha-92150444/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/92150444?type=promoted&ref=search-standalone&origin=cardTitle)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Agentic AI Engineer** @ pst.ag — applied 2026-05-24 · [JD](./archive/submitted/pst.ag-4212552/research/job-description.md) · [CV](./archive/submitted/pst.ag-4212552/documents/resume.pdf) · [Letter](./archive/submitted/pst.ag-4212552/documents/cover-letter.md) · [Cold Email](./archive/submitted/pst.ag-4212552/documents/cold-email.md) · [Apply ↗](https://wellfound.com/jobs/4212552-agentic-ai-engineer)
+  - [ ] Cold email sent: 2026-05-24 → follow up on: 2026-05-31 · [Template](../templates/cold-email.md)
+
+- **Full Stack Product Engineer - Remote (AU/NZ)** @ Optimal — applied 2026-05-25 · [JD](./archive/submitted/Optimal-44174564/research/job-description.md) · [CV](./archive/submitted/Optimal-44174564/documents/resume.pdf) · [Letter](./archive/submitted/Optimal-44174564/documents/cover-letter.md) · [Cold Email](./archive/submitted/Optimal-44174564/documents/cold-email.md) · [Apply ↗](https://www.linkedin.com/jobs/view/4417456474/?eBP=BUDGET_EXHAUSTED_JOB)
+  - [ ] Cold email sent: 2026-05-25 → follow up on: 2026-06-01 · [Template](../templates/cold-email.md)
+
+- **Intermediate Software Engineer** @ Pushpay — applied 2026-05-25 · [JD](./archive/submitted/Pushpay-91964833/research/job-description.md) · [CV](./archive/submitted/Pushpay-91964833/documents/resume.pdf) · [Letter](./archive/submitted/Pushpay-91964833/documents/cover-letter.md) · [Cold Email](./archive/submitted/Pushpay-91964833/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/91964833?type=standard&ref=search-standalone&origin=cardTitle#sol=006bced6fb9b9f687dd8506e83db7e406fd5631b)
+  - [ ] Cold email sent: 2026-05-25 → follow up on: 2026-06-01 · [Template](../templates/cold-email.md)
+
+- **Full Stack Software Engineer** @ ebet Gaming System — applied 2026-05-25 · [JD](./archive/submitted/ebet Gaming System-91757205/research/job-description.md) · [CV](./archive/submitted/ebet Gaming System-91757205/documents/resume.pdf) · [Letter](./archive/submitted/ebet Gaming System-91757205/documents/cover-letter.md) · [Cold Email](./archive/submitted/ebet Gaming System-91757205/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/91757205?type=standard&ref=search-standalone&origin=cardTitle#sol=d4144dc4d996c7f60bba143b84ec2ff8d0900738)
+  - [ ] Cold email sent: 2026-05-25 → follow up on: 2026-06-01 · [Template](../templates/cold-email.md)
+
+- **Full Stack Developer (React/TS/Next.js/Sanity)** @ Digital Bakery — applied 2026-05-25 · [JD](./archive/submitted/Digital Bakery/research/job-description.md) · [CV](./archive/submitted/Digital Bakery/documents/resume.pdf) · [Letter](./archive/submitted/Digital Bakery/documents/cover-letter.md) · [Cold Email](./archive/submitted/Digital Bakery/documents/cold-email.md) · [Apply ↗](https://www.digitalbakery.co.nz/job/full-stack-developer-react-slash-ts-slash-next-dot-js-slash-sanity-669794?source=google.com)
+  - [ ] Cold email sent: 2026-05-25 → follow up on: 2026-06-01 · [Template](../templates/cold-email.md)

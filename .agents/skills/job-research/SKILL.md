@@ -40,6 +40,11 @@ runs as a Claude Code subagent instead of an inline LLM API call.
    role-aware body into each scaffold tied to the discovered recipient. The
    cold email is only generated once you commit (marked `[x]`) and Hunter has
    resolved who to address — never at package time.
+7. **One-off Outreach Prep** (Python + per-company subagent) — for already
+   submitted jobs, prepare a selected set of archived packages into a queue and
+   run one subagent per company. Each subagent may inspect existing
+   `contacts.json`, validate the current contact choice, try additional
+   evidence-based digging, and only then write `cold-email.md`.
 
 ## How to run (orchestrated by Claude Code)
 
@@ -65,11 +70,44 @@ it whenever after Stage 1.
 > remove the auto-generated context HTML comment before finishing. Report
 > per-company recipient + role and any emails you flagged as risky.
 
+For one-off outreach prep on already-submitted jobs:
+
+```bash
+# List submitted applications with stable 1-based numbers
+python3 tools/outreach.py list-submitted
+
+# Prepare a queue for selected submitted applications
+python3 tools/outreach.py prepare --pick 3 16 --output /tmp/jobhunting-outreach-queue.json
+
+# Prepare a queue for automatic per-company subagent launch
+python3 tools/outreach.py run --pick 3 16 --output /tmp/jobhunting-outreach-queue.json
+```
+
+`tools/outreach.py run` writes queue entries that already include the custom
+subagent type (`outreach-company`) plus a per-company prompt. The orchestrator
+should read `/tmp/jobhunting-outreach-queue.json` and launch **one background
+subagent per target** using each entry's `subagent_type`, `agent_description`,
+and `agent_prompt`.
+
+Suggested subagent prompt skeleton:
+
+> Read this outreach target's `contacts_path`, `jd_path`, `analysis_path`,
+> `resume_path`, `cold_email_path`, and `LinkedIn-CV-Profile.md`. This is for
+> one already-submitted application package. First evaluate whether the current
+> contacts are usable. If they are weak or empty, try additional evidence-based
+> contact discovery using available tools, but never invent a contact. Choose
+> the best recipient, flag any wrong-entity / wrong-region / low-confidence
+> risks, and only if the contact is good enough rewrite `cold_email_path` into
+> a complete, role-aware email. Replace all placeholders and remove the
+> auto-generated context HTML comment before finishing. Report status
+> (`ready|risky_contact|no_contact_found`), chosen recipient, evidence, and
+> whether the file was updated.
+
 Then spawn a scoring subagent using this prompt skeleton. Use a **light /
 cost-efficient model** — this scores ~50-80 full JDs per run, and scoring is
 judgment but not deep reasoning, so a light model is the right tradeoff; avoid
-heavyweight reasoning models here. (If you run this inside Claude Code, only
-`sonnet` / `opus` / `haiku` resolve as subagent models — pick `sonnet`.)
+heavyweight reasoning models here. Let the orchestrator choose the appropriate
+light-tier model for the current tool/runtime.
 
 > Read `/tmp/jobhunting-listings.json` and apply the rubric at
 > `tools/scoring-rubric.md`. Each listing carries a `full_jd` field — score
@@ -77,6 +115,10 @@ heavyweight reasoning models here. (If you run this inside Claude Code, only
 > scores to `/tmp/jobhunting-scores.json` per the schema documented in the
 > rubric. Report kept-vs-input count, top 5 titles + scores, and any patterns
 > in what was dropped.
+
+Always continue to Stage 3 after scoring, even if `/tmp/jobhunting-scores.json`
+contains zero kept listings. In that case, Stage 3 should still run, complete as
+a no-op, and report that zero packages were created rather than stopping early.
 
 ```bash
 # Stage 3: package (cap 100 = process every listing that passed cutoff)
@@ -117,9 +159,9 @@ python3 tools/cover_letter_pdf.py --file "applications/active/Company/documents/
 - **Subagent over SDK call**: keeps scoring in the agent session,
   no API-key plumbing, easier to iterate on the rubric.
 - **Light model, set by the orchestrator**: prefer a cost-efficient model for
-  scoring and cover-letter fill — judgment-capable, cheap. (In Claude Code that
-  means `sonnet`; if you drive this from another tool, pick that tool's
-  light-tier model.)
+  scoring and cover-letter fill — judgment-capable, cheap. Do not hardcode a
+  model name in this skill; let the orchestrator pick the right light-tier
+  model for the current tool/runtime.
 
 ## Other flags
 
@@ -143,7 +185,7 @@ Current profiles: `product-engineer`, `ai-native`.
 
 ## Workflow
 
-1. Run the orchestrated 3-stage flow (Stage 1 → scoring subagent → Stage 3).
+1. Run the orchestrated 3-stage flow (Stage 1 → scoring subagent → Stage 3) without stopping early; if scoring keeps zero listings, still run Stage 3 and report zero packages.
 2. Review `INBOX.md` — check off `[x]` what you submit, mark `[~]` to skip.
 3. Next run auto-archives checked / skipped items and fetches fresh listings.
 

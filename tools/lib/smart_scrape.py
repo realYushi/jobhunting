@@ -13,6 +13,7 @@ import sys
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any, Callable
+from urllib.parse import quote, urlencode
 
 from lib.harness_utils import load_script, parse_harness_json_output, run_harness
 from lib.identity import try_manual_key
@@ -54,6 +55,23 @@ def dedup_within_run(listings: list[JobListing]) -> list[JobListing]:
     return unique
 
 
+def _unique_keywords(profiles: list[dict[str, Any]]) -> list[str]:
+    """Return deduplicated non-empty keywords in first-seen order."""
+    seen: set[str] = set()
+    out: list[str] = []
+    for profile in profiles:
+        for keyword in profile.get("keywords", []):
+            cleaned = " ".join(str(keyword or "").split())
+            if not cleaned:
+                continue
+            key = cleaned.casefold()
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(cleaned)
+    return out
+
+
 def smart_scrape(
     profiles: list[dict[str, Any]],
     max_total: int = 100,
@@ -90,9 +108,8 @@ def smart_scrape(
         for source in sources:
             source_profiles[source].append(profile)
 
-    # Scrape each source. All current sources have URL-fixed search params,
-    # so per-profile keywords/location don't influence the scrape — we run
-    # one pass per source regardless of how many profiles target it.
+    # Scrape each source with the union of keywords from the profiles that
+    # target it.
     for source, profs in source_profiles.items():
         if not profs:
             continue
@@ -102,6 +119,7 @@ def smart_scrape(
             source,
             max_per_source,
             seen_jobs if stop_at_overlap else None,
+            keywords=_unique_keywords(profs),
         )
         all_listings.extend(source_listings)
 
@@ -225,7 +243,7 @@ def _scrape_paginated(
             page = first_page + page_offset
             url = page_url(base_url, page)
             stdout, _stderr, retcode = run_harness(
-                load_script(script_name, url=url, page=page), timeout=120
+                load_script(script_name, url=url, page=page), timeout=120, source=source
             )
             if retcode != 0:
                 break
@@ -261,25 +279,29 @@ def _scrape_source(
     source: str,
     max_results: int,
     seen_jobs: dict[str, set[str]] | None,
+    *,
+    keywords: list[str] | None = None,
 ) -> list[JobListing]:
     """Scrape a single source with pagination support.
 
     If seen_jobs is provided, stops when reaching overlap.
     """
+    source_keywords = _keywords_for_source(source, keywords or [])
     if source == "linkedin":
-        return _scrape_paginated(
+        listings = _scrape_paginated(
             "linkedin",
-            _LINKEDIN_BASE_URLS,
+            tuple(_linkedin_base_urls(source_keywords)),
             "linkedin-list",
             lambda base, page: f"{base}&start={(page - 1) * 25}",
             max_results,
             seen_jobs,
             log_prefix="LinkedIn base",
         )
+        return [lst for lst in listings if _title_looks_software(lst.title)][:max_results]
     if source == "seek":
         return _scrape_paginated(
             "seek",
-            _SEEK_BASE_URLS,
+            tuple(_seek_base_urls(source_keywords)),
             "seek-list",
             _append_page_param,
             max_results,
@@ -298,51 +320,182 @@ def _scrape_source(
             seen_jobs,
         )
     if source == "wellfound":
-        return _scrape_wellfound_paginated(max_results, seen_jobs)
+        return _scrape_wellfound_paginated(max_results, seen_jobs, source_keywords)
     if source == "weworkremotely":
-        return _scrape_weworkremotely(max_results, seen_jobs)
+        return _scrape_weworkremotely(max_results, seen_jobs, source_keywords)
+    if source == "prosple":
+        return _scrape_paginated(
+            "prosple",
+            tuple(_prosple_base_urls(source_keywords)),
+            "prosple-list",
+            _append_page_param,
+            max_results,
+            seen_jobs,
+            max_pages=1,
+            log_prefix="Prosple base",
+        )
     print(f"  Unknown source: {source}", file=sys.stderr)
     return []
 
 
-_LINKEDIN_BASE_URLS: tuple[str, ...] = (
-    # Auckland — Software Engineer, entry/associate level, full-time, last 30 days.
-    "https://www.linkedin.com/jobs/search"
-    "?keywords=Software%20Engineer"
-    "&location=Auckland"
-    "&geoId=100749476"
-    "&distance=25"
-    "&f_TPR=r2592000"
-    "&f_JT=F"
-    "&f_E=2%2C3"
-    "&f_PP=100749476"
-    "&sortBy=DD",
+_DEFAULT_KEYWORDS: tuple[str, ...] = ("Software Engineer",)
+_SOURCE_KEYWORD_ALLOWLISTS: dict[str, tuple[str, ...]] = {
+    "linkedin": (
+        "Software Engineer",
+        "Software Developer",
+        "Full Stack Engineer",
+        "Full Stack Developer",
+        "Frontend Engineer",
+        "Frontend Developer",
+        "Backend Engineer",
+        "Backend Developer",
+        "AI Engineer",
+        "AI Application Engineer",
+        "LLM Engineer",
+        "Applied AI Engineer",
+    ),
+    "seek": (
+        "Software Engineer",
+        "Software Developer",
+        "Full Stack Engineer",
+        "Full Stack Developer",
+        "Frontend Engineer",
+        "Frontend Developer",
+        "Backend Engineer",
+        "Backend Developer",
+        "AI Engineer",
+        "LLM Engineer",
+        "Applied AI Engineer",
+    ),
+    "weworkremotely": (
+        "Software Engineer",
+        "Software Developer",
+        "Full Stack Engineer",
+        "Full Stack Developer",
+        "Frontend Engineer",
+        "Backend Engineer",
+        "AI Engineer",
+        "LLM Engineer",
+    ),
+    "prosple": (
+        "Software Engineer",
+        "Software Developer",
+        "Full Stack Engineer",
+        "Full Stack Developer",
+        "Frontend Engineer",
+        "Frontend Developer",
+        "Backend Engineer",
+        "Backend Developer",
+        "AI Engineer",
+        "AI Application Engineer",
+        "LLM Engineer",
+        "Applied AI Engineer",
+    ),
+}
+_SOFTWARE_TITLE_TERMS: tuple[str, ...] = (
+    "software",
+    "developer",
+    "full stack",
+    "frontend",
+    "front-end",
+    "backend",
+    "back-end",
+    "product engineer",
+    "web engineer",
+    "web developer",
+    "application developer",
+    "ai engineer",
+    "llm",
+    "machine learning",
+    "applied ai",
 )
 
 
-_SEEK_BASE_URLS: tuple[str, ...] = (
-    # Auckland (NZ) — Junior Software Developer jobs in ICT, full-time,
-    # last 3 days, subclassifications 6287+6290.
-    "https://nz.seek.com/Junior-Software-Developer-jobs-in-information-communication-technology"
-    "/in-All-Auckland/full-time"
-    "?daterange=3"
-    "&sortmode=ListedDate"
-    "&subclassification=6287%2C6290",
-    # Auckland (NZ) — Developer jobs, ICT classifications, last 31 days,
-    # subclassifications 6287+6302 (Developers/Programmers + Eng - Software),
-    # work arrangement 1+2 (remote + hybrid).
-    "https://nz.seek.com/Developer-jobs/in-All-Auckland"
-    "?classification=6281%2C1209"
-    "&daterange=31"
-    "&sortmode=ListedDate"
-    "&subclassification=6287%2C6302"
-    "&workarrangement=1%2C2",
-    # Australia — Developer jobs in ICT, remote only.
-    "https://au.seek.com/Developer-jobs-in-information-communication-technology"
-    "/in-All-Australia/remote"
-    "?sortmode=ListedDate"
-    "&subclassification=6287%2C6302",
-)
+def _keywords_for_source(source: str, keywords: list[str]) -> list[str]:
+    allowed = _SOURCE_KEYWORD_ALLOWLISTS.get(source)
+    if not allowed:
+        return keywords or list(_DEFAULT_KEYWORDS)
+    allowed_set = {item.casefold() for item in allowed}
+    out = [keyword for keyword in keywords if keyword.casefold() in allowed_set]
+    return out or list(allowed)
+
+
+def _title_looks_software(title: str | None) -> bool:
+    text = " ".join((title or "").casefold().split())
+    return any(term in text for term in _SOFTWARE_TITLE_TERMS)
+
+
+def _slugify_keyword(keyword: str) -> str:
+    return "-".join(part for part in keyword.casefold().replace("/", " ").split() if part)
+
+
+def _linkedin_base_urls(keywords: list[str]) -> list[str]:
+    out: list[str] = []
+    for keyword in (keywords or list(_DEFAULT_KEYWORDS)):
+        out.append(
+            "https://www.linkedin.com/jobs/search"
+            f"?keywords={quote(keyword)}"
+            "&location=Auckland"
+            "&geoId=100749476"
+            "&distance=25"
+            "&f_TPR=r2592000"
+            "&f_JT=F"
+            "&f_E=2%2C3"
+            "&f_PP=100749476"
+            "&sortBy=DD"
+        )
+    return out
+
+
+def _seek_base_urls(keywords: list[str]) -> list[str]:
+    out: list[str] = []
+    for keyword in (keywords or list(_DEFAULT_KEYWORDS)):
+        slug = "-".join(part for part in keyword.split() if part)
+        out.extend(
+            [
+                (
+                    f"https://nz.seek.com/{slug}-jobs-in-information-communication-technology"
+                    "/in-All-Auckland/full-time"
+                    "?daterange=7"
+                    "&sortmode=ListedDate"
+                    "&classification=6281"
+                    "&subclassification=6287%2C6290"
+                ),
+                (
+                    f"https://nz.seek.com/{slug}-jobs-in-information-communication-technology"
+                    "/in-All-Auckland"
+                    "?daterange=31"
+                    "&sortmode=ListedDate"
+                    "&classification=6281"
+                    "&subclassification=6287%2C6290"
+                    "&workarrangement=1%2C2"
+                ),
+                (
+                    f"https://au.seek.com/{slug}-jobs-in-information-communication-technology"
+                    "/in-All-Australia/remote"
+                    "?sortmode=ListedDate"
+                    "&classification=6281"
+                    "&subclassification=6287%2C6290"
+                ),
+            ]
+        )
+    return out
+
+
+def _prosple_base_urls(keywords: list[str]) -> list[str]:
+    out: list[str] = []
+    for keyword in (keywords or list(_DEFAULT_KEYWORDS)):
+        params = urlencode(
+            {
+                "location": "Auckland, AU, New Zealand",
+                "sort": "newest_opportunities|desc",
+                "opportunity_types": "1",
+                "search_radius": "50",
+                "keywords": keyword,
+            }
+        )
+        out.append(f"https://nz.prosple.com/search-jobs?{params}")
+    return out
 
 
 _HIRINGCAFE_BASE_SEARCH_STATE: dict[str, Any] = {
@@ -481,18 +634,63 @@ def _is_weworkremotely_recent(posted: str | None) -> bool:
     return False
 
 
-_WELLFOUND_BASE_URLS: tuple[str, ...] = (
-    "https://wellfound.com/role/r/software-engineer",
-    "https://wellfound.com/role/r/full-stack-developer",
-    "https://wellfound.com/role/r/backend-developer",
-    "https://wellfound.com/role/r/frontend-engineer",
-    "https://wellfound.com/role/r/artificial-intelligence-engineer",
+_WELLFOUND_ROLE_ALIASES: dict[str, str] = {
+    "software-engineer": "software-engineer",
+    "software-developer": "software-engineer",
+    "full-stack-engineer": "full-stack-developer",
+    "full-stack-developer": "full-stack-developer",
+    "frontend-engineer": "frontend-engineer",
+    "frontend-developer": "frontend-engineer",
+    "backend-engineer": "backend-developer",
+    "backend-developer": "backend-developer",
+    "web-engineer": "software-engineer",
+    "application-developer": "software-engineer",
+    "product-engineer": "software-engineer",
+    "ai-engineer": "artificial-intelligence-engineer",
+    "ai-application-engineer": "artificial-intelligence-engineer",
+    "llm-engineer": "artificial-intelligence-engineer",
+    "applied-ai-engineer": "artificial-intelligence-engineer",
+    "machine-learning-engineer": "artificial-intelligence-engineer",
+    "ai-native-engineer": "artificial-intelligence-engineer",
+}
+_WELLFOUND_FALLBACK_SLUGS: tuple[str, ...] = (
+    "software-engineer",
+    "full-stack-developer",
+    "backend-developer",
+    "frontend-engineer",
+    "artificial-intelligence-engineer",
 )
+
+
+def _wellfound_base_urls(keywords: list[str]) -> list[str]:
+    seen: set[str] = set()
+    out: list[str] = []
+    for keyword in (keywords or list(_DEFAULT_KEYWORDS)):
+        slug = _slugify_keyword(keyword)
+        mapped = _WELLFOUND_ROLE_ALIASES.get(slug)
+        if not mapped or mapped in seen:
+            continue
+        seen.add(mapped)
+        out.append(f"https://wellfound.com/role/r/{mapped}")
+    if out:
+        return out
+    return [f"https://wellfound.com/role/r/{slug}" for slug in _WELLFOUND_FALLBACK_SLUGS]
+
+
+def _weworkremotely_search_url(keywords: list[str]) -> str:
+    term = quote(" ".join(keywords[:3])) if keywords else ""
+    return (
+        "https://weworkremotely.com/remote-jobs/search"
+        f"?search_uuid=&sort=&term={term}&categories_chosen="
+        "&categories%5B%5D=2&categories%5B%5D=17&categories%5B%5D=18"
+        "&countries_chosen=&chosen-salary_range=&skills_chosen="
+    )
 
 
 def _scrape_wellfound_paginated(
     max_results: int,
     seen_jobs: dict[str, set[str]] | None,
+    keywords: list[str],
 ) -> list[JobListing]:
     """Scrape Wellfound remote startup engineering listings.
 
@@ -505,7 +703,7 @@ def _scrape_wellfound_paginated(
     listings: list[JobListing] = []
 
     for page in range(1, 3):
-        for base_search_url in _WELLFOUND_BASE_URLS:
+        for base_search_url in _wellfound_base_urls(keywords):
             if len(listings) >= max_results:
                 break
             print(
@@ -538,17 +736,10 @@ def _scrape_wellfound_paginated(
     return listings[:max_results]
 
 
-_WEWORKREMOTELY_SEARCH_URL = (
-    "https://weworkremotely.com/remote-jobs/search"
-    "?search_uuid=&sort=&term=&categories_chosen="
-    "&categories%5B%5D=2&categories%5B%5D=17&categories%5B%5D=18"
-    "&countries_chosen=&chosen-salary_range=&skills_chosen="
-)
-
-
 def _scrape_weworkremotely(
     max_results: int,
     seen_jobs: dict[str, set[str]] | None,
+    keywords: list[str],
 ) -> list[JobListing]:
     """Scrape We Work Remotely programming search results (single page).
 
@@ -556,10 +747,11 @@ def _scrape_weworkremotely(
     month are filtered locally from the visible age label.
     """
     seen = seen_jobs.get("weworkremotely", set()) if seen_jobs else set()
-    print(f"  We Work Remotely: {_WEWORKREMOTELY_SEARCH_URL[:60]}...", file=sys.stderr)
+    url = _weworkremotely_search_url(keywords)
+    print(f"  We Work Remotely: {url[:60]}...", file=sys.stderr)
     stdout, _stderr, retcode = run_harness(
         load_script(
-            "weworkremotely-list", url=_WEWORKREMOTELY_SEARCH_URL, page=1
+            "weworkremotely-list", url=url, page=1
         ),
         timeout=120,
     )
