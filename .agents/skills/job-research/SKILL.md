@@ -53,6 +53,9 @@ runs as a Claude Code subagent instead of an inline LLM API call.
 python3 tools/pipeline.py --scrape-only /tmp/jobhunting-listings.json
 ```
 
+**If Stage 1 outputs 0 listings, stop here.** There is nothing to score or
+package. Report the result and wait for the user's next instruction.
+
 If Stage 1 prints `✉️ N cold email(s) need body fill-in`, those are outreach
 emails for jobs you marked `[x]`. Spawn a cold-email fill subagent (a light /
 cost-efficient model is fine). This is independent of scoring/packaging — run
@@ -116,9 +119,7 @@ light-tier model for the current tool/runtime.
 > rubric. Report kept-vs-input count, top 5 titles + scores, and any patterns
 > in what was dropped.
 
-Always continue to Stage 3 after scoring, even if `/tmp/jobhunting-scores.json`
-contains zero kept listings. In that case, Stage 3 should still run, complete as
-a no-op, and report that zero packages were created rather than stopping early.
+If scoring keeps zero listings, skip Stage 3 and report zero packages.
 
 ```bash
 # Stage 3: package (cap 100 = process every listing that passed cutoff)
@@ -185,7 +186,7 @@ Current profiles: `product-engineer`, `ai-native`.
 
 ## Workflow
 
-1. Run the orchestrated 3-stage flow (Stage 1 → scoring subagent → Stage 3) without stopping early; if scoring keeps zero listings, still run Stage 3 and report zero packages.
+1. Run Stage 1. If 0 listings came through, stop and report — no further stages needed. Otherwise continue with scoring subagent → Stage 3 → cover-letter fill → PDF render.
 2. Review `INBOX.md` — check off `[x]` what you submit, mark `[~]` to skip.
 3. Next run auto-archives checked / skipped items and fetches fresh listings.
 

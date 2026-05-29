@@ -432,6 +432,7 @@ def _slugify_keyword(keyword: str) -> str:
 def _linkedin_base_urls(keywords: list[str]) -> list[str]:
     out: list[str] = []
     for keyword in (keywords or list(_DEFAULT_KEYWORDS)):
+        # Auckland, full-time, last 30 days
         out.append(
             "https://www.linkedin.com/jobs/search"
             f"?keywords={quote(keyword)}"
@@ -442,6 +443,18 @@ def _linkedin_base_urls(keywords: list[str]) -> list[str]:
             "&f_JT=F"
             "&f_E=2%2C3"
             "&f_PP=100749476"
+            "&sortBy=DD"
+        )
+        # NZ-wide, remote only, last 30 days
+        out.append(
+            "https://www.linkedin.com/jobs/search"
+            f"?keywords={quote(keyword)}"
+            "&location=New%20Zealand"
+            "&geoId=105490917"
+            "&distance=0"
+            "&f_TPR=r2592000"
+            "&f_WT=2"
+            "&f_E=2%2C3"
             "&sortBy=DD"
         )
     return out
@@ -473,6 +486,13 @@ def _seek_base_urls(keywords: list[str]) -> list[str]:
                 (
                     f"https://au.seek.com/{slug}-jobs-in-information-communication-technology"
                     "/in-All-Australia/remote"
+                    "?sortmode=ListedDate"
+                    "&classification=6281"
+                    "&subclassification=6287%2C6290"
+                ),
+                (
+                    f"https://nz.seek.com/{slug}-jobs-in-information-communication-technology"
+                    "/in-All-New-Zealand/remote"
                     "?sortmode=ListedDate"
                     "&classification=6281"
                     "&subclassification=6287%2C6290"

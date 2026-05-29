@@ -209,6 +209,11 @@ HARD_DROP_TITLE_PATTERNS = (
     "security engineer",
 )
 
+HARD_DROP_COMPANY_PATTERNS = (
+    "dataannotation",
+    "twine",
+)
+
 
 def _title_hard_drop_reason(listing: "JobListing") -> str | None:
     """Return a conservative prefetch drop reason from the title alone.
@@ -222,6 +227,17 @@ def _title_hard_drop_reason(listing: "JobListing") -> str | None:
     for pattern in HARD_DROP_TITLE_PATTERNS:
         if pattern in title:
             return f"title hard-drop: {pattern}"
+    return None
+
+
+def _company_hard_drop_reason(listing: "JobListing") -> str | None:
+    """Return a drop reason if the company matches a blocked pattern."""
+    company = (listing.company or "").casefold().strip()
+    if not company:
+        return None
+    for pattern in HARD_DROP_COMPANY_PATTERNS:
+        if pattern in company:
+            return f"company hard-drop: {pattern}"
     return None
 
 
@@ -865,12 +881,21 @@ def run_scrape_only(
     pre_trimmed: list[JobListing] = []
     dropped_title = 0
     dropped_region = 0
+    dropped_company = 0
     for lst in survivors:
         title_reason = _title_hard_drop_reason(lst)
         if title_reason:
             dropped_title += 1
             print(
                 f"  ⏭️  Pre-fetch title trim: {lst.title} @ {lst.company} ({title_reason})",
+                file=sys.stderr,
+            )
+            continue
+        company_reason = _company_hard_drop_reason(lst)
+        if company_reason:
+            dropped_company += 1
+            print(
+                f"  ⏭️  Pre-fetch company trim: {lst.title} @ {lst.company} ({company_reason})",
                 file=sys.stderr,
             )
             continue
@@ -881,6 +906,11 @@ def run_scrape_only(
     if dropped_title:
         print(
             f"  Pre-fetch title trim dropped {dropped_title} listings",
+            file=sys.stderr,
+        )
+    if dropped_company:
+        print(
+            f"  Pre-fetch company trim dropped {dropped_company} listings",
             file=sys.stderr,
         )
     if dropped_region:

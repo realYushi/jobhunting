@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-05-25",
+    "last_updated": "2026-05-29",
     "version": "7.0"
   },
   "applications": {
@@ -371,7 +371,7 @@
         "submitted_at": "2026-05-15"
       },
       {
-        "company": "Talent Army \u2013 Winner of Medium Recruitment Agency of the Year 2025",
+        "company": "Talent Army – Winner of Medium Recruitment Agency of the Year 2025",
         "position": "DevOps Engineer (AWS & Azure)",
         "date_applied": "2026-05-15",
         "status": "In Progress",
@@ -446,7 +446,7 @@
       },
       {
         "company": "ICTx",
-        "position": "Software Engineer \u2013 .NET, SQL & BI",
+        "position": "Software Engineer – .NET, SQL & BI",
         "date_applied": "2026-05-16",
         "status": "In Progress",
         "priority": "Medium",
@@ -523,7 +523,7 @@
       },
       {
         "company": "Esri",
-        "position": "Product Engineer II \u2013 Web Services",
+        "position": "Product Engineer II – Web Services",
         "date_applied": "2026-05-16",
         "status": "In Progress",
         "priority": "Medium",
@@ -832,32 +832,8 @@
         "submitted_at": "2026-05-24"
       },
       {
-        "company": "One New Zealand",
-        "position": "Frontend Engineer - Digital",
-        "date_applied": "2026-05-16",
-        "status": "Submitted",
-        "priority": "Medium",
-        "pdf_path": "applications/archive/submitted/One New Zealand/documents/resume.pdf",
-        "source": "one-nz-careers",
-        "job_id": "1360437266",
-        "url": "https://careers.one.nz/job/Auckland-Frontend-Engineer-Digital/1360437266/",
-        "submitted_at": "2026-05-16"
-      },
-      {
-        "company": "ZURU",
-        "position": "Junior AI Integration Engineer",
-        "date_applied": "2026-05-16",
-        "status": "Submitted",
-        "priority": "High",
-        "pdf_path": "applications/archive/submitted/ZURU/documents/resume.pdf",
-        "source": "ashby",
-        "job_id": "d768326e-29ef-4d78-86aa-0b1bbbc484f3",
-        "url": "https://jobs.ashbyhq.com/zuru/d768326e-29ef-4d78-86aa-0b1bbbc484f3",
-        "submitted_at": "2026-05-17"
-      },
-      {
         "company": "Blackpepper",
-        "position": "Intermediate Front End Developer \u2013 Shopify",
+        "position": "Intermediate Front End Developer – Shopify",
         "date_applied": "2026-05-18",
         "status": "In Progress",
         "priority": "Medium",
@@ -1061,18 +1037,6 @@
         "url": "https://wellfound.com/jobs/3802482-ai-platform-engineer"
       },
       {
-        "company": "pst.ag",
-        "position": "Agentic AI Engineer",
-        "date_applied": "2026-05-20",
-        "status": "Submitted",
-        "priority": "Medium",
-        "pdf_path": "applications/active/pst.ag-4212552/documents/resume.pdf",
-        "job_id": "4212552",
-        "source": "wellfound",
-        "url": "https://wellfound.com/jobs/4212552-agentic-ai-engineer",
-        "submitted_at": "2026-05-24"
-      },
-      {
         "company": "dresslife",
         "position": "Full Stack Developer",
         "date_applied": "2026-05-21",
@@ -1185,18 +1149,6 @@
         "apply_url": "https://www.linkedin.com/jobs/view/4417086156/"
       },
       {
-        "company": "Auror",
-        "position": "Intermediate Software Engineer",
-        "date_applied": "2026-05-22",
-        "status": "Submitted",
-        "priority": "Medium",
-        "pdf_path": "applications/active/Auror-44162021/documents/resume.pdf",
-        "job_id": "4416202186",
-        "source": "linkedin",
-        "url": "https://www.linkedin.com/jobs/view/4416202186/?eBP=NON_CHARGEABLE_CHANNEL&refId=Z%2BxKR8js4Hc2Ck9Hka5VVg%3D%3D&trackingId=nPbqrr%2BUCHXA98sbujEz%2BQ%3D%3D&trk=flagship3_search_srp_jobs",
-        "submitted_at": "2026-05-24"
-      },
-      {
         "company": "The Warehouse Group",
         "position": "AI Engineer",
         "date_applied": "2026-05-22",
@@ -1266,18 +1218,6 @@
         "url": "https://wellfound.com/jobs/4098591-full-stack-developer"
       },
       {
-        "company": "Private Advertiser",
-        "position": "AI Expert \u2013 Trading Systems & Agent Development",
-        "date_applied": "2026-05-22",
-        "status": "Submitted",
-        "priority": "Medium",
-        "pdf_path": "applications/active/Private Advertiser-92275451/documents/resume.pdf",
-        "job_id": "92275451",
-        "source": "seek",
-        "url": "https://nz.seek.com/job/92275451?type=standard&ref=search-standalone&origin=cardTitle#sol=0d6399efec10c45c302a836aa0ed224ffae8c4ec",
-        "submitted_at": "2026-05-24"
-      },
-      {
         "company": "FUJIFILM Business Innovation New Zealand Limited",
         "position": "Intermediate Developer (JavaScript)",
         "date_applied": "2026-05-22",
@@ -1309,15 +1249,6 @@
         "job_id": "appetiser-junior-full-stack-developer-laravel-and-vuejs",
         "source": "weworkremotely",
         "url": "https://weworkremotely.com/remote-jobs/appetiser-junior-full-stack-developer-laravel-and-vuejs"
-      },
-      {
-        "company": "Veovo",
-        "position": "Full Stack Developer - Intermediate",
-        "date_applied": "2026-05-24",
-        "status": "Submitted",
-        "priority": "Medium",
-        "pdf_path": "applications/archive/submitted/Veovo/documents/resume.pdf",
-        "submitted_at": "2026-05-24"
       },
       {
         "company": "Optimal",
@@ -1383,6 +1314,630 @@
         "job_id": "1393881",
         "source": "manual",
         "url": "https://www.digitalbakery.co.nz/job/full-stack-developer-react-slash-ts-slash-next-dot-js-slash-sanity-669794?source=google.com"
+      },
+      {
+        "company": "Vista",
+        "position": "Graduate Software Engineer",
+        "date_applied": "2026-05-25",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Vista/documents/resume.pdf",
+        "source": "linkedin",
+        "job_id": "4418922939",
+        "url": "https://www.linkedin.com/jobs/view/4418922939/?eBP=NOT_ELIGIBLE_FOR_CHARGING",
+        "submitted_at": "2026-05-26"
+      },
+      {
+        "company": "Youtap",
+        "position": "Graduate Front-end Software Developer",
+        "date_applied": "2026-05-26",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/Youtap-6yaxk4bi/documents/resume.pdf",
+        "job_id": "6yaxk4bi99xqf9je",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/6yaxk4bi99xqf9je",
+        "submitted_at": "2026-05-26"
+      },
+      {
+        "company": "Enterprise Technology Recruitment Ltd",
+        "position": "Software Migration Engineer / Remote option in Auckland",
+        "date_applied": "2026-05-26",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Enterprise Technology Recruitment Ltd-92311524/documents/resume.pdf",
+        "job_id": "92311524",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92311524?type=standard&ref=search-standalone&origin=cardTitle#sol=f2a31a65da2f6f143cfd497f929273eda7a2200b"
+      },
+      {
+        "company": "Enterprise Technology Recruitment Ltd",
+        "position": "Ruby on Rails Developer | Global SaaS Product | Remote option",
+        "date_applied": "2026-05-26",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Enterprise Technology Recruitment Ltd-92324485/documents/resume.pdf",
+        "job_id": "92324485",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92324485?type=standard&ref=search-standalone&origin=cardTitle#sol=2ea44161e9a02540f467278c07028060e2f2296c"
+      },
+      {
+        "company": "Plexure",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-26",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Plexure/documents/resume.pdf",
+        "job_id": "92129004",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92129004?token=1~3bb05ea0-de58-4b4c-8d24-618a1f839689&ref=post-apply-recs",
+        "submitted_at": "2026-05-27"
+      },
+      {
+        "company": "Momentum Clinical Research",
+        "position": "Junior Automation Engineer",
+        "date_applied": "2026-05-26",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Momentum Clinical Research/documents/resume.pdf",
+        "job_id": "91880862",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91880862?token=1~3bb05ea0-de58-4b4c-8d24-618a1f839689&ref=post-apply-recs",
+        "submitted_at": "2026-05-27"
+      },
+      {
+        "company": "E tu Incorporated",
+        "position": "ICT Software Developer",
+        "date_applied": "2026-05-26",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/E tu Incorporated-92324979/documents/resume.pdf",
+        "job_id": "92324979",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92324979?type=standard&ref=search-standalone&origin=cardTitle#sol=b499755f43eedc7b750f95e707bff50562d86ad2",
+        "submitted_at": "2026-05-27"
+      },
+      {
+        "company": "Talinger Ltd",
+        "position": "Full Stack Developer - Java",
+        "date_applied": "2026-05-26",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Talinger Ltd/documents/resume.pdf"
+      },
+      {
+        "company": "Ray White Mt Eden",
+        "position": "AI/Workflow Automation Assistant",
+        "date_applied": "2026-05-26",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Ray White Mt Eden/documents/resume.pdf"
+      },
+      {
+        "company": "Vista Group",
+        "position": "Graduate Test Engineer",
+        "date_applied": "2026-05-26",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Vista Group/documents/resume.pdf",
+        "job_id": "diWA8Gx1X5oH8cMCx5s9tf",
+        "source": "workable",
+        "url": "https://jobs.workable.com/view/diWA8Gx1X5oH8cMCx5s9tf/hybrid-graduate-test-engineer-in-auckland-at-vista-group"
+      },
+      {
+        "company": "Fundsorter",
+        "position": "Junior-Intermediate Software Developer",
+        "date_applied": "2026-05-26",
+        "status": "In Progress",
+        "priority": "High",
+        "pdf_path": "applications/active/Fundsorter/documents/resume.pdf"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Full Stack Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973885/documents/resume.pdf",
+        "job_id": "4397388553",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/full-stack-engineer-ai-trainer-at-dataannotation-4397388553?position=18&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=UsQ5Xo9ijgfXYF1Ki2fpeA%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Full Stack Software Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973944/documents/resume.pdf",
+        "job_id": "4397394494",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/full-stack-software-engineer-ai-trainer-at-dataannotation-4397394494?position=21&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=9lgMxG5nM04Yhp6Gz%2Bki3g%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Full Stack Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973974/documents/resume.pdf",
+        "job_id": "4397397434",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/full-stack-developer-ai-trainer-at-dataannotation-4397397434?position=23&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=UNWzCH%2Fgc%2BE9jjfmLguVZg%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Contract Full Stack Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973928/documents/resume.pdf",
+        "job_id": "4397392802",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/contract-full-stack-developer-ai-trainer-at-dataannotation-4397392802?position=34&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=imThUsjqraBHPGWlTo82lA%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Frontend Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43974070/documents/resume.pdf",
+        "job_id": "4397407072",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/frontend-engineer-ai-trainer-at-dataannotation-4397407072?position=10&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=O3GN2RIPUm2ugB2ormab9w%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Frontend Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973905/documents/resume.pdf",
+        "job_id": "4397390593",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/frontend-developer-ai-trainer-at-dataannotation-4397390593?position=11&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=yMjgcD%2BTjjMHL%2B0SOvhlwA%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Web Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973906/documents/resume.pdf",
+        "job_id": "4397390601",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/web-developer-ai-trainer-at-dataannotation-4397390601?position=13&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=h%2B1VS30A%2BQlBL9FbZ4YwrA%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "JavaScript Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973915/documents/resume.pdf",
+        "job_id": "4397391587",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/javascript-developer-ai-trainer-at-dataannotation-4397391587?position=14&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=CX1uExFZequX8N7dtwFnJg%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Front-End Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973964/documents/resume.pdf",
+        "job_id": "4397396485",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/front-end-developer-ai-trainer-at-dataannotation-4397396485?position=15&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=EJWMU6q9%2BoA5fJd%2FET%2FOfg%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Frontend Software Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43974022/documents/resume.pdf",
+        "job_id": "4397402281",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/frontend-software-engineer-ai-trainer-at-dataannotation-4397402281?position=16&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=0MLXRHvVkbKTBRetkQHuHA%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Node.js Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43974011/documents/resume.pdf",
+        "job_id": "4397401184",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/node-js-developer-ai-trainer-at-dataannotation-4397401184?position=17&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=zzAnBEkk9JkdFU5Y1cUL8Q%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "React Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973974/documents/resume.pdf",
+        "job_id": "4397397436",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/react-developer-ai-trainer-at-dataannotation-4397397436?position=19&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=UxT0B33%2BEgdquaUb6iYxEw%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Web Application Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973876/documents/resume.pdf",
+        "job_id": "4397387668",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/web-application-developer-ai-trainer-at-dataannotation-4397387668?position=20&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=SM8FeuYT7dV%2By7Db5JqXCw%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Remote Software Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973896/documents/resume.pdf",
+        "job_id": "4397389624",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/remote-software-engineer-ai-trainer-at-dataannotation-4397389624?position=22&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=sgpyNj%2Bz7yt5PTeIMEsUsw%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Backend Software Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973858/documents/resume.pdf",
+        "job_id": "4397385828",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/backend-software-engineer-ai-trainer-at-dataannotation-4397385828?position=24&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=SJatuOiFiUbQwA35kMJYgA%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Backend Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973964/documents/resume.pdf",
+        "job_id": "4397396486",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/backend-developer-ai-trainer-at-dataannotation-4397396486?position=25&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=SduT4D0Jy2vdpHtyLEE2Gg%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Java Software Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43974003/documents/resume.pdf",
+        "job_id": "4397400334",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/java-software-engineer-ai-trainer-at-dataannotation-4397400334?position=26&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=TShq6Pvjm2hBdqyRNecfeg%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Software Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973896/documents/resume.pdf",
+        "job_id": "4397389640",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/software-engineer-ai-trainer-at-dataannotation-4397389640?position=30&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=1iwAYu%2Fl9cDMyErckAzJXQ%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Freelance Software Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973896/documents/resume.pdf",
+        "job_id": "4397389646",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/freelance-software-engineer-ai-trainer-at-dataannotation-4397389646?position=31&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=0WuqJMbw7I%2FgcAZRcYPJLg%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Back End Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973964/documents/resume.pdf",
+        "job_id": "4397396458",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/back-end-developer-ai-trainer-at-dataannotation-4397396458?position=32&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=cuKDUnSmFyciG3XB51hNeQ%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Software Engineer Analyst - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973935/documents/resume.pdf",
+        "job_id": "4397393567",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/software-engineer-analyst-ai-trainer-at-dataannotation-4397393567?position=33&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=qXORr21Y5dcQ4BnCtvD7Kg%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Software Lifecycle Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43974012/documents/resume.pdf",
+        "job_id": "4397401241",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/software-lifecycle-engineer-ai-trainer-at-dataannotation-4397401241?position=35&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=AhIL23tmzPdx1VuywXL1QA%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "React Native Developer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973867/documents/resume.pdf",
+        "job_id": "4397386757",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/react-native-developer-ai-trainer-at-dataannotation-4397386757?position=36&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=x6Mwkaw8tTl7jtVjQg1pcg%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Contract Software Engineer - AI Trainer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973944/documents/resume.pdf",
+        "job_id": "4397394499",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/contract-software-engineer-ai-trainer-at-dataannotation-4397394499?position=37&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=sygi3IsPPdavND%2BtLRo7rw%3D%3D"
+      },
+      {
+        "company": "Kepla",
+        "position": "Intermediate Full Stack Developer Role",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Kepla-91876139/documents/resume.pdf",
+        "job_id": "91876139",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91876139?type=standard&ref=search-standalone&origin=cardTitle#sol=d595f672273867375fb83287d31ef77fe234615a"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Full Stack Engineer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43044314/documents/resume.pdf",
+        "job_id": "4304431421",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/full-stack-engineer-at-dataannotation-4304431421?position=3&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=%2Bw4IYFrsPxmmtrdrBf9oyA%3D%3D"
+      },
+      {
+        "company": "Cupla",
+        "position": "Full Stack Engineer Contracting Role (Part Time)",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Cupla-92242094/documents/resume.pdf",
+        "job_id": "92242094",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92242094?type=standard&ref=search-standalone&origin=cardTitle#sol=4f8ef43f681ae175105c81d6c5440f623efa1d27"
+      },
+      {
+        "company": "Crescent Consulting",
+        "position": "Full Stack Developer - Remote anywhere in NZ",
+        "date_applied": "2026-05-27",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/Crescent Consulting-91802574/documents/resume.pdf",
+        "job_id": "91802574",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91802574?type=standard&ref=search-standalone&origin=cardTitle#sol=c62efc2d43e229a85133a3ef050630000bdf747d",
+        "submitted_at": "2026-05-29"
+      },
+      {
+        "company": "Crescent Consulting",
+        "position": "Full Stack Developer - Remote anywhere in NZ",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Crescent Consulting-91802386/documents/resume.pdf",
+        "job_id": "91802386",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91802386?type=standard&ref=search-standalone&origin=cardTitle#sol=ad7f21ba2668a9bbda453644e384e337c99822b3"
+      },
+      {
+        "company": "Crescent Consulting",
+        "position": "Full Stack Developer - Remote anywhere in NZ",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Crescent Consulting-91802314/documents/resume.pdf",
+        "job_id": "91802314",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91802314?type=standard&ref=search-standalone&origin=cardTitle#sol=37474a1f8174ebde591dc798ecf93bc3cb91ce98"
+      },
+      {
+        "company": "Henry Schein One NZ",
+        "position": "Intermediate Developer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Henry Schein One NZ-92360215/documents/resume.pdf",
+        "job_id": "92360215",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92360215?type=standard&ref=search-standalone&origin=cardTitle#sol=635513b479710ea10c395120122932654b8280ef"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Software Engineer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43044492/documents/resume.pdf",
+        "job_id": "4304449203",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/software-engineer-at-dataannotation-4304449203?position=4&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=LT0fHfm0ALdePDnyqJstNw%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Backend Developer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43973955/documents/resume.pdf",
+        "job_id": "4397395591",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/backend-developer-at-dataannotation-4397395591?position=5&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=f6H6VvBYIx6qrVpP4iuzWw%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Back End Developer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43044353/documents/resume.pdf",
+        "job_id": "4304435367",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/back-end-developer-at-dataannotation-4304435367?position=6&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=5L7MVOWVio0ndsry1EyWCQ%3D%3D"
+      },
+      {
+        "company": "DataAnnotation",
+        "position": "Software Engineer Analyst",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/DataAnnotation-43044373/documents/resume.pdf",
+        "job_id": "4304437386",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/software-engineer-analyst-at-dataannotation-4304437386?position=8&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=A9OgsRMbwUQU5P4IRtarxg%3D%3D"
+      },
+      {
+        "company": "Twine",
+        "position": "Freelance Junior Web Developer",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Twine-44122896/documents/resume.pdf",
+        "job_id": "4412289601",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/freelance-junior-web-developer-at-twine-4412289601?position=9&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=x1yjMsEU6j2rvwNG6w2ssQ%3D%3D"
+      },
+      {
+        "company": "Twine",
+        "position": "Remote Web Developer – WordPress",
+        "date_applied": "2026-05-27",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Twine-44099051/documents/resume.pdf",
+        "job_id": "4409905182",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/remote-web-developer-%E2%80%93-wordpress-at-twine-4409905182?position=7&pageNum=0&refId=nf1QyitVZEMsxlwIEODTvA%3D%3D&trackingId=Hy%2BJRTtEqvHxu%2BbilwXY3g%3D%3D"
+      },
+      {
+        "company": "Robert Half Technology",
+        "position": "Full Stack PHP Developer",
+        "date_applied": "2026-05-28",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Robert Half Technology-92373718/documents/resume.pdf",
+        "job_id": "92373718",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92373718?type=standard&ref=search-standalone&origin=cardTitle#sol=49396e23003045b94e4e2e6b5104b0b78164d709"
+      },
+      {
+        "company": "Fortech Engineering",
+        "position": "Full Stack Software Engineer",
+        "date_applied": "2026-05-28",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Fortech Engineering-may2026c/documents/resume.pdf",
+        "job_id": "may-2026-c3414804f3",
+        "source": "hnhiring",
+        "url": "https://fortecheng.com/careers"
+      },
+      {
+        "company": "Enveritas (YC S18, non-profit)",
+        "position": "Backend Software Engineer",
+        "date_applied": "2026-05-28",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Enveritas YC S18 non-profit-may20267/documents/resume.pdf",
+        "job_id": "may-2026-7a256aa424",
+        "source": "hnhiring",
+        "url": "https://enveritas.org/jobs/backend-software-eng/#10d7adef8us"
+      },
+      {
+        "company": "Tether",
+        "position": "Backend Engineer - Wallets",
+        "date_applied": "2026-05-28",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Tether-may20264/documents/resume.pdf",
+        "job_id": "may-2026-4933376b10",
+        "source": "hnhiring",
+        "url": "https://careers.tether.io/o/backend-engineer-wallets-100-remote"
+      },
+      {
+        "company": "vvd",
+        "position": "Design Engineer",
+        "date_applied": "2026-05-28",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/vvd-may2026c/documents/resume.pdf",
+        "job_id": "may-2026-c142e8df56",
+        "source": "hnhiring",
+        "url": "https://apply.workable.com/vvd/j/43FDC8C9AA/"
+      },
+      {
+        "company": "MemberPress",
+        "position": "AI Engineer",
+        "date_applied": "2026-05-28",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/MemberPress-may2026b/documents/resume.pdf",
+        "job_id": "may-2026-b2e58af874",
+        "source": "hnhiring",
+        "url": "https://memberpress.com/careers/ai-engineer-full-time/"
+      },
+      {
+        "company": "Crossing Hurdles",
+        "position": "Software Developer | Remote",
+        "date_applied": "2026-05-29",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Crossing Hurdles-44138509/documents/resume.pdf",
+        "job_id": "4413850991",
+        "source": "linkedin",
+        "url": "https://nz.linkedin.com/jobs/view/software-developer-remote-at-crossing-hurdles-4413850991?position=3&pageNum=0&refId=MsN4DYbjHK7N84Z%2B8DCa9w%3D%3D&trackingId=KU2ufOU3W%2FvLQOVGVKkMuw%3D%3D"
+      },
+      {
+        "company": "Sunstone Talent",
+        "position": "Java Fullstack AI Engineer / Developer (LLMs / RAG / MCP)",
+        "date_applied": "2026-05-29",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Sunstone Talent-92410105/documents/resume.pdf",
+        "job_id": "92410105",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92410105?type=standard&ref=search-standalone&origin=cardTitle#sol=6337d54215ae9e72fbbaee077c956db356a3bcce"
+      },
+      {
+        "company": "Supportwave",
+        "position": "AI Software Developer",
+        "date_applied": "2026-05-29",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Supportwave/documents/resume.pdf",
+        "source": "supportwave",
+        "job_id": "9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2",
+        "url": "https://portal.supportwave.com/flex/job/apply/9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2?s=LinkedIn"
       }
     ],
     "interviews": [],
@@ -1473,6 +2028,111 @@
         "submitted_at": "2026-05-24",
         "rejected_at": "2026-05-24",
         "status_evidence": "User reported rejection in chat."
+      },
+      {
+        "company": "ZURU",
+        "position": "Junior AI Integration Engineer",
+        "date_applied": "2026-05-16",
+        "status": "Rejected",
+        "priority": "High",
+        "pdf_path": "applications/archive/rejected/ZURU/documents/resume.pdf",
+        "source": "ashby",
+        "job_id": "d768326e-29ef-4d78-86aa-0b1bbbc484f3",
+        "url": "https://jobs.ashbyhq.com/zuru/d768326e-29ef-4d78-86aa-0b1bbbc484f3",
+        "submitted_at": "2026-05-17",
+        "rejected_at": "2026-05-26",
+        "status_evidence": "User reported rejection letter in chat."
+      },
+      {
+        "company": "Auror",
+        "position": "Intermediate Software Engineer",
+        "date_applied": "2026-05-22",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/rejected/Auror-44162021/documents/resume.pdf",
+        "job_id": "4416202186",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4416202186/?eBP=NON_CHARGEABLE_CHANNEL&refId=Z%2BxKR8js4Hc2Ck9Hka5VVg%3D%3D&trackingId=nPbqrr%2BUCHXA98sbujEz%2BQ%3D%3D&trk=flagship3_search_srp_jobs",
+        "submitted_at": "2026-05-24",
+        "rejected_at": "2026-05-26",
+        "status_evidence": "User reported rejection letter in chat."
+      },
+      {
+        "company": "Veovo",
+        "position": "Full Stack Developer - Intermediate",
+        "date_applied": "2026-05-24",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/rejected/Veovo/documents/resume.pdf",
+        "submitted_at": "2026-05-24",
+        "rejected_at": "2026-05-26",
+        "status_evidence": "User reported rejection letter in chat."
+      },
+      {
+        "company": "One New Zealand",
+        "position": "Frontend Engineer - Digital",
+        "date_applied": "2026-05-16",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/One New Zealand/documents/resume.pdf",
+        "source": "one-nz-careers",
+        "job_id": "1360437266",
+        "url": "https://careers.one.nz/job/Auckland-Frontend-Engineer-Digital/1360437266/",
+        "submitted_at": "2026-05-16",
+        "rejected_at": "2026-05-27"
+      },
+      {
+        "company": "Private Advertiser",
+        "position": "AI Expert – Trading Systems & Agent Development",
+        "date_applied": "2026-05-22",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Private Advertiser-92275451/documents/resume.pdf",
+        "job_id": "92275451",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92275451?type=standard&ref=search-standalone&origin=cardTitle#sol=0d6399efec10c45c302a836aa0ed224ffae8c4ec",
+        "submitted_at": "2026-05-24",
+        "rejected_at": "2026-05-27"
+      },
+      {
+        "company": "pst.ag",
+        "position": "Agentic AI Engineer",
+        "date_applied": "2026-05-20",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/active/pst.ag-4212552/documents/resume.pdf",
+        "job_id": "4212552",
+        "source": "wellfound",
+        "url": "https://wellfound.com/jobs/4212552-agentic-ai-engineer",
+        "submitted_at": "2026-05-24"
+      },
+      {
+        "company": "PHQ",
+        "position": "Junior Frontend Developer",
+        "date_applied": "2026-05-26",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/rejected/PHQ/documents/resume.pdf",
+        "job_id": "91854863",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91854863?type=standard&ref=search-standalone&origin=cardTitle#sol=09b134f6b9d13ace5b00c8bab7908d262beadd82",
+        "submitted_at": "2026-05-27",
+        "rejected_at": "2026-05-28",
+        "status_evidence": "User reported rejection letter in chat."
+      },
+      {
+        "company": "Advance Change Pty Ltd",
+        "position": "Junior Full Stack Developer",
+        "date_applied": "2026-05-26",
+        "status": "Rejected",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/rejected/Advance Change Pty Ltd-92311035/documents/resume.pdf",
+        "job_id": "92311035",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92311035?type=promoted&ref=search-standalone&origin=cardTitle#sol=4f959b2fbdf8efc893f0db601d95bdf8",
+        "submitted_at": "2026-05-26",
+        "rejected_at": "2026-05-28",
+        "status_evidence": "User reported rejection letter in chat."
       }
     ],
     "withdrawn": []
@@ -1511,7 +2171,7 @@
     {
       "kind": "manual",
       "company_lc": "blackpepper",
-      "position_lc": "intermediate front end developer \u2013 shopify"
+      "position_lc": "intermediate front end developer – shopify"
     },
     {
       "kind": "manual",
@@ -1575,6 +2235,11 @@
     },
     {
       "kind": "manual",
+      "company_lc": "cupla",
+      "position_lc": "full stack engineer contracting role (part time)"
+    },
+    {
+      "kind": "manual",
       "company_lc": "cyreton",
       "position_lc": "junior backend developer"
     },
@@ -1600,8 +2265,23 @@
     },
     {
       "kind": "manual",
+      "company_lc": "enterprise technology recruitment ltd",
+      "position_lc": "ruby on rails developer | global saas product | remote option"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "enterprise technology recruitment ltd",
+      "position_lc": "software migration engineer / remote option in auckland"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "enveritas",
+      "position_lc": "backend software engineer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "esri",
-      "position_lc": "product engineer ii \u2013 web services"
+      "position_lc": "product engineer ii – web services"
     },
     {
       "kind": "manual",
@@ -1627,6 +2307,11 @@
       "kind": "manual",
       "company_lc": "firmpilot",
       "position_lc": "junior full-stack engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "fortech engineering",
+      "position_lc": "full stack software engineer"
     },
     {
       "kind": "manual",
@@ -1665,6 +2350,11 @@
     },
     {
       "kind": "manual",
+      "company_lc": "henry schein one nz",
+      "position_lc": "intermediate developer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "holywater",
       "position_lc": "full-stack developer"
     },
@@ -1681,12 +2371,17 @@
     {
       "kind": "manual",
       "company_lc": "ictx",
-      "position_lc": "software engineer \u2013 .net, sql & bi"
+      "position_lc": "software engineer – .net, sql & bi"
     },
     {
       "kind": "manual",
       "company_lc": "impiricus",
       "position_lc": "software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "kepla",
+      "position_lc": "intermediate full stack developer role"
     },
     {
       "kind": "manual",
@@ -1712,6 +2407,11 @@
       "kind": "manual",
       "company_lc": "melotech",
       "position_lc": "full-stack developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "memberpress",
+      "position_lc": "ai engineer"
     },
     {
       "kind": "manual",
@@ -1801,6 +2501,11 @@
     {
       "kind": "manual",
       "company_lc": "robert half technology",
+      "position_lc": "full stack php developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "robert half technology",
       "position_lc": "product engineer (ai native)"
     },
     {
@@ -1835,7 +2540,7 @@
     },
     {
       "kind": "manual",
-      "company_lc": "talent army \u2013 winner of medium recruitment agency of the year 2025",
+      "company_lc": "talent army – winner of medium recruitment agency of the year 2025",
       "position_lc": "devops engineer (aws & azure)"
     },
     {
@@ -1847,6 +2552,11 @@
       "kind": "manual",
       "company_lc": "tech mahindra ltd.",
       "position_lc": "developer programmer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "tether",
+      "position_lc": "backend engineer - wallets"
     },
     {
       "kind": "manual",
@@ -1882,6 +2592,11 @@
       "kind": "manual",
       "company_lc": "volkswagen group digital solutions india",
       "position_lc": "developer (9935)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "vvd",
+      "position_lc": "design engineer"
     },
     {
       "kind": "manual",
@@ -2086,6 +2801,11 @@
     {
       "kind": "board",
       "source": "seek",
+      "job_id": "91876139"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
       "job_id": "91895782"
     },
     {
@@ -2186,7 +2906,32 @@
     {
       "kind": "board",
       "source": "seek",
+      "job_id": "92242094"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
       "job_id": "92275796"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92311524"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92324485"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92360215"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92373718"
     },
     {
       "kind": "board",
