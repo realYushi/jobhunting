@@ -12,15 +12,23 @@ templates/
   quality-framework.md          # Truthfulness + quality validation
   json-resume-guide.md          # JSON resume format reference
 tools/
-  apply.py                      # Orchestrates the full application package (dry-run supported)
-  status.py                     # Prints tracker status and missing PDFs
+  pipeline.py                   # Batch job-research pipeline (scrape → dedup → fetch JD → location-gate → package). See README.
+  apply.py                      # Orchestrates a one-off application package (dry-run supported)
   resume.py                     # Generates role-optimized resume.json
+  match_score.py                # Deterministic JD keyword match-score + red-flag gate
+  ats_check.py                  # Resume/JD ATS keyword coverage check
+  cover_letter_pdf.py           # Renders cover-letter markdown to PDF via Typst
+  outreach.py                   # Post-submit outreach queue tooling
+  status.py                     # Prints tracker status and missing PDFs
   reactive_resume.py            # Reactive Resume API client (create, push, PDF, lock)
-  fix_cuid2_ids.py              # Fixes IDs for Reactive Resume compatibility
   cleanup-archive.sh            # Removes old archived applications
-  lib/                          # Shared library (api, config, paths, resume, templates, tracker, validation, workflow)
+  lib/                          # Shared library modules (paths, tracker, scraper, smart_scrape,
+                                #   reconcile, workflow, resume, keyword_match, scorer, pdf,
+                                #   templates, validation, inbox, identity, hunter, harness_utils, api, config)
 applications/                   # Created on first application run
-  application-tracker.json      # Application status tracking
+  application-tracker.json      # Application status tracking (see schema below)
+  application-ledger.json       # Scrape-dedup "seen" ledger (sidecar, since schema v7)
+  INBOX.md                      # Human review queue for the research pipeline
   active/{Company}/             # Current applications
     research/
       job-description.md        # Original posting
@@ -45,7 +53,7 @@ LinkedIn-CV-Profile.md          # Professional background source
 
 ```json
 {
-  "meta": { "last_updated": "YYYY-MM-DD", "version": "5.1" },
+  "meta": { "last_updated": "YYYY-MM-DD", "version": "7.0" },
   "applications": {
     "active": [
       {
@@ -66,17 +74,17 @@ LinkedIn-CV-Profile.md          # Professional background source
     "rejected": [],
     "withdrawn": []
   },
-  "seen_jobs": {
-    "linkedin": ["job-id-1", "job-id-2"],
-    "seek": []
-  }
+  "skipped": [ { "source": "seek", "job_id": "..." } ],
+  "skip_details": {}
 }
 ```
 
 Dedup: when a record has both `source` and `job_id`, that pair is the primary
 key (the scraper can distinguish "Caruso" from "Caruso Corp" when they share an
 LinkedIn job ID). Manually pasted JDs without those fields fall back to
-`(company, position)`. `seen_jobs` is the scraper's "skip these" set.
+`(company, position)`. `skipped` holds typed job keys the pipeline must not
+re-package. The scraper's "already seen" set lives in the sidecar
+`application-ledger.json` (moved out of the tracker in schema v7).
 
 ## Resume Generation
 

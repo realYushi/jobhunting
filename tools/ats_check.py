@@ -13,7 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.lib.scoring import compute_ats_coverage  # noqa: E402
+from tools.lib.keyword_match import compute_ats_coverage  # noqa: E402
 
 
 def main() -> int:

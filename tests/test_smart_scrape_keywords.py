@@ -21,15 +21,23 @@ class SmartScrapeKeywordTests(unittest.TestCase):
         )
 
     def test_linkedin_urls_follow_keywords(self):
+        # Each keyword expands to two location variants: an Auckland search and
+        # an NZ-wide remote-only (f_WT=2) search. Both must carry the keyword.
         urls = smart_scrape._linkedin_base_urls(["Software Engineer", "AI Engineer"])
-        self.assertEqual(len(urls), 2)
-        self.assertIn("keywords=Software%20Engineer", urls[0])
-        self.assertIn("keywords=AI%20Engineer", urls[1])
+        self.assertEqual(len(urls), 4)
+        self.assertTrue(all("keywords=Software%20Engineer" in u for u in urls[:2]))
+        self.assertTrue(all("keywords=AI%20Engineer" in u for u in urls[2:]))
+        # Per keyword, exactly one variant is the NZ-wide remote search.
+        self.assertEqual(sum("f_WT=2" in u for u in urls), 2)
+        self.assertEqual(sum("location=Auckland" in u for u in urls), 2)
 
     def test_seek_urls_expand_per_keyword(self):
+        # Each keyword expands to four variants: Auckland full-time, Auckland
+        # (any arrangement), AU remote, and NZ remote.
         urls = smart_scrape._seek_base_urls(["Product Engineer"])
-        self.assertEqual(len(urls), 3)
+        self.assertEqual(len(urls), 4)
         self.assertTrue(all("Product-Engineer" in url for url in urls))
+        self.assertEqual(sum("/remote" in url for url in urls), 2)
 
     def test_wellfound_urls_map_role_aliases(self):
         urls = smart_scrape._wellfound_base_urls(

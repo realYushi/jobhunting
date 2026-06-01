@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from .paths import base_resume_path, project_root
-from .scoring import load_role_configs
+from .keyword_match import load_role_configs
 
 
 class ResumeError(Exception):

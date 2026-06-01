@@ -4,13 +4,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 
-import pipeline
+from lib import jd_fetch
 from lib.scorer import ScoreResult
 
 
 class JdFetchParallelismTests(unittest.TestCase):
     def test_parallelism_is_serialized(self):
-        self.assertEqual(pipeline.JD_FETCH_PARALLELISM, 1)
+        self.assertEqual(jd_fetch.JD_FETCH_PARALLELISM, 1)
 
     def test_fetch_uses_single_worker_by_default(self):
         items = [
@@ -25,8 +25,8 @@ class JdFetchParallelismTests(unittest.TestCase):
             )
         ]
 
-        original_executor = pipeline.ThreadPoolExecutor
-        original_fetch = pipeline._fetch_full_jd
+        original_executor = jd_fetch.ThreadPoolExecutor
+        original_fetch = jd_fetch._fetch_full_jd
         calls = {}
 
         class FakeFuture:
@@ -51,12 +51,12 @@ class JdFetchParallelismTests(unittest.TestCase):
                 return FakeFuture(fn(url))
 
         try:
-            pipeline.ThreadPoolExecutor = FakeExecutor
-            pipeline._fetch_full_jd = lambda url: f"JD for {url}"
-            out = pipeline._fetch_jds_parallel(items)
+            jd_fetch.ThreadPoolExecutor = FakeExecutor
+            jd_fetch._fetch_full_jd = lambda url: f"JD for {url}"
+            out = jd_fetch._fetch_jds_parallel(items)
         finally:
-            pipeline.ThreadPoolExecutor = original_executor
-            pipeline._fetch_full_jd = original_fetch
+            jd_fetch.ThreadPoolExecutor = original_executor
+            jd_fetch._fetch_full_jd = original_fetch
 
         self.assertEqual(calls["max_workers"], 1)
         self.assertEqual(calls["urls"], ["https://example.com/job/1"])

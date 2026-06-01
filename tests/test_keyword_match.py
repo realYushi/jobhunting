@@ -17,7 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.lib.scoring import (  # noqa: E402
+from tools.lib.keyword_match import (  # noqa: E402
     compute_ats_coverage,
     compute_match_score,
     count_occurrences,

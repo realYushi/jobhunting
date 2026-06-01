@@ -8,7 +8,7 @@ from lib.identity import ManualKey
 from lib.inbox import InboxRow, format_row
 from lib.reconcile import parse_inbox
 from lib.scorer import ScoreResult
-from pipeline import (
+from lib.dedup import (
     _build_application_key_index,
     _build_company_title_index,
     _build_inbox_indexes,
@@ -241,7 +241,7 @@ class PipelineDedupeTests(unittest.TestCase):
         # Regression: _score_board_key tested truthiness before BoardKey's
         # stripping, so "   " yielded BoardKey('seek', '') and let distinct
         # malformed rows alias each other.
-        from pipeline import _score_board_key
+        from lib.dedup import _score_board_key
 
         self.assertIsNone(_score_board_key(score_result(job_id="   ")))
         self.assertIsNone(_score_board_key(score_result(source="   ", job_id="9")))
