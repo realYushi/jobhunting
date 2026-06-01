@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-from collections import defaultdict
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -11,10 +10,11 @@ from typing import Any
 
 from .identity import BoardKey, JobKey, ManualKey, from_dict, key_from_args
 
-# Bumped when the on-disk schema changes. v7 = `seen` moved to a sidecar ledger
-# file (application-ledger.json); v6 = flat seen/skipped lists of typed JobKey
-# dicts (was bucketed seen_jobs/skipped_jobs in v5.x).
-TRACKER_VERSION = "7.0"
+# Bumped when the on-disk schema changes. v8 = `seen` ledger replaced by
+# `last_scrape` per-source date watermark in the sidecar; v7 = `seen` moved
+# to a sidecar ledger; v6 = flat seen/skipped lists of typed JobKey dicts
+# (was bucketed seen_jobs/skipped_jobs in v5.x).
+TRACKER_VERSION = "8.0"
 BUCKETS = ("active", "interviews", "offers", "rejected", "withdrawn")
 LEDGER_NAME = "application-ledger.json"
 
@@ -75,37 +75,28 @@ def empty_tracker(today: date | None = None) -> dict[str, Any]:
     return {
         "meta": {"last_updated": stamp, "version": TRACKER_VERSION},
         "applications": {bucket: [] for bucket in BUCKETS},
-        "seen": [],
         "skipped": [],
     }
 
 
-def _migrate_legacy_seen_skipped(tracker: dict[str, Any]) -> None:
-    """Convert v5.x bucketed seen_jobs/skipped_jobs into v6 flat key lists.
+def _migrate_legacy_skipped(tracker: dict[str, Any]) -> None:
+    """Convert v5.x bucketed skipped_jobs into v6 flat key list.
 
     Old shape:
-      seen_jobs    = {source: [job_id, ...]}
       skipped_jobs = {source: [job_id, ...], "manual": ["company|position", ...]}
 
     New shape:
-      seen    = [BoardKey.to_dict() | ManualKey.to_dict(), ...]
       skipped = [BoardKey.to_dict() | ManualKey.to_dict(), ...]
 
     Idempotent: a tracker already on the new shape passes through unchanged.
+
+    Note: `seen_jobs` / `seen` from pre-v8 files are stripped here; the
+    seen ledger was replaced by the `last_scrape` watermark in v8.
     """
-    if "seen_jobs" in tracker:
-        seen_legacy = tracker.pop("seen_jobs") or {}
-        seen_keys: list[JobKey] = []
-        # Seen only ever held source-bucketed ids; no manual bucket existed.
-        for source, ids in seen_legacy.items():
-            for job_id in ids:
-                if job_id:
-                    seen_keys.append(BoardKey(source=source, job_id=str(job_id)))
-        # Merge with any pre-existing v6 list so re-migration is harmless.
-        existing = tracker.get("seen", []) or []
-        tracker["seen"] = _dedup_key_dicts(
-            [k.to_dict() for k in seen_keys] + list(existing)
-        )
+    # Strip legacy seen data (pre-v8). Defensive: old on-disk files may still
+    # carry inline `seen` or `seen_jobs`; discard them silently on load.
+    tracker.pop("seen_jobs", None)
+    tracker.pop("seen", None)
 
     if "skipped_jobs" in tracker:
         skip_legacy = tracker.pop("skipped_jobs") or {}
@@ -127,7 +118,6 @@ def _migrate_legacy_seen_skipped(tracker: dict[str, Any]) -> None:
             [k.to_dict() for k in skip_keys] + list(existing)
         )
 
-    tracker.setdefault("seen", [])
     tracker.setdefault("skipped", [])
 
 
@@ -148,18 +138,20 @@ def _ledger_for(tracker_file: Path) -> Path:
     return tracker_file.with_name(LEDGER_NAME)
 
 
-def _load_seen_ledger(ledger_file: Path) -> list[dict[str, Any]] | None:
-    """Return the `seen` key list from the sidecar, or None when it's absent.
+def _load_watermark(ledger_file: Path) -> dict[str, str]:
+    """Return the ``last_scrape`` dict from the sidecar, or ``{}`` when absent.
 
-    None means "no sidecar yet" so the caller falls back to any inline `seen`
-    still in a pre-v7 tracker.json; a present-but-empty sidecar returns [].
+    Returns ``{}`` on any missing/malformed sidecar so callers fall back to
+    the initial-lookback window for every source.
     """
     if not ledger_file.exists():
-        return None
+        return {}
     with open(ledger_file) as f:
         data = json.load(f)
-    seen = data.get("seen") if isinstance(data, dict) else None
-    return seen if isinstance(seen, list) else []
+    if not isinstance(data, dict):
+        return {}
+    watermark = data.get("last_scrape")
+    return watermark if isinstance(watermark, dict) else {}
 
 
 def _sorted_key_dicts(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -171,10 +163,9 @@ def _sorted_key_dicts(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def load_tracker(path: Path) -> dict[str, Any]:
     """Load tracker JSON, creating an in-memory default when missing.
 
-    `seen` lives in a sidecar ledger (v7); it's read back into the in-memory
-    tracker so the helper API is unchanged. Falls back to inline `seen` from a
-    pre-v7 file when no sidecar exists yet. Also migrates v5.x bucketed
-    seen_jobs/skipped_jobs to flat key lists on read.
+    Migrates v5.x bucketed skipped_jobs to flat key lists on read.
+    Pre-v8 inline `seen`/`seen_jobs` are stripped; the seen ledger was
+    replaced by the `last_scrape` watermark in v8.
     """
     if not path.exists():
         return empty_tracker()
@@ -185,58 +176,67 @@ def load_tracker(path: Path) -> dict[str, Any]:
     for bucket in BUCKETS:
         apps.setdefault(bucket, [])
 
-    ledger_seen = _load_seen_ledger(_ledger_for(path))
-    if ledger_seen is not None:
-        tracker["seen"] = ledger_seen
-
-    _migrate_legacy_seen_skipped(tracker)
+    _migrate_legacy_skipped(tracker)
     tracker["meta"]["version"] = TRACKER_VERSION
     return tracker
+
+
+def load_last_scrape(tracker_path: Path) -> dict[str, str]:
+    """Return the per-source ``last_scrape`` watermark from the sidecar ledger.
+
+    Returns ``{}`` when no sidecar exists yet (first run → use initial lookback).
+    """
+    return _load_watermark(_ledger_for(tracker_path))
+
+
+def save_last_scrape(tracker_path: Path, watermark: dict[str, str]) -> None:
+    """Persist the per-source ``last_scrape`` watermark to the sidecar ledger.
+
+    Writes ``{"last_scrape": {source: "YYYY-MM-DD", ...}}`` (keys sorted so the
+    diff is deterministic). Skips the write when the serialised content is
+    byte-for-byte identical to what is already on disk (no-op guard).
+    """
+    ledger_file = _ledger_for(tracker_path)
+    ledger_doc = {"last_scrape": dict(sorted(watermark.items()))}
+    ledger_text = json.dumps(ledger_doc, indent=2) + "\n"
+    if ledger_file.exists() and ledger_file.read_text() == ledger_text:
+        return
+    ledger_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(ledger_file, "w") as f:
+        f.write(ledger_text)
 
 
 def save_tracker(
     path: Path, tracker: dict[str, Any], today: date | None = None
 ) -> None:
-    """Persist the tracker, splitting `seen` into its sidecar ledger.
+    """Persist the tracker to disk.
 
-    tracker.json holds meta + applications + skipped (+ skip_details); the
-    `seen` dedup cache goes to application-ledger.json. Both writes skip when
-    their serialized output matches disk byte-for-byte, so no-op flows don't
-    churn mtimes or re-trigger downstream watchers. The in-memory `tracker`
-    keeps `seen`, so callers can read it after saving.
+    tracker.json holds meta + applications + skipped (+ skip_details).
+    The `last_scrape` watermark is written separately via `save_last_scrape`.
+    Skips the write when the serialised output is byte-for-byte identical to
+    disk (no-op guard) so mtimes and downstream watchers don't churn.
     """
-    # Strip any legacy keys that snuck in (defensive: writers shouldn't add them
-    # post-migration, but a hand-edit upstream shouldn't poison the next read).
+    # Strip any legacy keys that snuck in.
     tracker.pop("seen_jobs", None)
     tracker.pop("skipped_jobs", None)
+    tracker.pop("seen", None)
     meta = tracker.setdefault("meta", {})
     meta["version"] = TRACKER_VERSION
 
-    # tracker.json document — everything except `seen`, with key lists sorted so
-    # set-derived ordering doesn't reshuffle the diff each run.
-    main_doc = {k: v for k, v in tracker.items() if k != "seen"}
+    # Key lists are sorted so set-derived ordering doesn't reshuffle the diff.
+    main_doc = dict(tracker)
     if "skipped" in main_doc:
         main_doc["skipped"] = _sorted_key_dicts(main_doc["skipped"])
-    ledger_doc = {"seen": _sorted_key_dicts(tracker.get("seen", []))}
-    ledger_file = _ledger_for(path)
 
     main_text = json.dumps(main_doc, indent=2) + "\n"
-    ledger_text = json.dumps(ledger_doc, indent=2) + "\n"
-    main_unchanged = path.exists() and path.read_text() == main_text
-    ledger_unchanged = ledger_file.exists() and ledger_file.read_text() == ledger_text
-    if main_unchanged and ledger_unchanged:
+    if path.exists() and path.read_text() == main_text:
         return
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    if not main_unchanged:
-        # last_updated tracks tracker.json content; ledger-only writes don't bump it.
-        meta["last_updated"] = (today or date.today()).isoformat()
-        main_text = json.dumps(main_doc, indent=2) + "\n"
-        with open(path, "w") as f:
-            f.write(main_text)
-    if not ledger_unchanged:
-        with open(ledger_file, "w") as f:
-            f.write(ledger_text)
+    meta["last_updated"] = (today or date.today()).isoformat()
+    main_text = json.dumps(main_doc, indent=2) + "\n"
+    with open(path, "w") as f:
+        f.write(main_text)
 
 
 def upsert_active_application(
@@ -246,8 +246,7 @@ def upsert_active_application(
     """Insert or replace one active application.
 
     Dedup key is (source, job_id) when the record carries both, else falls back
-    to (company.lower(), position.lower()). If the record has a job_id/source,
-    we also mark it seen so future scrape passes skip it.
+    to (company.lower(), position.lower()).
     """
     active = tracker.setdefault("applications", {}).setdefault("active", [])
     key = record.key
@@ -266,8 +265,6 @@ def upsert_active_application(
     else:
         active.append(payload)
 
-    if record.job_id and record.source:
-        mark_seen_key(tracker, BoardKey(source=record.source, job_id=record.job_id))
     return tracker
 
 
@@ -294,25 +291,6 @@ def store_keyset(tracker: dict[str, Any], field: str, keys: set[JobKey]) -> None
     tracker[field] = [k.to_dict() for k in keys]
 
 
-def mark_seen_key(tracker: dict[str, Any], key: JobKey) -> None:
-    """Record that this listing was surfaced, so scrapers can dedupe.
-
-    O(N) — for hot loops that mark many keys, snapshot once via load_keyset,
-    mutate in place, and write back with store_keyset.
-    """
-    keys = load_keyset(tracker, "seen")
-    keys.add(key)
-    store_keyset(tracker, "seen", keys)
-
-
-def is_seen_key(tracker: dict[str, Any], key: JobKey) -> bool:
-    """Has this listing already been surfaced in a previous run?
-
-    O(N) — same caveat as mark_seen_key for hot loops.
-    """
-    return key in load_keyset(tracker, "seen")
-
-
 def mark_skipped_key(tracker: dict[str, Any], key: JobKey) -> None:
     """Record that this job was skipped, so scrapers never re-suggest it."""
     keys = load_keyset(tracker, "skipped")
@@ -335,19 +313,6 @@ def is_skipped_key(
     if primary in skipped:
         return True
     return fallback is not None and fallback in skipped
-
-
-def seen_by_source(tracker: dict[str, Any]) -> dict[str, set[str]]:
-    """Return seen BoardKeys re-bucketed as ``{source: {job_id, ...}}``.
-
-    Helper for callers that paginate per source and want O(1) "have I seen
-    this id from this source?" checks. ManualKeys aren't represented.
-    """
-    out: dict[str, set[str]] = defaultdict(set)
-    for key in load_keyset(tracker, "seen"):
-        if isinstance(key, BoardKey):
-            out[key.source].add(key.job_id)
-    return dict(out)
 
 
 def tracker_summary(tracker: dict[str, Any]) -> list[str]:

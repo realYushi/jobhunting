@@ -2,6 +2,8 @@
   "defaults": {
     "score_cutoff": 65,
     "per_run_cap": 100,
+    "scrape_buffer_days": 2,
+    "scrape_initial_lookback_days": 31,
     "sources": [
       "linkedin",
       "seek",

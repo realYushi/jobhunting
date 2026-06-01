@@ -5,12 +5,9 @@ import unittest
 from datetime import date
 from pathlib import Path
 
-from tools.lib.identity import BoardKey
 from tools.lib.tracker import (
     ApplicationRecord,
     empty_tracker,
-    is_seen_key,
-    mark_seen_key,
     upsert_active_application,
 )
 from tools.lib.workflow import WorkflowOptions, create_application_package
@@ -69,7 +66,8 @@ class TrackerTests(unittest.TestCase):
         active = tracker["applications"]["active"]
         self.assertEqual(len(active), 2)
 
-    def test_upsert_marks_seen_when_source_and_job_id_present(self):
+    def test_upsert_does_not_add_seen_field(self):
+        """upsert_active_application no longer marks seen — no seen key in tracker."""
         tracker = empty_tracker()
         upsert_active_application(
             tracker,
@@ -78,21 +76,7 @@ class TrackerTests(unittest.TestCase):
                 source="linkedin", job_id="L-1",
             ),
         )
-        self.assertTrue(is_seen_key(tracker, BoardKey("linkedin", "L-1")))
-        upsert_active_application(
-            tracker,
-            ApplicationRecord("Bravo", "Engineer", "2026-01-01"),
-        )
-        self.assertFalse(is_seen_key(tracker, BoardKey("linkedin", "L-2")))
-
-    def test_mark_seen_is_idempotent(self):
-        from tools.lib.identity import from_dict
-
-        tracker = empty_tracker()
-        mark_seen_key(tracker, BoardKey("seek", "abc"))
-        mark_seen_key(tracker, BoardKey("seek", "abc"))
-        keys = [from_dict(d) for d in tracker["seen"]]
-        self.assertEqual(keys, [BoardKey("seek", "abc")])
+        self.assertNotIn("seen", tracker)
 
 
 class WorkflowTests(unittest.TestCase):

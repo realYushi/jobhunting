@@ -10,9 +10,8 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
-from .identity import BoardKey, try_manual_key
+from .identity import BoardKey
 from .paths import project_root
-from .tracker import is_seen_key, is_skipped_key
 
 
 @dataclass(frozen=True)
@@ -55,19 +54,3 @@ def extract_seek_job_id(url: str) -> str | None:
     # Seek URLs are like: /job/<slug>?...
     match = re.search(r"/job/([^/?]+)", url)
     return match.group(1) if match else None
-
-
-def dedupe_listings(
-    listings: list[JobListing],
-    tracker: dict[str, Any],
-) -> list[JobListing]:
-    """Filter out listings already seen or explicitly skipped in the tracker."""
-    out: list[JobListing] = []
-    for lst in listings:
-        manual = try_manual_key(lst.company, lst.title)
-        if is_seen_key(tracker, lst.key):
-            continue
-        if is_skipped_key(tracker, lst.key, fallback=manual):
-            continue
-        out.append(lst)
-    return out

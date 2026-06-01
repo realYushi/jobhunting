@@ -124,7 +124,6 @@ def do_reconcile_and_scrape(
         all_listings, scrape_summary = smart_scrape(
             profiles=profile_configs,
             max_total=100,
-            stop_at_overlap=True,
         )
         if scrape_summary:
             print_summary(scrape_summary)

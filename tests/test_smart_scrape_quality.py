@@ -56,7 +56,7 @@ class SmartScrapeQualityTests(unittest.TestCase):
                 ),
             ]
             listings = smart_scrape._scrape_source(
-                "linkedin", 50, None, keywords=["Software Engineer"]
+                "linkedin", 50, 31, keywords=["Software Engineer"]
             )
         finally:
             smart_scrape._scrape_paginated = original
