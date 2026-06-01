@@ -623,45 +623,41 @@ _HIRINGCAFE_BASE_SEARCH_STATE: dict[str, Any] = {
 }
 
 
-def _hiringcafe_page_url_for_window(window: int) -> Callable[[str, int], str]:
-    """Return a page-URL builder that embeds ``dateFetchedPastNDays=window``.
+def _hiringcafe_search_state_url(window: int) -> str:
+    """Build the hiring.cafe homepage URL carrying the searchState filter.
 
-    hiring.cafe accepts ``dateFetchedPastNDays`` in its searchState JSON, but its
-    effect is unverified: the list scraper reads only the first viewport of cards
-    and extracts no ``posted`` date, so live runs at window=1 vs window=31 return
-    the same set. The within_days fallback is therefore a no-op here too. Tight
-    date-bounding for hiring.cafe is a separate scraper-quality task; for now this
-    source relies on downstream act-on dedup to avoid re-packaging.
+    ``dateFetchedPastNDays=window`` bounds results server-side (verified live:
+    window=2 → ~78 hits, window=31 → ~10k). Pagination is handled separately by
+    the harness script via the ``page`` query arg on the ``_next/data`` JSON
+    endpoint, so no page is baked into the searchState here.
     """
     import json as _json
     import urllib.parse
 
-    def _build(_base: str, page: int) -> str:
-        state = {**_HIRINGCAFE_BASE_SEARCH_STATE, "dateFetchedPastNDays": window, "page": page}
-        encoded = urllib.parse.quote(_json.dumps(state, separators=(",", ":")))
-        return f"https://hiring.cafe/?searchState={encoded}"
-
-    return _build
+    state = {**_HIRINGCAFE_BASE_SEARCH_STATE, "dateFetchedPastNDays": window}
+    encoded = urllib.parse.quote(_json.dumps(state, separators=(",", ":")))
+    return f"https://hiring.cafe/?searchState={encoded}"
 
 
 def _scrape_hiringcafe_paginated(
     max_results: int,
     window: int,
 ) -> list[JobListing]:
-    """Scrape hiring.cafe via searchState (Software Development, no-prior/entry-
-    level, YOE 0-2, sorted by date, US/AU/NZ).
+    """Scrape hiring.cafe via its Next.js ``_next/data`` JSON API.
 
-    ``window`` is passed as ``dateFetchedPastNDays`` but does not measurably bound
-    results through this scraper (see ``_hiringcafe_page_url_for_window``); the
-    source leans on downstream act-on dedup instead. Location eligibility is
-    checked later against full JDs so globally remote roles are not lost just
-    because a card shows a country/region.
+    searchState selects Software Development, no-prior/entry-level, YOE 0-2,
+    sorted by date, US/AU/NZ. ``dateFetchedPastNDays=window`` is a real
+    server-side date filter, and the JSON carries each hit's
+    ``estimated_publish_date`` (so ``posted`` is populated). The harness script
+    paginates via the ``page`` query arg; the shared paginator stops when a page
+    returns no hits. Location eligibility is checked later against full JDs so
+    globally remote roles are not lost just because a card shows a region.
     """
     return _scrape_paginated(
         "hiringcafe",
-        ("",),  # base url is generated entirely from searchState
+        (_hiringcafe_search_state_url(window),),
         "hiringcafe-list-paginated",
-        _hiringcafe_page_url_for_window(window),
+        lambda base, _page: base,  # page goes via $page; searchState is fixed
         max_results,
         window,
     )

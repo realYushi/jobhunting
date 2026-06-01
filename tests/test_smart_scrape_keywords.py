@@ -77,6 +77,19 @@ class SmartScrapeKeywordTests(unittest.TestCase):
         )
         self.assertIn("term=Software%20Engineer%20Full%20Stack%20Developer", url)
 
+    def test_hiringcafe_search_state_carries_window(self):
+        """dateFetchedPastNDays equals the window; page is not baked into searchState.
+
+        Pagination is handled by the harness script via a separate page query arg
+        on the _next/data endpoint, so embedding a page here would pin every
+        request to one page.
+        """
+        from urllib.parse import unquote
+
+        url = smart_scrape._hiringcafe_search_state_url(7)
+        self.assertIn('"dateFetchedPastNDays":7', unquote(url))
+        self.assertNotIn('"page"', unquote(url))
+
 
 class WithinDaysTests(unittest.TestCase):
     """Boundary tests for the within_days() recency helper."""
