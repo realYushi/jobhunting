@@ -1,7 +1,6 @@
 import json
 import tempfile
 import unittest
-from datetime import date
 from pathlib import Path
 
 from tools.lib.tracker import (

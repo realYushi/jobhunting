@@ -94,7 +94,6 @@ class WatermarkAdvanceTests(unittest.TestCase):
     def test_first_run_no_watermark_uses_initial_lookback(self):
         """On first run, no watermark → window defaults to initial_lookback."""
         windows_used = []
-        original = __import__("lib.smart_scrape", fromlist=["_scrape_source"])._scrape_source
 
         def capturing_scrape(source, max_results, window, *, keywords=None):
             windows_used.append((source, window))
