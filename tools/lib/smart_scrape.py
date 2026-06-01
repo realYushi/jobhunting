@@ -626,9 +626,12 @@ _HIRINGCAFE_BASE_SEARCH_STATE: dict[str, Any] = {
 def _hiringcafe_page_url_for_window(window: int) -> Callable[[str, int], str]:
     """Return a page-URL builder that embeds ``dateFetchedPastNDays=window``.
 
-    hiring.cafe exposes ``dateFetchedPastNDays`` in its searchState JSON — this
-    is a reliable server-side date filter so no per-listing ``within_days``
-    check is needed.
+    hiring.cafe accepts ``dateFetchedPastNDays`` in its searchState JSON, but its
+    effect is unverified: the list scraper reads only the first viewport of cards
+    and extracts no ``posted`` date, so live runs at window=1 vs window=31 return
+    the same set. The within_days fallback is therefore a no-op here too. Tight
+    date-bounding for hiring.cafe is a separate scraper-quality task; for now this
+    source relies on downstream act-on dedup to avoid re-packaging.
     """
     import json as _json
     import urllib.parse
@@ -645,13 +648,14 @@ def _scrape_hiringcafe_paginated(
     max_results: int,
     window: int,
 ) -> list[JobListing]:
-    """Scrape hiring.cafe with pagination bounded by the date window.
+    """Scrape hiring.cafe via searchState (Software Development, no-prior/entry-
+    level, YOE 0-2, sorted by date, US/AU/NZ).
 
-    Uses searchState (Software Development, no-prior/entry-level, YOE 0-2,
-    sorted by date, US/AU/NZ) with ``dateFetchedPastNDays=window`` as the
-    server-side date filter. Location eligibility is checked later against full
-    JDs so globally remote roles are not lost just because a card shows a
-    country/region.
+    ``window`` is passed as ``dateFetchedPastNDays`` but does not measurably bound
+    results through this scraper (see ``_hiringcafe_page_url_for_window``); the
+    source leans on downstream act-on dedup instead. Location eligibility is
+    checked later against full JDs so globally remote roles are not lost just
+    because a card shows a country/region.
     """
     return _scrape_paginated(
         "hiringcafe",
