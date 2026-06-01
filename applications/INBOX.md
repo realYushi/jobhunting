@@ -12,6 +12,12 @@
 
 - [ ] **AI Software Developer** @ Supportwave (manual package; exact score: 50, adjacent AI-agent fit) · [JD](./active/Supportwave/research/job-description.md) · [CV](./active/Supportwave/documents/resume.pdf) · [Letter](./active/Supportwave/documents/cover-letter.md) · [Apply ↗](https://portal.supportwave.com/flex/job/apply/9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2?s=LinkedIn)
 
+- [ ] **Software and AI Engineer** @ Atlasopen (score: 88) · [JD](./active/Atlasopen-92426576/research/job-description.md) · [CV](./active/Atlasopen-92426576/documents/resume.pdf) · [Letter](./active/Atlasopen-92426576/documents/cover-letter.md) · [Apply ↗](https://au.seek.com/job/92426576?type=standard&ref=search-standalone&origin=cardTitle#sol=612b3126c8da401767bcbb3c5e4d243da8db0389)
+
+- [ ] **Junior Software Engineer - Remote** @ OpenAgent (score: 97) · [JD](./active/OpenAgent-92435341/research/job-description.md) · [CV](./active/OpenAgent-92435341/documents/resume.pdf) · [Letter](./active/OpenAgent-92435341/documents/cover-letter.md) · [Apply ↗](https://au.seek.com/job/92435341?type=promoted&ref=search-standalone&origin=cardTitle#sol=d44504c3310894df411ae5f882fc4f0dcac8cafe)
+
+- [ ] **Expression of Interest - Software Engineer** @ Narrative (manual package) · [JD](./active/Narrative/research/job-description.md) · [CV](./active/Narrative/documents/resume.pdf) · [Letter](./active/Narrative/documents/cover-letter.md) · [Apply ↗](https://narrative.so/careers/narrative-expression-of-interest-software-engineer)
+
 ## Applied
 
 - **Mobile Engineer (iOS)** @ Air New Zealand — applied 2026-05-15 · [JD](./archive/submitted/Air New Zealand/research/job-description.md) · [CV](./archive/submitted/Air New Zealand/documents/resume.pdf) · [Letter](./archive/submitted/Air New Zealand/documents/cover-letter.md) · [Cold Email](./archive/submitted/Air New Zealand/documents/cold-email.md) · [Apply ↗](https://hiring.cafe/viewjob/j1pltcbhoatmth9n)

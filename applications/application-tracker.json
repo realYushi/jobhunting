@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-05-29",
+    "last_updated": "2026-06-02",
     "version": "7.0"
   },
   "applications": {
@@ -371,7 +371,7 @@
         "submitted_at": "2026-05-15"
       },
       {
-        "company": "Talent Army – Winner of Medium Recruitment Agency of the Year 2025",
+        "company": "Talent Army \u2013 Winner of Medium Recruitment Agency of the Year 2025",
         "position": "DevOps Engineer (AWS & Azure)",
         "date_applied": "2026-05-15",
         "status": "In Progress",
@@ -446,7 +446,7 @@
       },
       {
         "company": "ICTx",
-        "position": "Software Engineer – .NET, SQL & BI",
+        "position": "Software Engineer \u2013 .NET, SQL & BI",
         "date_applied": "2026-05-16",
         "status": "In Progress",
         "priority": "Medium",
@@ -523,7 +523,7 @@
       },
       {
         "company": "Esri",
-        "position": "Product Engineer II – Web Services",
+        "position": "Product Engineer II \u2013 Web Services",
         "date_applied": "2026-05-16",
         "status": "In Progress",
         "priority": "Medium",
@@ -833,7 +833,7 @@
       },
       {
         "company": "Blackpepper",
-        "position": "Intermediate Front End Developer – Shopify",
+        "position": "Intermediate Front End Developer \u2013 Shopify",
         "date_applied": "2026-05-18",
         "status": "In Progress",
         "priority": "Medium",
@@ -1831,7 +1831,7 @@
       },
       {
         "company": "Twine",
-        "position": "Remote Web Developer – WordPress",
+        "position": "Remote Web Developer \u2013 WordPress",
         "date_applied": "2026-05-27",
         "status": "In Progress",
         "priority": "Medium",
@@ -1938,6 +1938,36 @@
         "source": "supportwave",
         "job_id": "9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2",
         "url": "https://portal.supportwave.com/flex/job/apply/9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2?s=LinkedIn"
+      },
+      {
+        "company": "Atlasopen",
+        "position": "Software and AI Engineer",
+        "date_applied": "2026-05-31",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Atlasopen-92426576/documents/resume.pdf",
+        "job_id": "92426576",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92426576?type=standard&ref=search-standalone&origin=cardTitle#sol=612b3126c8da401767bcbb3c5e4d243da8db0389"
+      },
+      {
+        "company": "OpenAgent",
+        "position": "Junior Software Engineer - Remote",
+        "date_applied": "2026-06-01",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/OpenAgent-92435341/documents/resume.pdf",
+        "job_id": "92435341",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92435341?type=promoted&ref=search-standalone&origin=cardTitle#sol=d44504c3310894df411ae5f882fc4f0dcac8cafe"
+      },
+      {
+        "company": "Narrative",
+        "position": "Expression of Interest - Software Engineer",
+        "date_applied": "2026-06-02",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Narrative/documents/resume.pdf"
       }
     ],
     "interviews": [],
@@ -2083,7 +2113,7 @@
       },
       {
         "company": "Private Advertiser",
-        "position": "AI Expert – Trading Systems & Agent Development",
+        "position": "AI Expert \u2013 Trading Systems & Agent Development",
         "date_applied": "2026-05-22",
         "status": "Rejected",
         "priority": "Medium",
@@ -2171,7 +2201,7 @@
     {
       "kind": "manual",
       "company_lc": "blackpepper",
-      "position_lc": "intermediate front end developer – shopify"
+      "position_lc": "intermediate front end developer \u2013 shopify"
     },
     {
       "kind": "manual",
@@ -2281,7 +2311,7 @@
     {
       "kind": "manual",
       "company_lc": "esri",
-      "position_lc": "product engineer ii – web services"
+      "position_lc": "product engineer ii \u2013 web services"
     },
     {
       "kind": "manual",
@@ -2371,7 +2401,7 @@
     {
       "kind": "manual",
       "company_lc": "ictx",
-      "position_lc": "software engineer – .net, sql & bi"
+      "position_lc": "software engineer \u2013 .net, sql & bi"
     },
     {
       "kind": "manual",
@@ -2540,7 +2570,7 @@
     },
     {
       "kind": "manual",
-      "company_lc": "talent army – winner of medium recruitment agency of the year 2025",
+      "company_lc": "talent army \u2013 winner of medium recruitment agency of the year 2025",
       "position_lc": "devops engineer (aws & azure)"
     },
     {
