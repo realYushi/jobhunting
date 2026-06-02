@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import tempfile
 import urllib.request
@@ -684,6 +685,13 @@ def run_from_scores(
 
 
 def main() -> None:
+    # Scrape through the user's own logged-in Chrome by default so runs reuse
+    # existing cookies (wellfound login, We Work Remotely's Cloudflare
+    # clearance) instead of hitting login/bot walls in a clean profile. Set
+    # JOBHUNTING_BROWSER_USE_DEDICATED=1 to scrape in an isolated background
+    # Chrome instead (no cookies, but it won't touch the user's tabs).
+    os.environ.setdefault("JOBHUNTING_BROWSER_USE_DEDICATED", "0")
+
     parser = argparse.ArgumentParser(description="Run the job research pipeline")
     parser.add_argument(
         "--profile",

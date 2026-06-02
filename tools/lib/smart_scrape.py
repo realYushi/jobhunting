@@ -181,8 +181,18 @@ def smart_scrape(
                 keywords=_unique_keywords(profs),
             )
             all_listings.extend(source_listings)
-            # Advance watermark only on success.
-            updated_watermark[source] = today_str
+            # Advance the watermark only when the source actually returned
+            # listings. A zero result is unconfirmed — it can mean a login wall,
+            # a bot challenge, or an empty page, not "no new jobs" — so keep the
+            # old watermark and let the next run re-cover the same window.
+            if source_listings:
+                updated_watermark[source] = today_str
+            else:
+                print(
+                    f"  {source}: 0 listings — watermark unchanged "
+                    "(unconfirmed; possible block/empty page)",
+                    file=sys.stderr,
+                )
         except Exception as e:
             print(f"  {source} scrape error (watermark unchanged): {e}", file=sys.stderr)
 
@@ -282,12 +292,22 @@ def _scrape_paginated(
             if retcode != 0:
                 break
 
+            raw_count = sum(
+                len(data.get("jobs", [])) for data in parse_harness_json_output(stdout)
+            )
             page_listings = _parse_jobs(stdout, source, recent_filter)
             if not page_listings:
-                # No listings passed the recency filter — page is all-old; stop.
-                if recent_filter is not None:
+                if raw_count == 0:
+                    # Page yielded no listings at all — likely blocked or empty,
+                    # not "all old". Distinct message so the failure is visible.
                     print(
-                        f"  Page {page}: all listings older than window ({window}d), stopping",
+                        f"  Page {page}: scraped 0 listings (page blocked or empty?), stopping",
+                        file=sys.stderr,
+                    )
+                elif recent_filter is not None:
+                    print(
+                        f"  Page {page}: {raw_count} listings all older than window "
+                        f"({window}d), stopping",
                         file=sys.stderr,
                     )
                 break
@@ -755,12 +775,22 @@ def _scrape_wellfound_paginated(
             if retcode != 0:
                 continue
 
+            raw_count = sum(
+                len(data.get("jobs", [])) for data in parse_harness_json_output(stdout)
+            )
             page_listings = _parse_jobs(stdout, "wellfound", recent_filter)
             if not page_listings:
-                print(
-                    f"  Page {page}: all listings older than window ({window}d), stopping",
-                    file=sys.stderr,
-                )
+                if raw_count == 0:
+                    print(
+                        f"  Page {page}: scraped 0 listings (login wall or empty?), stopping",
+                        file=sys.stderr,
+                    )
+                else:
+                    print(
+                        f"  Page {page}: {raw_count} listings all older than window "
+                        f"({window}d), stopping",
+                        file=sys.stderr,
+                    )
                 break
 
             listings.extend(page_listings)

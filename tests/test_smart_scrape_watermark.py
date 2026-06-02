@@ -67,6 +67,28 @@ class WatermarkAdvanceTests(unittest.TestCase):
         watermark = load_last_scrape(self.tracker_file)
         self.assertEqual(watermark.get("linkedin"), date.today().isoformat())
 
+    def test_empty_result_does_not_advance_watermark(self):
+        """A source that returns zero listings must NOT advance its watermark.
+
+        Zero is unconfirmed: it can mean a login wall, a bot challenge, or an
+        empty page — not "no new jobs". Advancing would mark the window covered
+        and silently skip whatever the block hid, so the old watermark is kept.
+        """
+        old_date = "2026-05-01"
+        self._run_scrape(
+            {"wellfound": []},
+            existing_watermark={"wellfound": old_date},
+        )
+        watermark = load_last_scrape(self.tracker_file)
+        self.assertEqual(watermark.get("wellfound"), old_date)
+
+    def test_first_run_empty_result_sets_no_watermark(self):
+        """On first run, a zero result leaves no watermark so the next run still
+        uses the initial lookback rather than a one-day window."""
+        self._run_scrape({"wellfound": []})
+        watermark = load_last_scrape(self.tracker_file)
+        self.assertIsNone(watermark.get("wellfound"))
+
     def test_erroring_source_keeps_old_watermark(self):
         """A source that raises an exception must NOT update its watermark."""
         old_date = "2026-05-01"
