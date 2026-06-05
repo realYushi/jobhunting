@@ -1,7 +1,7 @@
 {
   "meta": {
-    "last_updated": "2026-06-02",
-    "version": "7.0"
+    "last_updated": "2026-06-05",
+    "version": "8.0"
   },
   "applications": {
     "active": [
@@ -9,20 +9,21 @@
         "company": "Sunstone Talent",
         "position": "Junior Full Stack Web Engineer (React / Python / GO)",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Sunstone Talent/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Sunstone Talent/documents/resume.pdf",
         "job_id": "91989874",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91989874?type=standard&ref=search-standalone#sol=5de1fd66ae8e96a76f648cc18df851ae1a22e0bb"
+        "url": "https://nz.seek.com/job/91989874?type=standard&ref=search-standalone#sol=5de1fd66ae8e96a76f648cc18df851ae1a22e0bb",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Halter",
         "position": "Software Engineers (All levels!)",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Rejected",
         "priority": "Medium",
-        "pdf_path": "applications/active/Halter/documents/resume.pdf",
+        "pdf_path": "applications/archive/rejected/Halter/documents/resume.pdf",
         "job_id": "92106804",
         "source": "seek",
         "url": "https://nz.seek.com/job/92106804?type=standard&ref=search-standalone#sol=0028de82d89573355158884113bf9a8151d68056"
@@ -31,67 +32,61 @@
         "company": "Caruso Software Limited",
         "position": "Software Engineer (Agentic)",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Caruso Software Limited/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Caruso Software Limited/documents/resume.pdf",
         "job_id": "91491952",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91491952?type=promoted&ref=search-standalone#sol=006bcd4087edadff349d26f576c171f2d60fbfb0"
+        "url": "https://nz.seek.com/job/91491952?type=promoted&ref=search-standalone#sol=006bcd4087edadff349d26f576c171f2d60fbfb0",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Natural Selection Group",
         "position": "Junior C# + AWS Software Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Natural Selection Group/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Natural Selection Group/documents/resume.pdf",
         "job_id": "92107167",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92107167?type=standard&ref=search-standalone#sol=dc369e7107ba0c06ccf9a248db9c0d681e19391d"
+        "url": "https://nz.seek.com/job/92107167?type=standard&ref=search-standalone#sol=dc369e7107ba0c06ccf9a248db9c0d681e19391d",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Recruit I.T. Auckland",
         "position": "Full Stack Python Developer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Recruit I.T. Auckland/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Recruit I.T. Auckland/documents/resume.pdf",
         "job_id": "91905814",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91905814?type=standard&ref=search-standalone#sol=16cfb4e0c9c01ca0fc7ef1c1fcbe9b764a84503f"
+        "url": "https://nz.seek.com/job/91905814?type=standard&ref=search-standalone#sol=16cfb4e0c9c01ca0fc7ef1c1fcbe9b764a84503f",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Recruit I.T. Auckland",
         "position": "Full Stack Python Developer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Recruit I.T. Auckland/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Recruit I.T. Auckland/documents/resume.pdf",
         "job_id": "91955613",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91955613?type=standard&ref=search-standalone#sol=7215d35bcf1fc9457798938d262ffb2dd7664eeb"
+        "url": "https://nz.seek.com/job/91955613?type=standard&ref=search-standalone#sol=7215d35bcf1fc9457798938d262ffb2dd7664eeb",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "EnergyAE",
         "position": "Full Stack Software Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/EnergyAE/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/EnergyAE/documents/resume.pdf",
         "job_id": "91631004",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91631004?type=promoted&ref=search-standalone#sol=cbee21cfae8e8ed4e32ca188fb9bc056f28fe3fd"
-      },
-      {
-        "company": "Bidfood Limited",
-        "position": "Junior Software Engineer",
-        "date_applied": "2026-05-14",
-        "status": "In Progress",
-        "priority": "Medium",
-        "pdf_path": "applications/active/Bidfood Limited/documents/resume.pdf",
-        "job_id": "91882213",
-        "source": "seek",
-        "url": "https://nz.seek.com/job/91882213?type=promoted&ref=search-standalone#sol=4c2b85216f41cf0853f9c22a99c2d8d902b42984"
+        "url": "https://nz.seek.com/job/91631004?type=promoted&ref=search-standalone#sol=cbee21cfae8e8ed4e32ca188fb9bc056f28fe3fd",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Bidfood Limited",
@@ -99,7 +94,19 @@
         "date_applied": "2026-05-14",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Bidfood Limited/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Bidfood Limited/documents/resume.pdf",
+        "job_id": "91882213",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/91882213?type=promoted&ref=search-standalone#sol=4c2b85216f41cf0853f9c22a99c2d8d902b42984",
+        "submitted_at": "2026-05-15"
+      },
+      {
+        "company": "Bidfood Limited",
+        "position": "Junior Software Engineer",
+        "date_applied": "2026-05-14",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/Bidfood Limited/documents/resume.pdf",
         "job_id": "91925145",
         "source": "seek",
         "url": "https://nz.seek.com/job/91925145?type=standard&ref=search-standalone#sol=5572b506d8caa2c3c929b9abf618a21b65083f6f",
@@ -109,23 +116,25 @@
         "company": "ANZ Bank New Zealand Limited",
         "position": "Software Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/ANZ Bank New Zealand Limited/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/ANZ Bank New Zealand Limited/documents/resume.pdf",
         "job_id": "91992569",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91992569?type=standard&ref=search-standalone#sol=d2568ca91b7959fcc54fe67217e50bd328231d6e"
+        "url": "https://nz.seek.com/job/91992569?type=standard&ref=search-standalone#sol=d2568ca91b7959fcc54fe67217e50bd328231d6e",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "HUBCORE CONSULTING LIMITED",
         "position": "Software Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/HUBCORE CONSULTING LIMITED/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/HUBCORE CONSULTING LIMITED/documents/resume.pdf",
         "job_id": "91831225",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91831225?type=standard&ref=search-standalone#sol=3d036d867e9c3b3fe85c847be3edfbdb1f348281"
+        "url": "https://nz.seek.com/job/91831225?type=standard&ref=search-standalone#sol=3d036d867e9c3b3fe85c847be3edfbdb1f348281",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Alchemy Consulting",
@@ -133,7 +142,7 @@
         "date_applied": "2026-05-14",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Alchemy Consulting/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Alchemy Consulting/documents/resume.pdf",
         "job_id": "92102688",
         "source": "seek",
         "url": "https://nz.seek.com/job/92102688?type=standard&ref=search-standalone#sol=b321e4793a68027c26d5ef52d02508147f00b278",
@@ -143,56 +152,61 @@
         "company": "Agtecnic",
         "position": "Software Engineer - Image Processing",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Agtecnic/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Agtecnic/documents/resume.pdf",
         "job_id": "92089509",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92089509?type=standard&ref=search-standalone#sol=768fef1c1c882ed95f960ab29ec574725eaa012c"
+        "url": "https://nz.seek.com/job/92089509?type=standard&ref=search-standalone#sol=768fef1c1c882ed95f960ab29ec574725eaa012c",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Agtecnic",
         "position": "Software Engineer - Image Processing",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Agtecnic/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Agtecnic/documents/resume.pdf",
         "job_id": "92090597",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92090597?type=standard&ref=search-standalone#sol=292412a5ffaa925ff23180b6632670286fd3b7bd"
+        "url": "https://nz.seek.com/job/92090597?type=standard&ref=search-standalone#sol=292412a5ffaa925ff23180b6632670286fd3b7bd",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "PICWA LTD",
         "position": "Intermediate Python Developer (Full Stack)",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/PICWA LTD/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/PICWA LTD/documents/resume.pdf",
         "job_id": "92105947",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92105947?type=standard&ref=search-standalone#sol=bbefa0893eace767e36c60024e59f22c7006608c"
+        "url": "https://nz.seek.com/job/92105947?type=standard&ref=search-standalone#sol=bbefa0893eace767e36c60024e59f22c7006608c",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "PropertyMe",
         "position": "Mid-Level Full Stack Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/PropertyMe/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/PropertyMe/documents/resume.pdf",
         "job_id": "91986856",
         "source": "seek",
-        "url": "https://au.seek.com/job/91986856?type=standard&ref=search-standalone#sol=0f0023b265b40ba2ee7aa0538b4dbc1d8f769a2c"
+        "url": "https://au.seek.com/job/91986856?type=standard&ref=search-standalone#sol=0f0023b265b40ba2ee7aa0538b4dbc1d8f769a2c",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "PropertyMe",
         "position": "Mid-Level Full Stack Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/PropertyMe/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/PropertyMe/documents/resume.pdf",
         "job_id": "91805231",
         "source": "seek",
-        "url": "https://au.seek.com/job/91805231?type=standard&ref=search-standalone#sol=906cfa4c24ad8e367b293b6bfe1e0c668748311b"
+        "url": "https://au.seek.com/job/91805231?type=standard&ref=search-standalone#sol=906cfa4c24ad8e367b293b6bfe1e0c668748311b",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "LawVu",
@@ -200,7 +214,7 @@
         "date_applied": "2026-05-14",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/LawVu/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/LawVu/documents/resume.pdf",
         "job_id": "jskq52td9agmft5b",
         "source": "hiringcafe",
         "url": "https://hiring.cafe/viewjob/jskq52td9agmft5b",
@@ -212,7 +226,7 @@
         "date_applied": "2026-05-14",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Datacom/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Datacom/documents/resume.pdf",
         "job_id": "06okqvxvlh7zbyic",
         "source": "hiringcafe",
         "url": "https://hiring.cafe/viewjob/06okqvxvlh7zbyic",
@@ -224,7 +238,7 @@
         "date_applied": "2026-05-14",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/FineSkyAi/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/FineSkyAi/documents/resume.pdf",
         "job_id": "91757013",
         "source": "seek",
         "url": "https://au.seek.com/job/91757013?type=standard&ref=search-standalone#sol=bfc5a307b95452f967e533600e4527cbab604f23",
@@ -234,23 +248,25 @@
         "company": "Mansell Taylor Consulting",
         "position": "Frontend Developer (React / Geospatial Visualisation)",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Mansell Taylor Consulting/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Mansell Taylor Consulting/documents/resume.pdf",
         "job_id": "92035565",
         "source": "seek",
-        "url": "https://au.seek.com/job/92035565?type=standard&ref=search-standalone#sol=3048f9d36dceeea47e5b2f7106ad0e68c238cd9b"
+        "url": "https://au.seek.com/job/92035565?type=standard&ref=search-standalone#sol=3048f9d36dceeea47e5b2f7106ad0e68c238cd9b",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "GoSource",
         "position": "Software Developer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/GoSource/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/GoSource/documents/resume.pdf",
         "job_id": "92056885",
         "source": "seek",
-        "url": "https://au.seek.com/job/92056885?type=standard&ref=search-standalone#sol=1a027b22d57c425d5b2c3fbdf20dac01ea8aa790"
+        "url": "https://au.seek.com/job/92056885?type=standard&ref=search-standalone#sol=1a027b22d57c425d5b2c3fbdf20dac01ea8aa790",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "SprintSuite",
@@ -258,7 +274,7 @@
         "date_applied": "2026-05-14",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/SprintSuite/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/SprintSuite/documents/resume.pdf",
         "job_id": "91807715",
         "source": "seek",
         "url": "https://au.seek.com/job/91807715?type=standard&ref=search-standalone#sol=fa3e7fd6c88c94c2a5e1bc4b366eeec56525696d",
@@ -268,20 +284,21 @@
         "company": "Light Pattern",
         "position": "Tools Programmer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Light Pattern/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Light Pattern/documents/resume.pdf",
         "job_id": "92027593",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92027593?type=standard&ref=search-standalone#sol=41f1094cc17141869814dd722bf3fa8c4e334fb9"
+        "url": "https://nz.seek.com/job/92027593?type=standard&ref=search-standalone#sol=41f1094cc17141869814dd722bf3fa8c4e334fb9",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Air New Zealand",
         "position": "Mobile Engineer (iOS)",
         "date_applied": "2026-05-14",
-        "status": "Submitted",
+        "status": "Rejected",
         "priority": "Medium",
-        "pdf_path": "applications/active/Air New Zealand/documents/resume.pdf",
+        "pdf_path": "applications/archive/rejected/Air New Zealand/documents/resume.pdf",
         "job_id": "j1pltcbhoatmth9n",
         "source": "hiringcafe",
         "url": "https://hiring.cafe/viewjob/j1pltcbhoatmth9n",
@@ -291,72 +308,79 @@
         "company": "The Pillar Group Limited",
         "position": "Analyst Programmer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/The Pillar Group Limited/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/The Pillar Group Limited/documents/resume.pdf",
         "job_id": "92023554",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92023554?type=standard&ref=search-standalone#sol=e67bfe06914885c5298522e45e6d1f8f306bf70d"
+        "url": "https://nz.seek.com/job/92023554?type=standard&ref=search-standalone#sol=e67bfe06914885c5298522e45e6d1f8f306bf70d",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Pathfinder Recruitment",
         "position": "Fullstack Developer - .Net / Kentico Xperience",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Pathfinder Recruitment/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Pathfinder Recruitment/documents/resume.pdf",
         "job_id": "92004122",
         "source": "seek",
-        "url": "https://au.seek.com/job/92004122?type=standard&ref=search-standalone#sol=a14ae0282941981818a0e03732d6c664fd848616"
+        "url": "https://au.seek.com/job/92004122?type=standard&ref=search-standalone#sol=a14ae0282941981818a0e03732d6c664fd848616",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "PropertyMe",
         "position": "Mid-Level Full Stack Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/PropertyMe/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/PropertyMe/documents/resume.pdf",
         "job_id": "91823766",
         "source": "seek",
-        "url": "https://au.seek.com/job/91823766?type=standard&ref=search-standalone#sol=69cd7e6d78329eb94fed335128c31307df3a3532"
+        "url": "https://au.seek.com/job/91823766?type=standard&ref=search-standalone#sol=69cd7e6d78329eb94fed335128c31307df3a3532",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Simpro Group",
         "position": "Software Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Simpro Group/documents/resume.pdf"
+        "pdf_path": "applications/archive/skipped/Simpro Group/documents/resume.pdf",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "EverCommerce Timely",
         "position": "Software Engineer",
         "date_applied": "2026-05-14",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/EverCommerce Timely/documents/resume.pdf"
+        "pdf_path": "applications/archive/skipped/EverCommerce Timely/documents/resume.pdf",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "PICWA LTD",
         "position": "Intermediate Python Developer (Full Stack)",
         "date_applied": "2026-05-15",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/PICWA LTD/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/PICWA LTD/documents/resume.pdf",
         "job_id": "92123540",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92123540?type=standard&ref=search-standalone"
+        "url": "https://nz.seek.com/job/92123540?type=standard&ref=search-standalone",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Light Pattern",
         "position": "Tools Programmer",
         "date_applied": "2026-05-15",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Light Pattern/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Light Pattern/documents/resume.pdf",
         "job_id": "92044383",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92044383?type=standard&ref=search-standalone"
+        "url": "https://nz.seek.com/job/92044383?type=standard&ref=search-standalone",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Pair People Pty Limited",
@@ -364,228 +388,248 @@
         "date_applied": "2026-05-15",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Pair People Pty Limited/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Pair People Pty Limited/documents/resume.pdf",
         "job_id": "91571289",
         "source": "seek",
         "url": "https://au.seek.com/job/91571289?type=standard&ref=search-standalone#sol=56fcfad9643dd458916418763cbeb1e99eb88681",
         "submitted_at": "2026-05-15"
       },
       {
-        "company": "Talent Army \u2013 Winner of Medium Recruitment Agency of the Year 2025",
+        "company": "Talent Army – Winner of Medium Recruitment Agency of the Year 2025",
         "position": "DevOps Engineer (AWS & Azure)",
         "date_applied": "2026-05-15",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Talent Army  Winner of Medium Recruitment Agency of the Year 2025/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Talent Army  Winner of Medium Recruitment Agency of the Year 2025/documents/resume.pdf",
         "job_id": "91899449",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91899449?type=promoted&ref=search-standalone"
+        "url": "https://nz.seek.com/job/91899449?type=promoted&ref=search-standalone",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Comspek International Limited",
         "position": "Power Platform Developer",
         "date_applied": "2026-05-15",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Comspek International Limited/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Comspek International Limited/documents/resume.pdf",
         "job_id": "92045195",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92045195?type=standard&ref=search-standalone#sol=67acfa974553dd39f8ed33061ad27db749b5ac2f"
+        "url": "https://nz.seek.com/job/92045195?type=standard&ref=search-standalone#sol=67acfa974553dd39f8ed33061ad27db749b5ac2f",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "New Era Technology",
         "position": "Entry Level Support Engineer",
         "date_applied": "2026-05-15",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/New Era Technology/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/New Era Technology/documents/resume.pdf",
         "job_id": "g8gk0006oq5rgr32",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/viewjob/g8gk0006oq5rgr32"
+        "url": "https://hiring.cafe/viewjob/g8gk0006oq5rgr32",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Contact Energy",
         "position": "Software Engineer Graduate Programme 2027",
         "date_applied": "2026-05-15",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "High",
-        "pdf_path": "applications/active/Contact Energy/documents/resume.pdf"
+        "pdf_path": "applications/archive/skipped/Contact Energy/documents/resume.pdf",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "The Burraga Foundation",
         "position": "Mid-Level React Developer (Full Stack Environment)",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/The Burraga Foundation-91689945/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/The Burraga Foundation-91689945/documents/resume.pdf",
         "job_id": "91689945",
         "source": "seek",
-        "url": "https://au.seek.com/job/91689945?type=standard&ref=search-standalone&origin=cardTitle#sol=85604dfc29a3b34f7a7f1de6eb759317d7dd87c1"
+        "url": "https://au.seek.com/job/91689945?type=standard&ref=search-standalone&origin=cardTitle#sol=85604dfc29a3b34f7a7f1de6eb759317d7dd87c1",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Expertech",
         "position": "Quantitative Software Engineer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Expertech-91693312/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Expertech-91693312/documents/resume.pdf",
         "job_id": "91693312",
         "source": "seek",
-        "url": "https://au.seek.com/job/91693312?type=standard&ref=search-standalone&origin=cardTitle#sol=2a7e6fe304b6242f90d2587c13bbd9d1aa033b5e"
+        "url": "https://au.seek.com/job/91693312?type=standard&ref=search-standalone&origin=cardTitle#sol=2a7e6fe304b6242f90d2587c13bbd9d1aa033b5e",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Evolve Recruitment Group",
         "position": "Java Developer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Evolve Recruitment Group-92100682/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Evolve Recruitment Group-92100682/documents/resume.pdf",
         "job_id": "92100682",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92100682?type=standard&ref=search-standalone&origin=cardTitle#sol=57bb70f8a1c94292083b15060da394a7ebfbc8c2"
+        "url": "https://nz.seek.com/job/92100682?type=standard&ref=search-standalone&origin=cardTitle#sol=57bb70f8a1c94292083b15060da394a7ebfbc8c2",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "ICTx",
-        "position": "Software Engineer \u2013 .NET, SQL & BI",
+        "position": "Software Engineer – .NET, SQL & BI",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/ICTx-91895782/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/ICTx-91895782/documents/resume.pdf",
         "job_id": "91895782",
         "source": "seek",
-        "url": "https://au.seek.com/job/91895782?type=standard&ref=search-standalone&origin=cardTitle"
+        "url": "https://au.seek.com/job/91895782?type=standard&ref=search-standalone&origin=cardTitle",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Breadcrumb Digital",
         "position": "Power Platform Developer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Breadcrumb Digital-91632278/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Breadcrumb Digital-91632278/documents/resume.pdf",
         "job_id": "91632278",
         "source": "seek",
-        "url": "https://au.seek.com/job/91632278?type=standard&ref=search-standalone&origin=cardTitle#sol=0e21050fa335852d87f351533de1f11470cc6d24"
+        "url": "https://au.seek.com/job/91632278?type=standard&ref=search-standalone&origin=cardTitle#sol=0e21050fa335852d87f351533de1f11470cc6d24",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Private Advertiser",
         "position": "Website Developer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Private Advertiser-91858078/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Private Advertiser-91858078/documents/resume.pdf",
         "job_id": "91858078",
         "source": "seek",
-        "url": "https://au.seek.com/job/91858078?type=standard&ref=search-standalone&origin=cardTitle"
+        "url": "https://au.seek.com/job/91858078?type=standard&ref=search-standalone&origin=cardTitle",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "FirmPilot",
         "position": "Junior Full-Stack Engineer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/FirmPilot-bir5htln/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/FirmPilot-bir5htln/documents/resume.pdf",
         "job_id": "bir5htlnx78i1ucu",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/bir5htlnx78i1ucu"
+        "url": "https://hiring.cafe/job/bir5htlnx78i1ucu",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "MJH Life Sciences",
         "position": "Associate Product Engineer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/MJH Life Sciences-w4ootqg6/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/MJH Life Sciences-w4ootqg6/documents/resume.pdf",
         "job_id": "w4ootqg6rgadttro",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/w4ootqg6rgadttro"
+        "url": "https://hiring.cafe/job/w4ootqg6rgadttro",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "New Relic",
         "position": "Software Engineer - React/Typescript",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/New Relic-a5ohdhio/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/New Relic-a5ohdhio/documents/resume.pdf",
         "job_id": "a5ohdhio3bzdl0hi",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/a5ohdhio3bzdl0hi"
+        "url": "https://hiring.cafe/job/a5ohdhio3bzdl0hi",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Impiricus",
         "position": "Software Engineer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Impiricus-54ov0off/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Impiricus-54ov0off/documents/resume.pdf",
         "job_id": "54ov0offevrwd3bs",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/54ov0offevrwd3bs"
+        "url": "https://hiring.cafe/job/54ov0offevrwd3bs",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Esri",
-        "position": "Product Engineer II \u2013 Web Services",
+        "position": "Product Engineer II – Web Services",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Esri-cmf5ifhm/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Esri-cmf5ifhm/documents/resume.pdf",
         "job_id": "cmf5ifhmppv16di6",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/cmf5ifhmppv16di6"
+        "url": "https://hiring.cafe/job/cmf5ifhmppv16di6",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Pindrop",
         "position": "Artificial intelligence (AI) Engineer Intern",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Pindrop-igbeoftd/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Pindrop-igbeoftd/documents/resume.pdf",
         "job_id": "igbeoftdylcq642z",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/igbeoftdylcq642z"
+        "url": "https://hiring.cafe/job/igbeoftdylcq642z",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Lemio",
         "position": "Full-stack Software Developer / Engineer for digital wellness mobile app",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Lemio-yz2s5f6u/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Lemio-yz2s5f6u/documents/resume.pdf",
         "job_id": "yz2s5f6un30vhfnx",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/yz2s5f6un30vhfnx"
+        "url": "https://hiring.cafe/job/yz2s5f6un30vhfnx",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "OneSource Virtual",
         "position": "Associate Full Stack Developer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/OneSource Virtual-7gwz2ilv/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/OneSource Virtual-7gwz2ilv/documents/resume.pdf",
         "job_id": "7gwz2ilvhd9btrap",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/7gwz2ilvhd9btrap"
+        "url": "https://hiring.cafe/job/7gwz2ilvhd9btrap",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Virtuozzo",
         "position": "Intern in Frontend team",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Virtuozzo-p838asdp/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Virtuozzo-p838asdp/documents/resume.pdf",
         "job_id": "p838asdp1oair1dp",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/p838asdp1oair1dp"
+        "url": "https://hiring.cafe/job/p838asdp1oair1dp",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Cognizant",
         "position": "Junior Full Stack Developer (C# .NET & Azure)",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Cognizant-af5nsvjl/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Cognizant-af5nsvjl/documents/resume.pdf",
         "job_id": "af5nsvjlgtn3sg0z",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/af5nsvjlgtn3sg0z"
+        "url": "https://hiring.cafe/job/af5nsvjlgtn3sg0z",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Cognizant",
@@ -596,117 +640,128 @@
         "pdf_path": "applications/archive/skipped/Cognizant-agm8z2da/documents/resume.pdf",
         "job_id": "agm8z2dansclwn0r",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/agm8z2dansclwn0r"
+        "url": "https://hiring.cafe/job/agm8z2dansclwn0r",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "GOLFTEC",
         "position": "Software Engineer (Remote Opportunity)",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/GOLFTEC-zfv6gwkl/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/GOLFTEC-zfv6gwkl/documents/resume.pdf",
         "job_id": "zfv6gwklx8tb826b",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/zfv6gwklx8tb826b"
+        "url": "https://hiring.cafe/job/zfv6gwklx8tb826b",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Arine",
         "position": "AI Engineering Summer Intern",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Arine-5xkmkne3/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Arine-5xkmkne3/documents/resume.pdf",
         "job_id": "5xkmkne3mf4zh3gp",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/5xkmkne3mf4zh3gp"
+        "url": "https://hiring.cafe/job/5xkmkne3mf4zh3gp",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Phil",
         "position": "AI Engineering Intern",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Phil-wpr7x6uu/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Phil-wpr7x6uu/documents/resume.pdf",
         "job_id": "wpr7x6uu6yv4zuhq",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/wpr7x6uu6yv4zuhq"
+        "url": "https://hiring.cafe/job/wpr7x6uu6yv4zuhq",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Vituity",
         "position": "Intern - Software Engineer Backend",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Vituity-49uj84az/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Vituity-49uj84az/documents/resume.pdf",
         "job_id": "49uj84azz053gcj8",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/49uj84azz053gcj8"
+        "url": "https://hiring.cafe/job/49uj84azz053gcj8",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Cisive",
         "position": "Software Development Intern",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Cisive-0vhhi79c/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Cisive-0vhhi79c/documents/resume.pdf",
         "job_id": "0vhhi79ce0lb4iwv",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/0vhhi79ce0lb4iwv"
+        "url": "https://hiring.cafe/job/0vhhi79ce0lb4iwv",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "DMI",
         "position": "Software Engineer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/DMI-w53pgrs7/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/DMI-w53pgrs7/documents/resume.pdf",
         "job_id": "w53pgrs70kjcbu2k",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/w53pgrs70kjcbu2k"
+        "url": "https://hiring.cafe/job/w53pgrs70kjcbu2k",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Clover Health",
         "position": "UX engineer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Clover Health-nqxw2yim/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Clover Health-nqxw2yim/documents/resume.pdf",
         "job_id": "nqxw2yimz4k78ubh",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/nqxw2yimz4k78ubh"
+        "url": "https://hiring.cafe/job/nqxw2yimz4k78ubh",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Praxent",
         "position": "Software Engineer(s)",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Praxent-nfnjhjqe/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Praxent-nfnjhjqe/documents/resume.pdf",
         "job_id": "nfnjhjqecdyg7q84",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/nfnjhjqecdyg7q84"
+        "url": "https://hiring.cafe/job/nfnjhjqecdyg7q84",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Volkswagen Group Digital Solutions India",
         "position": "Developer (9935)",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Volkswagen Group Digital Solutions India-fm2q9stn/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Volkswagen Group Digital Solutions India-fm2q9stn/documents/resume.pdf",
         "job_id": "fm2q9stnzo0lhysj",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/fm2q9stnzo0lhysj"
+        "url": "https://hiring.cafe/job/fm2q9stnzo0lhysj",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "H&R Block",
         "position": "Associate Software Engineer, Seasonal",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/HR Block-bnah8h2q/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/HR Block-bnah8h2q/documents/resume.pdf",
         "job_id": "bnah8h2q1rn60w4f",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/bnah8h2q1rn60w4f"
+        "url": "https://hiring.cafe/job/bnah8h2q1rn60w4f",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "H&R Block",
@@ -717,7 +772,8 @@
         "pdf_path": "applications/archive/skipped/HR Block-kb87ybue/documents/resume.pdf",
         "job_id": "kb87ybueex5qos80",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/kb87ybueex5qos80"
+        "url": "https://hiring.cafe/job/kb87ybueex5qos80",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "H&R Block",
@@ -728,40 +784,44 @@
         "pdf_path": "applications/archive/skipped/HR Block-h4ntl5kx/documents/resume.pdf",
         "job_id": "h4ntl5kxvh4ox8xh",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/h4ntl5kxvh4ox8xh"
+        "url": "https://hiring.cafe/job/h4ntl5kxvh4ox8xh",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Babyscripts",
         "position": "Engineering Intern",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Babyscripts-d6tm69am/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Babyscripts-d6tm69am/documents/resume.pdf",
         "job_id": "d6tm69amyp54w5t1",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/d6tm69amyp54w5t1"
+        "url": "https://hiring.cafe/job/d6tm69amyp54w5t1",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "University of Wisconsin-Madison",
         "position": "Student Web Developer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/University of Wisconsin-Madison-xxsqrnzo/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/University of Wisconsin-Madison-xxsqrnzo/documents/resume.pdf",
         "job_id": "xxsqrnzojchib0qt",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/xxsqrnzojchib0qt"
+        "url": "https://hiring.cafe/job/xxsqrnzojchib0qt",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "ASRC Federal",
         "position": "Software Developer Intern",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/ASRC Federal-us1o0c6b/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/ASRC Federal-us1o0c6b/documents/resume.pdf",
         "job_id": "us1o0c6btsbzkgoq",
         "source": "hiringcafe",
-        "url": "https://hiring.cafe/job/us1o0c6btsbzkgoq"
+        "url": "https://hiring.cafe/job/us1o0c6btsbzkgoq",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Xapo Bank",
@@ -772,7 +832,8 @@
         "pdf_path": "applications/archive/skipped/Xapo Bank-1563723/documents/resume.pdf",
         "job_id": "1563723",
         "source": "workingnomads",
-        "url": "https://job-boards.greenhouse.io/xapo61/jobs/7594562003"
+        "url": "https://job-boards.greenhouse.io/xapo61/jobs/7594562003",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Canonical",
@@ -783,7 +844,8 @@
         "pdf_path": "applications/archive/skipped/Canonical-1568802/documents/resume.pdf",
         "job_id": "1568802",
         "source": "workingnomads",
-        "url": "https://job-boards.greenhouse.io/canonical/jobs/7814327"
+        "url": "https://job-boards.greenhouse.io/canonical/jobs/7814327",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Canonical",
@@ -794,7 +856,8 @@
         "pdf_path": "applications/archive/skipped/Canonical-1562937/documents/resume.pdf",
         "job_id": "1562937",
         "source": "workingnomads",
-        "url": "https://job-boards.greenhouse.io/canonical/jobs/6707669"
+        "url": "https://job-boards.greenhouse.io/canonical/jobs/6707669",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Atom Intelligence",
@@ -802,7 +865,7 @@
         "date_applied": "2026-05-16",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Atom Intelligence-92116333/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Atom Intelligence-92116333/documents/resume.pdf",
         "job_id": "92116333",
         "source": "seek",
         "url": "https://nz.seek.com/job/92116333?type=standard&ref=search-standalone&origin=cardTitle#sol=3c11a8be15678d3ff8d242e69e90c9bd73993766",
@@ -812,12 +875,13 @@
         "company": "Hydrogen Group Pty Ltd",
         "position": "API Developer",
         "date_applied": "2026-05-16",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Hydrogen Group Pty Ltd-91789343/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Hydrogen Group Pty Ltd-91789343/documents/resume.pdf",
         "job_id": "91789343",
         "source": "seek",
-        "url": "https://au.seek.com/job/91789343?type=standard&ref=search-standalone&origin=cardTitle#sol=749890cfefa3b4fb3a06610084d212c061b6ded6"
+        "url": "https://au.seek.com/job/91789343?type=standard&ref=search-standalone&origin=cardTitle#sol=749890cfefa3b4fb3a06610084d212c061b6ded6",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Weeha",
@@ -825,7 +889,7 @@
         "date_applied": "2026-05-16",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Weeha-92150444/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Weeha-92150444/documents/resume.pdf",
         "job_id": "92150444",
         "source": "seek",
         "url": "https://au.seek.com/job/92150444?type=promoted&ref=search-standalone&origin=cardTitle",
@@ -833,25 +897,27 @@
       },
       {
         "company": "Blackpepper",
-        "position": "Intermediate Front End Developer \u2013 Shopify",
+        "position": "Intermediate Front End Developer – Shopify",
         "date_applied": "2026-05-18",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Blackpepper-92157871/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Blackpepper-92157871/documents/resume.pdf",
         "job_id": "92157871",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92157871?type=standard&ref=search-standalone&origin=cardTitle"
+        "url": "https://nz.seek.com/job/92157871?type=standard&ref=search-standalone&origin=cardTitle",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Teammate App Limited",
         "position": "Full Stack Developer",
         "date_applied": "2026-05-18",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Teammate App Limited-92161504/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Teammate App Limited-92161504/documents/resume.pdf",
         "job_id": "92161504",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92161504?type=standard&ref=search-standalone&origin=cardTitle#sol=7d365357f40509f7bcda50fa961f069730ccac74"
+        "url": "https://nz.seek.com/job/92161504?type=standard&ref=search-standalone&origin=cardTitle#sol=7d365357f40509f7bcda50fa961f069730ccac74",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Kernel",
@@ -895,7 +961,7 @@
         "date_applied": "2026-05-19",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Kiwibank-92193077/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Kiwibank-92193077/documents/resume.pdf",
         "job_id": "92193077",
         "source": "seek",
         "url": "https://nz.seek.com/job/92193077?type=standard&ref=search-standalone&origin=cardTitle#sol=cfb260863867590bfc83dd7486c5e4f0b5bf86cc",
@@ -905,23 +971,25 @@
         "company": "Tech Mahindra Ltd.",
         "position": "Developer Programmer",
         "date_applied": "2026-05-19",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Tech Mahindra Ltd.-92187969/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Tech Mahindra Ltd.-92187969/documents/resume.pdf",
         "job_id": "92187969",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92187969?type=standard&ref=search-standalone&origin=cardTitle#sol=be9fa77e99e557fb93f8e2e627cc65b7eadc34a0"
+        "url": "https://nz.seek.com/job/92187969?type=standard&ref=search-standalone&origin=cardTitle#sol=be9fa77e99e557fb93f8e2e627cc65b7eadc34a0",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Robert Half Technology",
         "position": "Product Engineer (AI Native)",
         "date_applied": "2026-05-20",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Robert Half Technology-92196290/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Robert Half Technology-92196290/documents/resume.pdf",
         "job_id": "92196290",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92196290?type=standard&ref=search-standalone&origin=cardTitle#sol=e2b828c54bbcbfd3b86a35bd1ac642bc73f3885c"
+        "url": "https://nz.seek.com/job/92196290?type=standard&ref=search-standalone&origin=cardTitle#sol=e2b828c54bbcbfd3b86a35bd1ac642bc73f3885c",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Canva",
@@ -929,7 +997,7 @@
         "date_applied": "2026-05-20",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Canva-4118815/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Canva-4118815/documents/resume.pdf",
         "job_id": "4118815",
         "source": "wellfound",
         "url": "https://wellfound.com/jobs/4118815-frontend-engineer-product-features",
@@ -939,23 +1007,25 @@
         "company": "Composio",
         "position": "Member of Technical Staff - Product Eng",
         "date_applied": "2026-05-20",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Composio-composio/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Composio-composio/documents/resume.pdf",
         "job_id": "composio-member-of-technical-staff-product-eng",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/composio-member-of-technical-staff-product-eng"
+        "url": "https://weworkremotely.com/remote-jobs/composio-member-of-technical-staff-product-eng",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Chief Rebel",
         "position": "Full Stack Engineer (AI-Forward)",
         "date_applied": "2026-05-20",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Chief Rebel-chiefreb/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Chief Rebel-chiefreb/documents/resume.pdf",
         "job_id": "chief-rebel-full-stack-engineer-ai-forward",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/chief-rebel-full-stack-engineer-ai-forward"
+        "url": "https://weworkremotely.com/remote-jobs/chief-rebel-full-stack-engineer-ai-forward",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "ExpandIQ",
@@ -963,7 +1033,7 @@
         "date_applied": "2026-05-20",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/ExpandIQ-4223430/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/ExpandIQ-4223430/documents/resume.pdf",
         "job_id": "4223430",
         "source": "wellfound",
         "url": "https://wellfound.com/jobs/4223430-ai-developer",
@@ -973,23 +1043,25 @@
         "company": "CodeSignal",
         "position": "Software Engineer, Business Experience",
         "date_applied": "2026-05-20",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/CodeSignal-codesign/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/CodeSignal-codesign/documents/resume.pdf",
         "job_id": "codesignal-software-engineer-business-experience-1",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/codesignal-software-engineer-business-experience-1"
+        "url": "https://weworkremotely.com/remote-jobs/codesignal-software-engineer-business-experience-1",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "GLOBO Language Solutions",
         "position": "AI/ML Engineer",
         "date_applied": "2026-05-20",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/GLOBO Language Solutions-4163045/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/GLOBO Language Solutions-4163045/documents/resume.pdf",
         "job_id": "4163045",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/4163045-ai-ml-engineer"
+        "url": "https://wellfound.com/jobs/4163045-ai-ml-engineer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Sticker Mule",
@@ -997,7 +1069,7 @@
         "date_applied": "2026-05-20",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Sticker Mule-stickerm/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Sticker Mule-stickerm/documents/resume.pdf",
         "job_id": "sticker-mule-software-engineer-3",
         "source": "weworkremotely",
         "url": "https://weworkremotely.com/remote-jobs/sticker-mule-software-engineer-3",
@@ -1007,130 +1079,141 @@
         "company": "Xsolla",
         "position": "Full Stack Developer",
         "date_applied": "2026-05-20",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Xsolla-xsollafu/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Xsolla-xsollafu/documents/resume.pdf",
         "job_id": "xsolla-full-stack-developer",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/xsolla-full-stack-developer"
+        "url": "https://weworkremotely.com/remote-jobs/xsolla-full-stack-developer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "SingleStore",
         "position": "Software Engineer",
         "date_applied": "2026-05-20",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/SingleStore-4231129/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/SingleStore-4231129/documents/resume.pdf",
         "job_id": "4231129",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/4231129-software-engineer"
+        "url": "https://wellfound.com/jobs/4231129-software-engineer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "GLOBO Language Solutions",
         "position": "AI Platform Engineer",
         "date_applied": "2026-05-20",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/GLOBO Language Solutions-3802482/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/GLOBO Language Solutions-3802482/documents/resume.pdf",
         "job_id": "3802482",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/3802482-ai-platform-engineer"
+        "url": "https://wellfound.com/jobs/3802482-ai-platform-engineer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "dresslife",
         "position": "Full Stack Developer",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/dresslife-3289382/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/dresslife-3289382/documents/resume.pdf",
         "job_id": "3289382",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/3289382-full-stack-developer"
+        "url": "https://wellfound.com/jobs/3289382-full-stack-developer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Cyreton",
         "position": "Junior Backend Developer",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Cyreton-4230860/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Cyreton-4230860/documents/resume.pdf",
         "job_id": "4230860",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/4230860-junior-backend-developer"
+        "url": "https://wellfound.com/jobs/4230860-junior-backend-developer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Holywater",
         "position": "Full-Stack Developer",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Holywater-holywate/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Holywater-holywate/documents/resume.pdf",
         "job_id": "holywater-full-stack-developer",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/holywater-full-stack-developer"
+        "url": "https://weworkremotely.com/remote-jobs/holywater-full-stack-developer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Remotely",
         "position": "Full Stack Developer",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Remotely-remotely/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Remotely-remotely/documents/resume.pdf",
         "job_id": "remotely-full-stack-developer",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/remotely-full-stack-developer"
+        "url": "https://weworkremotely.com/remote-jobs/remotely-full-stack-developer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Melotech",
         "position": "Full-Stack Developer",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Melotech-melotech/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Melotech-melotech/documents/resume.pdf",
         "job_id": "melotech-full-stack-developer",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/melotech-full-stack-developer"
+        "url": "https://weworkremotely.com/remote-jobs/melotech-full-stack-developer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Wubble.AI",
         "position": "AI Engineer - AI Platform, Agentic Systems, and Applied Generative AI",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Wubble.AI-4238677/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Wubble.AI-4238677/documents/resume.pdf",
         "job_id": "4238677",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/4238677-ai-engineer-ai-platform-agentic-systems-and-applied-generative-ai"
+        "url": "https://wellfound.com/jobs/4238677-ai-engineer-ai-platform-agentic-systems-and-applied-generative-ai",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Wing Assistant",
         "position": "Full-Stack Developer",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Wing Assistant-wingassi/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Wing Assistant-wingassi/documents/resume.pdf",
         "job_id": "wing-assistant-full-stack-developer",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/wing-assistant-full-stack-developer"
+        "url": "https://weworkremotely.com/remote-jobs/wing-assistant-full-stack-developer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Wubble.AI",
         "position": "AI Inference Engineer",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Wubble.AI-4072457/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Wubble.AI-4072457/documents/resume.pdf",
         "job_id": "4072457",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/4072457-ai-inference-engineer"
+        "url": "https://wellfound.com/jobs/4072457-ai-inference-engineer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Kami",
         "position": "Software Engineer",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "High",
-        "pdf_path": "applications/active/Kami/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Kami/documents/resume.pdf",
         "source": "linkedin",
         "job_id": "4395941390",
         "url": "https://www.linkedin.com/jobs/view/4395941390/",
@@ -1140,9 +1223,9 @@
         "company": "Orion Health",
         "position": "Expression of Interest: Software Engineers (Full Stack, Backend, Frontend)",
         "date_applied": "2026-05-21",
-        "status": "In Progress",
+        "status": "Archived",
         "priority": "Medium",
-        "pdf_path": "applications/active/Orion Health/documents/resume.pdf",
+        "pdf_path": "applications/archive/orphaned/Orion Health/documents/resume.pdf",
         "source": "linkedin",
         "job_id": "4417086156",
         "url": "https://www.linkedin.com/jobs/view/4417086156/",
@@ -1152,23 +1235,25 @@
         "company": "The Warehouse Group",
         "position": "AI Engineer",
         "date_applied": "2026-05-22",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/The Warehouse Group-44164993/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/The Warehouse Group-44164993/documents/resume.pdf",
         "job_id": "4416499343",
         "source": "linkedin",
-        "url": "https://www.linkedin.com/jobs/view/4416499343/?eBP=NON_CHARGEABLE_CHANNEL&refId=Z%2BxKR8js4Hc2Ck9Hka5VVg%3D%3D&trackingId=%2BymS%2B7Jpg9Bsu9pjst3qMQ%3D%3D&trk=flagship3_search_srp_jobs"
+        "url": "https://www.linkedin.com/jobs/view/4416499343/?eBP=NON_CHARGEABLE_CHANNEL&refId=Z%2BxKR8js4Hc2Ck9Hka5VVg%3D%3D&trackingId=%2BymS%2B7Jpg9Bsu9pjst3qMQ%3D%3D&trk=flagship3_search_srp_jobs",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Gambit Recruitment",
         "position": ".NET Software Developer",
         "date_applied": "2026-05-22",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Gambit Recruitment-92238731/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Gambit Recruitment-92238731/documents/resume.pdf",
         "job_id": "92238731",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92238731?type=standard&ref=search-standalone&origin=cardTitle#sol=5fb3f2a47206fc9e4bff126fa74d202fd21d361a"
+        "url": "https://nz.seek.com/job/92238731?type=standard&ref=search-standalone&origin=cardTitle#sol=5fb3f2a47206fc9e4bff126fa74d202fd21d361a",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Air New Zealand",
@@ -1176,7 +1261,7 @@
         "date_applied": "2026-05-22",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Air New Zealand-44164833/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Air New Zealand-44164833/documents/resume.pdf",
         "job_id": "4416483363",
         "source": "linkedin",
         "url": "https://www.linkedin.com/jobs/view/4416483363/?eBP=NON_CHARGEABLE_CHANNEL&refId=Z%2BxKR8js4Hc2Ck9Hka5VVg%3D%3D&trackingId=K7j02HU9lsKlcvLcukcdfg%3D%3D&trk=flagship3_search_srp_jobs",
@@ -1188,7 +1273,7 @@
         "date_applied": "2026-05-22",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Trade Me-92257220/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Trade Me-92257220/documents/resume.pdf",
         "job_id": "92257220",
         "source": "seek",
         "url": "https://nz.seek.com/job/92257220?type=standard&ref=search-standalone&origin=cardTitle#sol=c6b129977fda10a2565e44ec98b876b7e62b9d0d",
@@ -1200,7 +1285,7 @@
         "date_applied": "2026-05-22",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Serato Limited-92184419/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Serato Limited-92184419/documents/resume.pdf",
         "job_id": "92184419",
         "source": "seek",
         "url": "https://nz.seek.com/job/92184419?type=standard&ref=search-standalone&origin=cardTitle#sol=0022c0e5d00d507b1f8ee11d73c28fd9b257c3f3",
@@ -1210,72 +1295,78 @@
         "company": "FE International",
         "position": "Full Stack Developer",
         "date_applied": "2026-05-22",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/FE International-4098591/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/FE International-4098591/documents/resume.pdf",
         "job_id": "4098591",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/4098591-full-stack-developer"
+        "url": "https://wellfound.com/jobs/4098591-full-stack-developer",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "FUJIFILM Business Innovation New Zealand Limited",
         "position": "Intermediate Developer (JavaScript)",
         "date_applied": "2026-05-22",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/FUJIFILM Business Innovation New Zealand Limited-92275796/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/FUJIFILM Business Innovation New Zealand Limited-92275796/documents/resume.pdf",
         "job_id": "92275796",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92275796?type=standard&ref=search-standalone&origin=cardTitle#sol=76324c7b83473c8b665d207b7c8736d3c674ed30"
+        "url": "https://nz.seek.com/job/92275796?type=standard&ref=search-standalone&origin=cardTitle#sol=76324c7b83473c8b665d207b7c8736d3c674ed30",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Signifyd",
         "position": "Software Engineer, Online Decisioning",
         "date_applied": "2026-05-22",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Signifyd-4233938/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Signifyd-4233938/documents/resume.pdf",
         "job_id": "4233938",
         "source": "wellfound",
-        "url": "https://wellfound.com/jobs/4233938-software-engineer-online-decisioning"
+        "url": "https://wellfound.com/jobs/4233938-software-engineer-online-decisioning",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Appetiser",
         "position": "Junior Full-Stack Developer (Laravel and VueJS)",
         "date_applied": "2026-05-23",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Appetiser-appetise/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Appetiser-appetise/documents/resume.pdf",
         "job_id": "appetiser-junior-full-stack-developer-laravel-and-vuejs",
         "source": "weworkremotely",
-        "url": "https://weworkremotely.com/remote-jobs/appetiser-junior-full-stack-developer-laravel-and-vuejs"
+        "url": "https://weworkremotely.com/remote-jobs/appetiser-junior-full-stack-developer-laravel-and-vuejs",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Optimal",
         "position": "Full Stack Product Engineer - Remote (AU/NZ)",
         "date_applied": "2026-05-24",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Optimal/documents/resume.pdf"
+        "pdf_path": "applications/archive/submitted/Optimal/documents/resume.pdf",
+        "submitted_at": "2026-05-25"
       },
       {
         "company": "Momentum Consulting Group",
         "position": "Full-Stack Developer",
         "date_applied": "2026-05-25",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Momentum Consulting Group-91857484/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Momentum Consulting Group-91857484/documents/resume.pdf",
         "job_id": "91857484",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91857484?type=standard&ref=search-standalone&origin=cardTitle#sol=34afd4f47f9ce4f169136c44db67938619bb21ec"
+        "url": "https://nz.seek.com/job/91857484?type=standard&ref=search-standalone&origin=cardTitle#sol=34afd4f47f9ce4f169136c44db67938619bb21ec",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Pushpay (New Zealand) Limited",
         "position": "Intermediate Software Engineer",
         "date_applied": "2026-05-25",
-        "status": "Submitted",
+        "status": "Rejected",
         "priority": "Medium",
-        "pdf_path": "applications/active/Pushpay New Zealand Limited-91964833/documents/resume.pdf",
+        "pdf_path": "applications/archive/rejected/Pushpay New Zealand Limited-91964833/documents/resume.pdf",
         "job_id": "91964833",
         "source": "seek",
         "url": "https://nz.seek.com/job/91964833?type=standard&ref=search-standalone&origin=cardTitle#sol=006bced6fb9b9f687dd8506e83db7e406fd5631b",
@@ -1297,23 +1388,25 @@
         "company": "Sidekicker",
         "position": "Software Engineer",
         "date_applied": "2026-05-25",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Sidekicker-91800134/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Sidekicker-91800134/documents/resume.pdf",
         "job_id": "91800134",
         "source": "seek",
-        "url": "https://au.seek.com/job/91800134?type=standard&ref=search-standalone&origin=cardTitle#sol=cacef3eb8ff44ffc988124911d36946cd5db8b87"
+        "url": "https://au.seek.com/job/91800134?type=standard&ref=search-standalone&origin=cardTitle#sol=cacef3eb8ff44ffc988124911d36946cd5db8b87",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Digital Bakery",
         "position": "Full Stack Developer (React/TS/Next.js/Sanity)",
         "date_applied": "2026-05-25",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Digital Bakery-1393881/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Digital Bakery-1393881/documents/resume.pdf",
         "job_id": "1393881",
         "source": "manual",
-        "url": "https://www.digitalbakery.co.nz/job/full-stack-developer-react-slash-ts-slash-next-dot-js-slash-sanity-669794?source=google.com"
+        "url": "https://www.digitalbakery.co.nz/job/full-stack-developer-react-slash-ts-slash-next-dot-js-slash-sanity-669794?source=google.com",
+        "submitted_at": "2026-05-25"
       },
       {
         "company": "Vista",
@@ -1321,7 +1414,7 @@
         "date_applied": "2026-05-25",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Vista/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Vista/documents/resume.pdf",
         "source": "linkedin",
         "job_id": "4418922939",
         "url": "https://www.linkedin.com/jobs/view/4418922939/?eBP=NOT_ELIGIBLE_FOR_CHARGING",
@@ -1343,23 +1436,25 @@
         "company": "Enterprise Technology Recruitment Ltd",
         "position": "Software Migration Engineer / Remote option in Auckland",
         "date_applied": "2026-05-26",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Enterprise Technology Recruitment Ltd-92311524/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Enterprise Technology Recruitment Ltd-92311524/documents/resume.pdf",
         "job_id": "92311524",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92311524?type=standard&ref=search-standalone&origin=cardTitle#sol=f2a31a65da2f6f143cfd497f929273eda7a2200b"
+        "url": "https://nz.seek.com/job/92311524?type=standard&ref=search-standalone&origin=cardTitle#sol=f2a31a65da2f6f143cfd497f929273eda7a2200b",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Enterprise Technology Recruitment Ltd",
         "position": "Ruby on Rails Developer | Global SaaS Product | Remote option",
         "date_applied": "2026-05-26",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Enterprise Technology Recruitment Ltd-92324485/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Enterprise Technology Recruitment Ltd-92324485/documents/resume.pdf",
         "job_id": "92324485",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92324485?type=standard&ref=search-standalone&origin=cardTitle#sol=2ea44161e9a02540f467278c07028060e2f2296c"
+        "url": "https://nz.seek.com/job/92324485?type=standard&ref=search-standalone&origin=cardTitle#sol=2ea44161e9a02540f467278c07028060e2f2296c",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Plexure",
@@ -1367,7 +1462,7 @@
         "date_applied": "2026-05-26",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Plexure/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Plexure/documents/resume.pdf",
         "job_id": "92129004",
         "source": "seek",
         "url": "https://nz.seek.com/job/92129004?token=1~3bb05ea0-de58-4b4c-8d24-618a1f839689&ref=post-apply-recs",
@@ -1379,7 +1474,7 @@
         "date_applied": "2026-05-26",
         "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Momentum Clinical Research/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Momentum Clinical Research/documents/resume.pdf",
         "job_id": "91880862",
         "source": "seek",
         "url": "https://nz.seek.com/job/91880862?token=1~3bb05ea0-de58-4b4c-8d24-618a1f839689&ref=post-apply-recs",
@@ -1401,36 +1496,39 @@
         "company": "Talinger Ltd",
         "position": "Full Stack Developer - Java",
         "date_applied": "2026-05-26",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Talinger Ltd/documents/resume.pdf"
+        "pdf_path": "applications/archive/submitted/Talinger Ltd/documents/resume.pdf",
+        "submitted_at": "2026-05-28"
       },
       {
         "company": "Ray White Mt Eden",
         "position": "AI/Workflow Automation Assistant",
         "date_applied": "2026-05-26",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Ray White Mt Eden/documents/resume.pdf"
+        "pdf_path": "applications/archive/submitted/Ray White Mt Eden/documents/resume.pdf",
+        "submitted_at": "2026-05-28"
       },
       {
         "company": "Vista Group",
         "position": "Graduate Test Engineer",
         "date_applied": "2026-05-26",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Vista Group/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Vista Group/documents/resume.pdf",
         "job_id": "diWA8Gx1X5oH8cMCx5s9tf",
         "source": "workable",
-        "url": "https://jobs.workable.com/view/diWA8Gx1X5oH8cMCx5s9tf/hybrid-graduate-test-engineer-in-auckland-at-vista-group"
+        "url": "https://jobs.workable.com/view/diWA8Gx1X5oH8cMCx5s9tf/hybrid-graduate-test-engineer-in-auckland-at-vista-group",
+        "submitted_at": "2026-05-28"
       },
       {
         "company": "Fundsorter",
         "position": "Junior-Intermediate Software Developer",
         "date_applied": "2026-05-26",
-        "status": "In Progress",
+        "status": "Archived",
         "priority": "High",
-        "pdf_path": "applications/active/Fundsorter/documents/resume.pdf"
+        "pdf_path": "applications/archive/orphaned/Fundsorter/documents/resume.pdf"
       },
       {
         "company": "DataAnnotation",
@@ -1700,12 +1798,13 @@
         "company": "Kepla",
         "position": "Intermediate Full Stack Developer Role",
         "date_applied": "2026-05-27",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Kepla-91876139/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Kepla-91876139/documents/resume.pdf",
         "job_id": "91876139",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91876139?type=standard&ref=search-standalone&origin=cardTitle#sol=d595f672273867375fb83287d31ef77fe234615a"
+        "url": "https://nz.seek.com/job/91876139?type=standard&ref=search-standalone&origin=cardTitle#sol=d595f672273867375fb83287d31ef77fe234615a",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "DataAnnotation",
@@ -1722,12 +1821,13 @@
         "company": "Cupla",
         "position": "Full Stack Engineer Contracting Role (Part Time)",
         "date_applied": "2026-05-27",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Cupla-92242094/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Cupla-92242094/documents/resume.pdf",
         "job_id": "92242094",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92242094?type=standard&ref=search-standalone&origin=cardTitle#sol=4f8ef43f681ae175105c81d6c5440f623efa1d27"
+        "url": "https://nz.seek.com/job/92242094?type=standard&ref=search-standalone&origin=cardTitle#sol=4f8ef43f681ae175105c81d6c5440f623efa1d27",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Crescent Consulting",
@@ -1745,34 +1845,37 @@
         "company": "Crescent Consulting",
         "position": "Full Stack Developer - Remote anywhere in NZ",
         "date_applied": "2026-05-27",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Crescent Consulting-91802386/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Crescent Consulting-91802386/documents/resume.pdf",
         "job_id": "91802386",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91802386?type=standard&ref=search-standalone&origin=cardTitle#sol=ad7f21ba2668a9bbda453644e384e337c99822b3"
+        "url": "https://nz.seek.com/job/91802386?type=standard&ref=search-standalone&origin=cardTitle#sol=ad7f21ba2668a9bbda453644e384e337c99822b3",
+        "submitted_at": "2026-05-29"
       },
       {
         "company": "Crescent Consulting",
         "position": "Full Stack Developer - Remote anywhere in NZ",
         "date_applied": "2026-05-27",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Crescent Consulting-91802314/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Crescent Consulting-91802314/documents/resume.pdf",
         "job_id": "91802314",
         "source": "seek",
-        "url": "https://nz.seek.com/job/91802314?type=standard&ref=search-standalone&origin=cardTitle#sol=37474a1f8174ebde591dc798ecf93bc3cb91ce98"
+        "url": "https://nz.seek.com/job/91802314?type=standard&ref=search-standalone&origin=cardTitle#sol=37474a1f8174ebde591dc798ecf93bc3cb91ce98",
+        "submitted_at": "2026-05-29"
       },
       {
         "company": "Henry Schein One NZ",
         "position": "Intermediate Developer",
         "date_applied": "2026-05-27",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Henry Schein One NZ-92360215/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Henry Schein One NZ-92360215/documents/resume.pdf",
         "job_id": "92360215",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92360215?type=standard&ref=search-standalone&origin=cardTitle#sol=635513b479710ea10c395120122932654b8280ef"
+        "url": "https://nz.seek.com/job/92360215?type=standard&ref=search-standalone&origin=cardTitle#sol=635513b479710ea10c395120122932654b8280ef",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "DataAnnotation",
@@ -1831,7 +1934,7 @@
       },
       {
         "company": "Twine",
-        "position": "Remote Web Developer \u2013 WordPress",
+        "position": "Remote Web Developer – WordPress",
         "date_applied": "2026-05-27",
         "status": "In Progress",
         "priority": "Medium",
@@ -1844,20 +1947,21 @@
         "company": "Robert Half Technology",
         "position": "Full Stack PHP Developer",
         "date_applied": "2026-05-28",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Robert Half Technology-92373718/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Robert Half Technology-92373718/documents/resume.pdf",
         "job_id": "92373718",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92373718?type=standard&ref=search-standalone&origin=cardTitle#sol=49396e23003045b94e4e2e6b5104b0b78164d709"
+        "url": "https://nz.seek.com/job/92373718?type=standard&ref=search-standalone&origin=cardTitle#sol=49396e23003045b94e4e2e6b5104b0b78164d709",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Fortech Engineering",
         "position": "Full Stack Software Engineer",
         "date_applied": "2026-05-28",
-        "status": "In Progress",
+        "status": "Archived",
         "priority": "Medium",
-        "pdf_path": "applications/active/Fortech Engineering-may2026c/documents/resume.pdf",
+        "pdf_path": "applications/archive/orphaned/Fortech Engineering-may2026c/documents/resume.pdf",
         "job_id": "may-2026-c3414804f3",
         "source": "hnhiring",
         "url": "https://fortecheng.com/careers"
@@ -1866,9 +1970,9 @@
         "company": "Enveritas (YC S18, non-profit)",
         "position": "Backend Software Engineer",
         "date_applied": "2026-05-28",
-        "status": "In Progress",
+        "status": "Archived",
         "priority": "Medium",
-        "pdf_path": "applications/active/Enveritas YC S18 non-profit-may20267/documents/resume.pdf",
+        "pdf_path": "applications/archive/orphaned/Enveritas YC S18 non-profit-may20267/documents/resume.pdf",
         "job_id": "may-2026-7a256aa424",
         "source": "hnhiring",
         "url": "https://enveritas.org/jobs/backend-software-eng/#10d7adef8us"
@@ -1877,9 +1981,9 @@
         "company": "Tether",
         "position": "Backend Engineer - Wallets",
         "date_applied": "2026-05-28",
-        "status": "In Progress",
+        "status": "Archived",
         "priority": "Medium",
-        "pdf_path": "applications/active/Tether-may20264/documents/resume.pdf",
+        "pdf_path": "applications/archive/orphaned/Tether-may20264/documents/resume.pdf",
         "job_id": "may-2026-4933376b10",
         "source": "hnhiring",
         "url": "https://careers.tether.io/o/backend-engineer-wallets-100-remote"
@@ -1888,9 +1992,9 @@
         "company": "vvd",
         "position": "Design Engineer",
         "date_applied": "2026-05-28",
-        "status": "In Progress",
+        "status": "Archived",
         "priority": "Medium",
-        "pdf_path": "applications/active/vvd-may2026c/documents/resume.pdf",
+        "pdf_path": "applications/archive/orphaned/vvd-may2026c/documents/resume.pdf",
         "job_id": "may-2026-c142e8df56",
         "source": "hnhiring",
         "url": "https://apply.workable.com/vvd/j/43FDC8C9AA/"
@@ -1899,9 +2003,9 @@
         "company": "MemberPress",
         "position": "AI Engineer",
         "date_applied": "2026-05-28",
-        "status": "In Progress",
+        "status": "Archived",
         "priority": "Medium",
-        "pdf_path": "applications/active/MemberPress-may2026b/documents/resume.pdf",
+        "pdf_path": "applications/archive/orphaned/MemberPress-may2026b/documents/resume.pdf",
         "job_id": "may-2026-b2e58af874",
         "source": "hnhiring",
         "url": "https://memberpress.com/careers/ai-engineer-full-time/"
@@ -1910,9 +2014,9 @@
         "company": "Crossing Hurdles",
         "position": "Software Developer | Remote",
         "date_applied": "2026-05-29",
-        "status": "In Progress",
+        "status": "Archived",
         "priority": "Medium",
-        "pdf_path": "applications/active/Crossing Hurdles-44138509/documents/resume.pdf",
+        "pdf_path": "applications/archive/orphaned/Crossing Hurdles-44138509/documents/resume.pdf",
         "job_id": "4413850991",
         "source": "linkedin",
         "url": "https://nz.linkedin.com/jobs/view/software-developer-remote-at-crossing-hurdles-4413850991?position=3&pageNum=0&refId=MsN4DYbjHK7N84Z%2B8DCa9w%3D%3D&trackingId=KU2ufOU3W%2FvLQOVGVKkMuw%3D%3D"
@@ -1921,53 +2025,130 @@
         "company": "Sunstone Talent",
         "position": "Java Fullstack AI Engineer / Developer (LLMs / RAG / MCP)",
         "date_applied": "2026-05-29",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Sunstone Talent-92410105/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Sunstone Talent-92410105/documents/resume.pdf",
         "job_id": "92410105",
         "source": "seek",
-        "url": "https://nz.seek.com/job/92410105?type=standard&ref=search-standalone&origin=cardTitle#sol=6337d54215ae9e72fbbaee077c956db356a3bcce"
+        "url": "https://nz.seek.com/job/92410105?type=standard&ref=search-standalone&origin=cardTitle#sol=6337d54215ae9e72fbbaee077c956db356a3bcce",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Supportwave",
         "position": "AI Software Developer",
         "date_applied": "2026-05-29",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Supportwave/documents/resume.pdf",
+        "pdf_path": "applications/archive/skipped/Supportwave/documents/resume.pdf",
         "source": "supportwave",
         "job_id": "9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2",
-        "url": "https://portal.supportwave.com/flex/job/apply/9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2?s=LinkedIn"
+        "url": "https://portal.supportwave.com/flex/job/apply/9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2?s=LinkedIn",
+        "skipped_at": "2026-06-05"
       },
       {
         "company": "Atlasopen",
         "position": "Software and AI Engineer",
         "date_applied": "2026-05-31",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/Atlasopen-92426576/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/Atlasopen-92426576/documents/resume.pdf",
         "job_id": "92426576",
         "source": "seek",
-        "url": "https://au.seek.com/job/92426576?type=standard&ref=search-standalone&origin=cardTitle#sol=612b3126c8da401767bcbb3c5e4d243da8db0389"
+        "url": "https://au.seek.com/job/92426576?type=standard&ref=search-standalone&origin=cardTitle#sol=612b3126c8da401767bcbb3c5e4d243da8db0389",
+        "submitted_at": "2026-06-05"
       },
       {
         "company": "OpenAgent",
         "position": "Junior Software Engineer - Remote",
         "date_applied": "2026-06-01",
-        "status": "In Progress",
+        "status": "Submitted",
         "priority": "Medium",
-        "pdf_path": "applications/active/OpenAgent-92435341/documents/resume.pdf",
+        "pdf_path": "applications/archive/submitted/OpenAgent-92435341/documents/resume.pdf",
         "job_id": "92435341",
         "source": "seek",
-        "url": "https://au.seek.com/job/92435341?type=promoted&ref=search-standalone&origin=cardTitle#sol=d44504c3310894df411ae5f882fc4f0dcac8cafe"
+        "url": "https://au.seek.com/job/92435341?type=promoted&ref=search-standalone&origin=cardTitle#sol=d44504c3310894df411ae5f882fc4f0dcac8cafe",
+        "submitted_at": "2026-06-05"
       },
       {
         "company": "Narrative",
         "position": "Expression of Interest - Software Engineer",
         "date_applied": "2026-06-02",
-        "status": "In Progress",
+        "status": "Skipped",
         "priority": "Medium",
-        "pdf_path": "applications/active/Narrative/documents/resume.pdf"
+        "pdf_path": "applications/archive/skipped/Narrative/documents/resume.pdf",
+        "skipped_at": "2026-06-05"
+      },
+      {
+        "company": "First Table",
+        "position": "Growth Engineer",
+        "date_applied": "2026-06-05",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/First Table-92539577/documents/resume.pdf",
+        "job_id": "92539577",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92539577?type=standard&ref=search-standalone&origin=cardTitle#sol=a71866289a071b845f20435d2e63927eb4190587",
+        "submitted_at": "2026-06-05"
+      },
+      {
+        "company": "First Table",
+        "position": "Growth Engineer",
+        "date_applied": "2026-06-05",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/First Table-31gwje5i/documents/resume.pdf",
+        "job_id": "31gwje5id63tzu5o",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/31gwje5id63tzu5o",
+        "submitted_at": "2026-06-05"
+      },
+      {
+        "company": "Sandfield",
+        "position": "Full stack Software Developer - Intermediate",
+        "date_applied": "2026-06-05",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Sandfield-44235839/documents/resume.pdf",
+        "job_id": "4423583964",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4423583964/?eBP=NON_CHARGEABLE_CHANNEL&refId=Myehgatamj2IXdPJ1XrV0Q%3D%3D&trackingId=u%2Fhg8GJ56RWj%2FLpLvrJUKg%3D%3D&trk=flagship3_search_srp_jobs",
+        "skipped_at": "2026-06-05"
+      },
+      {
+        "company": "Sandfield Associates",
+        "position": "Full stack Software Developer - Intermediate",
+        "date_applied": "2026-06-05",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Sandfield Associates-92530699/documents/resume.pdf",
+        "job_id": "92530699",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92530699?type=standard&ref=search-standalone&origin=cardTitle#sol=8ece2e0adee7cc49723f0a85f9b93522abcbe7b8",
+        "skipped_at": "2026-06-05"
+      },
+      {
+        "company": "HR Connect Limited",
+        "position": "Software Developer (Junior – Intermediate)",
+        "date_applied": "2026-06-05",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/HR Connect Limited-92500537/documents/resume.pdf",
+        "job_id": "92500537",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92500537?type=standard&ref=search-standalone&origin=cardTitle#sol=9f04875655c2b2aae1e3b5558e3c65544e580b6f",
+        "skipped_at": "2026-06-05"
+      },
+      {
+        "company": "Traffic Safe New Zealand Ltd",
+        "position": "Full-Stack Software Development Engineer",
+        "date_applied": "2026-06-05",
+        "status": "Skipped",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/skipped/Traffic Safe New Zealand Ltd-92500440/documents/resume.pdf",
+        "job_id": "92500440",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92500440?type=standard&ref=search-standalone&origin=cardTitle#sol=cf1a9a7834b8b39cba2036163efab41be871167e",
+        "skipped_at": "2026-06-05"
       }
     ],
     "interviews": [],
@@ -2113,7 +2294,7 @@
       },
       {
         "company": "Private Advertiser",
-        "position": "AI Expert \u2013 Trading Systems & Agent Development",
+        "position": "AI Expert – Trading Systems & Agent Development",
         "date_applied": "2026-05-22",
         "status": "Rejected",
         "priority": "Medium",
@@ -2170,6 +2351,11 @@
   "skipped": [
     {
       "kind": "manual",
+      "company_lc": "abc",
+      "position_lc": "software engineer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "agtecnic",
       "position_lc": "software engineer - image processing"
     },
@@ -2201,7 +2387,7 @@
     {
       "kind": "manual",
       "company_lc": "blackpepper",
-      "position_lc": "intermediate front end developer \u2013 shopify"
+      "position_lc": "intermediate front end developer – shopify"
     },
     {
       "kind": "manual",
@@ -2222,6 +2408,11 @@
       "kind": "manual",
       "company_lc": "caruso software limited",
       "position_lc": "software engineer (agentic)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "catalyst.net limited",
+      "position_lc": "full stack developer"
     },
     {
       "kind": "manual",
@@ -2262,6 +2453,26 @@
       "kind": "manual",
       "company_lc": "contact energy",
       "position_lc": "software engineer graduate programme 2027"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "crescent consulting",
+      "position_lc": "front end developer (angular)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "crossing hurdles",
+      "position_lc": "full-stack software engineer | remote"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "crossing hurdles",
+      "position_lc": "software developer | remote"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "crossing hurdles",
+      "position_lc": "software engineer | remote"
     },
     {
       "kind": "manual",
@@ -2310,8 +2521,13 @@
     },
     {
       "kind": "manual",
+      "company_lc": "eqland technology",
+      "position_lc": "frontend engineer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "esri",
-      "position_lc": "product engineer ii \u2013 web services"
+      "position_lc": "product engineer ii – web services"
     },
     {
       "kind": "manual",
@@ -2327,6 +2543,16 @@
       "kind": "manual",
       "company_lc": "expertech",
       "position_lc": "quantitative software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "fdm group australia",
+      "position_lc": "software engineering graduate program (start asap)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "fdm group new zealand",
+      "position_lc": "junior software engineering graduate program │insurance & financial services (rolling intake)"
     },
     {
       "kind": "manual",
@@ -2390,6 +2616,11 @@
     },
     {
       "kind": "manual",
+      "company_lc": "hr connect limited",
+      "position_lc": "software developer (junior – intermediate)"
+    },
+    {
+      "kind": "manual",
       "company_lc": "hubcore consulting limited",
       "position_lc": "software engineer"
     },
@@ -2401,12 +2632,17 @@
     {
       "kind": "manual",
       "company_lc": "ictx",
-      "position_lc": "software engineer \u2013 .net, sql & bi"
+      "position_lc": "software engineer – .net, sql & bi"
     },
     {
       "kind": "manual",
       "company_lc": "impiricus",
       "position_lc": "software engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "karbon",
+      "position_lc": "associate ai engineer"
     },
     {
       "kind": "manual",
@@ -2435,6 +2671,11 @@
     },
     {
       "kind": "manual",
+      "company_lc": "mark my words",
+      "position_lc": "backend engineer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "melotech",
       "position_lc": "full-stack developer"
     },
@@ -2445,6 +2686,16 @@
     },
     {
       "kind": "manual",
+      "company_lc": "micro1",
+      "position_lc": "front-end developer (typescript)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "microsoft",
+      "position_lc": "software engineer 2 - azure client tools"
+    },
+    {
+      "kind": "manual",
       "company_lc": "mjh life sciences",
       "position_lc": "associate product engineer"
     },
@@ -2452,6 +2703,21 @@
       "kind": "manual",
       "company_lc": "momentum consulting group",
       "position_lc": "full-stack developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "myshell",
+      "position_lc": "ai backend engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "myshell",
+      "position_lc": "frontend engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "narrative",
+      "position_lc": "expression of interest - software engineer"
     },
     {
       "kind": "manual",
@@ -2520,6 +2786,11 @@
     },
     {
       "kind": "manual",
+      "company_lc": "prospend pty ltd",
+      "position_lc": "junior full stack developer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "recruit i.t. auckland",
       "position_lc": "full stack python developer"
     },
@@ -2540,8 +2811,23 @@
     },
     {
       "kind": "manual",
+      "company_lc": "sandfield associates",
+      "position_lc": "full stack software developer - intermediate"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "sandfield",
+      "position_lc": "full stack software developer - intermediate"
+    },
+    {
+      "kind": "manual",
       "company_lc": "sandfield",
       "position_lc": "web developer - ux/ui design specialist"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "sfn ai",
+      "position_lc": "frontend engineer (full-stack track)"
     },
     {
       "kind": "manual",
@@ -2566,11 +2852,21 @@
     {
       "kind": "manual",
       "company_lc": "sunstone talent",
+      "position_lc": "java fullstack ai engineer / developer (llms / rag / mcp)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "sunstone talent",
       "position_lc": "junior full stack web engineer (react / python / go)"
     },
     {
       "kind": "manual",
-      "company_lc": "talent army \u2013 winner of medium recruitment agency of the year 2025",
+      "company_lc": "supportwave",
+      "position_lc": "ai software developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "talent army – winner of medium recruitment agency of the year 2025",
       "position_lc": "devops engineer (aws & azure)"
     },
     {
@@ -2605,6 +2901,16 @@
     },
     {
       "kind": "manual",
+      "company_lc": "traffic safe new zealand ltd",
+      "position_lc": "full-stack software development engineer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "trihydro corporation",
+      "position_lc": "software developer intern"
+    },
+    {
+      "kind": "manual",
       "company_lc": "university of wisconsin-madison",
       "position_lc": "student web developer"
     },
@@ -2612,6 +2918,11 @@
       "kind": "manual",
       "company_lc": "virtuozzo",
       "position_lc": "intern in frontend team"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "vista group",
+      "position_lc": "graduate software engineer (start asap)"
     },
     {
       "kind": "manual",
@@ -2654,6 +2965,11 @@
       "position_lc": "full stack developer"
     },
     {
+      "kind": "manual",
+      "company_lc": "younity",
+      "position_lc": "software developer (bne)"
+    },
+    {
       "kind": "board",
       "source": "hiringcafe",
       "job_id": "0vhhi79ce0lb4iwv"
@@ -2672,6 +2988,21 @@
       "kind": "board",
       "source": "workingnomads",
       "job_id": "1568802"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "2416798"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3215333"
+    },
+    {
+      "kind": "board",
+      "source": "wellfound",
+      "job_id": "3223008"
     },
     {
       "kind": "board",
@@ -2725,6 +3056,11 @@
     },
     {
       "kind": "board",
+      "source": "wellfound",
+      "job_id": "4289792"
+    },
+    {
+      "kind": "board",
       "source": "linkedin",
       "job_id": "4357612535"
     },
@@ -2741,12 +3077,32 @@
     {
       "kind": "board",
       "source": "linkedin",
+      "job_id": "4412748282"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
       "job_id": "4416499343"
     },
     {
       "kind": "board",
       "source": "linkedin",
       "job_id": "4417086156"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4422306922"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4422811689"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4423583964"
     },
     {
       "kind": "board",
@@ -2851,6 +3207,11 @@
     {
       "kind": "board",
       "source": "seek",
+      "job_id": "91982922"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
       "job_id": "91989874"
     },
     {
@@ -2881,6 +3242,11 @@
     {
       "kind": "board",
       "source": "seek",
+      "job_id": "92044871"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
       "job_id": "92045195"
     },
     {
@@ -2906,7 +3272,17 @@
     {
       "kind": "board",
       "source": "seek",
+      "job_id": "92109335"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
       "job_id": "92123540"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92132138"
     },
     {
       "kind": "board",
@@ -2946,6 +3322,11 @@
     {
       "kind": "board",
       "source": "seek",
+      "job_id": "92300256"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
       "job_id": "92311524"
     },
     {
@@ -2962,6 +3343,41 @@
       "kind": "board",
       "source": "seek",
       "job_id": "92373718"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92410105"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92458213"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92461845"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92473777"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92500440"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92500537"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92530699"
     },
     {
       "kind": "board",
@@ -3030,6 +3446,11 @@
     },
     {
       "kind": "board",
+      "source": "prosple",
+      "job_id": "graduate-software-engineer"
+    },
+    {
+      "kind": "board",
       "source": "hiringcafe",
       "job_id": "h4ntl5kxvh4ox8xh"
     },
@@ -3042,6 +3463,16 @@
       "kind": "board",
       "source": "hiringcafe",
       "job_id": "igbeoftdylcq642z"
+    },
+    {
+      "kind": "board",
+      "source": "prosple",
+      "job_id": "junior-software-engineering-graduate-program-insurance-financial-services"
+    },
+    {
+      "kind": "board",
+      "source": "hiringcafe",
+      "job_id": "k5k6nn04d5k34274"
     },
     {
       "kind": "board",
@@ -3072,6 +3503,11 @@
       "kind": "board",
       "source": "weworkremotely",
       "job_id": "remotely-full-stack-developer"
+    },
+    {
+      "kind": "board",
+      "source": "prosple",
+      "job_id": "software-engineering-graduate-program-1"
     },
     {
       "kind": "board",

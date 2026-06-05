@@ -6,21 +6,10 @@
 
 ## To Apply
 
-- [ ] **Software Developer | Remote** @ Crossing Hurdles (score: 72) · [JD](./active/Crossing Hurdles-44138509/research/job-description.md) · [CV](./active/Crossing Hurdles-44138509/documents/resume.pdf) · [Letter](./active/Crossing Hurdles-44138509/documents/cover-letter.md) · [Apply ↗](https://nz.linkedin.com/jobs/view/software-developer-remote-at-crossing-hurdles-4413850991?position=3&pageNum=0&refId=MsN4DYbjHK7N84Z%2B8DCa9w%3D%3D&trackingId=KU2ufOU3W%2FvLQOVGVKkMuw%3D%3D)
-
-- [ ] **Java Fullstack AI Engineer / Developer (LLMs / RAG / MCP)** @ Sunstone Talent (score: 82) · [JD](./active/Sunstone Talent-92410105/research/job-description.md) · [CV](./active/Sunstone Talent-92410105/documents/resume.pdf) · [Letter](./active/Sunstone Talent-92410105/documents/cover-letter.md) · [Apply ↗](https://nz.seek.com/job/92410105?type=standard&ref=search-standalone&origin=cardTitle#sol=6337d54215ae9e72fbbaee077c956db356a3bcce)
-
-- [ ] **AI Software Developer** @ Supportwave (manual package; exact score: 50, adjacent AI-agent fit) · [JD](./active/Supportwave/research/job-description.md) · [CV](./active/Supportwave/documents/resume.pdf) · [Letter](./active/Supportwave/documents/cover-letter.md) · [Apply ↗](https://portal.supportwave.com/flex/job/apply/9bc6fbb6-a2ce-4b11-8341-18d21b97a5a2?s=LinkedIn)
-
-- [ ] **Software and AI Engineer** @ Atlasopen (score: 88) · [JD](./active/Atlasopen-92426576/research/job-description.md) · [CV](./active/Atlasopen-92426576/documents/resume.pdf) · [Letter](./active/Atlasopen-92426576/documents/cover-letter.md) · [Apply ↗](https://au.seek.com/job/92426576?type=standard&ref=search-standalone&origin=cardTitle#sol=612b3126c8da401767bcbb3c5e4d243da8db0389)
-
-- [ ] **Junior Software Engineer - Remote** @ OpenAgent (score: 97) · [JD](./active/OpenAgent-92435341/research/job-description.md) · [CV](./active/OpenAgent-92435341/documents/resume.pdf) · [Letter](./active/OpenAgent-92435341/documents/cover-letter.md) · [Apply ↗](https://au.seek.com/job/92435341?type=promoted&ref=search-standalone&origin=cardTitle#sol=d44504c3310894df411ae5f882fc4f0dcac8cafe)
-
-- [ ] **Expression of Interest - Software Engineer** @ Narrative (manual package) · [JD](./active/Narrative/research/job-description.md) · [CV](./active/Narrative/documents/resume.pdf) · [Letter](./active/Narrative/documents/cover-letter.md) · [Apply ↗](https://narrative.so/careers/narrative-expression-of-interest-software-engineer)
 
 ## Applied
 
-- **Mobile Engineer (iOS)** @ Air New Zealand — applied 2026-05-15 · [JD](./archive/submitted/Air New Zealand/research/job-description.md) · [CV](./archive/submitted/Air New Zealand/documents/resume.pdf) · [Letter](./archive/submitted/Air New Zealand/documents/cover-letter.md) · [Cold Email](./archive/submitted/Air New Zealand/documents/cold-email.md) · [Apply ↗](https://hiring.cafe/viewjob/j1pltcbhoatmth9n)
+- **Mobile Engineer (iOS)** @ Air New Zealand — rejected 2026-06-02 (applied 2026-05-15) · [JD](./archive/rejected/Air New Zealand/research/job-description.md) · [CV](./archive/rejected/Air New Zealand/documents/resume.pdf) · [Letter](./archive/rejected/Air New Zealand/documents/cover-letter.md) · [Cold Email](./archive/rejected/Air New Zealand/documents/cold-email.md) · [Apply ↗](https://hiring.cafe/viewjob/j1pltcbhoatmth9n)
   - [ ] Cold email sent: 2026-05-15 → follow up on: 2026-05-22 · [Template](../templates/cold-email.md)
 
 - **Software Engineer** @ Alchemy Consulting — applied 2026-05-15 · [JD](./archive/submitted/Alchemy Consulting/research/job-description.md) · [CV](./archive/submitted/Alchemy Consulting/documents/resume.pdf) · [Letter](./archive/submitted/Alchemy Consulting/documents/cover-letter.md) · [Cold Email](./archive/submitted/Alchemy Consulting/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92102688?type=standard&ref=search-standalone#sol=b321e4793a68027c26d5ef52d02508147f00b278)
@@ -94,7 +83,7 @@
 - **Full Stack Product Engineer - Remote (AU/NZ)** @ Optimal — applied 2026-05-25 · [JD](./archive/submitted/Optimal-44174564/research/job-description.md) · [CV](./archive/submitted/Optimal-44174564/documents/resume.pdf) · [Letter](./archive/submitted/Optimal-44174564/documents/cover-letter.md) · [Cold Email](./archive/submitted/Optimal-44174564/documents/cold-email.md) · [Apply ↗](https://www.linkedin.com/jobs/view/4417456474/?eBP=BUDGET_EXHAUSTED_JOB)
   - [ ] Cold email sent: 2026-05-25 → follow up on: 2026-06-01 · [Template](../templates/cold-email.md)
 
-- **Intermediate Software Engineer** @ Pushpay — applied 2026-05-25 · [JD](./archive/submitted/Pushpay-91964833/research/job-description.md) · [CV](./archive/submitted/Pushpay-91964833/documents/resume.pdf) · [Letter](./archive/submitted/Pushpay-91964833/documents/cover-letter.md) · [Cold Email](./archive/submitted/Pushpay-91964833/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/91964833?type=standard&ref=search-standalone&origin=cardTitle#sol=006bced6fb9b9f687dd8506e83db7e406fd5631b)
+- **Intermediate Software Engineer** @ Pushpay — rejected 2026-06-02 (applied 2026-05-25) · [JD](./archive/rejected/Pushpay New Zealand Limited-91964833/research/job-description.md) · [CV](./archive/rejected/Pushpay New Zealand Limited-91964833/documents/resume.pdf) · [Letter](./archive/rejected/Pushpay New Zealand Limited-91964833/documents/cover-letter.md) · [Cold Email](./archive/rejected/Pushpay New Zealand Limited-91964833/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/91964833?type=standard&ref=search-standalone&origin=cardTitle#sol=006bced6fb9b9f687dd8506e83db7e406fd5631b)
   - [ ] Cold email sent: 2026-05-25 → follow up on: 2026-06-01 · [Template](../templates/cold-email.md)
 
 - **Full Stack Software Engineer** @ ebet Gaming System — applied 2026-05-25 · [JD](./archive/submitted/ebet Gaming System-91757205/research/job-description.md) · [CV](./archive/submitted/ebet Gaming System-91757205/documents/resume.pdf) · [Letter](./archive/submitted/ebet Gaming System-91757205/documents/cover-letter.md) · [Cold Email](./archive/submitted/ebet Gaming System-91757205/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/91757205?type=standard&ref=search-standalone&origin=cardTitle#sol=d4144dc4d996c7f60bba143b84ec2ff8d0900738)
@@ -143,3 +132,41 @@
 
 - **Full Stack Developer - Remote anywhere in NZ** @ Crescent Consulting — applied 2026-05-29 · [JD](./archive/submitted/Crescent Consulting-91802574/research/job-description.md) · [CV](./archive/submitted/Crescent Consulting-91802574/documents/resume.pdf) · [Letter](./archive/submitted/Crescent Consulting-91802574/documents/cover-letter.md) · [Cold Email](./archive/submitted/Crescent Consulting-91802574/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/91802574?type=standard&ref=search-standalone&origin=cardTitle#sol=c62efc2d43e229a85133a3ef050630000bdf747d)
   - [ ] Cold email sent: 2026-05-29 → follow up on: 2026-06-05 · [Template](../templates/cold-email.md)
+
+- **Software and AI Engineer** @ Atlasopen — applied 2026-06-05 · [JD](./archive/submitted/Atlasopen-92426576/research/job-description.md) · [CV](./archive/submitted/Atlasopen-92426576/documents/resume.pdf) · [Letter](./archive/submitted/Atlasopen-92426576/documents/cover-letter.md) · [Cold Email](./archive/submitted/Atlasopen-92426576/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/92426576?type=standard&ref=search-standalone&origin=cardTitle#sol=612b3126c8da401767bcbb3c5e4d243da8db0389)
+  - Top contacts:
+    1. Jay Pitson — Software Engineer <jay@atlasopen.com>
+    2. James Escartin — Software Engineer <james@atlasopen.com>
+  - [ ] Cold email sent: 2026-06-05 → follow up on: 2026-06-12 · [Template](../templates/cold-email.md)
+
+- **Junior Software Engineer - Remote** @ OpenAgent — applied 2026-06-05 · [JD](./archive/submitted/OpenAgent-92435341/research/job-description.md) · [CV](./archive/submitted/OpenAgent-92435341/documents/resume.pdf) · [Letter](./archive/submitted/OpenAgent-92435341/documents/cover-letter.md) · [Cold Email](./archive/submitted/OpenAgent-92435341/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/92435341?type=promoted&ref=search-standalone&origin=cardTitle#sol=d44504c3310894df411ae5f882fc4f0dcac8cafe)
+  - [ ] Cold email sent: 2026-06-05 → follow up on: 2026-06-12 · [Template](../templates/cold-email.md)
+
+- **Founding Product Engineer** @ Real Time — applied 2026-06-05 · [JD](./archive/submitted/Real Time-91997869/research/job-description.md) · [CV](./archive/submitted/Real Time-91997869/documents/resume.pdf) · [Letter](./archive/submitted/Real Time-91997869/documents/cover-letter.md) · [Cold Email](./archive/submitted/Real Time-91997869/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/91997869?type=standard&ref=search-standalone&origin=cardTitle#sol=ebed86f39667528c6483949af5820a3074fdbcc6)
+  - [ ] Cold email sent: 2026-06-05 → follow up on: 2026-06-12 · [Template](../templates/cold-email.md)
+
+- **Mobile Developer** @ Pathfinder Recruitment — applied 2026-06-05 · [JD](./archive/submitted/Pathfinder Recruitment-92085636/research/job-description.md) · [CV](./archive/submitted/Pathfinder Recruitment-92085636/documents/resume.pdf) · [Letter](./archive/submitted/Pathfinder Recruitment-92085636/documents/cover-letter.md) · [Cold Email](./archive/submitted/Pathfinder Recruitment-92085636/documents/cold-email.md) · [Apply ↗](https://au.seek.com/job/92085636?type=standard&ref=search-standalone&origin=cardTitle#sol=31b6e3b372a993a3ef9b686e211b2b28e815e7d2)
+  - Top contacts:
+    1. Naomi Baker — Director of Recruitment <naomi@pathfinderrecruitment.com.au>
+    2. Joshua Moles — Recruitment Director <jmoles@pathfinderrecruitment.com.au>
+    3. Freya Hart — Senior Recruiter <freya@pathfinderrecruitment.com.au>
+  - [ ] Cold email sent: 2026-06-05 → follow up on: 2026-06-12 · [Template](../templates/cold-email.md)
+
+- **Intermediate Full-Stack Developer** @ Concord — applied 2026-06-05 · [JD](./archive/submitted/Concord/research/job-description.md) · [CV](./archive/submitted/Concord/documents/resume.pdf) · [Letter](./archive/submitted/Concord/documents/cover-letter.md) · [Cold Email](./archive/submitted/Concord/documents/cold-email.md) · [Apply ↗](https://concordvisa.careers.empathix.xyz/jobs/S9YDYN3OIUUK)
+  - Top contacts:
+    1. Olivia Dyet — CEO <olivia@empathix.xyz>
+  - [ ] Cold email sent: 2026-06-05 → follow up on: 2026-06-12 · [Template](../templates/cold-email.md)
+
+- **Software Engineer** @ FirstCape Limited — applied 2026-06-05 · [JD](./archive/submitted/FirstCape Limited-92492462/research/job-description.md) · [CV](./archive/submitted/FirstCape Limited-92492462/documents/resume.pdf) · [Letter](./archive/submitted/FirstCape Limited-92492462/documents/cover-letter.md) · [Cold Email](./archive/submitted/FirstCape Limited-92492462/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92492462?type=standard&ref=search-standalone&origin=cardTitle#sol=54dbd344dc7ed91aed20fa43ad2446a84da00689)
+  - Top contacts:
+    1. Seth Bateman — Transformation Program Director <seth.bateman@firstcape.co.nz>
+    2. Milena Besecke — HR Manager <milena.besecke@firstcape.co.nz>
+    3. Mac Dalton — Director of Corporate Affairs <mac.dalton@firstcape.co.nz>
+  - [ ] Cold email sent: 2026-06-05 → follow up on: 2026-06-12 · [Template](../templates/cold-email.md)
+
+- **Growth Engineer** @ First Table — applied 2026-06-05 · [JD](./archive/submitted/First Table-92539577/research/job-description.md) · [CV](./archive/submitted/First Table-92539577/documents/resume.pdf) · [Letter](./archive/submitted/First Table-92539577/documents/cover-letter.md) · [Cold Email](./archive/submitted/First Table-92539577/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92539577?type=standard&ref=search-standalone&origin=cardTitle#sol=a71866289a071b845f20435d2e63927eb4190587)
+  - Top contacts:
+    1. Mandy Whitney — Director <mandy@firsttable.com>
+    2. Blair Impey — Director <blair@firsttable.com>
+    3. Ben Roberts — Engineering Lead <ben@firsttable.com>
+  - [ ] Cold email sent: 2026-06-05 → follow up on: 2026-06-12 · [Template](../templates/cold-email.md)
