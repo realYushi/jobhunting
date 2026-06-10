@@ -7,8 +7,6 @@ from datetime import date
 from pathlib import Path
 from unittest.mock import patch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-
 from lib.scraper import JobListing
 from lib.tracker import load_last_scrape
 
@@ -47,7 +45,7 @@ class WatermarkAdvanceTests(unittest.TestCase):
             from lib.tracker import save_last_scrape
             save_last_scrape(self.tracker_file, existing_watermark)
 
-        def fake_scrape_source(source, max_results, window, *, keywords=None):
+        def fake_scrape_source(source, max_results, window, *, keywords=None, runner=None):
             result = source_listings_map.get(source, [])
             if isinstance(result, Exception):
                 raise result
@@ -117,7 +115,7 @@ class WatermarkAdvanceTests(unittest.TestCase):
         """On first run, no watermark → window defaults to initial_lookback."""
         windows_used = []
 
-        def capturing_scrape(source, max_results, window, *, keywords=None):
+        def capturing_scrape(source, max_results, window, *, keywords=None, runner=None):
             windows_used.append((source, window))
             return []
 

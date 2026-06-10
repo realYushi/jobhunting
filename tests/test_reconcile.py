@@ -4,13 +4,13 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from tools.lib.reconcile import (
+from lib.reconcile import (
     parse_inbox,
     reconcile,
     slug_from_company,
 )
-from tools.lib.identity import BoardKey, ManualKey
-from tools.lib.tracker import is_skipped_key, load_tracker, mark_skipped_key
+from lib.identity import BoardKey, ManualKey
+from lib.tracker import is_skipped_key, load_tracker, mark_skipped_key
 
 
 class ParseInboxTests(unittest.TestCase):
@@ -148,7 +148,7 @@ class SkippedJobsTests(unittest.TestCase):
     def test_skipped_persists_across_loads(self):
         tracker1 = load_tracker(self.tracker_path)
         mark_skipped_key(tracker1, BoardKey("seek", "job-slug"))
-        from tools.lib.tracker import save_tracker
+        from lib.tracker import save_tracker
 
         save_tracker(self.tracker_path, tracker1)
 
@@ -279,7 +279,7 @@ class ReconcileTests(unittest.TestCase):
             "## Applied\n\n"
         )
 
-        with patch("tools.lib.reconcile.discover_contacts") as mock_discover:
+        with patch("lib.reconcile.discover_contacts") as mock_discover:
             reconcile(self.root, inbox_path=inbox_path, dry_run=False)
 
         # Existing contacts were reused, so Hunter was never re-queried.
@@ -318,7 +318,7 @@ class ReconcileTests(unittest.TestCase):
             return {"status": "ok"}
 
         with patch(
-            "tools.lib.reconcile.discover_contacts", side_effect=fake_discover
+            "lib.reconcile.discover_contacts", side_effect=fake_discover
         ) as mock_discover:
             reconcile(self.root, inbox_path=inbox_path, dry_run=False)
 
@@ -367,7 +367,7 @@ class ReconcileTests(unittest.TestCase):
             "## Applied\n\n"
         )
 
-        with patch("tools.lib.reconcile.discover_contacts") as mock_discover:
+        with patch("lib.reconcile.discover_contacts") as mock_discover:
             result = reconcile(self.root, inbox_path=inbox_path, dry_run=False)
 
         # Contacts already existed, so submit-time discovery was skipped.
@@ -410,7 +410,7 @@ class ReconcileTests(unittest.TestCase):
             "## Applied\n\n"
         )
 
-        with patch("tools.lib.reconcile.discover_contacts"):
+        with patch("lib.reconcile.discover_contacts"):
             result = reconcile(self.root, inbox_path=inbox_path, dry_run=False)
 
         self.assertEqual(result.coldmail_queue, [])

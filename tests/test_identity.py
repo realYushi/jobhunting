@@ -1,11 +1,12 @@
 import unittest
 
-from tools.lib.identity import (
+from lib.identity import (
     BoardKey,
     ManualKey,
     from_dict,
     key_from_args,
 )
+from lib.paths import company_dirname
 
 
 class BoardKeyTests(unittest.TestCase):
@@ -77,6 +78,55 @@ class KeyFromArgsTests(unittest.TestCase):
             key_from_args("seek", None, "Co", "Role"),
             ManualKey("Co", "Role"),
         )
+
+
+class SlugTests(unittest.TestCase):
+    """JobKey.slug(company) owns the on-disk directory name.
+
+    On-disk names must stay byte-identical to what company_dirname produced
+    before slug() existed — existing applications/active/ and archive/ dirs
+    must still be found.
+    """
+
+    def test_board_slug_is_company_suffixed_with_id8(self):
+        key = BoardKey("seek", "91491952")
+        self.assertEqual(
+            key.slug("Caruso Software Limited"), "Caruso Software Limited-91491952"
+        )
+
+    def test_board_slug_truncates_long_ids_to_8_chars(self):
+        key = BoardKey("hiringcafe", "erdu1sl82w0643qb")
+        self.assertEqual(key.slug("Bellroy"), "Bellroy-erdu1sl8")
+
+    def test_board_slug_matches_company_dirname(self):
+        # Byte-identical to the legacy free-function form.
+        key = BoardKey("seek", "12345678")
+        self.assertEqual(key.slug("Acme Corp"), company_dirname("Acme Corp", "12345678"))
+
+    def test_board_slugs_with_different_ids_do_not_collide(self):
+        self.assertNotEqual(
+            BoardKey("seek", "11111111").slug("Acme"),
+            BoardKey("seek", "22222222").slug("Acme"),
+        )
+
+    def test_manual_slug_is_bare_company_with_display_casing(self):
+        key = ManualKey("contact energy", "SWE")
+        self.assertEqual(key.slug("Contact Energy"), "Contact Energy")
+        self.assertEqual(key.slug("Contact Energy"), company_dirname("Contact Energy", None))
+
+    def test_manual_slug_is_deterministic(self):
+        key = ManualKey("Acme", "Engineer")
+        self.assertEqual(key.slug("Acme"), key.slug("Acme"))
+
+    def test_manual_collision_contract_same_company_different_positions(self):
+        # PINNED CONTRACT: manual flows have no job_id, so two different
+        # applications to the same company (different positions) map to the
+        # SAME directory — the position does not disambiguate. Anyone changing
+        # this must migrate existing on-disk directory names.
+        engineer = ManualKey("Acme", "Engineer")
+        designer = ManualKey("Acme", "Designer")
+        self.assertNotEqual(engineer, designer)  # distinct keys...
+        self.assertEqual(engineer.slug("Acme"), designer.slug("Acme"))  # ...same dir
 
 
 if __name__ == "__main__":

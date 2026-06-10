@@ -1,15 +1,12 @@
-import sys
 import unittest
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-
-from lib import reconcile, smart_scrape
+from lib import smart_scrape
+from lib.inbox import _parse_apply_url
 
 
 class ProspleSupportTests(unittest.TestCase):
     def test_parse_apply_url_supports_prosple(self):
-        source, job_id = reconcile._parse_apply_url(
+        source, job_id = _parse_apply_url(
             "https://nz.prosple.com/graduate-employers/cognex-new-zealand/jobs-internships/junior-software-engineer-rust"
         )
         self.assertEqual(source, "prosple")

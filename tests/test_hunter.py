@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from tools.lib.hunter import (
+from lib.hunter import (
     HunterError,
     _domain_hint_from_url,
     best_contact_summary,
@@ -56,7 +56,7 @@ class HunterTests(unittest.TestCase):
                 ],
             }
         }
-        with patch("tools.lib.hunter._http_get_json", return_value=payload):
+        with patch("lib.hunter._http_get_json", return_value=payload):
             result = discover_company_contacts("Acme", root=self.root, url="https://jobs.acme.com")
 
         self.assertEqual(result["top_contact"]["email"], "jane@acme.com")
@@ -85,7 +85,7 @@ class HunterTests(unittest.TestCase):
             },
         }
         app_dir = self.root / "applications" / "active" / "Acme"
-        with patch("tools.lib.hunter.discover_company_contacts", return_value=payload):
+        with patch("lib.hunter.discover_company_contacts", return_value=payload):
             result = discover_contacts(app_dir, "Acme", root=self.root, url="https://acme.com/jobs")
 
         self.assertEqual(result["top_contact"]["email"], "jane@acme.com")
@@ -143,12 +143,12 @@ class HunterTests(unittest.TestCase):
         # A read timeout (socket.timeout/TimeoutError) is not a URLError; it must
         # be wrapped as HunterError and degrade to a "skipped/error" result
         # rather than crashing the caller.
-        with patch("tools.lib.hunter._http_get_json", side_effect=TimeoutError("timed out")):
+        with patch("lib.hunter._http_get_json", side_effect=TimeoutError("timed out")):
             with self.assertRaises(HunterError):
                 discover_company_contacts("Acme", root=self.root, url="https://acme.com")
 
         app_dir = self.root / "applications" / "active" / "Acme"
-        with patch("tools.lib.hunter._http_get_json", side_effect=TimeoutError("timed out")):
+        with patch("lib.hunter._http_get_json", side_effect=TimeoutError("timed out")):
             result = discover_contacts(app_dir, "Acme", root=self.root, url="https://acme.com")
         self.assertEqual(result["status"], "error")
         self.assertEqual(result["contacts"], [])

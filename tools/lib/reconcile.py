@@ -13,8 +13,13 @@ from .hunter import (
     top_contact_summaries,
     top_contacts as top_contact_rows,
 )
-from .identity import BoardKey, JobKey, ManualKey, key_from_args
-from .inbox import AppliedInboxRow, write_applied_row
+from .identity import BoardKey, ManualKey
+from .inbox import (
+    AppliedInboxRow,
+    InboxItem,
+    parse_inbox,
+    write_applied_row,
+)
 from .paths import (
     active_dir,
     archive_dir,
@@ -22,61 +27,9 @@ from .paths import (
     inbox_path as default_inbox_path,
     tracker_path as tracker_file,
 )
+from .app_state import ApplicationState
 from .templates import render_cold_email
-from .tracker import (
-    key_for_app_dict,
-    load_keyset,
-    load_tracker,
-    save_tracker,
-    store_keyset,
-)
-
-
-@dataclass(frozen=True)
-class InboxItem:
-    """A parsed row from INBOX.md."""
-
-    slug: str
-    status: str  # "[ ]", "[x]", or "[~]"
-    title: str
-    company: str
-    score: int | None = None
-    job_path: Path | None = None
-    cv_path: Path | None = None
-    cover_path: Path | None = None
-    apply_url: str | None = None
-    source: str | None = None
-    job_id: str | None = None
-
-    @property
-    def key(self) -> JobKey:
-        """BoardKey when Apply URL yielded source+id, else ManualKey."""
-        return key_from_args(self.source, self.job_id, self.company, self.title)
-
-
-# Map from URL host substring to (source label, job-id regex).
-# Tracker rows are written with these same source labels by the scrapers,
-# so extracting them here lets BoardKey match the tracker row during reconcile.
-_URL_SOURCES: tuple[tuple[str, str, str], ...] = (
-    ("seek.com", "seek", r"/job/(\d+)"),
-    ("linkedin.com", "linkedin", r"/jobs/view/(\d+)"),
-    ("hiring.cafe", "hiringcafe", r"/(?:viewjob|job)/([A-Za-z0-9]+)"),
-    ("workingnomads.com", "workingnomads", r"/jobs/([^/?#]+)"),
-    ("wellfound.com", "wellfound", r"/jobs/(\d+)"),
-    ("weworkremotely.com", "weworkremotely", r"/remote-jobs/([^/?#]+)"),
-    ("prosple.com", "prosple", r"/jobs-internships/([^/?#]+)"),
-)
-
-
-def _parse_apply_url(url: str | None) -> tuple[str | None, str | None]:
-    """Return (source, job_id) from a known job-board URL, or (None, None)."""
-    if not url:
-        return None, None
-    for host, source, id_pattern in _URL_SOURCES:
-        if host in url:
-            m = re.search(id_pattern, url)
-            return source, (m.group(1) if m else None)
-    return None, None
+from .tracker import key_for_app_dict
 
 
 @dataclass(frozen=True)
@@ -91,92 +44,6 @@ class ReconcileResult:
     # Cold emails scaffolded at submit time that need an LLM body fill-in. Each
     # entry mirrors the cover-letter queue: paths the fill subagent reads.
     coldmail_queue: list[dict] = field(default_factory=list)
-
-
-_INBOX_PATTERN = re.compile(
-    r"""^-\s+\[(?P<status>[ x~])\]\s*\*\*(?P<title>[^*]+)\s*\*\*\s*@\s*(?P<company>[^(]+)(?:\s*\(score:\s*(?P<score>\d+)\))?""",
-    re.MULTILINE,
-)
-
-
-def parse_inbox(inbox_path: Path) -> list[InboxItem]:
-    """Extract structured items from INBOX.md checkbox list."""
-    if not inbox_path.exists():
-        return []
-
-    text = inbox_path.read_text()
-    items: list[InboxItem] = []
-
-    for line in text.splitlines():
-        match = _INBOX_PATTERN.search(line)
-        if not match:
-            continue
-
-        status_raw = match.group("status")
-        status = {
-            " ": "[ ]",
-            "x": "[x]",
-            "~": "[~]",
-        }.get(status_raw, "[ ]")
-
-        title = match.group("title").strip()
-        company = match.group("company").strip()
-        score_str = match.group("score")
-        score = int(score_str) if score_str else None
-
-        url_match = re.search(r"\[Apply\s*↗\]\((https?://[^)]+)\)", line)
-        apply_url = url_match.group(1) if url_match else None
-        source, job_id = _parse_apply_url(apply_url)
-
-        # Slug = the on-disk active dir name. Derived from company + job_id so
-        # the same company applied for twice (different listings) doesn't
-        # collide. Matches company_dirname used by workflow.create_application_package.
-        slug = company_dirname(company, job_id)
-
-        job_match = re.search(r"\[JD\]\(\.*/([^)]+?)\)", line)
-        job_path = (
-            Path(
-                f"applications/active/{slug}/{job_match.group(1) if job_match else 'job.md'}"
-            )
-            if job_match
-            else None
-        )
-
-        cv_match = re.search(r"\[CV\]\(\.*/([^)]+?)\)", line)
-        cv_path = (
-            Path(
-                f"applications/active/{slug}/{cv_match.group(1) if cv_match else 'cv.pdf'}"
-            )
-            if cv_match
-            else None
-        )
-
-        cover_match = re.search(r"\[Letter\]\(\.*/([^)]+?)\)", line)
-        cover_path = (
-            Path(
-                f"applications/active/{slug}/{cover_match.group(1) if cover_match else 'cover.md'}"
-            )
-            if cover_match
-            else None
-        )
-
-        items.append(
-            InboxItem(
-                slug=slug,
-                status=status,
-                title=title,
-                company=company,
-                score=score,
-                job_path=job_path,
-                cv_path=cv_path,
-                cover_path=cover_path,
-                apply_url=apply_url,
-                source=source,
-                job_id=job_id,
-            )
-        )
-
-    return items
 
 
 def slug_from_company(company: str, existing: list[str]) -> str:
@@ -407,8 +274,9 @@ def reconcile(
         inbox_path = default_inbox_path(root)
 
     items = parse_inbox(inbox_path)
-    tracker = load_tracker(tracker_file(root))
-    skipped_set = load_keyset(tracker, "skipped")
+    state = ApplicationState.load(tracker_file(root))
+    tracker = state.tracker
+    skipped_set = state.keyset("skipped")
 
     submitted: list[str] = []
     skipped: list[str] = []
@@ -514,13 +382,13 @@ def reconcile(
             errors.append(f"{item.company}: {e}")
 
     if not dry_run and (submitted or skipped):
-        store_keyset(tracker, "skipped", skipped_set)
+        state.store_keyset("skipped", skipped_set)
         # Remove archived rows from INBOX in one pass
         archived = [item for item in items if item.status in ("[x]", "[~]")]
         remove_inbox_rows(inbox_path, archived)
         for row in applied_rows:
             write_applied_row(inbox_path, row)
-        save_tracker(tracker_file(root), tracker)
+        state.save()
 
     cleaned_active, cleanup_errors = cleanup_active_folder(
         root,

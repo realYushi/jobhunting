@@ -24,12 +24,7 @@ import tempfile
 import urllib.request
 from pathlib import Path
 
-from lib.dedup import (
-    _build_application_key_index,
-    _build_company_title_index,
-    _build_inbox_indexes,
-    _duplicate_reason,
-)
+from lib.dedup import DedupGate
 from lib.filters import (
     _company_hard_drop_reason,
     _location_eligibility,
@@ -39,10 +34,10 @@ from lib.filters import (
 from lib.inbox import InboxRow, write_inbox_rows
 from lib.jd_fetch import JD_FETCH_PARALLELISM, _fetch_jds_parallel
 from lib.paths import company_dirname, inbox_path as default_inbox, project_root
-from lib.reconcile import ReconcileResult, parse_inbox, reconcile
-from lib.tracker import load_keyset, load_tracker
+from lib.app_state import ApplicationState
+from lib.reconcile import ReconcileResult, reconcile
 from lib.scorer import (
-    ScoreResult,
+    JobScore,
     candidate_summary,
     load_candidate_profile,
     sort_by_score,
@@ -52,7 +47,7 @@ from lib.smart_scrape import ScrapeSummary, print_summary, smart_scrape
 from lib.workflow import WorkflowOptions, create_application_package
 
 
-def _resolve_apply_url(item: ScoreResult) -> str | None:
+def _resolve_apply_url(item: JobScore) -> str | None:
     """Resolve source-board URLs to direct employer apply URLs where cheap."""
     if item.source != "workingnomads" or not item.job_id:
         return item.url
@@ -83,13 +78,12 @@ def _resolve_config(
     cutoff = score_cutoff or config.get("defaults", {}).get("score_cutoff", 65)
     cap = per_run_cap or config.get("defaults", {}).get("per_run_cap", 10)
 
-    profile_configs = []
-    for name in profiles:
-        for p in config["profiles"]:
-            if p["name"] == name:
-                p = {**p, "sources": sources}
-                profile_configs.append(p)
-                break
+    profiles_by_name = {p["name"]: p for p in config["profiles"]}
+    profile_configs = [
+        {**profiles_by_name[name], "sources": sources}
+        for name in profiles
+        if name in profiles_by_name
+    ]
 
     return profile_configs, sources, cutoff, cap
 
@@ -163,7 +157,7 @@ def _is_cover_warning(warning: str) -> bool:
 
 def do_package_from_scores(
     root: Path,
-    passed: list[ScoreResult],
+    passed: list[JobScore],
     cap: int,
     dry_run: bool,
     listings_by_id: dict[str, dict] | None = None,
@@ -197,23 +191,11 @@ def do_package_from_scores(
             print(f"  ⚠️ Reconcile issue before packaging: {error}", file=sys.stderr)
         _write_coldmail_queue(reconcile_result)
 
-    tracker = load_tracker(root / "applications" / "application-tracker.json")
-    skipped_set = load_keyset(tracker, "skipped")
-    application_key_index = _build_application_key_index(tracker)
-    company_title_index = _build_company_title_index(tracker)
-    inbox_key_index, inbox_company_title_index = _build_inbox_indexes(
-        parse_inbox(inbox)
-    )
-    to_package: list[ScoreResult] = []
+    # Built after the reconcile above so the gate sees the latest statuses.
+    gate = DedupGate.from_disk(root, inbox)
+    to_package: list[JobScore] = []
     for item in passed:
-        duplicate_reason = _duplicate_reason(
-            item,
-            application_key_index=application_key_index,
-            company_title_index=company_title_index,
-            inbox_key_index=inbox_key_index,
-            inbox_company_title_index=inbox_company_title_index,
-            skipped_set=skipped_set,
-        )
+        duplicate_reason = gate.reason(item)
         if duplicate_reason:
             print(
                 "  ⏭️  Skipping duplicate: "
@@ -225,6 +207,11 @@ def do_package_from_scores(
         if len(to_package) >= cap:
             break
     print(f"  Creating {len(to_package)} packages (cap: {cap})", file=sys.stderr)
+
+    # Load tracker once; all upserts accumulate in-memory; save once after the
+    # loop so N packages cost one load + one save instead of N each.
+    tracker_path = root / "applications" / "application-tracker.json"
+    shared_state = ApplicationState.load(tracker_path)
 
     inbox_rows: list[InboxRow] = []
     cover_queue: list[dict] = []
@@ -256,35 +243,30 @@ def do_package_from_scores(
         package_url = _resolve_apply_url(item)
 
         jd_text = (listings_by_id.get(item.job_id) or {}).get("full_jd") or None
-        if jd_text:
-            body = jd_text
-            with tempfile.NamedTemporaryFile(
-                mode="w", suffix=".md", delete=False
-            ) as f:
-                f.write(f"# {item.title} @ {item.company}\n\n")
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False) as f:
+            f.write(f"# {item.title} @ {item.company}\n\n")
+            if jd_text:
                 f.write(f"Source: {item.url}\n")
                 if package_url and package_url != item.url:
                     f.write(f"Direct apply: {package_url}\n")
                 f.write("\n")
-                f.write(body)
-                jd_path = Path(f.name)
-        else:
-            body = (
-                item.reason
-                if hasattr(item, "reason")
-                else "See listing URL for details."
-            )
-            with tempfile.NamedTemporaryFile(mode="w", suffix=".md", delete=False) as f:
-                f.write(f"# {item.title} @ {item.company}\n\n")
+                f.write(jd_text)
+            else:
+                body = (
+                    item.reason
+                    if hasattr(item, "reason")
+                    else "See listing URL for details."
+                )
                 f.write(f"{body}\n\n")
                 if item.url:
                     f.write(f"Source: {item.url}\n")
                 if package_url and package_url != item.url:
                     f.write(f"Direct apply: {package_url}\n")
-                jd_path = Path(f.name)
+            jd_path = Path(f.name)
 
         try:
-            # Create the application package
+            # Create the application package; state is shared so the loop is
+            # one load → N upserts → one save (see save call after the loop).
             workflow_result = create_application_package(
                 WorkflowOptions(
                     project_root=root,
@@ -297,6 +279,7 @@ def do_package_from_scores(
                     priority="Medium",
                     dry_run=False,
                     render_pdf=True,
+                    state=shared_state,
                 )
             )
 
@@ -362,6 +345,10 @@ def do_package_from_scores(
             if jd_path and jd_path.exists():
                 jd_path.unlink(missing_ok=True)
 
+    # Flush all upserts accumulated during the loop to disk in one write.
+    if not dry_run:
+        shared_state.save()
+
     print("\n📝 Phase 5: Writing INBOX.md...", file=sys.stderr)
     if dry_run:
         print(
@@ -403,27 +390,16 @@ def _dedup_survivors(
     """Phase 3: drop listings already applied/skipped/in INBOX (fetch-free).
 
     Runs before the expensive JD fetch + scoring so we never pay to fetch or
-    score a job we've already handled. Reuses the same ``_duplicate_reason``
-    indexes the packaging guard uses; ``JobListing`` exposes the same
-    ``source``/``job_id``/``company``/``title``/``url`` attributes the dedup
-    helpers read off a ``ScoreResult``.
+    score a job we've already handled. Uses the same ``DedupGate`` the
+    packaging guard uses; ``JobListing`` exposes the same
+    ``source``/``job_id``/``company``/``title``/``url`` attributes the gate
+    reads off a ``JobScore``.
     """
-    tracker = load_tracker(root / "applications" / "application-tracker.json")
-    skipped_set = load_keyset(tracker, "skipped")
-    application_key_index = _build_application_key_index(tracker)
-    company_title_index = _build_company_title_index(tracker)
-    inbox_key_index, inbox_company_title_index = _build_inbox_indexes(parse_inbox(inbox))
+    gate = DedupGate.from_disk(root, inbox)
 
     survivors: list[JobListing] = []
     for lst in listings:
-        reason = _duplicate_reason(
-            lst,
-            application_key_index=application_key_index,
-            company_title_index=company_title_index,
-            inbox_key_index=inbox_key_index,
-            inbox_company_title_index=inbox_company_title_index,
-            skipped_set=skipped_set,
-        )
+        reason = gate.reason(lst)
         if reason:
             print(
                 f"  ⏭️  Dedup: {lst.title} @ {lst.company} ({reason})",
@@ -622,7 +598,7 @@ def run_from_scores(
         # scoring subagent that emits a minimal record (just job_id+score+reason)
         # doesn't crash packaging after scraping/scoring budget is already spent.
         passed.append(
-            ScoreResult(
+            JobScore(
                 job_id=r["job_id"],
                 source=r.get("source") or lst.get("source") or "",
                 title=r.get("title") or lst.get("title", "Unknown"),
@@ -655,7 +631,7 @@ def run_from_scores(
         )
         jd_cache = _fetch_jds_parallel(passed)
         print("\n🌏 Location gate on full JD...", file=sys.stderr)
-        filtered: list[ScoreResult] = []
+        filtered: list[JobScore] = []
         dropped_loc = 0
         for item in passed:
             jd_text = jd_cache.get(item.url, "") if item.url else ""

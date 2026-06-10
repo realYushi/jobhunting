@@ -20,9 +20,16 @@ def slugify(value: str) -> str:
 def company_dirname(company: str, job_id: str | None = None) -> str:
     """Return the active-dir name used for a company.
 
+    Shared low-level normalizer behind ``JobKey.slug(company)`` (identity.py).
+    Prefer building the key and asking it for its slug — the key type makes the
+    job_id handling explicit (BoardKey suffixes, ManualKey never does). Call
+    this directly only at sites that genuinely hold loose strings.
+
     When job_id is supplied, the dir is namespaced as ``{Company}-{id8}`` so
     multiple listings from the same company don't collide on disk. Manual flows
-    (no job_id) keep the bare company name for backward compatibility.
+    (no job_id) keep the bare company name for backward compatibility — which
+    means two manual applications to the same company silently share one
+    directory (the position does not disambiguate).
     """
     safe = re.sub(r"[^a-zA-Z0-9._ -]+", "", company).strip()
     base = safe or slugify(company)

@@ -8,16 +8,12 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
+from .app_state import ApplicationState
 from .paths import company_dir, tracker_path as tracker_file
 from .pdf import PdfRenderError, render_resume_pdf
 from .resume import create_resume, resolve_role
 from .templates import render_analysis, render_cover_letter
-from .tracker import (
-    ApplicationRecord,
-    load_tracker,
-    save_tracker,
-    upsert_active_application,
-)
+from .tracker import ApplicationRecord
 from .validation import (
     validate_cover_letter_structure,
     validate_no_placeholders,
@@ -41,6 +37,10 @@ class WorkflowOptions:
     source: str | None = None
     url: str | None = None
     render_pdf: bool = True
+    # Optional pre-loaded state; when supplied the caller owns load/save so
+    # this function only upserts (no save).  When None, this function loads and
+    # saves internally (one load + one save per package, old behaviour).
+    state: ApplicationState | None = None
 
 
 @dataclass(frozen=True)
@@ -148,7 +148,6 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
     else:
         record_pdf_path = None
 
-    tracker = load_tracker(tracker_path)
     record = ApplicationRecord(
         company=options.company,
         position=options.position,
@@ -159,7 +158,13 @@ def create_application_package(options: WorkflowOptions) -> WorkflowResult:
         source=options.source,
         url=options.url,
     )
-    upsert_active_application(tracker, record)
-    save_tracker(tracker_path, tracker)
+    if options.state is not None:
+        # Caller owns load/save; just upsert into the shared state.
+        options.state.upsert_active(record)
+    else:
+        # Standalone call: load, upsert, save in one shot.
+        state = ApplicationState.load(tracker_path)
+        state.upsert_active(record)
+        state.save()
 
     return WorkflowResult(app_dir, paths, tuple(planned), tuple(warnings_list))

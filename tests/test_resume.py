@@ -2,9 +2,7 @@ import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from tools.lib.resume import create_resume  # noqa: E402
+from lib.resume import create_resume  # noqa: E402
 
 
 class JsonResumeManagerTests(unittest.TestCase):

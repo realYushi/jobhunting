@@ -15,9 +15,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from tools.lib.keyword_match import (  # noqa: E402
+from lib.keyword_match import (  # noqa: E402
     compute_ats_coverage,
     compute_match_score,
     count_occurrences,
@@ -26,7 +24,7 @@ from tools.lib.keyword_match import (  # noqa: E402
 )
 
 
-class MatchScoreTests(unittest.TestCase):
+class KeywordMatchTests(unittest.TestCase):
     def test_verdict_flips_when_required_keyword_missing(self):
         text = "React, TypeScript, Node.js"
         score = compute_match_score(text, ["React", "Rust"], [])

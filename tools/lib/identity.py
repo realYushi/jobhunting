@@ -23,6 +23,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Union
 
+from .paths import company_dirname
+
 
 @dataclass(frozen=True)
 class BoardKey:
@@ -40,6 +42,15 @@ class BoardKey:
 
     def to_dict(self) -> dict[str, str]:
         return {"kind": "board", "source": self.source, "job_id": self.job_id}
+
+    def slug(self, company: str) -> str:
+        """On-disk directory name for this listing: ``{Company}-{id8}``.
+
+        The job_id suffix keeps two listings from the same company on distinct
+        directories. ``company`` carries the display casing — keys normalise
+        their fields, so the caller supplies the original string.
+        """
+        return company_dirname(company, self.job_id)
 
 
 def _norm_manual_field(value: str) -> str:
@@ -76,6 +87,16 @@ class ManualKey:
             "company_lc": self.company_lc,
             "position_lc": self.position_lc,
         }
+
+    def slug(self, company: str) -> str:
+        """On-disk directory name: the bare company, no disambiguator.
+
+        Collision contract: manual flows have no job_id, so two different
+        applications to the same company (different positions) map to the SAME
+        directory. ``company`` carries the display casing — this key stores
+        only the casefolded form. Pinned by tests in test_identity.py.
+        """
+        return company_dirname(company, None)
 
 
 JobKey = Union[BoardKey, ManualKey]

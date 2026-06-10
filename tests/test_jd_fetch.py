@@ -2,10 +2,8 @@ import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-
 from lib import jd_fetch
-from lib.scorer import ScoreResult
+from lib.scorer import JobScore
 
 
 class JdFetchParallelismTests(unittest.TestCase):
@@ -14,7 +12,7 @@ class JdFetchParallelismTests(unittest.TestCase):
 
     def test_fetch_uses_single_worker_by_default(self):
         items = [
-            ScoreResult(
+            JobScore(
                 job_id="1",
                 source="seek",
                 title="Role",
@@ -46,7 +44,7 @@ class JdFetchParallelismTests(unittest.TestCase):
             def __exit__(self, exc_type, exc, tb):
                 return False
 
-            def submit(self, fn, url):
+            def submit(self, fn, url, runner=None):
                 calls.setdefault("urls", []).append(url)
                 return FakeFuture(fn(url))
 

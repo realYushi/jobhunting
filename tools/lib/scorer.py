@@ -3,7 +3,7 @@
 Scoring itself is done by a Claude Code subagent reading
 ``tools/scoring-rubric.md`` (see the ``job-research`` skill). This module only
 builds the candidate context the scrape-only dump carries, and provides the
-``ScoreResult`` shape plus filter/sort helpers used by the packaging stage.
+``JobScore`` shape plus filter/sort helpers used by the packaging stage.
 """
 
 from __future__ import annotations
@@ -102,7 +102,7 @@ def build_candidate_context(
 
 
 @dataclass(frozen=True)
-class ScoreResult:
+class JobScore:
     """Result of scoring a listing."""
 
     job_id: str
@@ -132,6 +132,6 @@ def candidate_summary(profile: dict[str, Any]) -> str:
     return build_candidate_context(resume=profile)
 
 
-def sort_by_score(results: list[ScoreResult]) -> list[ScoreResult]:
+def sort_by_score(results: list[JobScore]) -> list[JobScore]:
     """Sort results by score descending."""
     return sorted(results, key=lambda r: r.score, reverse=True)

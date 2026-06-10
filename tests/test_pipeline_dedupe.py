@@ -1,19 +1,11 @@
 import unittest
 from pathlib import Path
-import sys
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-
+from lib.app_state import ApplicationState
+from lib.dedup import DedupGate
 from lib.identity import ManualKey
 from lib.inbox import InboxRow, format_row
-from lib.reconcile import parse_inbox
-from lib.scorer import ScoreResult
-from lib.dedup import (
-    _build_application_key_index,
-    _build_company_title_index,
-    _build_inbox_indexes,
-    _duplicate_reason,
-)
+from lib.scorer import JobScore
 
 
 def score_result(**overrides):
@@ -27,7 +19,20 @@ def score_result(**overrides):
         "reason": "test",
     }
     data.update(overrides)
-    return ScoreResult(**data)
+    return JobScore(**data)
+
+
+def make_gate(
+    tracker: dict | None = None,
+    inbox_path: Path | None = None,
+    skipped: set | None = None,
+) -> DedupGate:
+    """Build a DedupGate from an in-memory tracker dict and optional INBOX file."""
+    tracker = tracker if tracker is not None else {"applications": {}}
+    if skipped:
+        tracker["skipped"] = [k.to_dict() for k in skipped]
+    state = ApplicationState(Path("/nonexistent-tracker.json"), tracker)
+    return DedupGate(state, inbox_path or Path("/nonexistent-inbox.md"))
 
 
 class PipelineDedupeTests(unittest.TestCase):
@@ -46,14 +51,7 @@ class PipelineDedupeTests(unittest.TestCase):
             }
         }
 
-        reason = _duplicate_reason(
-            score_result(),
-            application_key_index=_build_application_key_index(tracker),
-            company_title_index=_build_company_title_index(tracker),
-            inbox_key_index={},
-            inbox_company_title_index={},
-            skipped_set=set(),
-        )
+        reason = make_gate(tracker).reason(score_result())
 
         self.assertIn("existing tracker row", reason)
         self.assertIn("Submitted", reason)
@@ -72,44 +70,21 @@ class PipelineDedupeTests(unittest.TestCase):
                     )
                 )
             )
-        inbox_key_index, inbox_company_title_index = _build_inbox_indexes(
-            parse_inbox(Path(inbox_path))
-        )
 
-        reason = _duplicate_reason(
-            score_result(),
-            application_key_index={},
-            company_title_index={},
-            inbox_key_index=inbox_key_index,
-            inbox_company_title_index=inbox_company_title_index,
-            skipped_set=set(),
-        )
+        reason = make_gate(inbox_path=Path(inbox_path)).reason(score_result())
 
         self.assertIn("already in INBOX", reason)
 
     def test_empty_company_does_not_crash(self):
         # Regression: a malformed score row with empty company/title used to
-        # crash _duplicate_reason via ManualKey's non-empty validation. It
-        # should fall through to the board-key path and return None.
-        reason = _duplicate_reason(
-            score_result(company="", title=""),
-            application_key_index={},
-            company_title_index={},
-            inbox_key_index={},
-            inbox_company_title_index={},
-            skipped_set=set(),
-        )
+        # crash the gate via ManualKey's non-empty validation. It should fall
+        # through to the board-key path and return None.
+        reason = make_gate().reason(score_result(company="", title=""))
         self.assertIsNone(reason)
 
     def test_detects_previously_skipped_manual_duplicate(self):
-        reason = _duplicate_reason(
-            score_result(job_id="99999"),
-            application_key_index={},
-            company_title_index={},
-            inbox_key_index={},
-            inbox_company_title_index={},
-            skipped_set={ManualKey("Acme", "Junior Developer")},
-        )
+        gate = make_gate(skipped={ManualKey("Acme", "Junior Developer")})
+        reason = gate.reason(score_result(job_id="99999"))
 
         self.assertEqual(reason, "previously skipped by company/title")
 
@@ -117,28 +92,16 @@ class PipelineDedupeTests(unittest.TestCase):
         # Regression: whitespace-only company is truthy, so the "not company"
         # guard in _score_manual_key didn't fire and ManualKey's normalize-then-
         # raise validation killed the whole batch. Now treated like empty.
-        reason = _duplicate_reason(
-            score_result(company="   ", title="   "),
-            application_key_index={},
-            company_title_index={},
-            inbox_key_index={},
-            inbox_company_title_index={},
-            skipped_set=set(),
-        )
+        reason = make_gate().reason(score_result(company="   ", title="   "))
         self.assertIsNone(reason)
 
     def test_unknown_placeholder_does_not_collide(self):
         # Regression: run_from_scores defaults missing fields to "Unknown",
         # which would have made every malformed row collide under a single
         # ManualKey("unknown", "unknown") and false-positive each other.
-        skipped = {ManualKey("Unknown", "Unknown")}
-        reason = _duplicate_reason(
-            score_result(company="Unknown", title="Unknown", job_id="42"),
-            application_key_index={},
-            company_title_index={},
-            inbox_key_index={},
-            inbox_company_title_index={},
-            skipped_set=skipped,
+        gate = make_gate(skipped={ManualKey("Unknown", "Unknown")})
+        reason = gate.reason(
+            score_result(company="Unknown", title="Unknown", job_id="42")
         )
         # Board key still applies if present, but the manual sentinel must not
         # match the "Unknown" placeholder in the skipped set.
@@ -172,14 +135,7 @@ class PipelineDedupeTests(unittest.TestCase):
                 ],
             }
         }
-        reason = _duplicate_reason(
-            score_result(),
-            application_key_index=_build_application_key_index(tracker),
-            company_title_index=_build_company_title_index(tracker),
-            inbox_key_index={},
-            inbox_company_title_index={},
-            skipped_set=set(),
-        )
+        reason = make_gate(tracker).reason(score_result())
         self.assertIn("In Progress", reason)
 
     def test_unknown_placeholder_does_not_collide_via_company_title_index(self):
@@ -199,13 +155,8 @@ class PipelineDedupeTests(unittest.TestCase):
                 ]
             }
         }
-        reason = _duplicate_reason(
-            score_result(company="Unknown", title="Unknown", job_id="42"),
-            application_key_index=_build_application_key_index(tracker),
-            company_title_index=_build_company_title_index(tracker),
-            inbox_key_index={},
-            inbox_company_title_index={},
-            skipped_set=set(),
+        reason = make_gate(tracker).reason(
+            score_result(company="Unknown", title="Unknown", job_id="42")
         )
         self.assertIsNone(reason)
 
@@ -224,16 +175,8 @@ class PipelineDedupeTests(unittest.TestCase):
                     )
                 )
             )
-        inbox_key_index, inbox_company_title_index = _build_inbox_indexes(
-            parse_inbox(Path(inbox_path))
-        )
-        reason = _duplicate_reason(
-            score_result(company="Unknown", title="Unknown", job_id="42"),
-            application_key_index={},
-            company_title_index={},
-            inbox_key_index=inbox_key_index,
-            inbox_company_title_index=inbox_company_title_index,
-            skipped_set=set(),
+        reason = make_gate(inbox_path=Path(inbox_path)).reason(
+            score_result(company="Unknown", title="Unknown", job_id="42")
         )
         self.assertIsNone(reason)
 

@@ -3,14 +3,14 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools.lib.tracker import (
+from lib.tracker import (
     load_last_scrape,
     load_tracker,
     mark_skipped_key,
     save_last_scrape,
     save_tracker,
 )
-from tools.lib.identity import BoardKey
+from lib.identity import BoardKey
 
 
 class WatermarkTests(unittest.TestCase):

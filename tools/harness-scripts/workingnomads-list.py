@@ -5,10 +5,6 @@ import json
 from browser_harness import *
 
 # Params: $url, $page
-# Uses new_tab (not goto_url) so scraping the user's live Chrome opens its own
-# tab instead of hijacking whatever tab is currently in focus.
-_tab_id = new_tab("$url")
-wait_for_load()
 wait(3)
 
 jobs = js(r"""
@@ -62,8 +58,3 @@ jobs = js(r"""
 """)
 print(json.dumps({"page": int("$page"), "jobs": jobs}))
 
-# Close the tab we opened so the user's own tabs are left untouched.
-try:
-    cdp("Target.closeTarget", targetId=_tab_id)
-except Exception:
-    pass

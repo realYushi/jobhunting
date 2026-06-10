@@ -9,12 +9,10 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from tools.lib.hunter import top_contacts  # noqa: E402
-from tools.lib.paths import company_dirname, project_root, tracker_path  # noqa: E402
-from tools.lib.templates import render_cold_email  # noqa: E402
-from tools.lib.tracker import load_tracker  # noqa: E402
+from lib.hunter import top_contacts  # noqa: E402
+from lib.paths import company_dirname, project_root, tracker_path  # noqa: E402
+from lib.templates import render_cold_email  # noqa: E402
+from lib.tracker import load_tracker  # noqa: E402
 
 
 _AGENT_TYPE = "outreach-company"
@@ -65,6 +63,9 @@ def _resolve_archive_dir(root: Path, app: dict) -> Path:
     company = str(app.get("company") or "")
     job_id = app.get("job_id")
     candidates: list[str] = []
+    # Probe BOTH slug forms: legacy directories predate job_id-suffixed slugs,
+    # so an archived package may sit under either ``{Company}-{id8}`` or the
+    # bare ``{Company}`` name depending on when it was created.
     for slug in (
         _slug_from_pdf_path(app.get("pdf_path")),
         company_dirname(company, job_id),

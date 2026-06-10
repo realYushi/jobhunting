@@ -7,8 +7,6 @@ from browser_harness import *
 # Params: $url, $page
 # Prosple search results are rendered client-side enough that browser-harness is
 # the most reliable path; plain HTTP requests return 403.
-goto_url("$url")
-wait_for_load()
 wait(4)
 
 jobs = js(r"""

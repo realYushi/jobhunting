@@ -12,6 +12,7 @@ import tempfile
 import time
 import urllib.request
 import uuid
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -279,11 +280,25 @@ def load_script(name: str, **params: Any) -> str:
 
     A `$js_helpers` placeholder is always available; it expands to the
     contents of `_js_helpers.js` (shared JS utilities like `clean`).
+
+    List scrapers (script name ends with '-list' or '-list-paginated') that
+    receive a ``url`` parameter are automatically wrapped with tab lifecycle
+    (open a dedicated tab via ``new_tab(url)``, wait for load, close it after).
+    This keeps every listing scraper isolated from the user's active browser
+    session.
     """
     path = _SCRIPTS_DIR / f"{name}.py"
     text = path.read_text()
     params.setdefault("js_helpers", _JS_HELPERS_PATH.read_text())
-    return string.Template(text).substitute(**params)
+    substituted = string.Template(text).substitute(**params)
+
+    # List scrapers get automatic tab lifecycle.
+    if (name.endswith("-list") or name.endswith("-list-paginated")) and "url" in params:
+        url_repr = repr(params["url"])
+        prefix = f"_bh_tab = new_tab({url_repr})\nwait_for_load()\n"
+        suffix = "\ntry:\n    cdp(\"Target.closeTarget\", targetId=_bh_tab)\nexcept Exception:\n    pass"
+        return prefix + substituted + suffix
+    return substituted
 
 
 def run_harness(
@@ -338,3 +353,28 @@ def extract_company_from_page_title(title: str) -> str | None:
         if company and company != "LinkedIn":
             return company
     return None
+
+
+@dataclass(frozen=True)
+class HarnessResult:
+    """Result of a single harness script run."""
+
+    stdout: str
+    stderr: str
+    retcode: int
+
+
+class LiveHarnessRunner:
+    """Adapter that runs scripts against the real browser via run_harness + load_script."""
+
+    def run(
+        self,
+        script_name: str,
+        *,
+        timeout: int,
+        source: str | None = None,
+        **params: Any,
+    ) -> HarnessResult:
+        script = load_script(script_name, **params)
+        stdout, stderr, retcode = run_harness(script, timeout=timeout, source=source)
+        return HarnessResult(stdout=stdout, stderr=stderr, retcode=retcode)

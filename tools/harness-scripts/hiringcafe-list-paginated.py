@@ -11,10 +11,6 @@ from browser_harness import *
 # itself fetches: /_next/data/<buildId>/index.json?searchState=...&page=N.
 # That JSON carries the full hit list with dates, honours dateFetchedPastNDays,
 # and paginates via the page query param (0-indexed; ssrIsLastPage marks the end).
-# Uses new_tab (not goto_url) so scraping the user's live Chrome opens its own
-# tab instead of hijacking whatever tab is currently in focus.
-_tab_id = new_tab("$url")
-wait_for_load()
 wait(1)
 
 # $page is 1-indexed (the shared paginator's convention); the API is 0-indexed.
@@ -55,9 +51,3 @@ jobs = js(r"""
 })()
 """)
 print(json.dumps({"page": int("$page"), "jobs": jobs}))
-
-# Close the tab we opened so the user's own tabs are left untouched.
-try:
-    cdp("Target.closeTarget", targetId=_tab_id)
-except Exception:
-    pass

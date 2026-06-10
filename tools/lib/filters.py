@@ -3,7 +3,7 @@
 These run before (and instead of) spending JD-fetch or scoring budget on
 obviously-ineligible listings. They operate on the same ``source`` / ``title`` /
 ``company`` / ``snippet`` attributes exposed by both ``JobListing`` (scrape time)
-and ``ScoreResult`` (package time), so the same helpers serve both stages.
+and ``JobScore`` (package time), so the same helpers serve both stages.
 """
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from lib.scorer import ScoreResult
+    from lib.scorer import JobScore
     from lib.scraper import JobListing
 
 
@@ -79,6 +79,11 @@ OUTSIDE_LOCATION_PHRASES = (
 
 _PRE_FILTER_SOURCES = frozenset({"hiringcafe", "workingnomads", "wellfound", "weworkremotely"})
 
+
+def _norm_text(text: str | None) -> str:
+    """Casefold + collapse whitespace so phrase matching is layout-insensitive."""
+    return " ".join((text or "").casefold().split())
+
 HARD_DROP_TITLE_PATTERNS = (
     "senior",
     "lead",
@@ -103,6 +108,8 @@ HARD_DROP_TITLE_PATTERNS = (
 HARD_DROP_COMPANY_PATTERNS = (
     "dataannotation",
     "twine",
+    "crossing hurdles",
+    "micro1",
 )
 
 
@@ -112,7 +119,7 @@ def _title_hard_drop_reason(listing: "JobListing") -> str | None:
     This keeps obvious rubric hard-drops from consuming JD-fetch/scoring budget.
     The list is intentionally narrow: only strong seniority/off-track signals.
     """
-    title = " ".join((listing.title or "").casefold().split())
+    title = _norm_text(listing.title)
     if not title:
         return None
     for pattern in HARD_DROP_TITLE_PATTERNS:
@@ -142,24 +149,23 @@ def _snippet_location_excluded(listing: "JobListing") -> bool:
     """
     if listing.source not in _PRE_FILTER_SOURCES:
         return False
-    snippet = listing.snippet or ""
-    if not snippet:
+    text = _norm_text(listing.snippet)
+    if not text:
         return False
-    text = " ".join(snippet.casefold().split())
     return any(phrase in text for phrase in STRICT_OUTSIDE_LOCATION_PHRASES)
 
 
-def _location_eligibility(item: "ScoreResult", jd_text: str) -> tuple[bool, str | None]:
+def _location_eligibility(item: "JobScore", jd_text: str) -> tuple[bool, str | None]:
     """Return whether a listing should be packaged under the location rule.
 
     Keep globally/anywhere remote roles and Auckland/NZ/AU/APAC-friendly roles.
     Skip roles explicitly limited outside those regions unless the full JD says
     they can be done globally/from anywhere.
     """
-    if item.source not in {"hiringcafe", "workingnomads", "wellfound", "weworkremotely"}:
+    if item.source not in _PRE_FILTER_SOURCES:
         return True, None
 
-    text = " ".join(jd_text.casefold().split())
+    text = _norm_text(jd_text)
     if any(phrase in text for phrase in STRICT_OUTSIDE_LOCATION_PHRASES):
         return False, "explicit location/work-authorization limit outside Auckland/NZ/AU/APAC"
     if any(phrase in text for phrase in GLOBAL_REMOTE_PHRASES):

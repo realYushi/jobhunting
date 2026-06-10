@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from tools.outreach import _prepare_target, prepare_targets
+from outreach import _prepare_target, prepare_targets
 
 
 class OutreachPrepareTargetTests(unittest.TestCase):
@@ -26,8 +26,8 @@ class OutreachPrepareTargetTests(unittest.TestCase):
                 "pdf_path": "applications/archive/submitted/Acme-12345678/documents/resume.pdf",
             }
 
-            with patch("tools.outreach.top_contacts", return_value=[]), patch(
-                "tools.outreach.render_cold_email", return_value="email body"
+            with patch("outreach.top_contacts", return_value=[]), patch(
+                "outreach.render_cold_email", return_value="email body"
             ):
                 target = _prepare_target(root, app, scaffold=True)
 
@@ -83,9 +83,9 @@ class OutreachPrepareCommandTests(unittest.TestCase):
             )
             out = root / "tmp.json"
 
-            with patch("tools.outreach.project_root", return_value=root), patch(
-                "tools.outreach.top_contacts", return_value=[]
-            ), patch("tools.outreach.render_cold_email", return_value="email body"):
+            with patch("outreach.project_root", return_value=root), patch(
+                "outreach.top_contacts", return_value=[]
+            ), patch("outreach.render_cold_email", return_value="email body"):
                 count, targets = prepare_targets([1], output=str(out), no_scaffold=False)
 
             self.assertEqual(count, 1)

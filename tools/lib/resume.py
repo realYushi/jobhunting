@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from .paths import base_resume_path, project_root
-from .keyword_match import load_role_configs
+from .keyword_match import load_role_configs, normalize
 
 
 class ResumeError(Exception):
@@ -20,12 +20,6 @@ def _get_configs() -> tuple[dict, dict[str, str], dict[str, str]]:
 
 def _get_synonyms() -> dict[str, str]:
     return load_role_configs().get("synonyms", {})
-
-
-def _canon(keyword: str, synonyms: dict[str, str]) -> str:
-    """Lowercase + map known synonyms to a canonical form for dedup comparisons."""
-    k = keyword.lower().strip()
-    return synonyms.get(k, k)
 
 
 def resolve_role(role_input: str) -> str | None:
@@ -98,8 +92,8 @@ def add_keywords(
         if target not in skill_groups:
             target = default_group
         group = skill_groups[target]
-        existing = {_canon(k, synonyms) for k in group.get("keywords", [])}
-        if _canon(kw, synonyms) not in existing:
+        existing = {normalize(k, synonyms) for k in group.get("keywords", [])}
+        if normalize(kw, synonyms) not in existing:
             group.setdefault("keywords", []).append(kw)
     return resume
 

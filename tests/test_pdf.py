@@ -3,9 +3,7 @@ import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from tools.lib.pdf import (  # noqa: E402
+from lib.pdf import (  # noqa: E402
     PdfRenderError,
     _normalize_resume,
     html_to_text,

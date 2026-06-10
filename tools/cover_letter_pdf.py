@@ -14,11 +14,9 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from tools.lib.paths import active_dir, project_root  # noqa: E402
-from tools.lib.pdf import PdfRenderError, render_cover_letter_pdf_from_file  # noqa: E402
-from tools.lib.validation import (  # noqa: E402
+from lib.paths import active_dir, project_root  # noqa: E402
+from lib.pdf import PdfRenderError, render_cover_letter_pdf_from_file  # noqa: E402
+from lib.validation import (  # noqa: E402
     validate_cover_letter_structure,
     validate_no_placeholders,
 )

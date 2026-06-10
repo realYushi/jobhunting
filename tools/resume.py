@@ -8,10 +8,8 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from tools.lib.paths import project_root  # noqa: E402
-from tools.lib.resume import (  # noqa: E402
+from lib.paths import project_root  # noqa: E402
+from lib.resume import (  # noqa: E402
     ResumeError,
     create_resume,
     list_role_names,

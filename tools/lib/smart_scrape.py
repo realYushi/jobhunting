@@ -17,7 +17,7 @@ from datetime import date, datetime
 from typing import Any, Callable
 from urllib.parse import quote, urlencode
 
-from lib.harness_utils import load_script, parse_harness_json_output, run_harness
+from lib.harness_utils import LiveHarnessRunner, parse_harness_json_output
 from lib.paths import tracker_path
 from lib.scraper import JobListing, load_search_config
 from lib.tracker import load_last_scrape, save_last_scrape
@@ -118,6 +118,7 @@ def smart_scrape(
     profiles: list[dict[str, Any]],
     max_total: int = 100,
     max_per_source: int = 50,
+    runner: LiveHarnessRunner | None = None,
 ) -> tuple[list[JobListing], ScrapeSummary]:
     """Scrape jobs using a per-source date-window watermark.
 
@@ -125,6 +126,7 @@ def smart_scrape(
         profiles: List of search profiles with keywords, location, etc.
         max_total: Maximum total listings to return.
         max_per_source: Maximum listings per source.
+        runner: Harness runner adapter; defaults to LiveHarnessRunner (real browser).
 
     Returns:
         (listings, summary)
@@ -134,6 +136,8 @@ def smart_scrape(
     its watermark is advanced to today. Sources that error keep their old
     watermark so the gap is auto-covered on the next run.
     """
+    if runner is None:
+        runner = LiveHarnessRunner()
     config = load_search_config()
     defaults = config.get("defaults", {})
     buffer_days: int = int(defaults.get("scrape_buffer_days", 2))
@@ -179,6 +183,7 @@ def smart_scrape(
                 max_per_source,
                 window,
                 keywords=_unique_keywords(profs),
+                runner=runner,
             )
             all_listings.extend(source_listings)
             # Advance the watermark only when the source actually returned
@@ -254,6 +259,28 @@ def _parse_jobs(
     return out
 
 
+def _parse_page(
+    stdout: str, source: str, page: int, window: int,
+    recent_filter: Callable[[str | None], bool] | None, empty_hint: str,
+) -> tuple[list[JobListing], bool]:
+    """Parse one harness page; return (listings, stop).
+
+    ``stop`` is True when the page is empty/window-exceeded and pagination should halt.
+    """
+    raw_count = sum(len(d.get("jobs", [])) for d in parse_harness_json_output(stdout))
+    page_listings = _parse_jobs(stdout, source, recent_filter)
+    if page_listings:
+        return page_listings, False
+    if raw_count == 0:
+        print(f"  Page {page}: scraped 0 listings ({empty_hint}), stopping", file=sys.stderr)
+    elif recent_filter is not None:
+        print(
+            f"  Page {page}: {raw_count} listings all older than window ({window}d), stopping",
+            file=sys.stderr,
+        )
+    return [], True
+
+
 def _scrape_paginated(
     source: str,
     base_urls: tuple[str, ...],
@@ -266,6 +293,7 @@ def _scrape_paginated(
     max_pages: int = 3,
     log_prefix: str | None = None,
     recent_filter: Callable[[str | None], bool] | None = None,
+    runner: LiveHarnessRunner | None = None,
 ) -> list[JobListing]:
     """Generic per-URL paginator shared by URL-fixed sources.
 
@@ -273,6 +301,8 @@ def _scrape_paginated(
     page returns no listings, when a ``recent_filter`` signals the page is
     entirely older than the window, or when the harness call fails.
     """
+    if runner is None:
+        runner = LiveHarnessRunner()
     listings: list[JobListing] = []
 
     for base_url in base_urls:
@@ -286,32 +316,15 @@ def _scrape_paginated(
                 break
             page = first_page + page_offset
             url = page_url(base_url, page)
-            stdout, _stderr, retcode = run_harness(
-                load_script(script_name, url=url, page=page), timeout=120, source=source
-            )
-            if retcode != 0:
+            result = runner.run(script_name, url=url, page=page, timeout=120, source=source)
+            if result.retcode != 0:
                 break
 
-            raw_count = sum(
-                len(data.get("jobs", [])) for data in parse_harness_json_output(stdout)
+            page_listings, stop = _parse_page(
+                result.stdout, source, page, window, recent_filter, "page blocked or empty?"
             )
-            page_listings = _parse_jobs(stdout, source, recent_filter)
-            if not page_listings:
-                if raw_count == 0:
-                    # Page yielded no listings at all — likely blocked or empty,
-                    # not "all old". Distinct message so the failure is visible.
-                    print(
-                        f"  Page {page}: scraped 0 listings (page blocked or empty?), stopping",
-                        file=sys.stderr,
-                    )
-                elif recent_filter is not None:
-                    print(
-                        f"  Page {page}: {raw_count} listings all older than window "
-                        f"({window}d), stopping",
-                        file=sys.stderr,
-                    )
+            if stop:
                 break
-
             listings.extend(page_listings)
 
     return listings[:max_results]
@@ -331,8 +344,11 @@ def _scrape_source(
     window: int,
     *,
     keywords: list[str] | None = None,
+    runner: LiveHarnessRunner | None = None,
 ) -> list[JobListing]:
     """Scrape a single source with date-window bounding."""
+    if runner is None:
+        runner = LiveHarnessRunner()
     source_keywords = _keywords_for_source(source, keywords or [])
     if source == "linkedin":
         listings = _scrape_paginated(
@@ -343,6 +359,7 @@ def _scrape_source(
             max_results,
             window,
             log_prefix="LinkedIn base",
+            runner=runner,
         )
         return [lst for lst in listings if _title_looks_software(lst.title)][:max_results]
     if source == "seek":
@@ -354,9 +371,10 @@ def _scrape_source(
             max_results,
             window,
             log_prefix="Seek base",
+            runner=runner,
         )
     if source == "hiringcafe":
-        return _scrape_hiringcafe_paginated(max_results, window)
+        return _scrape_hiringcafe_paginated(max_results, window, runner=runner)
     if source == "workingnomads":
         return _scrape_paginated(
             "workingnomads",
@@ -366,11 +384,12 @@ def _scrape_source(
             max_results,
             window,
             recent_filter=lambda p: within_days(p, window),
+            runner=runner,
         )
     if source == "wellfound":
-        return _scrape_wellfound_paginated(max_results, window, source_keywords)
+        return _scrape_wellfound_paginated(max_results, window, source_keywords, runner=runner)
     if source == "weworkremotely":
-        return _scrape_weworkremotely(max_results, window, source_keywords)
+        return _scrape_weworkremotely(max_results, window, source_keywords, runner=runner)
     if source == "prosple":
         return _scrape_paginated(
             "prosple",
@@ -382,6 +401,7 @@ def _scrape_source(
             max_pages=1,
             log_prefix="Prosple base",
             recent_filter=lambda p: within_days(p, window),
+            runner=runner,
         )
     print(f"  Unknown source: {source}", file=sys.stderr)
     return []
@@ -662,6 +682,8 @@ def _hiringcafe_search_state_url(window: int) -> str:
 def _scrape_hiringcafe_paginated(
     max_results: int,
     window: int,
+    *,
+    runner: LiveHarnessRunner | None = None,
 ) -> list[JobListing]:
     """Scrape hiring.cafe via its Next.js ``_next/data`` JSON API.
 
@@ -680,6 +702,7 @@ def _scrape_hiringcafe_paginated(
         lambda base, _page: base,  # page goes via $page; searchState is fixed
         max_results,
         window,
+        runner=runner,
     )
 
 
@@ -749,6 +772,8 @@ def _scrape_wellfound_paginated(
     max_results: int,
     window: int,
     keywords: list[str],
+    *,
+    runner: LiveHarnessRunner | None = None,
 ) -> list[JobListing]:
     """Scrape Wellfound remote startup engineering listings.
 
@@ -757,6 +782,8 @@ def _scrape_wellfound_paginated(
     pages get a chance to contribute. Eligibility for US-only / region-locked
     roles is checked later against the full JD.
     """
+    if runner is None:
+        runner = LiveHarnessRunner()
     recent_filter = lambda p: within_days(p, window)  # noqa: E731
     listings: list[JobListing] = []
 
@@ -769,30 +796,15 @@ def _scrape_wellfound_paginated(
                 file=sys.stderr,
             )
             url = _append_page_param(base_search_url, page)
-            stdout, _stderr, retcode = run_harness(
-                load_script("wellfound-list", url=url, page=page), timeout=120
-            )
-            if retcode != 0:
+            result = runner.run("wellfound-list", url=url, page=page, timeout=120)
+            if result.retcode != 0:
                 continue
 
-            raw_count = sum(
-                len(data.get("jobs", [])) for data in parse_harness_json_output(stdout)
+            page_listings, stop = _parse_page(
+                result.stdout, "wellfound", page, window, recent_filter, "login wall or empty?"
             )
-            page_listings = _parse_jobs(stdout, "wellfound", recent_filter)
-            if not page_listings:
-                if raw_count == 0:
-                    print(
-                        f"  Page {page}: scraped 0 listings (login wall or empty?), stopping",
-                        file=sys.stderr,
-                    )
-                else:
-                    print(
-                        f"  Page {page}: {raw_count} listings all older than window "
-                        f"({window}d), stopping",
-                        file=sys.stderr,
-                    )
+            if stop:
                 break
-
             listings.extend(page_listings)
 
     return listings[:max_results]
@@ -802,24 +814,23 @@ def _scrape_weworkremotely(
     max_results: int,
     window: int,
     keywords: list[str],
+    *,
+    runner: LiveHarnessRunner | None = None,
 ) -> list[JobListing]:
     """Scrape We Work Remotely programming search results (single page).
 
     WWR embeds all current search results in one page; postings are filtered
     locally against the date window via ``within_days``.
     """
+    if runner is None:
+        runner = LiveHarnessRunner()
     url = _weworkremotely_search_url(keywords)
     print(f"  We Work Remotely: {url[:60]}...", file=sys.stderr)
-    stdout, _stderr, retcode = run_harness(
-        load_script(
-            "weworkremotely-list", url=url, page=1
-        ),
-        timeout=120,
-    )
-    if retcode != 0:
+    result = runner.run("weworkremotely-list", url=url, page=1, timeout=120)
+    if result.retcode != 0:
         return []
 
-    listings = _parse_jobs(stdout, "weworkremotely", lambda p: within_days(p, window))
+    listings = _parse_jobs(result.stdout, "weworkremotely", lambda p: within_days(p, window))
     return listings[:max_results]
 
 

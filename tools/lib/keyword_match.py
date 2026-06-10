@@ -154,7 +154,7 @@ def scan_red_flags(jd_text: str) -> dict[str, list[tuple[str, int]]]:
 
 
 @dataclass(frozen=True)
-class MatchScore:
+class KeywordMatch:
     required: list[tuple[str, bool]]
     preferred: list[tuple[str, bool]]
     required_pct: int
@@ -167,7 +167,7 @@ def compute_match_score(
     text: str,
     required: list[str],
     preferred: list[str],
-) -> MatchScore:
+) -> KeywordMatch:
     """Stage-1 keyword gate over the candidate's existing profile.
 
     Empty lists are treated as 100% to avoid divide-by-zero and to let callers
@@ -191,7 +191,7 @@ def compute_match_score(
         overall = req_pct * 0.7 + pref_pct * 0.3
 
     overall_int = round(overall)
-    return MatchScore(
+    return KeywordMatch(
         required=required_results,
         preferred=preferred_results,
         required_pct=round(req_pct),

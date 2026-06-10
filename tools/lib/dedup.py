@@ -4,25 +4,30 @@ Builds O(1) lookup indexes from the tracker and current INBOX, then resolves a
 human-readable duplicate/skip reason for a candidate. Runs before JD fetch and
 package generation so we never spend on jobs already applied, skipped, or queued.
 The helpers read ``source`` / ``job_id`` / ``company`` / ``title`` off either a
-``JobListing`` (scrape stage) or a ``ScoreResult`` (package stage).
+``JobListing`` (scrape stage) or a ``JobScore`` (package stage).
 """
 
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from lib.app_state import ApplicationState
 from lib.identity import (
     BoardKey,
     ManualKey,
     _norm_manual_field,
     try_manual_key,
 )
-from lib.tracker import key_for_app_dict
+from lib.inbox import parse_inbox
+from lib.paths import tracker_path
+from lib.tracker import BUCKETS, key_for_app_dict
 
 if TYPE_CHECKING:
+    from pathlib import Path
+
     from lib.identity import JobKey
-    from lib.reconcile import InboxItem
-    from lib.scorer import ScoreResult
+    from lib.inbox import InboxItem
+    from lib.scorer import JobScore
 
 
 def _norm_identity_text(value: str | None) -> str:
@@ -51,17 +56,11 @@ def _build_company_title_index(tracker: dict) -> dict[tuple[str, str], list[dict
     return index
 
 
-# Mirrors tracker.BUCKETS, ordered so the most-actionable status wins when a
-# key appears in multiple buckets. Keep in sync with tracker.BUCKETS — any
-# bucket not listed here still gets picked up via the sorted-keys fallback in
+# Walk buckets in tracker.BUCKETS' declared order so the most-actionable status
+# wins when a key appears in multiple buckets (active first). Any bucket not in
+# BUCKETS still gets picked up via the sorted-keys fallback in
 # _build_application_key_index, just at lower priority.
-_BUCKET_PRIORITY: tuple[str, ...] = (
-    "active",
-    "interviews",
-    "offers",
-    "rejected",
-    "withdrawn",
-)
+_BUCKET_PRIORITY: tuple[str, ...] = BUCKETS
 
 
 def _build_application_key_index(tracker: dict) -> dict["JobKey", dict]:
@@ -111,7 +110,7 @@ def _build_inbox_indexes(
     return by_key, by_company_title
 
 
-def _score_board_key(item: "ScoreResult") -> BoardKey | None:
+def _score_board_key(item: "JobScore") -> BoardKey | None:
     # Strip before truthiness — BoardKey.__post_init__ checks non-empty BEFORE
     # stripping, so a whitespace-only id would slip past it and collapse to ''.
     source = (item.source or "").strip()
@@ -124,7 +123,7 @@ def _score_board_key(item: "ScoreResult") -> BoardKey | None:
 _MANUAL_KEY_SENTINELS: frozenset[str] = frozenset({"", "unknown"})
 
 
-def _score_manual_key(item: "ScoreResult") -> ManualKey | None:
+def _score_manual_key(item: "JobScore") -> ManualKey | None:
     """Build a ManualKey for a score row, returning None for unusable inputs.
 
     Filters whitespace-only fields (which would crash ManualKey's strict
@@ -143,7 +142,7 @@ def _score_manual_key(item: "ScoreResult") -> ManualKey | None:
 
 
 def _existing_company_title_matches(
-    index: dict[tuple[str, str], list[dict]], item: "ScoreResult"
+    index: dict[tuple[str, str], list[dict]], item: "JobScore"
 ) -> list[dict]:
     """Return existing applications with the same company and title.
 
@@ -159,7 +158,7 @@ def _existing_company_title_matches(
 
 
 def _duplicate_reason(
-    item: "ScoreResult",
+    item: "JobScore",
     *,
     application_key_index: dict["JobKey", dict],
     company_title_index: dict[tuple[str, str], list[dict]],
@@ -214,3 +213,40 @@ def _duplicate_reason(
             return f"already in INBOX {inbox_item.status} ({inbox_item.slug})"
 
     return None
+
+
+class DedupGate:
+    """One-call duplicate gate over the tracker and current INBOX.
+
+    Builds all lookup indexes once at construction; call ``reason(item)`` per
+    candidate. Indexes are a snapshot — construct a fresh gate after anything
+    mutates the tracker or INBOX (e.g. reconcile); there is no staleness
+    tracking.
+    """
+
+    def __init__(self, state: ApplicationState, inbox_path: Path) -> None:
+        tracker = state.tracker
+        inbox_key_index, inbox_company_title_index = _build_inbox_indexes(
+            parse_inbox(inbox_path)
+        )
+        self._application_key_index = _build_application_key_index(tracker)
+        self._company_title_index = _build_company_title_index(tracker)
+        self._inbox_key_index = inbox_key_index
+        self._inbox_company_title_index = inbox_company_title_index
+        self._skipped_set = state.keyset("skipped")
+
+    @classmethod
+    def from_disk(cls, root: Path, inbox_path: Path) -> DedupGate:
+        """Build a gate from the on-disk tracker + INBOX, fresh."""
+        return cls(ApplicationState.load(tracker_path(root)), inbox_path)
+
+    def reason(self, item: JobScore) -> str | None:
+        """Return a human-readable duplicate/skip reason, or None if new."""
+        return _duplicate_reason(
+            item,
+            application_key_index=self._application_key_index,
+            company_title_index=self._company_title_index,
+            inbox_key_index=self._inbox_key_index,
+            inbox_company_title_index=self._inbox_company_title_index,
+            skipped_set=self._skipped_set,
+        )

@@ -5,12 +5,13 @@ import unittest
 from datetime import date
 from pathlib import Path
 
-from tools.lib.tracker import (
+from lib.app_state import ApplicationState
+from lib.tracker import (
     ApplicationRecord,
     empty_tracker,
     upsert_active_application,
 )
-from tools.lib.workflow import WorkflowOptions, create_application_package
+from lib.workflow import WorkflowOptions, create_application_package
 
 
 class TrackerTests(unittest.TestCase):
@@ -188,6 +189,73 @@ class WorkflowTests(unittest.TestCase):
         joined = "\n".join(result.warnings)
         self.assertIn("[Add one specific sentence", joined)
         self.assertIn("[Paragraph 2 should", joined)
+
+
+class ApplicationStateTests(unittest.TestCase):
+    """ApplicationState: load → upsert → save → reload verifies the full cycle."""
+
+    def setUp(self):
+        self.tempdir = tempfile.TemporaryDirectory()
+        self.tracker_path = Path(self.tempdir.name) / "application-tracker.json"
+
+    def tearDown(self):
+        self.tempdir.cleanup()
+
+    def test_load_creates_default_when_missing(self):
+        state = ApplicationState.load(self.tracker_path)
+        self.assertFalse(self.tracker_path.exists())  # not written until save
+        self.assertIn("applications", state.tracker)
+
+    def test_upsert_and_save_persist_to_disk(self):
+        state = ApplicationState.load(self.tracker_path)
+        state.upsert_active(
+            ApplicationRecord("Acme", "Engineer", "2026-06-01", priority="High")
+        )
+        state.save()
+
+        reloaded = ApplicationState.load(self.tracker_path)
+        active = reloaded.tracker["applications"]["active"]
+        self.assertEqual(len(active), 1)
+        self.assertEqual(active[0]["company"], "Acme")
+        self.assertEqual(active[0]["priority"], "High")
+
+    def test_two_upserts_one_save(self):
+        # The whole point of ApplicationState: load once, upsert N times, save once.
+        state = ApplicationState.load(self.tracker_path)
+        state.upsert_active(ApplicationRecord("AlphaCo", "Dev A", "2026-06-01"))
+        state.upsert_active(ApplicationRecord("BetaCo", "Dev B", "2026-06-01"))
+        state.save()
+
+        reloaded = ApplicationState.load(self.tracker_path)
+        companies = {r["company"] for r in reloaded.tracker["applications"]["active"]}
+        self.assertEqual(companies, {"AlphaCo", "BetaCo"})
+
+    def test_keyset_roundtrip(self):
+        from lib.identity import ManualKey
+
+        state = ApplicationState.load(self.tracker_path)
+        keys = {ManualKey("Acme", "Engineer")}
+        state.store_keyset("skipped", keys)
+        state.save()
+
+        reloaded = ApplicationState.load(self.tracker_path)
+        result = reloaded.keyset("skipped")
+        self.assertIn(ManualKey("Acme", "Engineer"), result)
+
+    def test_iter_applications_all_buckets(self):
+        state = ApplicationState.load(self.tracker_path)
+        state.upsert_active(ApplicationRecord("AlphaCo", "Dev", "2026-06-01"))
+        apps = state.iter_applications()
+        self.assertEqual(len(apps), 1)
+        self.assertEqual(apps[0]["company"], "AlphaCo")
+
+    def test_iter_applications_specific_bucket(self):
+        state = ApplicationState.load(self.tracker_path)
+        state.upsert_active(ApplicationRecord("AlphaCo", "Dev", "2026-06-01"))
+        apps = state.iter_applications(buckets=("active",))
+        self.assertEqual(len(apps), 1)
+        apps_rejected = state.iter_applications(buckets=("rejected",))
+        self.assertEqual(len(apps_rejected), 0)
 
 
 if __name__ == "__main__":

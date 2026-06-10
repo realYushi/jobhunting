@@ -4,10 +4,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
-
 import pipeline
-from lib.scorer import ScoreResult
+from lib.scorer import JobScore
 
 
 class RunFromScoresJoinTests(unittest.TestCase):
@@ -86,7 +84,7 @@ class RunFromScoresJoinTests(unittest.TestCase):
         self.assertEqual(c["listings_by_id"]["1"]["full_jd"], "FULL JD ONE")
         self.assertEqual(len(c["passed"]), 1)
         sr = c["passed"][0]
-        self.assertIsInstance(sr, ScoreResult)
+        self.assertIsInstance(sr, JobScore)
         self.assertEqual(sr.title, "Backend Engineer")
         self.assertEqual(sr.company, "Acme")
         self.assertEqual(sr.url, "https://x/1")

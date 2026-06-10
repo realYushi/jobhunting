@@ -10,22 +10,24 @@ from __future__ import annotations
 from concurrent.futures import ThreadPoolExecutor
 from typing import TYPE_CHECKING
 
-from lib.harness_utils import load_script, parse_harness_json_output, run_harness
+from lib.harness_utils import LiveHarnessRunner, parse_harness_json_output
 
 if TYPE_CHECKING:
-    from lib.scorer import ScoreResult
+    from lib.scorer import JobScore
 
 
 JD_FETCH_PARALLELISM = 1
 
 
-def _fetch_full_jd(url: str) -> str:
+def _fetch_full_jd(url: str, runner: LiveHarnessRunner | None = None) -> str:
     """Fetch the full job description from a listing URL.
 
     browser-harness subprocesses all talk to the same Chrome instance. In
     practice, concurrent JD fetches can read the wrong active tab and return a
     different listing's content, so callers should serialize access.
     """
+    if runner is None:
+        runner = LiveHarnessRunner()
     # hiring.cafe needs a tab click to reveal the full JD
     pre_extract = ""
     if "hiring.cafe/viewjob" in url or "hiring.cafe/job" in url:
@@ -42,13 +44,11 @@ wait(2)
     source = None
     if "prosple.com" in url:
         source = "prosple"
-    stdout, stderr, retcode = run_harness(
-        load_script("jd-fetch", url=url, pre_extract=pre_extract), timeout=60, source=source
-    )
-    if retcode != 0:
-        return f"# Failed to fetch JD from {url}\n\nError: {stderr}"
+    result = runner.run("jd-fetch", url=url, pre_extract=pre_extract, timeout=60, source=source)
+    if result.retcode != 0:
+        return f"# Failed to fetch JD from {url}\n\nError: {result.stderr}"
 
-    results = parse_harness_json_output(stdout)
+    results = parse_harness_json_output(result.stdout)
     if results and "jd" in results[0]:
         return results[0]["jd"]
 
@@ -56,7 +56,9 @@ wait(2)
 
 
 def _fetch_jds_parallel(
-    items: list["ScoreResult"], max_workers: int = JD_FETCH_PARALLELISM
+    items: list["JobScore"],
+    max_workers: int = JD_FETCH_PARALLELISM,
+    runner: LiveHarnessRunner | None = None,
 ) -> dict[str, str]:
     """Fetch JDs for many listings. Keyed by item.url.
 
@@ -72,7 +74,7 @@ def _fetch_jds_parallel(
 
     out: dict[str, str] = {}
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
-        futures = {pool.submit(_fetch_full_jd, url): url for url in urls}
+        futures = {pool.submit(_fetch_full_jd, url, runner): url for url in urls}
         for fut in futures:
             url = futures[fut]
             try:

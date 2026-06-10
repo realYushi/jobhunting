@@ -16,10 +16,8 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from tools.lib.paths import project_root  # noqa: E402
-from tools.lib.keyword_match import (  # noqa: E402
+from lib.paths import project_root  # noqa: E402
+from lib.keyword_match import (  # noqa: E402
     candidate_text,
     compute_match_score,
     scan_red_flags,

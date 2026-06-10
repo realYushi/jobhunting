@@ -1,4 +1,4 @@
-"""INBOX.md writer utilities."""
+"""INBOX.md writer and parser utilities."""
 
 from __future__ import annotations
 
@@ -8,6 +8,8 @@ from pathlib import Path
 import re
 
 from .hunter import top_contact_summaries
+from .identity import JobKey, key_from_args
+from .paths import company_dirname
 
 
 @dataclass(frozen=True)
@@ -33,6 +35,124 @@ class AppliedInboxRow:
     url: str | None = None
     best_contact: str | None = None
     top_contacts: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class InboxItem:
+    """A parsed row from INBOX.md."""
+
+    slug: str
+    status: str  # "[ ]", "[x]", or "[~]"
+    title: str
+    company: str
+    score: int | None = None
+    job_path: Path | None = None
+    cv_path: Path | None = None
+    cover_path: Path | None = None
+    apply_url: str | None = None
+    source: str | None = None
+    job_id: str | None = None
+
+    @property
+    def key(self) -> JobKey:
+        """BoardKey when Apply URL yielded source+id, else ManualKey."""
+        return key_from_args(self.source, self.job_id, self.company, self.title)
+
+
+# Map from URL host substring to (source label, job-id regex).
+# Tracker rows are written with these same source labels by the scrapers,
+# so extracting them here lets BoardKey match the tracker row during reconcile.
+_URL_SOURCES: tuple[tuple[str, str, str], ...] = (
+    ("seek.com", "seek", r"/job/(\d+)"),
+    ("linkedin.com", "linkedin", r"/jobs/view/(\d+)"),
+    ("hiring.cafe", "hiringcafe", r"/(?:viewjob|job)/([A-Za-z0-9]+)"),
+    ("workingnomads.com", "workingnomads", r"/jobs/([^/?#]+)"),
+    ("wellfound.com", "wellfound", r"/jobs/(\d+)"),
+    ("weworkremotely.com", "weworkremotely", r"/remote-jobs/([^/?#]+)"),
+    ("prosple.com", "prosple", r"/jobs-internships/([^/?#]+)"),
+)
+
+
+def _parse_apply_url(url: str | None) -> tuple[str | None, str | None]:
+    """Return (source, job_id) from a known job-board URL, or (None, None)."""
+    if not url:
+        return None, None
+    for host, source, id_pattern in _URL_SOURCES:
+        if host in url:
+            m = re.search(id_pattern, url)
+            return source, (m.group(1) if m else None)
+    return None, None
+
+
+def _linked_doc_path(line: str, label: str, slug: str) -> Path | None:
+    """Resolve a ``[label](./relative)`` INBOX link to its active-dir path."""
+    match = re.search(rf"\[{re.escape(label)}\]\(\.*/([^)]+?)\)", line)
+    if not match:
+        return None
+    return Path(f"applications/active/{slug}/{match.group(1)}")
+
+
+_INBOX_PATTERN = re.compile(
+    r"""^-\s+\[(?P<status>[ x~])\]\s*\*\*(?P<title>[^*]+)\s*\*\*\s*@\s*(?P<company>[^(]+)(?:\s*\(score:\s*(?P<score>\d+)\))?""",
+    re.MULTILINE,
+)
+
+
+def parse_inbox(inbox_path: Path) -> list[InboxItem]:
+    """Extract structured items from INBOX.md checkbox list."""
+    if not inbox_path.exists():
+        return []
+
+    text = inbox_path.read_text()
+    items: list[InboxItem] = []
+
+    for line in text.splitlines():
+        match = _INBOX_PATTERN.search(line)
+        if not match:
+            continue
+
+        status_raw = match.group("status")
+        status = {
+            " ": "[ ]",
+            "x": "[x]",
+            "~": "[~]",
+        }.get(status_raw, "[ ]")
+
+        title = match.group("title").strip()
+        company = match.group("company").strip()
+        score_str = match.group("score")
+        score = int(score_str) if score_str else None
+
+        url_match = re.search(r"\[Apply\s*↗\]\((https?://[^)]+)\)", line)
+        apply_url = url_match.group(1) if url_match else None
+        source, job_id = _parse_apply_url(apply_url)
+
+        # Slug = the on-disk active dir name. Derived from company + job_id so
+        # the same company applied for twice (different listings) doesn't
+        # collide. Matches company_dirname used by workflow.create_application_package.
+        slug = company_dirname(company, job_id)
+
+        job_path = _linked_doc_path(line, "JD", slug)
+        cv_path = _linked_doc_path(line, "CV", slug)
+        cover_path = _linked_doc_path(line, "Letter", slug)
+
+        items.append(
+            InboxItem(
+                slug=slug,
+                status=status,
+                title=title,
+                company=company,
+                score=score,
+                job_path=job_path,
+                cv_path=cv_path,
+                cover_path=cover_path,
+                apply_url=apply_url,
+                source=source,
+                job_id=job_id,
+            )
+        )
+
+    return items
 
 
 _CHECKLIST_RE = re.compile(r"^-\s+\[[ x~]\]\s")

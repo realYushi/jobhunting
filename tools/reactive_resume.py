@@ -8,10 +8,8 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from tools.lib.api import ApiClient, ApiError, ApiResponse  # noqa: E402
-from tools.lib.config import ConfigError, load_env, require_env  # noqa: E402
+from lib.api import ApiClient, ApiError, ApiResponse  # noqa: E402
+from lib.config import ConfigError, load_env, require_env  # noqa: E402
 
 
 def _create_client() -> ApiClient:

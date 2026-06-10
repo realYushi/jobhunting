@@ -78,8 +78,14 @@ logs/
 .pi/
 .pi-lens/
 
+# Serena MCP project state
+.serena/
+
 # Browser auth state (contains session cookies)
 linkedin-auth.json
 
 # Typst temp output
 .typst-tmp/
+
+# Editor/backup leftovers
+*.bak
