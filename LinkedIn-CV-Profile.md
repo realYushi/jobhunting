@@ -14,14 +14,14 @@
 
 ## About Section
 
-I’m a full-stack product engineer at GrowLab Technologies and a Computer and Information Sciences student at AUT, graduating in July 2026 with a GPA of 7.75/9.0.
+I’m a full-stack product engineer and Computer and Information Sciences student at AUT, graduating in July 2026 with a GPA of 7.75/9.0.
 
-My work sits at the intersection of product engineering and applied AI: I build internal tools, client-facing applications, and agent-powered workflows using TypeScript, React, Node.js, and modern AI tooling. I’m strongest when turning ambiguous ideas into working software quickly, then refining them into production-ready features.
+My work sits at the intersection of product engineering and applied AI: I’ve built internal tools, client-facing applications, and agent-powered workflows using TypeScript, React, Node.js, and modern AI tooling. I’m strongest when turning ambiguous ideas into working software quickly, then refining them into production-ready features.
 
 **Key highlights:**
 
 - 🎓 Bachelor of Computer and Information Sciences at Auckland University of Technology (Expected July 2026) | GPA 7.75/9.0
-- 💼 Full-Stack Product Engineer at GrowLab Technologies, building internal tools and client applications
+- 💼 Full-Stack Product Engineer experience at GrowLab Technologies, building internal tools and client applications
 - 🤖 Experience building agent-powered workflows, RAG features, and AI-assisted developer tooling
 - 🛠️ Strong across React, TypeScript, Node.js, Vue.js, and .NET
 - 🏆 Microsoft Azure AI Fundamentals, GitHub Foundations, Scrum, and Anthropic certifications
@@ -31,11 +31,11 @@ My work sits at the intersection of product engineering and applied AI: I build 
 
 ### AI-Native Product Engineer & Full Stack Developer
 
-**GrowLab Technologies** • Part-time • March 2026 - Present • Auckland, New Zealand • On-site
+**GrowLab Technologies** • Part-time • March 2026 - June 2026 • Auckland, New Zealand • On-site
 
-• Build internal tools and client-facing web applications as a full-stack product engineer.
-• Design and integrate AI agents and models into product workflows where they improve speed or usability.
-• Turn product ideas into working prototypes quickly, then harden the strongest ones into production-ready features.
+• Built internal tools and client-facing web applications as a full-stack product engineer.
+• Designed and integrated AI agents and models into product workflows where they improved speed or usability.
+• Turned product ideas into working prototypes quickly, then hardened the strongest ones into production-ready features.
 
 **Skills:** AI Agents, Spec-Driven Software Development, Multi-agent Systems, Product Development, Context Engineering
 

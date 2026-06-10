@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-05",
+    "last_updated": "2026-06-09",
     "version": "8.0"
   },
   "applications": {
@@ -395,7 +395,7 @@
         "submitted_at": "2026-05-15"
       },
       {
-        "company": "Talent Army – Winner of Medium Recruitment Agency of the Year 2025",
+        "company": "Talent Army \u2013 Winner of Medium Recruitment Agency of the Year 2025",
         "position": "DevOps Engineer (AWS & Azure)",
         "date_applied": "2026-05-15",
         "status": "Skipped",
@@ -477,7 +477,7 @@
       },
       {
         "company": "ICTx",
-        "position": "Software Engineer – .NET, SQL & BI",
+        "position": "Software Engineer \u2013 .NET, SQL & BI",
         "date_applied": "2026-05-16",
         "status": "Skipped",
         "priority": "Medium",
@@ -561,7 +561,7 @@
       },
       {
         "company": "Esri",
-        "position": "Product Engineer II – Web Services",
+        "position": "Product Engineer II \u2013 Web Services",
         "date_applied": "2026-05-16",
         "status": "Skipped",
         "priority": "Medium",
@@ -897,7 +897,7 @@
       },
       {
         "company": "Blackpepper",
-        "position": "Intermediate Front End Developer – Shopify",
+        "position": "Intermediate Front End Developer \u2013 Shopify",
         "date_applied": "2026-05-18",
         "status": "Skipped",
         "priority": "Medium",
@@ -1934,7 +1934,7 @@
       },
       {
         "company": "Twine",
-        "position": "Remote Web Developer – WordPress",
+        "position": "Remote Web Developer \u2013 WordPress",
         "date_applied": "2026-05-27",
         "status": "In Progress",
         "priority": "Medium",
@@ -2128,7 +2128,7 @@
       },
       {
         "company": "HR Connect Limited",
-        "position": "Software Developer (Junior – Intermediate)",
+        "position": "Software Developer (Junior \u2013 Intermediate)",
         "date_applied": "2026-06-05",
         "status": "Skipped",
         "priority": "Medium",
@@ -2149,6 +2149,228 @@
         "source": "seek",
         "url": "https://nz.seek.com/job/92500440?type=standard&ref=search-standalone&origin=cardTitle#sol=cf1a9a7834b8b39cba2036163efab41be871167e",
         "skipped_at": "2026-06-05"
+      },
+      {
+        "company": "MacroActive",
+        "position": "Full Stack Developer",
+        "date_applied": "2026-06-06",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/MacroActive-92501282/documents/resume.pdf",
+        "job_id": "92501282",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92501282?type=standard&ref=search-standalone&origin=cardTitle#sol=68905675deccd28d8a477709dbcc9554c0ef942e"
+      },
+      {
+        "company": "FirstCape Limited",
+        "position": "Software Engineer",
+        "date_applied": "2026-06-06",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/FirstCape Limited-92492462-2/documents/resume.pdf",
+        "job_id": "92492462",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92492462?type=standard&ref=search-standalone&origin=cardTitle#sol=819823722badeb19cba58bc0f8e6a9c1d3f4bd46",
+        "submitted_at": "2026-06-09"
+      },
+      {
+        "company": "Crossing Hurdles",
+        "position": "Full Stack Developer | Remote",
+        "date_applied": "2026-06-06",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Crossing Hurdles-44225201/documents/resume.pdf",
+        "job_id": "4422520153",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4422520153/?eBP=NON_CHARGEABLE_CHANNEL&refId=3ozCUVEyrhsQOpRkpC6%2BpA%3D%3D&trackingId=erCWyj%2Bo%2Fityy5buY5EzzQ%3D%3D&trk=flagship3_search_srp_jobs"
+      },
+      {
+        "company": "Crossing Hurdles",
+        "position": "Frontend Engineer | Remote",
+        "date_applied": "2026-06-06",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Crossing Hurdles-44228221/documents/resume.pdf",
+        "job_id": "4422822189",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4422822189/?eBP=NON_CHARGEABLE_CHANNEL&refId=wt8N9TlMtaCxsmgw3FiU5w%3D%3D&trackingId=hgpPYW3DRlPDRNQINsGYcw%3D%3D&trk=flagship3_search_srp_jobs"
+      },
+      {
+        "company": "Hire Feed",
+        "position": "Full Stack UI Developer (Remote)",
+        "date_applied": "2026-06-06",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Hire Feed-44241465/documents/resume.pdf",
+        "job_id": "4424146584",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4424146584/?eBP=NON_CHARGEABLE_CHANNEL&refId=aqrldZEt2M%2BfVS456iK4zg%3D%3D&trackingId=pSo29gyIQ8KgGWOIhx2xjQ%3D%3D&trk=flagship3_search_srp_jobs"
+      },
+      {
+        "company": "Quantifi Photonics",
+        "position": "Software Engineer",
+        "date_applied": "2026-06-06",
+        "status": "Submitted",
+        "priority": "Medium",
+        "pdf_path": "applications/archive/submitted/Quantifi Photonics-92503215/documents/resume.pdf",
+        "job_id": "92503215",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92503215?type=promoted&ref=search-standalone&origin=cardTitle#sol=163f759c73463374e722b239b026adfa2278de67",
+        "submitted_at": "2026-06-09"
+      },
+      {
+        "company": "micro1",
+        "position": "Frontend Developer (HTML, CSS)",
+        "date_applied": "2026-06-06",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/micro1-44241485/documents/resume.pdf",
+        "job_id": "4424148517",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4424148517/?eBP=NON_CHARGEABLE_CHANNEL&refId=aqrldZEt2M%2BfVS456iK4zg%3D%3D&trackingId=7rWyu4ewX1bVJU52nfx%2B7w%3D%3D&trk=flagship3_search_srp_jobs"
+      },
+      {
+        "company": "BrightSpark Recruitment",
+        "position": "Full Stack Developer",
+        "date_applied": "2026-06-07",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/BrightSpark Recruitment-92550735/documents/resume.pdf",
+        "job_id": "92550735",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92550735?type=standard&ref=search-standalone&origin=cardTitle#sol=33439310fa87675cd2306537684ad1a165c4c377"
+      },
+      {
+        "company": "BrightSpark Recruitment",
+        "position": "Backend Developer",
+        "date_applied": "2026-06-07",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/BrightSpark Recruitment-92550652/documents/resume.pdf",
+        "job_id": "92550652",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92550652?type=standard&ref=search-standalone&origin=cardTitle#sol=a208f7cd3270b8a260b05e5e735a779208c67e1c"
+      },
+      {
+        "company": "Adaptive Resourcing",
+        "position": "Elixir Developer",
+        "date_applied": "2026-06-07",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Adaptive Resourcing-92539431/documents/resume.pdf",
+        "job_id": "92539431",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92539431?type=standard&ref=search-standalone&origin=cardTitle#sol=fec5342c7d23a9b3718a3e04907ab910fe205fa8"
+      },
+      {
+        "company": "Plus Notable",
+        "position": "Remote Part-Time Backend / AI Voice Developer",
+        "date_applied": "2026-06-07",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Plus Notable-92485596/documents/resume.pdf",
+        "job_id": "92485596",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92485596?type=standard&ref=search-standalone&origin=cardTitle#sol=f221e7ee92c2650d20e71e594cdfedd201bc9c82"
+      },
+      {
+        "company": "R & R",
+        "position": "Full Stack Application Developer \u2013 IT Expert",
+        "date_applied": "2026-06-07",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/R  R-92485163/documents/resume.pdf",
+        "job_id": "92485163",
+        "source": "seek",
+        "url": "https://au.seek.com/job/92485163?type=standard&ref=search-standalone&origin=cardTitle#sol=743a034a42c65ad7fa2be30230896d1696f2c799"
+      },
+      {
+        "company": "Aktor Como Intercity Facilities Management",
+        "position": "ENTRY LEVEL SOFTWARE DEVELOPE",
+        "date_applied": "2026-06-08",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Aktor Como Intercity Facilities Management-44250550/documents/resume.pdf",
+        "job_id": "4425055043",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4425055043/?eBP=NON_CHARGEABLE_CHANNEL&refId=8zuWub71siVUOPAjTK0Uzw%3D%3D&trackingId=whqizEAkouFsVq9tSeiaXg%3D%3D&trk=flagship3_search_srp_jobs"
+      },
+      {
+        "company": "Accenture Australia and New Zealand",
+        "position": "Accenture Song \u2013 Early Careers (Rolling Intake)",
+        "date_applied": "2026-06-08",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Accenture Australia and New Zealand-accentur/documents/resume.pdf",
+        "job_id": "accenture-song-early-careers-0",
+        "source": "prosple",
+        "url": "https://nz.prosple.com/graduate-employers/accenture-australia-and-new-zealand/jobs-internships/accenture-song-early-careers-0"
+      },
+      {
+        "company": "Datacom",
+        "position": "Graduate AI & CX Engineer",
+        "date_applied": "2026-06-09",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Datacom-8bkyq26f/documents/resume.pdf",
+        "job_id": "8bkyq26f6n4mbvik",
+        "source": "hiringcafe",
+        "url": "https://hiring.cafe/job/8bkyq26f6n4mbvik"
+      },
+      {
+        "company": "BoardPro Limited",
+        "position": "Full Stack Engineer",
+        "date_applied": "2026-06-09",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/BoardPro Limited-92566643/documents/resume.pdf",
+        "job_id": "92566643",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92566643?type=standard&ref=search-standalone&origin=cardTitle#sol=39fee1e7a473169038e307f72745921ea8640543"
+      },
+      {
+        "company": "Kevin M. Downey",
+        "position": "AI Developer (LLM & Agentic Systems) \u2013 Full-Time Remote Contract with U.S. Companies",
+        "date_applied": "2026-06-09",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Kevin M. Downey-44256710/documents/resume.pdf",
+        "job_id": "4425671077",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4425671077/?eBP=NON_CHARGEABLE_CHANNEL&refId=mFn2QLhgjSh6hsJR92SS0Q%3D%3D&trackingId=9N472aYF22lk7R%2B%2F3iVjlw%3D%3D&trk=flagship3_search_srp_jobs"
+      },
+      {
+        "company": "Beca",
+        "position": "Software Engineer",
+        "date_applied": "2026-06-09",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Beca-44254175/documents/resume.pdf",
+        "job_id": "4425417559",
+        "source": "linkedin",
+        "url": "https://www.linkedin.com/jobs/view/4425417559/?eBP=NON_CHARGEABLE_CHANNEL&refId=8WnlUAAzy9OY05KRJoAa4Q%3D%3D&trackingId=TeADHnsml3Mm4YR5g5HaQg%3D%3D&trk=flagship3_search_srp_jobs"
+      },
+      {
+        "company": "Potentia",
+        "position": "Software Engineer",
+        "date_applied": "2026-06-09",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Potentia-92573180/documents/resume.pdf",
+        "job_id": "92573180",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92573180?type=standard&ref=search-standalone&origin=cardTitle#sol=79d5249693f7aed9de1a31d8d2c4e63d37f6aa2a"
+      },
+      {
+        "company": "Younity",
+        "position": "Mobile Developer (React Native)",
+        "date_applied": "2026-06-09",
+        "status": "In Progress",
+        "priority": "Medium",
+        "pdf_path": "applications/active/Younity-92567662/documents/resume.pdf",
+        "job_id": "92567662",
+        "source": "seek",
+        "url": "https://nz.seek.com/job/92567662?type=standard&ref=search-standalone&origin=cardTitle#sol=b374da7e21358f3a00d3ced7bf85fd4d3fd8d6d2"
       }
     ],
     "interviews": [],
@@ -2294,7 +2516,7 @@
       },
       {
         "company": "Private Advertiser",
-        "position": "AI Expert – Trading Systems & Agent Development",
+        "position": "AI Expert \u2013 Trading Systems & Agent Development",
         "date_applied": "2026-05-22",
         "status": "Rejected",
         "priority": "Medium",
@@ -2356,8 +2578,23 @@
     },
     {
       "kind": "manual",
+      "company_lc": "accenture australia and new zealand",
+      "position_lc": "accenture song \u2013 early careers (rolling intake)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "adaptive resourcing",
+      "position_lc": "elixir developer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "agtecnic",
       "position_lc": "software engineer - image processing"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "aktor como intercity facilities management",
+      "position_lc": "entry level software develope"
     },
     {
       "kind": "manual",
@@ -2387,12 +2624,22 @@
     {
       "kind": "manual",
       "company_lc": "blackpepper",
-      "position_lc": "intermediate front end developer – shopify"
+      "position_lc": "intermediate front end developer \u2013 shopify"
     },
     {
       "kind": "manual",
       "company_lc": "breadcrumb digital",
       "position_lc": "power platform developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "brightspark recruitment",
+      "position_lc": "backend developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "brightspark recruitment",
+      "position_lc": "full stack developer"
     },
     {
       "kind": "manual",
@@ -2462,6 +2709,16 @@
     {
       "kind": "manual",
       "company_lc": "crossing hurdles",
+      "position_lc": "frontend engineer | remote"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "crossing hurdles",
+      "position_lc": "full stack developer | remote"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "crossing hurdles",
       "position_lc": "full-stack software engineer | remote"
     },
     {
@@ -2527,7 +2784,7 @@
     {
       "kind": "manual",
       "company_lc": "esri",
-      "position_lc": "product engineer ii – web services"
+      "position_lc": "product engineer ii \u2013 web services"
     },
     {
       "kind": "manual",
@@ -2552,7 +2809,7 @@
     {
       "kind": "manual",
       "company_lc": "fdm group new zealand",
-      "position_lc": "junior software engineering graduate program │insurance & financial services (rolling intake)"
+      "position_lc": "junior software engineering graduate program \u2502insurance & financial services (rolling intake)"
     },
     {
       "kind": "manual",
@@ -2611,13 +2868,18 @@
     },
     {
       "kind": "manual",
+      "company_lc": "hire feed",
+      "position_lc": "full stack ui developer (remote)"
+    },
+    {
+      "kind": "manual",
       "company_lc": "holywater",
       "position_lc": "full-stack developer"
     },
     {
       "kind": "manual",
       "company_lc": "hr connect limited",
-      "position_lc": "software developer (junior – intermediate)"
+      "position_lc": "software developer (junior \u2013 intermediate)"
     },
     {
       "kind": "manual",
@@ -2632,7 +2894,7 @@
     {
       "kind": "manual",
       "company_lc": "ictx",
-      "position_lc": "software engineer – .net, sql & bi"
+      "position_lc": "software engineer \u2013 .net, sql & bi"
     },
     {
       "kind": "manual",
@@ -2666,6 +2928,11 @@
     },
     {
       "kind": "manual",
+      "company_lc": "macroactive",
+      "position_lc": "full stack developer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "mansell taylor consulting",
       "position_lc": "frontend developer (react / geospatial visualisation)"
     },
@@ -2688,6 +2955,11 @@
       "kind": "manual",
       "company_lc": "micro1",
       "position_lc": "front-end developer (typescript)"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "micro1",
+      "position_lc": "frontend developer (html, css)"
     },
     {
       "kind": "manual",
@@ -2766,6 +3038,11 @@
     },
     {
       "kind": "manual",
+      "company_lc": "plus notable",
+      "position_lc": "remote part-time backend / ai voice developer"
+    },
+    {
+      "kind": "manual",
       "company_lc": "praxent",
       "position_lc": "software engineer(s)"
     },
@@ -2788,6 +3065,11 @@
       "kind": "manual",
       "company_lc": "prospend pty ltd",
       "position_lc": "junior full stack developer"
+    },
+    {
+      "kind": "manual",
+      "company_lc": "r & r",
+      "position_lc": "full stack application developer \u2013 it expert"
     },
     {
       "kind": "manual",
@@ -2866,7 +3148,7 @@
     },
     {
       "kind": "manual",
-      "company_lc": "talent army – winner of medium recruitment agency of the year 2025",
+      "company_lc": "talent army \u2013 winner of medium recruitment agency of the year 2025",
       "position_lc": "devops engineer (aws & azure)"
     },
     {
@@ -3097,12 +3379,37 @@
     {
       "kind": "board",
       "source": "linkedin",
+      "job_id": "4422520153"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
       "job_id": "4422811689"
     },
     {
       "kind": "board",
       "source": "linkedin",
+      "job_id": "4422822189"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
       "job_id": "4423583964"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4424146584"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4424148517"
+    },
+    {
+      "kind": "board",
+      "source": "linkedin",
+      "job_id": "4425055043"
     },
     {
       "kind": "board",
@@ -3367,6 +3674,16 @@
     {
       "kind": "board",
       "source": "seek",
+      "job_id": "92485163"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92485596"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
       "job_id": "92500440"
     },
     {
@@ -3377,12 +3694,37 @@
     {
       "kind": "board",
       "source": "seek",
+      "job_id": "92501282"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
       "job_id": "92530699"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92539431"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92550652"
+    },
+    {
+      "kind": "board",
+      "source": "seek",
+      "job_id": "92550735"
     },
     {
       "kind": "board",
       "source": "hiringcafe",
       "job_id": "a5ohdhio3bzdl0hi"
+    },
+    {
+      "kind": "board",
+      "source": "prosple",
+      "job_id": "accenture-song-early-careers-0"
     },
     {
       "kind": "board",

@@ -6,6 +6,17 @@
 
 ## To Apply
 
+- [~] **Graduate AI & CX Engineer** @ Datacom (score: 88) · [JD](./active/Datacom-8bkyq26f/research/job-description.md) · [CV](./active/Datacom-8bkyq26f/documents/resume.pdf) · [Letter](./active/Datacom-8bkyq26f/documents/cover-letter.md) · [Apply ↗](https://hiring.cafe/job/8bkyq26f6n4mbvik)
+
+- [x] **Full Stack Engineer** @ BoardPro Limited (score: 87) · [JD](./active/BoardPro Limited-92566643/research/job-description.md) · [CV](./active/BoardPro Limited-92566643/documents/resume.pdf) · [Letter](./active/BoardPro Limited-92566643/documents/cover-letter.md) · [Apply ↗](https://nz.seek.com/job/92566643?type=standard&ref=search-standalone&origin=cardTitle#sol=39fee1e7a473169038e307f72745921ea8640543)
+
+- [~] **AI Developer (LLM & Agentic Systems) – Full-Time Remote Contract with U.S. Companies** @ Kevin M. Downey (score: 84) · [JD](./active/Kevin M. Downey-44256710/research/job-description.md) · [CV](./active/Kevin M. Downey-44256710/documents/resume.pdf) · [Letter](./active/Kevin M. Downey-44256710/documents/cover-letter.md) · [Apply ↗](https://www.linkedin.com/jobs/view/4425671077/?eBP=NON_CHARGEABLE_CHANNEL&refId=mFn2QLhgjSh6hsJR92SS0Q%3D%3D&trackingId=9N472aYF22lk7R%2B%2F3iVjlw%3D%3D&trk=flagship3_search_srp_jobs)
+
+- [~] **Software Engineer** @ Beca (score: 83) · [JD](./active/Beca-44254175/research/job-description.md) · [CV](./active/Beca-44254175/documents/resume.pdf) · [Letter](./active/Beca-44254175/documents/cover-letter.md) · [Apply ↗](https://www.linkedin.com/jobs/view/4425417559/?eBP=NON_CHARGEABLE_CHANNEL&refId=8WnlUAAzy9OY05KRJoAa4Q%3D%3D&trackingId=TeADHnsml3Mm4YR5g5HaQg%3D%3D&trk=flagship3_search_srp_jobs)
+
+- [x] **Software Engineer** @ Potentia (score: 81) · [JD](./active/Potentia-92573180/research/job-description.md) · [CV](./active/Potentia-92573180/documents/resume.pdf) · [Letter](./active/Potentia-92573180/documents/cover-letter.md) · [Apply ↗](https://nz.seek.com/job/92573180?type=standard&ref=search-standalone&origin=cardTitle#sol=79d5249693f7aed9de1a31d8d2c4e63d37f6aa2a)
+
+- [x] **Mobile Developer (React Native)** @ Younity (score: 66) · [JD](./active/Younity-92567662/research/job-description.md) · [CV](./active/Younity-92567662/documents/resume.pdf) · [Letter](./active/Younity-92567662/documents/cover-letter.md) · [Apply ↗](https://nz.seek.com/job/92567662?type=standard&ref=search-standalone&origin=cardTitle#sol=b374da7e21358f3a00d3ced7bf85fd4d3fd8d6d2)
 
 ## Applied
 
@@ -170,3 +181,17 @@
     2. Blair Impey — Director <blair@firsttable.com>
     3. Ben Roberts — Engineering Lead <ben@firsttable.com>
   - [ ] Cold email sent: 2026-06-05 → follow up on: 2026-06-12 · [Template](../templates/cold-email.md)
+
+- **Software Engineer** @ FirstCape Limited — applied 2026-06-09 · [JD](./archive/submitted/FirstCape Limited-92492462-2/research/job-description.md) · [CV](./archive/submitted/FirstCape Limited-92492462-2/documents/resume.pdf) · [Letter](./archive/submitted/FirstCape Limited-92492462-2/documents/cover-letter.md) · [Cold Email](./archive/submitted/FirstCape Limited-92492462-2/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92492462?type=standard&ref=search-standalone&origin=cardTitle#sol=819823722badeb19cba58bc0f8e6a9c1d3f4bd46)
+  - Top contacts:
+    1. Seth Bateman — Transformation Program Director <seth.bateman@firstcape.co.nz>
+    2. Milena Besecke — HR Manager <milena.besecke@firstcape.co.nz>
+    3. Mac Dalton — Director of Corporate Affairs <mac.dalton@firstcape.co.nz>
+  - [ ] Cold email sent: 2026-06-09 → follow up on: 2026-06-16 · [Template](../templates/cold-email.md)
+
+- **Software Engineer** @ Quantifi Photonics — applied 2026-06-09 · [JD](./archive/submitted/Quantifi Photonics-92503215/research/job-description.md) · [CV](./archive/submitted/Quantifi Photonics-92503215/documents/resume.pdf) · [Letter](./archive/submitted/Quantifi Photonics-92503215/documents/cover-letter.md) · [Cold Email](./archive/submitted/Quantifi Photonics-92503215/documents/cold-email.md) · [Apply ↗](https://nz.seek.com/job/92503215?type=promoted&ref=search-standalone&origin=cardTitle#sol=163f759c73463374e722b239b026adfa2278de67)
+  - Top contacts:
+    1. Anton Borzenko — Director of Hardware Engineering <a.borzenko@quantifiphotonics.com>
+    2. Santipap Chauykleang — Director of Engineering <s.chauykleang@quantifiphotonics.com>
+    3. Desmond Packwood — Test Systems Manager <d.packwood@quantifiphotonics.com>
+  - [ ] Cold email sent: 2026-06-09 → follow up on: 2026-06-16 · [Template](../templates/cold-email.md)

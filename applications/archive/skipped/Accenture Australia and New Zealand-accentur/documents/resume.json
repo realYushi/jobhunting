@@ -97,7 +97,7 @@
             "label": ""
           },
           "description": "<p>\u2022 Built internal tools and client-facing applications as a full-stack product engineer<br>\u2022 Designed and integrated <strong>AI agents</strong> and models into workflows where they improved speed or usability<br>\u2022 Took ideas from quick prototypes through to production-ready features</p>",
-          "role": "Full-stack product engineer at an AI-native product studio, owning 0→1 delivery from product idea through deployment — full-stack development, product design, AI integration, and front-end/back-end architecture.",
+          "role": "Full-stack product engineer at an AI-native product studio, owning 0\u21921 delivery from product idea through deployment \u2014 full-stack development, product design, AI integration, and front-end/back-end architecture.",
           "actions": "Designed and integrated AI agents and models into internal and client workflows. Made the product, design, and architecture calls end-to-end. Carried ideas from initial prototype to production-ready features without a hand-off.",
           "impact": "",
           "metrics": [],
@@ -133,7 +133,7 @@
             "label": ""
           },
           "description": "<p>\u2022 Built real-time <strong>HMI dashboard</strong> for agricultural effluent control with Vue.js, TypeScript, and Mapbox<br>\u2022 Created <strong>GeoJSON visualization</strong> showing live sensor data on farm maps<br>\u2022 Developed SVG component library now used across multiple client sites</p>",
-          "role": "First software engineering role — internship building a real-time HMI dashboard for agricultural effluent control.",
+          "role": "First software engineering role \u2014 internship building a real-time HMI dashboard for agricultural effluent control.",
           "actions": "Built the dashboard with Vue.js, TypeScript, and Mapbox. Implemented GeoJSON visualization for live farm-map sensor data. Authored an SVG component library.",
           "impact": "SVG component library reused across multiple client sites.",
           "metrics": [],
@@ -154,7 +154,9 @@
           "role": "Chef de partie on the dinner service line at a Greek restaurant.",
           "actions": "Managed a kitchen team during dinner service. Reorganized prep workflow to reduce bottlenecks under sustained time pressure.",
           "impact": "",
-          "metrics": ["Team of 5"],
+          "metrics": [
+            "Team of 5"
+          ],
           "roles": []
         }
       ]
@@ -195,8 +197,8 @@
             "url": "https://www.trusshouse.org/",
             "label": "trusshouse.org"
           },
-          "description": "<p>• Rebuilt marketing site for NZ construction-tech client using <strong>Astro</strong> and <strong>Tailwind CSS</strong> with trade-focused aesthetic<br>• Shipped customer-facing <strong>RAG chatbot</strong> as separate <strong>Next.js</strong> app on Vercel with semantic search and embeddings over product docs<br>• Engineered lazy-loaded chatbot widget for zero impact on marketing site's initial page load</p>",
-          "role": "Delivered at GrowLab for Truss House, an NZ construction-tech company — marketing site rebuild plus a customer-facing AI assistant that answers product questions from their documentation.",
+          "description": "<p>\u2022 Rebuilt marketing site for NZ construction-tech client using <strong>Astro</strong> and <strong>Tailwind CSS</strong> with trade-focused aesthetic<br>\u2022 Shipped customer-facing <strong>RAG chatbot</strong> as separate <strong>Next.js</strong> app on Vercel with semantic search and embeddings over product docs<br>\u2022 Engineered lazy-loaded chatbot widget for zero impact on marketing site's initial page load</p>",
+          "role": "Delivered at GrowLab for Truss House, an NZ construction-tech company \u2014 marketing site rebuild plus a customer-facing AI assistant that answers product questions from their documentation.",
           "actions": "Rebuilt the site with Astro and Tailwind CSS in a calmer, trade-focused aesthetic. Built the chatbot as a separate Next.js app on Vercel with semantic search and embeddings over their product content.",
           "impact": "Lazy-loaded chatbot widget keeps zero impact on the marketing site's initial page load.",
           "metrics": []
@@ -225,10 +227,10 @@
             "url": "https://github.com/realYushi/my-gtd-buddy",
             "label": "GitHub"
           },
-          "description": "<p>• Built a Reminders-native <strong>Getting Things Done (GTD)</strong> workflow as a <strong>Claude Code Skill</strong> with mode-based routing (process, coach, review, health)<br>• Wrapped Apple Reminders and macOS Calendar via <strong>AppleScript</strong> shell scripts with <strong>yq</strong>-driven YAML state for trend and velocity tracking<br>• Designed context- and energy-aware task selection with historical pattern detection and undo support</p>",
+          "description": "<p>\u2022 Built a Reminders-native <strong>Getting Things Done (GTD)</strong> workflow as a <strong>Claude Code Skill</strong> with mode-based routing (process, coach, review, health)<br>\u2022 Wrapped Apple Reminders and macOS Calendar via <strong>AppleScript</strong> shell scripts with <strong>yq</strong>-driven YAML state for trend and velocity tracking<br>\u2022 Designed context- and energy-aware task selection with historical pattern detection and undo support</p>",
           "role": "Reminders-native GTD workflow shipped as a Claude Code Skill.",
           "actions": "Wrapped Apple Reminders and macOS Calendar via AppleScript shell scripts with yq-driven YAML state. Designed mode-based routing (process, coach, review, health) and context- and energy-aware task selection with undo support.",
-          "impact": "Now drives my daily task management — used continuously across personal and work tasks.",
+          "impact": "Now drives my daily task management \u2014 used continuously across personal and work tasks.",
           "metrics": []
         },
         {
@@ -240,11 +242,13 @@
             "url": "https://my-app-maker.yushi91.com/",
             "label": "Live Demo"
           },
-          "description": "<p>• Full-stack TypeScript app that turns natural language descriptions into structured app requirements and <strong>generates mock UIs</strong> via <strong>Google Gemini API</strong><br>• <strong>React 18 + Vite + Tailwind</strong> frontend with <strong>Node.js/Express</strong> backend in a <strong>Turbo monorepo</strong><br>• 357 tests across Jest and Vitest, deployed to production with custom domain</p>",
+          "description": "<p>\u2022 Full-stack TypeScript app that turns natural language descriptions into structured app requirements and <strong>generates mock UIs</strong> via <strong>Google Gemini API</strong><br>\u2022 <strong>React 18 + Vite + Tailwind</strong> frontend with <strong>Node.js/Express</strong> backend in a <strong>Turbo monorepo</strong><br>\u2022 357 tests across Jest and Vitest, deployed to production with custom domain</p>",
           "role": "Full-stack TypeScript app that turns natural-language descriptions into structured app requirements and mock UIs.",
           "actions": "Built the React 18 + Vite + Tailwind frontend and the Node.js/Express backend in a Turbo monorepo. Integrated Google Gemini for generation.",
           "impact": "Deployed to production with a custom domain.",
-          "metrics": ["357 tests (Jest + Vitest)"]
+          "metrics": [
+            "357 tests (Jest + Vitest)"
+          ]
         }
       ]
     },
@@ -606,6 +610,6 @@
         "lineHeight": 1.4
       }
     },
-    "notes": ""
+    "notes": "Customized for Accenture Australia and New Zealand"
   }
 }
